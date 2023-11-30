@@ -1,8 +1,6 @@
 package duit_core
 
-import (
-	"github.com/google/uuid"
-)
+import "github.com/google/uuid"
 
 // 0 - cannot have children
 //

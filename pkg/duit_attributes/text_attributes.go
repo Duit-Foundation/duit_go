@@ -9,4 +9,5 @@ type TextAttributes struct {
 	SoftWrap        bool          `json:"softWrap,omitempty"`
 	TextScaleFactor float32       `json:"textScaleFactor,omitempty"`
 	MaxLines        int           `json:"maxLines,omitempty"`
+	Style           TextStyle     `json:"style,omitempty"`
 }
