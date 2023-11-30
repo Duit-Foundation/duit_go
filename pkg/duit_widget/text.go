@@ -1,10 +1,10 @@
 package duit_widget
 
 import (
-	attrs "github.com/lesleysin/duit/packages/duit_go/pkg/duit_attributes"
-	core "github.com/lesleysin/duit/packages/duit_go/pkg/duit_core"
+	"github.com/lesleysin/duit_go/pkg/duit_attributes"
+	"github.com/lesleysin/duit_go/pkg/duit_core"
 )
 
-func TextUiElement(attributes *attrs.TextAttributes, id string, controlled bool, action *core.Action) *core.DuitElementModel {
-	return new(core.DuitElementModel).CreateElement(core.Text, id, "", attributes, action, controlled)
+func TextUiElement(attributes *duit_attributes.TextAttributes, id string, controlled bool, action *duit_core.Action) *duit_core.DuitElementModel {
+	return new(duit_core.DuitElementModel).CreateElement(duit_core.Text, id, "", attributes, action, controlled)
 }

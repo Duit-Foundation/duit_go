@@ -1,6 +1,6 @@
 package duit
 
-import "github.com/lesleysin/duit/packages/duit_go/pkg/duit_core"
+import "github.com/lesleysin/duit_go/pkg/duit_core"
 
 type HttpActionMetainfo struct {
 	Method string `json:"method"`

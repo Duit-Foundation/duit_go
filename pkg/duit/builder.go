@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"errors"
 
-	"github.com/lesleysin/duit/packages/duit_go/pkg/duit_core"
+	"github.com/lesleysin/duit_go/pkg/duit_core"
 )
 
 type UiBuilder struct {
