@@ -1,28 +1,19 @@
 package duit_core
 
 import (
-	"encoding/json"
 	"os"
 )
 
 type DuitView struct{}
 
-func (view *DuitView) Static(filePath string) (*DuitElementModel, error) {
+func (view *DuitView) Static(filePath string) (string, error) {
 	jsonObj, err := os.ReadFile(filePath)
 
 	if err != nil {
-		return nil, err
+		return "", err
 	}
 
-	var root *DuitElementModel
-
-	err = json.Unmarshal(jsonObj, root)
-
-	if err != nil {
-		return nil, err
-	}
-
-	return root, nil
+	return string(jsonObj), nil
 }
 
 func (view *DuitView) Builder() *UiBuilder {

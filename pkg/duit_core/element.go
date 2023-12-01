@@ -21,12 +21,12 @@ var childMapper = map[DuitElementType]uint8{
 	Stack:          2,
 }
 
-type DuitCustomWidget interface {
+type DuitWidget interface {
 	CreateElement(elemType string, elemId string, tag string, attributes interface{}, action *Action, controlled bool) *DuitElementModel
 }
 
 type DuitElementModel struct {
-	DuitCustomWidget
+	DuitWidget
 	ElementType DuitElementType     `json:"type"`
 	Id          string              `json:"id"`
 	Controlled  bool                `json:"controlled"`
