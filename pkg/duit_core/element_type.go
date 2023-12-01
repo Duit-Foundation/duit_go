@@ -14,4 +14,5 @@ const (
 	Custom         DuitElementType = "Custom"
 	Center         DuitElementType = "Center"
 	ElevatedButton DuitElementType = "ElevatedButton"
+	Expanded       DuitElementType = "Expanded"
 )
