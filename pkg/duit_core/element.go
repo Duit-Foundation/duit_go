@@ -31,7 +31,7 @@ type DuitElementModel struct {
 	// 1 - single child model
 	//
 	// 2 - multi child model
-	MayHaveChildElements uint8 `json:"mayHaveChildElements"`
+	MayHaveChildElements uint8 `json:"-"`
 }
 
 // CreateElement creates a new instance of DuitElement.

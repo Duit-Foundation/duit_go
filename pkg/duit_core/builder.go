@@ -9,14 +9,14 @@ type UiBuilder struct {
 	root *DuitElementModel
 }
 
-func (builder *UiBuilder) Build() (string, error) {
+func (builder *UiBuilder) Build() ([]byte, error) {
 	json, err := json.Marshal(*builder.root)
 
 	if err != nil {
-		return "", errors.New("Failed to build JSON: " + err.Error())
+		return nil, errors.New("Failed to build JSON: " + err.Error())
 	}
 
-	return string(json), nil
+	return json, nil
 }
 
 func (builder *UiBuilder) CreateRoot() *DuitElementModel {
