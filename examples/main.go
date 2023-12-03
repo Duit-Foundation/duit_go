@@ -44,6 +44,7 @@ func ConfigureRoutes(server *Server) {
 	eng := server.engine
 
 	eng.Use(func(ctx *gin.Context) {
+		ctx.Writer.Header().Set("Content-Type", "application/json")
 		ctx.Writer.Header().Set("Access-Control-Allow-Origin", "*")
 		ctx.Writer.Header().Set("Access-Control-Allow-Credentials", "true")
 		ctx.Writer.Header().Set("Access-Control-Allow-Headers", "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, ResponseType, accept, origin, Cache-Control, X-Requested-With")
@@ -63,7 +64,8 @@ func ConfigureRoutes(server *Server) {
 	})
 
 	eng.GET("/form1", func(ctx *gin.Context) {
-		ctx.JSON(200, internal.Form1())
+		view := internal.Form1()
+		ctx.Data(200, "application/json", view)
 	})
 }
 
