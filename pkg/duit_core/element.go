@@ -8,12 +8,14 @@ import "github.com/google/uuid"
 //
 // 2 - multi child model
 var childMapper = map[DuitElementType]uint8{
-	SizedBox:       0,
-	ElevatedButton: 0,
 	Text:           0,
 	TextField:      0,
 	Empty:          0,
 	Custom:         0,
+	ElevatedButton: 1,
+	Padding:        1,
+	Expanded:       1,
+	SizedBox:       1,
 	ColoredBox:     1,
 	Center:         1,
 	Row:            2,

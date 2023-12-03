@@ -15,4 +15,5 @@ const (
 	Center         DuitElementType = "Center"
 	ElevatedButton DuitElementType = "ElevatedButton"
 	Expanded       DuitElementType = "Expanded"
+	Padding        DuitElementType = "Padding"
 )
