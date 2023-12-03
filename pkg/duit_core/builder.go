@@ -26,8 +26,24 @@ func (builder *UiBuilder) CreateRoot() *DuitElementModel {
 	return builder.root
 }
 
-func (builder *UiBuilder) CreateRootOfExactType(elType DuitElementType, attributes interface{}, id string, tag string) *DuitElementModel {
-	builder.root = new(DuitElementModel).CreateElement(elType, id, tag, attributes, nil, false)
+// CreateRootOfExactType creates a root element of the specified type and sets it as the root of the UiBuilder.
+//
+// Parameters:
+// - elType: The type of the root element.
+// - attributes: The attributes of the root element.
+// - id: The ID of the root element.
+//
+// Returns:
+// - *DuitElementModel: The root element created.
+func (builder *UiBuilder) CreateRootOfExactType(elType DuitElementType, attributes interface{}, id string) *DuitElementModel {
+	switch elType {
+	case Column:
+		builder.root = new(DuitElementModel).CreateElement(Column, id, "", attributes, nil, false, 2)
+	case Row:
+		builder.root = new(DuitElementModel).CreateElement(Row, id, "", attributes, nil, false, 2)
+	case Stack:
+		builder.root = new(DuitElementModel).CreateElement(Stack, id, "", attributes, nil, false, 2)
+	}
 
 	return builder.root
 }

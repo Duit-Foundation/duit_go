@@ -6,5 +6,5 @@ import (
 )
 
 func TextUiElement(attributes *duit_attributes.TextAttributes, id string, controlled bool, action *duit_core.Action) *duit_core.DuitElementModel {
-	return new(duit_core.DuitElementModel).CreateElement(duit_core.Text, id, "", attributes, action, controlled)
+	return new(duit_core.DuitElementModel).CreateElement(duit_core.Text, id, "", attributes, action, controlled, 0)
 }

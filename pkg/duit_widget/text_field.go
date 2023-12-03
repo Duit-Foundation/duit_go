@@ -7,5 +7,5 @@ import (
 )
 
 func TextFieldUiElement[T duit_edge_insets.EdgeInsets](attributes *duit_attributes.TextFieldAttributes[T], id string, controlled bool, action *duit_core.Action) *duit_core.DuitElementModel {
-	return new(duit_core.DuitElementModel).CreateElement(duit_core.TextField, id, "", attributes, action, controlled)
+	return new(duit_core.DuitElementModel).CreateElement(duit_core.TextField, id, "", attributes, action, controlled, 0)
 }
