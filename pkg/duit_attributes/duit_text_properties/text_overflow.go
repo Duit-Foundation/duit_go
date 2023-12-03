@@ -1,9 +1,9 @@
-package duit_attributes
+package duit_text_properties
 
 type TextOverflow string
 
 const (
-	TOClip   TextOverflow = "clip"
+	Clip     TextOverflow = "clip"
 	Fade     TextOverflow = "fade"
 	Ellipsis TextOverflow = "ellipsis"
 	Visible  TextOverflow = "visible"

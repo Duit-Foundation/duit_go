@@ -1,4 +1,4 @@
-package duit_attributes
+package duit_edge_insets
 
 type EdgeInsetsAll float32
 

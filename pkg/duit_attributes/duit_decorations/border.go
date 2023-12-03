@@ -1,4 +1,4 @@
-package duit_border
+package duit_decoration
 
 type Border string
 type BorderStyle string

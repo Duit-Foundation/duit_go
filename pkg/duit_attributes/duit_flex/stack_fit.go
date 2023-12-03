@@ -1,4 +1,4 @@
-package duit_attributes
+package duit_flex
 
 type StackFit string
 

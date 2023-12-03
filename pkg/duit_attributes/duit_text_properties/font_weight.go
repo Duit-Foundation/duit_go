@@ -1,4 +1,4 @@
-package duit_attributes
+package duit_text_properties
 
 type FontWeight uint16
 

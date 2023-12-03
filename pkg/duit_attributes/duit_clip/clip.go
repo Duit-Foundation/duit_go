@@ -1,4 +1,4 @@
-package duit_attributes
+package duit_clip
 
 type Clip string
 

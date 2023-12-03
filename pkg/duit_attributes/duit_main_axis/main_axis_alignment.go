@@ -1,11 +1,11 @@
-package duit_attributes
+package duit_main_axis
 
 type MainAxisAlignment string
 
 const (
-	MAAStart     MainAxisAlignment = "start"
-	MAAEnd       MainAxisAlignment = "end"
-	MAACenter    MainAxisAlignment = "center"
+	Start        MainAxisAlignment = "start"
+	End          MainAxisAlignment = "end"
+	Center       MainAxisAlignment = "center"
 	SpaceBetween MainAxisAlignment = "spaceBetween"
 	SpaceAround  MainAxisAlignment = "spaceAround"
 	SpaceEvenly  MainAxisAlignment = "spaceEvenly"

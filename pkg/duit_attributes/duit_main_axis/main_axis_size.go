@@ -1,4 +1,4 @@
-package duit_attributes
+package duit_main_axis
 
 type MainAxisSize string
 
