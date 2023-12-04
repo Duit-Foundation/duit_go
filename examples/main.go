@@ -3,11 +3,20 @@ package main
 import (
 	"duit_example/internal"
 	"fmt"
+	"log"
+	"net/http"
 	"time"
 
 	"github.com/gin-gonic/gin"
+	"github.com/gorilla/websocket"
 	cors "github.com/itsjamie/gin-cors"
 )
+
+var upgrader = websocket.Upgrader{
+	CheckOrigin: func(r *http.Request) bool {
+		return true
+	},
+}
 
 type Server struct {
 	engine *gin.Engine
@@ -17,6 +26,18 @@ func NewServer() *Server {
 	return &Server{
 		engine: gin.New(),
 	}
+}
+
+func wsHandler(ginContext *gin.Context) {
+	wsSession, err := upgrader.Upgrade(ginContext.Writer, ginContext.Request, nil)
+	fmt.Println("Connected")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	//create form and send to client when connected
+	view := internal.Form1()
+	wsSession.WriteMessage(websocket.TextMessage, view)
 }
 
 func (server *Server) Run(addr string) error {
@@ -32,6 +53,7 @@ func (server *Server) Run(addr string) error {
 	server.engine.Use(
 		gin.Recovery(),
 	)
+
 	return server.engine.Run(":" + addr)
 }
 
@@ -55,6 +77,16 @@ func ConfigureRoutes(server *Server) {
 			return
 		}
 		ctx.Next()
+	})
+
+	eng.Any("/", func(ctx *gin.Context) {
+		isWs := ctx.IsWebsocket()
+
+		if isWs {
+			wsHandler(ctx)
+		} else {
+			fmt.Println("Not websocket")
+		}
 	})
 
 	eng.GET("/health", func(ctx *gin.Context) {
