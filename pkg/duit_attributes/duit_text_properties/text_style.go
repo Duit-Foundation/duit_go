@@ -1,7 +1,9 @@
 package duit_text_properties
 
-type TextStyle struct {
-	Color         string     `json:"color,omitempty"`
+import "github.com/lesleysin/duit_go/pkg/duit_attributes/duit_utility_styles"
+
+type TextStyle[T duit_utility_styles.Color] struct {
+	Color         T          `json:"color,omitempty"`
 	FontFamily    string     `json:"fontFamily,omitempty"`
 	FontWeight    FontWeight `json:"fontWeight,omitempty"`
 	FontSize      float32    `json:"fontSize,omitempty"`

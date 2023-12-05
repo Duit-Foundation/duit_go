@@ -1,8 +1,11 @@
 package duit_attributes
 
-import "github.com/lesleysin/duit_go/pkg/duit_attributes/duit_text_properties"
+import (
+	"github.com/lesleysin/duit_go/pkg/duit_attributes/duit_text_properties"
+	"github.com/lesleysin/duit_go/pkg/duit_attributes/duit_utility_styles"
+)
 
-type TextAttributes struct {
+type TextAttributes[T duit_utility_styles.Color] struct {
 	Data            string                             `json:"data"`
 	SemanticsLabel  string                             `json:"semanticsLabel,omitempty"`
 	TextAlign       duit_text_properties.TextAlign     `json:"textAlign,omitempty"`
@@ -11,5 +14,5 @@ type TextAttributes struct {
 	SoftWrap        bool                               `json:"softWrap,omitempty"`
 	TextScaleFactor float32                            `json:"textScaleFactor,omitempty"`
 	MaxLines        int                                `json:"maxLines,omitempty"`
-	Style           duit_text_properties.TextStyle     `json:"style,omitempty"`
+	Style           duit_text_properties.TextStyle[T]  `json:"style,omitempty"`
 }

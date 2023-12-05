@@ -1,5 +1,7 @@
 package duit_decoration
 
+import "github.com/lesleysin/duit_go/pkg/duit_attributes/duit_utility_styles"
+
 type Border string
 type BorderStyle string
 
@@ -10,15 +12,15 @@ const (
 	None      BorderStyle = "none"
 )
 
-type BorderSide struct {
-	Color string      `json:"color,omitempty"`
+type BorderSide[T duit_utility_styles.Color] struct {
+	Color T           `json:"color,omitempty"`
 	Width float32     `json:"width,omitempty"`
 	Style BorderStyle `json:"style,omitempty"`
 }
 
-type InputBorder struct {
-	Type         Border     `json:"type"`
-	Options      BorderSide `json:"options,omitempty"`
-	GapPadding   float32    `json:"gapPadding,omitempty"`
-	BorderRadius float32    `json:"borderRadius,omitempty"`
+type InputBorder[T duit_utility_styles.Color] struct {
+	Type         Border  `json:"type"`
+	Options      T       `json:"options,omitempty"`
+	GapPadding   float32 `json:"gapPadding,omitempty"`
+	BorderRadius float32 `json:"borderRadius,omitempty"`
 }
