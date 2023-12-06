@@ -19,4 +19,5 @@ const (
 	Positioned     DuitElementType = "Positioned"
 	DecoratedBox   DuitElementType = "DecoratedBox"
 	CheckBox       DuitElementType = "CheckBox"
+	Container      DuitElementType = "Container"
 )

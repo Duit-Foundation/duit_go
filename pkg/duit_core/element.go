@@ -44,7 +44,7 @@ type DuitElementModel struct {
 // - action: the action associated with the element (optional)
 // - controlled: a boolean indicating whether the element is controlled
 //
-// It returns a pointer to the newly created DuitElement.
+// It returns a pointer to the upgraded created DuitElement.
 func (element *DuitElementModel) CreateElement(elemType DuitElementType, elemId string, tag string, attributes interface{}, action *Action, controlled bool, mayHaveChildElements uint8) *DuitElementModel {
 	var id string
 	var isControlled bool
