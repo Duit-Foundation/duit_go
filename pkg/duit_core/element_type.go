@@ -17,4 +17,6 @@ const (
 	Expanded       DuitElementType = "Expanded"
 	Padding        DuitElementType = "Padding"
 	Positioned     DuitElementType = "Positioned"
+	DecoratedBox   DuitElementType = "DecoratedBox"
+	CheckBox       DuitElementType = "CheckBox"
 )

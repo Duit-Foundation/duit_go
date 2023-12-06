@@ -9,6 +9,9 @@ type UiBuilder struct {
 	root *DuitElementModel
 }
 
+// Build generates a JSON representation of the UiBuilder.
+//
+// It returns a byte slice and an error.
 func (builder *UiBuilder) Build() ([]byte, error) {
 	json, err := json.Marshal(*builder.root)
 
@@ -38,11 +41,11 @@ func (builder *UiBuilder) CreateRoot() *DuitElementModel {
 func (builder *UiBuilder) CreateRootOfExactType(elType DuitElementType, attributes interface{}, id string) *DuitElementModel {
 	switch elType {
 	case Column:
-		builder.root = new(DuitElementModel).CreateElement(Column, id, "", attributes, nil, false, 2)
+		builder.root = new(DuitElementModel).CreateElement(elType, id, "", attributes, nil, false, 2)
 	case Row:
-		builder.root = new(DuitElementModel).CreateElement(Row, id, "", attributes, nil, false, 2)
+		builder.root = new(DuitElementModel).CreateElement(elType, id, "", attributes, nil, false, 2)
 	case Stack:
-		builder.root = new(DuitElementModel).CreateElement(Stack, id, "", attributes, nil, false, 2)
+		builder.root = new(DuitElementModel).CreateElement(elType, id, "", attributes, nil, false, 2)
 	}
 
 	return builder.root
