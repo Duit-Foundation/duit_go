@@ -1,0 +1,35 @@
+package duit_painting
+
+type BlendMode string
+
+const (
+	Clear      BlendMode = "clear"
+	Src        BlendMode = "src"
+	Dst        BlendMode = "dst"
+	SrcOver    BlendMode = "srcOver"
+	DstOver    BlendMode = "dstOver"
+	SrcIn      BlendMode = "srcIn"
+	DstIn      BlendMode = "dstIn"
+	SrcOut     BlendMode = "srcOut"
+	DstOut     BlendMode = "dstOut"
+	SrcATop    BlendMode = "srcATop"
+	DstATop    BlendMode = "dstATop"
+	Xor        BlendMode = "xor"
+	Plus       BlendMode = "plus"
+	Modulate   BlendMode = "modulate"
+	Screen     BlendMode = "screen"
+	Overlay    BlendMode = "overlay"
+	Darken     BlendMode = "darken"
+	Lighten    BlendMode = "lighten"
+	ColorDodge BlendMode = "colorDodge"
+	ColorBurn  BlendMode = "colorBurn"
+	HardLight  BlendMode = "hardLight"
+	SoftLight  BlendMode = "softLight"
+	Difference BlendMode = "difference"
+	Exclusion  BlendMode = "exclusion"
+	Multiply   BlendMode = "multiply"
+	Hue        BlendMode = "hue"
+	Saturation BlendMode = "saturation"
+	Color      BlendMode = "color"
+	Luminosity BlendMode = "luminosity"
+)

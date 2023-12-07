@@ -20,4 +20,5 @@ const (
 	DecoratedBox   DuitElementType = "DecoratedBox"
 	CheckBox       DuitElementType = "CheckBox"
 	Container      DuitElementType = "Container"
+	Image          DuitElementType = "Image"
 )
