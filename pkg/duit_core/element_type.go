@@ -1,5 +1,6 @@
 package duit_core
 
+// DuitElementType represents the type of a Duit element.
 type DuitElementType string
 
 const (

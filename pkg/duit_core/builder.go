@@ -46,6 +46,16 @@ func (builder *UiBuilder) CreateRootOfExactType(elType DuitElementType, attribut
 		builder.root = new(DuitElementModel).CreateElement(elType, id, "", attributes, nil, false, 2)
 	case Stack:
 		builder.root = new(DuitElementModel).CreateElement(elType, id, "", attributes, nil, false, 2)
+	case Center:
+		builder.root = new(DuitElementModel).CreateElement(elType, id, "", attributes, nil, false, 1)
+	case ColoredBox:
+		builder.root = new(DuitElementModel).CreateElement(elType, id, "", attributes, nil, false, 1)
+	case Container:
+		builder.root = new(DuitElementModel).CreateElement(elType, id, "", attributes, nil, false, 1)
+	case DecoratedBox:
+		builder.root = new(DuitElementModel).CreateElement(elType, id, "", attributes, nil, false, 1)
+	default:
+		panic("Invalid element type")
 	}
 
 	return builder.root
