@@ -15,7 +15,7 @@ type ImageAttributes[TColor duit_utility_styles.Color] struct {
 	Scale                float32                     `json:"scale,omitempty"`
 	Repeat               duit_painting.ImageRepeat   `json:"repeat,omitempty"`
 	Src                  string                      `json:"src"`
-	ByteData             []byte                      `json:"byteData,omitempty"`
+	ByteData             duit_painting.ImageBuffer   `json:"byteData,omitempty"`
 	IsAntiAlias          bool                        `json:"isAntiAlias,omitempty"`
 	MatchTextDirection   bool                        `json:"matchTextDirection,omitempty"`
 	GaplessPlayback      bool                        `json:"gaplessPlayback,omitempty"`
