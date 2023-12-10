@@ -29,15 +29,15 @@ func NewServer() *Server {
 }
 
 func wsHandler(ginContext *gin.Context) {
-	wsSession, err := upgrader.Upgrade(ginContext.Writer, ginContext.Request, nil)
+	_, err := upgrader.Upgrade(ginContext.Writer, ginContext.Request, nil)
 	fmt.Println("Connected")
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	//create form and send to client when connected
-	view := internal.Form1()
-	wsSession.WriteMessage(websocket.TextMessage, view)
+	// view := internal.Form1()
+	// wsSession.WriteMessage(websocket.TextMessage, view)
 }
 
 func (server *Server) Run(addr string) error {
@@ -95,8 +95,8 @@ func ConfigureRoutes(server *Server) {
 		})
 	})
 
-	eng.GET("/form1", func(ctx *gin.Context) {
-		view := internal.Form1()
+	eng.GET("/decoratedbox", func(ctx *gin.Context) {
+		view := internal.DecoratedBoxExample()
 		ctx.Data(200, "application/json", view)
 	})
 }

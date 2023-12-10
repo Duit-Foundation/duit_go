@@ -22,10 +22,23 @@ func (builder *UiBuilder) Build() ([]byte, error) {
 	return json, nil
 }
 
+// CreateRoot creates a root DuitElementModel for the UiBuilder.
+//
+// No parameters.
+// Returns a pointer to the created root DuitElementModel.
 func (builder *UiBuilder) CreateRoot() *DuitElementModel {
 	builder.root = &DuitElementModel{
 		ElementType: Column,
 	}
+	return builder.root
+}
+
+// RootFrom sets the root element of the UiBuilder.
+//
+// rootElement: The root element to set.
+// returns: The updated root element.
+func (builder *UiBuilder) RootFrom(rootElement *DuitElementModel) *DuitElementModel {
+	builder.root = rootElement
 	return builder.root
 }
 
