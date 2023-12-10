@@ -99,6 +99,12 @@ func ConfigureRoutes(server *Server) {
 		view := internal.DecoratedBoxExample()
 		ctx.Data(200, "application/json", view)
 	})
+
+	eng.GET("/img", func(ctx *gin.Context) {
+		view := internal.ImageExample()
+
+		ctx.Data(200, "application/json", view)
+	})
 }
 
 func main() {
