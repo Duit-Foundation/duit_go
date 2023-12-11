@@ -13,7 +13,7 @@ type HttpActionMetainfo struct {
 // - metainfo: a pointer to an instance of HttpActionMetainfo representing the meta information of the action.
 //
 // The function returns a pointer to an instance of Action.
-func CreateHttpAction(event string, dependsOn []string, metainfo *HttpActionMetainfo) *Action {
+func CreateHttpAction(event string, dependsOn []*ActionDependency, metainfo *HttpActionMetainfo) *Action {
 	return &Action{
 		Event:     event,
 		DependsOn: dependsOn,
@@ -25,7 +25,7 @@ func CreateHttpAction(event string, dependsOn []string, metainfo *HttpActionMeta
 //
 // It takes in an event string and dependsOn slice of strings as parameters.
 // It returns a pointer to an Action struct.
-func CreateWebSocketAction(event string, dependsOn []string) *Action {
+func CreateWebSocketAction(event string, dependsOn []*ActionDependency) *Action {
 	return &Action{
 		Event:     event,
 		DependsOn: dependsOn,

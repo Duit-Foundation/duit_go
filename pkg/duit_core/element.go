@@ -7,7 +7,7 @@ type DuitWidget interface {
 }
 
 type DuitElementModel struct {
-	DuitWidget
+	DuitWidget  `json:"-"`
 	ElementType DuitElementType `json:"type"`
 	Id          string          `json:"id"`
 	Controlled  bool            `json:"controlled"`

@@ -2,6 +2,7 @@ package main
 
 import (
 	"duit_example/internal"
+	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
@@ -10,6 +11,10 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/gorilla/websocket"
 	cors "github.com/itsjamie/gin-cors"
+	"github.com/lesleysin/duit_go/pkg/duit_attributes"
+	"github.com/lesleysin/duit_go/pkg/duit_attributes/duit_color"
+	"github.com/lesleysin/duit_go/pkg/duit_attributes/duit_text_properties"
+	"github.com/lesleysin/duit_go/pkg/duit_core"
 )
 
 var upgrader = websocket.Upgrader{
@@ -110,6 +115,81 @@ func ConfigureRoutes(server *Server) {
 		view := internal.StackExample()
 
 		ctx.Data(200, "application/json", view)
+	})
+
+	eng.GET("/inputs", func(ctx *gin.Context) {
+		fmt.Println("OK")
+		view := internal.InputsExample()
+
+		ctx.Data(200, "application/json", view)
+	})
+
+	eng.GET("/textInput1change", func(ctx *gin.Context) {
+		fmt.Println(ctx.Request.URL)
+
+		ctx.Data(200, "application/json", []byte("{}"))
+	})
+
+	eng.POST("/textInput2change", func(ctx *gin.Context) {
+		var data interface{}
+
+		err := ctx.BindJSON(&data)
+
+		if err != nil {
+			fmt.Println(err.Error())
+		}
+
+		fmt.Println(data)
+
+		ctx.Data(200, "application/json", []byte("{}"))
+	})
+
+	eng.POST("/apply", func(ctx *gin.Context) {
+		var data map[string]interface{}
+
+		err := ctx.BindJSON(&data)
+
+		if err != nil {
+			fmt.Println(err.Error())
+		}
+
+		fmt.Println(data)
+
+		var checkboxValue string
+		var textColor duit_color.ColorString
+
+		if data["checkbox"].(bool) == true {
+			checkboxValue = "checked"
+			textColor = "#58eb34"
+		} else {
+			checkboxValue = "unchecked"
+			textColor = "#eb3734"
+		}
+
+		updates := map[string]interface{}{
+			"text1": &duit_attributes.TextAttributes[duit_color.ColorString]{
+				Data: data["value1"].(string),
+			},
+			"text2": &duit_attributes.TextAttributes[duit_color.ColorString]{
+				Data: data["value2"].(string),
+			},
+			"text3": &duit_attributes.TextAttributes[duit_color.ColorString]{
+				Data: checkboxValue,
+				Style: &duit_text_properties.TextStyle[duit_color.ColorString]{
+					Color: textColor,
+				},
+			},
+		}
+
+		var payload = duit_core.NewUpdateEvent(updates)
+
+		val, err := json.Marshal(payload)
+
+		if err != nil {
+			fmt.Println(err.Error())
+		}
+
+		ctx.Data(200, "application/json", val)
 	})
 }
 

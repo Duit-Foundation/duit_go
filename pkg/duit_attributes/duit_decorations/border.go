@@ -18,9 +18,13 @@ type BorderSide[T duit_color.Color] struct {
 	Style BorderStyle `json:"style,omitempty"`
 }
 
+type InputBorderOptions[T duit_color.Color] struct {
+	GapPadding   float32        `json:"gapPadding,omitempty"`
+	BorderRadius float32        `json:"borderRadius,omitempty"`
+	BorderSide   *BorderSide[T] `json:"borderSide,omitempty"`
+}
+
 type InputBorder[T duit_color.Color] struct {
-	Type         Border  `json:"type"`
-	Options      T       `json:"options,omitempty"`
-	GapPadding   float32 `json:"gapPadding,omitempty"`
-	BorderRadius float32 `json:"borderRadius,omitempty"`
+	Type    Border                 `json:"type"`
+	Options *InputBorderOptions[T] `json:"options,omitempty"`
 }

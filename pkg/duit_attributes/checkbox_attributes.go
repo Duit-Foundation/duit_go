@@ -15,7 +15,7 @@ type CheckboxAttributes[T duit_color.Color] struct {
 	SplashRadius  float32                                 `json:"splashRadius,omitempty"`
 	SemanticLabel string                                  `json:"semanticLabel,omitempty"`
 	Side          *duit_decoration.BorderSide[T]          `json:"side,omitempty"`
-	VisualDensity duit_flex.VisualDensity                 `json:"visualDensity,omitempty"`
+	VisualDensity *duit_flex.VisualDensity                `json:"visualDensity,omitempty"`
 	CheckColor    T                                       `json:"checkColor,omitempty"`
 	HoverColor    T                                       `json:"hoverColor,omitempty"`
 	ActiveColor   T                                       `json:"activeColor,omitempty"`
