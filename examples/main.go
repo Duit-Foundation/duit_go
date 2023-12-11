@@ -34,15 +34,15 @@ func NewServer() *Server {
 }
 
 func wsHandler(ginContext *gin.Context) {
-	_, err := upgrader.Upgrade(ginContext.Writer, ginContext.Request, nil)
+	wsSession, err := upgrader.Upgrade(ginContext.Writer, ginContext.Request, nil)
 	fmt.Println("Connected")
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	//create form and send to client when connected
-	// view := internal.Form1()
-	// wsSession.WriteMessage(websocket.TextMessage, view)
+	view := internal.WsExample()
+	wsSession.WriteMessage(websocket.TextMessage, view)
 }
 
 func (server *Server) Run(addr string) error {
