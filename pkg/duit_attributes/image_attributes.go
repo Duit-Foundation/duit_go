@@ -2,12 +2,12 @@ package duit_attributes
 
 import (
 	"github.com/lesleysin/duit_go/pkg/duit_attributes/duit_alignment"
+	"github.com/lesleysin/duit_go/pkg/duit_attributes/duit_color"
 	"github.com/lesleysin/duit_go/pkg/duit_attributes/duit_flex"
 	"github.com/lesleysin/duit_go/pkg/duit_attributes/duit_painting"
-	"github.com/lesleysin/duit_go/pkg/duit_attributes/duit_utility_styles"
 )
 
-type ImageAttributes[TColor duit_utility_styles.Color] struct {
+type ImageAttributes[TColor duit_color.Color] struct {
 	Width                float32                     `json:"width,omitempty"`
 	Height               float32                     `json:"height,omitempty"`
 	CacheWidth           int                         `json:"cacheWidth,omitempty"`
@@ -15,7 +15,7 @@ type ImageAttributes[TColor duit_utility_styles.Color] struct {
 	Scale                float32                     `json:"scale,omitempty"`
 	Repeat               duit_painting.ImageRepeat   `json:"repeat,omitempty"`
 	Src                  string                      `json:"src"`
-	ByteData             duit_painting.ImageBuffer   `json:"byteData,omitempty"`
+	ByteData             *duit_painting.ImageBuffer  `json:"byteData,omitempty"`
 	IsAntiAlias          bool                        `json:"isAntiAlias,omitempty"`
 	MatchTextDirection   bool                        `json:"matchTextDirection,omitempty"`
 	GaplessPlayback      bool                        `json:"gaplessPlayback,omitempty"`

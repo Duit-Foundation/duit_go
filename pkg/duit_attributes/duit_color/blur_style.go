@@ -1,4 +1,4 @@
-package duit_utility_styles
+package duit_color
 
 type BlurStyle string
 

@@ -1,12 +1,12 @@
 package duit_decoration
 
 import (
+	"github.com/lesleysin/duit_go/pkg/duit_attributes/duit_color"
 	"github.com/lesleysin/duit_go/pkg/duit_attributes/duit_edge_insets"
 	"github.com/lesleysin/duit_go/pkg/duit_attributes/duit_text_properties"
-	"github.com/lesleysin/duit_go/pkg/duit_attributes/duit_utility_styles"
 )
 
-type InputDecoration[TInsets duit_edge_insets.EdgeInsets, TColor duit_utility_styles.Color] struct {
+type InputDecoration[TInsets duit_edge_insets.EdgeInsets, TColor duit_color.Color] struct {
 	LabelText          string                                 `json:"labelText,omitempty"`
 	LabelStyle         duit_text_properties.TextStyle[TColor] `json:"labelStyle,omitempty"`
 	FloatingLabelStyle duit_text_properties.TextStyle[TColor] `json:"floatingLabelStyle,omitempty"`

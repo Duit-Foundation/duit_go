@@ -2,10 +2,10 @@ package duit_decoration
 
 import (
 	"github.com/lesleysin/duit_go/pkg/duit_attributes/duit_alignment"
-	"github.com/lesleysin/duit_go/pkg/duit_attributes/duit_utility_styles"
+	"github.com/lesleysin/duit_go/pkg/duit_attributes/duit_color"
 )
 
-type LinearGradient[T duit_utility_styles.Color] struct {
+type LinearGradient[T duit_color.Color] struct {
 	Colors []T `json:"colors"`
 	//Rotation angle in radians
 	RotationAngle float32                  `json:"rotationAngle,omitempty"`

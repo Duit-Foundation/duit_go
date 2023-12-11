@@ -5,8 +5,9 @@ import (
 	"os"
 
 	"github.com/lesleysin/duit_go/pkg/duit_attributes"
+	"github.com/lesleysin/duit_go/pkg/duit_attributes/duit_color"
 	"github.com/lesleysin/duit_go/pkg/duit_attributes/duit_painting"
-	"github.com/lesleysin/duit_go/pkg/duit_attributes/duit_utility_styles"
+
 	"github.com/lesleysin/duit_go/pkg/duit_core"
 	"github.com/lesleysin/duit_go/pkg/duit_widget"
 )
@@ -26,24 +27,24 @@ func ImageExample() []byte {
 	}
 
 	root.AddChildren([]*duit_core.DuitElementModel{
-		duit_widget.TextUiElement[duit_utility_styles.ColorString](&duit_attributes.TextAttributes[duit_utility_styles.ColorString]{Data: "Netword image"}, "", false, nil),
-		duit_widget.ImageUiElement(&duit_attributes.ImageAttributes[duit_utility_styles.ColorString]{
+		duit_widget.TextUiElement[duit_color.ColorString](&duit_attributes.TextAttributes[duit_color.ColorString]{Data: "Netword image"}, "", false, nil),
+		duit_widget.ImageUiElement(&duit_attributes.ImageAttributes[duit_color.ColorString]{
 			Type:   duit_painting.Network,
 			Src:    "https://via.assets.so/game.png?id=1&q=95&w=360&h=360&fit=fill",
 			Width:  350,
 			Height: 350,
 		}, "", false, nil),
-		duit_widget.TextUiElement[duit_utility_styles.ColorString](&duit_attributes.TextAttributes[duit_utility_styles.ColorString]{Data: "Asset image"}, "", false, nil),
-		duit_widget.ImageUiElement(&duit_attributes.ImageAttributes[duit_utility_styles.ColorString]{
+		duit_widget.TextUiElement[duit_color.ColorString](&duit_attributes.TextAttributes[duit_color.ColorString]{Data: "Asset image"}, "", false, nil),
+		duit_widget.ImageUiElement(&duit_attributes.ImageAttributes[duit_color.ColorString]{
 			Type:   duit_painting.Asset,
 			Src:    "assets/betboom.jpg",
 			Height: 350,
 		}, "", false, nil),
-		duit_widget.TextUiElement[duit_utility_styles.ColorString](&duit_attributes.TextAttributes[duit_utility_styles.ColorString]{Data: "Memory image"}, "", false, nil),
-		duit_widget.ImageUiElement(&duit_attributes.ImageAttributes[duit_utility_styles.ColorString]{
+		duit_widget.TextUiElement[duit_color.ColorString](&duit_attributes.TextAttributes[duit_color.ColorString]{Data: "Memory image"}, "", false, nil),
+		duit_widget.ImageUiElement(&duit_attributes.ImageAttributes[duit_color.ColorString]{
 			Type: duit_painting.Memory,
 			Src:  "",
-			ByteData: duit_painting.ImageBuffer{
+			ByteData: &duit_painting.ImageBuffer{
 				Type: duit_painting.ByteBuffer,
 				Data: file,
 			},

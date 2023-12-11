@@ -105,6 +105,12 @@ func ConfigureRoutes(server *Server) {
 
 		ctx.Data(200, "application/json", view)
 	})
+
+	eng.GET("/stack", func(ctx *gin.Context) {
+		view := internal.StackExample()
+
+		ctx.Data(200, "application/json", view)
+	})
 }
 
 func main() {
