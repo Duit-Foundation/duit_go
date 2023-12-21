@@ -39,8 +39,8 @@ github.com/klauspost/cpuid/v2 v2.2.4 h1:acbojRNwl3o09bUq+yDCtZFc1aiwaAAxtcn8YkZX
 github.com/klauspost/cpuid/v2 v2.2.4/go.mod h1:RVVoqg1df56z8g3pUjL/3lE5UfnlrJX8tyFgg4nqhuY=
 github.com/leodido/go-urn v1.2.4 h1:XlAE/cm/ms7TE/VMVoduSpNBoyc2dOxHs5MZSwAN63Q=
 github.com/leodido/go-urn v1.2.4/go.mod h1:7ZrI8mTSeBSHl/UaRyKQW1qZeMgak41ANeCNaVckg+4=
-github.com/lesleysin/duit_go v0.0.4 h1:WEJkJ7Jp/zPFxnvbW9SXAWC5Z//i9OHNszmwbs4otlU=
-github.com/lesleysin/duit_go v0.0.4/go.mod h1:4skquDUGK9AHnlmbMAJvYjcw8kvK7fcoejCYvSQREhQ=
+github.com/lesleysin/duit_go v1.0.0 h1:TfCj9/gAETyL4R0gndfU7UYoZfqXxXAMFZRKUR4qsls=
+github.com/lesleysin/duit_go v1.0.0/go.mod h1:4skquDUGK9AHnlmbMAJvYjcw8kvK7fcoejCYvSQREhQ=
 github.com/mattn/go-isatty v0.0.19 h1:JITubQf0MOLdlGRuRq+jtsDlekdYPia9ZFsB8h/APPA=
 github.com/mattn/go-isatty v0.0.19/go.mod h1:W+V8PltTTMOvKvAeJH7IuucS94S2C6jfK/D7dTCTo3Y=
 github.com/modern-go/concurrent v0.0.0-20180228061459-e0a39a4cb421/go.mod h1:6dJC0mAP4ikYIbvyc7fijjWJddQyLn8Ig3JB5CqoB9Q=
