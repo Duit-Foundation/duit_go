@@ -3,7 +3,8 @@ package duit_core
 type eventType string
 
 const (
-	update eventType = "update"
+	update       eventType = "update"
+	updateLayout eventType = "updateLayout"
 )
 
 type event struct {
@@ -13,6 +14,11 @@ type event struct {
 type updateEvent struct {
 	event
 	Updates map[string]interface{} `json:"updates"`
+}
+
+type layoutUpdateEvent struct {
+	event
+	Layout *DuitElementModel `json:"layout"`
 }
 
 // NewUpdateEvent creates a new update event.
@@ -25,5 +31,14 @@ func NewUpdateEvent(updates map[string]interface{}) *updateEvent {
 			Type: update,
 		},
 		Updates: updates,
+	}
+}
+
+func NewLayoutUpdateEvent(payload *DuitElementModel) *layoutUpdateEvent {
+	return &layoutUpdateEvent{
+		event: event{
+			Type: updateLayout,
+		},
+		Layout: payload,
 	}
 }

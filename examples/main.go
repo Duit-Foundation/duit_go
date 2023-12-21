@@ -191,6 +191,24 @@ func ConfigureRoutes(server *Server) {
 
 		ctx.Data(200, "application/json", val)
 	})
+
+	eng.GET("/updateLayout", func(ctx *gin.Context) {
+		data := duit_core.NewLayoutUpdateEvent(internal.UpdatePayload())
+
+		val, err := json.Marshal(data)
+
+		if err != nil {
+			fmt.Println(err.Error())
+		}
+
+		ctx.Data(200, "application/json", val)
+	})
+
+	eng.GET("/updateExample", func(ctx *gin.Context) {
+		view := internal.UpdateExample()
+
+		ctx.Data(200, "application/json", view)
+	})
 }
 
 func main() {
