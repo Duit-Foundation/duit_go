@@ -209,6 +209,22 @@ func ConfigureRoutes(server *Server) {
 
 		ctx.Data(200, "application/json", view)
 	})
+
+	eng.GET("/gesture", func(ctx *gin.Context) {
+		view := internal.GestureExample()
+
+		ctx.Data(200, "application/json", view)
+	})
+
+	eng.GET("/tap", func(ctx *gin.Context) {
+		fmt.Println("Tap")
+		ctx.Data(200, "application/json", []byte("{}"))
+	})
+
+	eng.GET("/longPress", func(ctx *gin.Context) {
+		fmt.Println("LongPress")
+		ctx.Data(200, "application/json", []byte("{}"))
+	})
 }
 
 func main() {
