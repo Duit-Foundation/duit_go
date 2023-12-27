@@ -225,6 +225,11 @@ func ConfigureRoutes(server *Server) {
 		fmt.Println("LongPress")
 		ctx.Data(200, "application/json", []byte("{}"))
 	})
+
+	eng.GET("/transform", func(ctx *gin.Context) {
+		view := internal.TransformExample()
+		ctx.Data(200, "application/json", view)
+	})
 }
 
 func main() {

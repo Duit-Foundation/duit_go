@@ -24,4 +24,5 @@ const (
 	Image           DuitElementType = "Image"
 	GestureDetector DuitElementType = "GestureDetector"
 	Align           DuitElementType = "Align"
+	Transform       DuitElementType = "Transform"
 )
