@@ -230,6 +230,11 @@ func ConfigureRoutes(server *Server) {
 		view := internal.TransformExample()
 		ctx.Data(200, "application/json", view)
 	})
+
+	eng.GET("/rich", func(ctx *gin.Context) {
+		view := internal.RichTextExample()
+		ctx.Data(200, "application/json", view)
+	})
 }
 
 func main() {

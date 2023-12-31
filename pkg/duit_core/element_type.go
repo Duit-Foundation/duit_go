@@ -25,4 +25,5 @@ const (
 	GestureDetector DuitElementType = "GestureDetector"
 	Align           DuitElementType = "Align"
 	Transform       DuitElementType = "Transform"
+	RichText        DuitElementType = "RichText"
 )
