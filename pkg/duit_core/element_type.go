@@ -26,4 +26,5 @@ const (
 	Align           DuitElementType = "Align"
 	Transform       DuitElementType = "Transform"
 	RichText        DuitElementType = "RichText"
+	Wrap            DuitElementType = "Wrap"
 )
