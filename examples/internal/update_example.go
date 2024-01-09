@@ -16,9 +16,9 @@ func UpdateExample() []byte {
 	root := builder.CreateRootOfExactType(duit_core.Column, nil, "")
 
 	root.AddChildren([]*duit_core.DuitElementModel{
-		duit_widget.TextUiElement[duit_color.ColorString](&duit_attributes.TextAttributes[duit_color.ColorString]{Data: "Layout update example"}, "", false, nil),
-		duit_widget.ElevatedButtonUiElement(&duit_attributes.ElevatedButtonAttributes{}, "button1", true, duit_core.CreateHttpAction("/updateLayout", nil, &duit_core.HttpActionMetainfo{Method: "GET"})).AddChild(
-			duit_widget.TextUiElement[duit_color.ColorString](&duit_attributes.TextAttributes[duit_color.ColorString]{Data: "ElevatedButton"}, "", false, nil),
+		duit_widget.TextUiElement[duit_color.ColorString](&duit_attributes.TextAttributes[duit_color.ColorString]{Data: "Layout update example"}, "", false),
+		duit_widget.ElevatedButtonUiElement(&duit_attributes.ElevatedButtonAttributes{}, "button1", duit_core.CreateHttpAction("/updateLayout", nil, &duit_core.HttpActionMetainfo{Method: "GET"})).AddChild(
+			duit_widget.TextUiElement[duit_color.ColorString](&duit_attributes.TextAttributes[duit_color.ColorString]{Data: "ElevatedButton"}, "", false),
 		),
 	})
 
@@ -37,7 +37,7 @@ func UpdatePayload() *duit_core.DuitElementModel {
 	root := builder.CreateRootOfExactType(duit_core.Column, nil, "")
 
 	root.AddChildren([]*duit_core.DuitElementModel{
-		duit_widget.TextUiElement[duit_color.ColorString](&duit_attributes.TextAttributes[duit_color.ColorString]{Data: "Force update!"}, "", false, nil),
+		duit_widget.TextUiElement[duit_color.ColorString](&duit_attributes.TextAttributes[duit_color.ColorString]{Data: "Force update!"}, "", false),
 	})
 
 	return root

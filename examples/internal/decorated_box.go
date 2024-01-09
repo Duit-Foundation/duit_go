@@ -18,7 +18,7 @@ func DecoratedBoxExample() []byte {
 	child := duit_widget.SizedBoxUiElement(&duit_attributes.SizedBoxAttributes{
 		Width:  100,
 		Height: 100,
-	}, "", false, nil)
+	}, "", false)
 
 	child.AddChild(duit_widget.DecoratedBoxUiElement[duit_color.ColorString](
 		&duit_attributes.DecoratedBoxAttributes[duit_color.ColorString]{
@@ -37,15 +37,12 @@ func DecoratedBoxExample() []byte {
 			},
 		},
 		"",
-		false,
-		nil).AddChild(
-		duit_widget.CenterUiElement(&duit_attributes.CenterAttributes{}, "", false, nil).AddChild(
+		false).AddChild(
+		duit_widget.CenterUiElement(&duit_attributes.CenterAttributes{}, "", false).AddChild(
 			duit_widget.TextUiElement[duit_color.ColorString](
 				&duit_attributes.TextAttributes[duit_color.ColorString]{Data: "Centred Text"},
 				"",
-				false,
-				nil,
-			),
+				false),
 		)))
 
 	builder.RootFrom(child)
