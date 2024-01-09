@@ -19,7 +19,7 @@ func GestureExample() []byte {
 		duit_widget.GestureDetectorUiElement(&duit_attributes.GestureDetectorAttributes{
 			OnTap:       duit_core.CreateHttpAction("/tap", nil, &duit_core.HttpActionMetainfo{Method: "GET"}),
 			OnLongPress: duit_core.CreateHttpAction("/longPress", nil, &duit_core.HttpActionMetainfo{Method: "GET"}),
-		}, "").AddChild(duit_widget.TextUiElement[duit_color.ColorString](&duit_attributes.TextAttributes[duit_color.ColorString]{Data: "Tap/LongPress to fire event"}, "", false, nil)),
+		}, "").AddChild(duit_widget.TextUiElement[duit_color.ColorString](&duit_attributes.TextAttributes[duit_color.ColorString]{Data: "Tap/LongPress to fire event"}, "", false)),
 	})
 
 	if value, err := builder.Build(); err != nil {

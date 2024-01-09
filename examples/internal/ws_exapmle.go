@@ -19,7 +19,7 @@ func WsExample() []byte {
 		Style: &duit_text_properties.TextStyle[duit_color.ColorString]{
 			FontWeight: duit_text_properties.W900,
 		},
-	}, "", false, nil))
+	}, "", false))
 
 	value, err := builder.Build()
 

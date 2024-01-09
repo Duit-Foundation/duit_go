@@ -27,20 +27,20 @@ func ImageExample() []byte {
 	}
 
 	root.AddChildren([]*duit_core.DuitElementModel{
-		duit_widget.TextUiElement[duit_color.ColorString](&duit_attributes.TextAttributes[duit_color.ColorString]{Data: "Netword image"}, "", false, nil),
+		duit_widget.TextUiElement[duit_color.ColorString](&duit_attributes.TextAttributes[duit_color.ColorString]{Data: "Netword image"}, "", false),
 		duit_widget.ImageUiElement(&duit_attributes.ImageAttributes[duit_color.ColorString]{
 			Type:   duit_painting.Network,
 			Src:    "https://via.assets.so/game.png?id=1&q=95&w=360&h=360&fit=fill",
 			Width:  350,
 			Height: 350,
-		}, "", false, nil),
-		duit_widget.TextUiElement[duit_color.ColorString](&duit_attributes.TextAttributes[duit_color.ColorString]{Data: "Asset image"}, "", false, nil),
+		}, "", false),
+		duit_widget.TextUiElement[duit_color.ColorString](&duit_attributes.TextAttributes[duit_color.ColorString]{Data: "Asset image"}, "", false),
 		duit_widget.ImageUiElement(&duit_attributes.ImageAttributes[duit_color.ColorString]{
 			Type:   duit_painting.Asset,
 			Src:    "assets/betboom.jpg",
 			Height: 350,
-		}, "", false, nil),
-		duit_widget.TextUiElement[duit_color.ColorString](&duit_attributes.TextAttributes[duit_color.ColorString]{Data: "Memory image"}, "", false, nil),
+		}, "", false),
+		duit_widget.TextUiElement[duit_color.ColorString](&duit_attributes.TextAttributes[duit_color.ColorString]{Data: "Memory image"}, "", false),
 		duit_widget.ImageUiElement(&duit_attributes.ImageAttributes[duit_color.ColorString]{
 			Type: duit_painting.Memory,
 			Src:  "",
@@ -48,7 +48,7 @@ func ImageExample() []byte {
 				Type: duit_painting.ByteBuffer,
 				Data: file,
 			},
-		}, "", false, nil),
+		}, "", false),
 		duit_widget.EmptyUiElement(),
 	})
 

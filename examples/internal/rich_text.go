@@ -17,7 +17,7 @@ func RichTextExample() []byte {
 	child := duit_widget.SizedBoxUiElement(&duit_attributes.SizedBoxAttributes{
 		Width:  100,
 		Height: 100,
-	}, "", false, nil)
+	}, "", false)
 
 	child.AddChild(
 		duit_widget.RichTextUiElement[duit_color.ColorString](&duit_attributes.RichTextAttributes[duit_color.ColorString]{
@@ -52,7 +52,7 @@ func RichTextExample() []byte {
 					},
 				},
 			},
-		}, "", false, nil),
+		}, "", false),
 	)
 
 	builder.RootFrom(child)
