@@ -47,7 +47,6 @@ type DuitElementModel struct {
 // It returns a pointer to the upgraded created DuitElement.
 func (element *DuitElementModel) CreateElement(elemType DuitElementType, elemId string, tag string, attributes interface{}, action *Action, controlled bool, mayHaveChildElements uint8) *DuitElementModel {
 	var id string
-	var isControlled bool
 
 	if elemId == "" {
 		id = uuid.NewString()
@@ -55,18 +54,12 @@ func (element *DuitElementModel) CreateElement(elemType DuitElementType, elemId 
 		id = elemId
 	}
 
-	if action != nil {
-		isControlled = true
-	} else {
-		isControlled = controlled
-	}
-
 	element.Id = id
 	element.ElementType = elemType
 	element.Action = action
 	element.Attributes = attributes
 	element.Tag = tag
-	element.Controlled = isControlled
+	element.Controlled = controlled
 	element.MayHaveChildElements = mayHaveChildElements
 	return element
 }
