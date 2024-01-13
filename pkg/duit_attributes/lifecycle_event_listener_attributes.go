@@ -3,6 +3,7 @@ package duit_attributes
 import "github.com/lesleysin/duit_go/pkg/duit_core"
 
 type LifecycleEventListenerAttributes struct {
+	ValueReferenceHolder
 	OnStateChanged *duit_core.Action `json:"onStateChanged,omitempty"`
 	OnResumed      *duit_core.Action `json:"onResumed,omitempty"`
 	OnInactive     *duit_core.Action `json:"onInactive,omitempty"`

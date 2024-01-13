@@ -8,6 +8,7 @@ import (
 )
 
 type CheckboxAttributes[T duit_color.Color] struct {
+	ValueReferenceHolder
 	Value         bool                                    `json:"value"`
 	Autofocus     bool                                    `json:"autofocus,omitempty"`
 	Tristate      bool                                    `json:"tristate,omitempty"`

@@ -6,5 +6,5 @@ import (
 )
 
 func LifecycleEventListenerUiElement(attributes *duit_attributes.LifecycleEventListenerAttributes, id string) *duit_core.DuitElementModel {
-	return new(duit_core.DuitElementModel).CreateElement(duit_core.LifecycleEventListener, id, "", attributes, nil, true, 1)
+	return new(duit_core.DuitElementModel).CreateElement(duit_core.LifecycleEventListener, id, "", attributes, nil, true, 1, nil)
 }

@@ -6,6 +6,7 @@ import (
 )
 
 type RichTextAttributes[T duit_color.Color] struct {
+	ValueReferenceHolder
 	TextSpan       *duit_text_properties.TextSpan[T]   `json:"textSpan"`
 	Style          *duit_text_properties.TextStyle[T]  `json:"style,omitempty"`
 	TextAlign      duit_text_properties.TextAlign      `json:"textAlign,omitempty"`

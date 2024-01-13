@@ -12,6 +12,7 @@ import (
 )
 
 type WrapAttributes struct {
+	ValueReferenceHolder
 	TextDirection      duit_text_properties.TextDirection `json:"textDirection,omitempty"`
 	VerticalDirection  duit_flex.VerticalDirection        `json:"verticalDirection,omitempty"`
 	Alignment          duit_main_axis.MainAxisAlignment   `json:"alignment,omitempty"`
@@ -24,14 +25,14 @@ type WrapAttributes struct {
 }
 
 func (attrs *WrapAttributes) MarshalJSON() ([]byte, error) {
+	if attrs.CrossAxisAlignment == duit_cross_axis.Baseline || attrs.CrossAxisAlignment == duit_cross_axis.Stretch {
+		return nil, errors.New("CrossAxisAlignment property cannot have 'baseline' or 'stretch' values for curret kind of attribute")
+	}
+
 	data, err := json.Marshal(attrs)
 
 	if err != nil {
 		return nil, err
-	}
-
-	if attrs.CrossAxisAlignment == duit_cross_axis.Baseline || attrs.CrossAxisAlignment == duit_cross_axis.Stretch {
-		return nil, errors.New("CrossAxisAlignment property cannot have 'baseline' or 'stretch' values for curret kind of attribute")
 	}
 
 	return data, nil

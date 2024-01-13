@@ -8,6 +8,7 @@ import (
 )
 
 type StackAttributes struct {
+	ValueReferenceHolder
 	TextDirection duit_text_properties.TextDirection `json:"textDirection,omitempty"`
 	ClipBehavior  duit_clip.Clip                     `json:"clipBehavior,omitempty"`
 	Alignment     duit_alignment.Alignment           `json:"alignment,omitempty"`

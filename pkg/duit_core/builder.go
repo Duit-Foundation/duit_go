@@ -54,19 +54,19 @@ func (builder *UiBuilder) RootFrom(rootElement *DuitElementModel) *DuitElementMo
 func (builder *UiBuilder) CreateRootOfExactType(elType DuitElementType, attributes interface{}, id string) *DuitElementModel {
 	switch elType {
 	case Column:
-		builder.root = new(DuitElementModel).CreateElement(elType, id, "", attributes, nil, false, 2)
+		builder.root = new(DuitElementModel).CreateElement(elType, id, "", attributes, nil, false, 2, nil)
 	case Row:
-		builder.root = new(DuitElementModel).CreateElement(elType, id, "", attributes, nil, false, 2)
+		builder.root = new(DuitElementModel).CreateElement(elType, id, "", attributes, nil, false, 2, nil)
 	case Stack:
-		builder.root = new(DuitElementModel).CreateElement(elType, id, "", attributes, nil, false, 2)
+		builder.root = new(DuitElementModel).CreateElement(elType, id, "", attributes, nil, false, 2, nil)
 	case Center:
-		builder.root = new(DuitElementModel).CreateElement(elType, id, "", attributes, nil, false, 1)
+		builder.root = new(DuitElementModel).CreateElement(elType, id, "", attributes, nil, false, 1, nil)
 	case ColoredBox:
-		builder.root = new(DuitElementModel).CreateElement(elType, id, "", attributes, nil, false, 1)
+		builder.root = new(DuitElementModel).CreateElement(elType, id, "", attributes, nil, false, 1, nil)
 	case Container:
-		builder.root = new(DuitElementModel).CreateElement(elType, id, "", attributes, nil, false, 1)
+		builder.root = new(DuitElementModel).CreateElement(elType, id, "", attributes, nil, false, 1, nil)
 	case DecoratedBox:
-		builder.root = new(DuitElementModel).CreateElement(elType, id, "", attributes, nil, false, 1)
+		builder.root = new(DuitElementModel).CreateElement(elType, id, "", attributes, nil, false, 1, nil)
 	default:
 		panic("Invalid element type")
 	}
