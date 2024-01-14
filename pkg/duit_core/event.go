@@ -5,6 +5,8 @@ type eventType string
 const (
 	update       eventType = "update"
 	updateLayout eventType = "updateLayout"
+	navigation   eventType = "navigation"
+	openUrl      eventType = "openUrl"
 )
 
 type event struct {
@@ -19,6 +21,17 @@ type updateEvent struct {
 type layoutUpdateEvent struct {
 	event
 	Layout *DuitElementModel `json:"layout"`
+}
+
+type navigationEvent struct {
+	event
+	Path  string                 `json:"path"`
+	Extra map[string]interface{} `json:"extra,omitempty"`
+}
+
+type openUrlEvent struct {
+	event
+	Url string `json:"url"`
 }
 
 // NewUpdateEvent creates a new update event.
@@ -40,5 +53,24 @@ func NewLayoutUpdateEvent(payload *DuitElementModel) *layoutUpdateEvent {
 			Type: updateLayout,
 		},
 		Layout: payload,
+	}
+}
+
+func NewNavigationEvent(path string, extra map[string]interface{}) *navigationEvent {
+	return &navigationEvent{
+		event: event{
+			Type: navigation,
+		},
+		Path:  path,
+		Extra: extra,
+	}
+}
+
+func NewOpenUrlEvent(url string) *openUrlEvent {
+	return &openUrlEvent{
+		event: event{
+			Type: openUrl,
+		},
+		Url: url,
 	}
 }
