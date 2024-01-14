@@ -7,5 +7,5 @@ import (
 )
 
 func PaddingUiElement[T duit_edge_insets.EdgeInsets](attributes *duit_attributes.PaddingAttributes[T], id string, controlled bool) *duit_core.DuitElementModel {
-	return new(duit_core.DuitElementModel).CreateElement(duit_core.Padding, id, "", attributes, nil, controlled, 1)
+	return new(duit_core.DuitElementModel).CreateElement(duit_core.Padding, id, "", attributes, nil, controlled, 1, nil)
 }

@@ -6,5 +6,5 @@ import (
 )
 
 func ALignUiElement(attributes *duit_attributes.AlignAttributes, id string, controlled bool) *duit_core.DuitElementModel {
-	return new(duit_core.DuitElementModel).CreateElement(duit_core.Align, id, "", attributes, nil, controlled, 1)
+	return new(duit_core.DuitElementModel).CreateElement(duit_core.Align, id, "", attributes, nil, controlled, 1, nil)
 }

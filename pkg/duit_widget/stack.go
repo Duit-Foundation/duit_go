@@ -6,5 +6,5 @@ import (
 )
 
 func StackUiElement(attributes *duit_attributes.StackAttributes, id string, controlled bool) *duit_core.DuitElementModel {
-	return new(duit_core.DuitElementModel).CreateElement(duit_core.Stack, id, "", attributes, nil, controlled, 2)
+	return new(duit_core.DuitElementModel).CreateElement(duit_core.Stack, id, "", attributes, nil, controlled, 2, nil)
 }

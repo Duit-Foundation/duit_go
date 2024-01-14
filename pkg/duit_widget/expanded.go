@@ -6,5 +6,5 @@ import (
 )
 
 func ExpandedUiElement(attributes *duit_attributes.ExpandedAttributes, id string, controlled bool) *duit_core.DuitElementModel {
-	return new(duit_core.DuitElementModel).CreateElement(duit_core.Expanded, id, "", attributes, nil, controlled, 1)
+	return new(duit_core.DuitElementModel).CreateElement(duit_core.Expanded, id, "", attributes, nil, controlled, 1, nil)
 }

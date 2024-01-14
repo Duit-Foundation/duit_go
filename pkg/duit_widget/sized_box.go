@@ -6,5 +6,5 @@ import (
 )
 
 func SizedBoxUiElement(attributes *duit_attributes.SizedBoxAttributes, id string, controlled bool) *duit_core.DuitElementModel {
-	return new(duit_core.DuitElementModel).CreateElement(duit_core.SizedBox, id, "", attributes, nil, controlled, 1)
+	return new(duit_core.DuitElementModel).CreateElement(duit_core.SizedBox, id, "", attributes, nil, controlled, 1, nil)
 }

@@ -28,4 +28,5 @@ const (
 	RichText               DuitElementType = "RichText"
 	Wrap                   DuitElementType = "Wrap"
 	LifecycleEventListener DuitElementType = "LifecycleEventListener"
+	Component              DuitElementType = "Component"
 )

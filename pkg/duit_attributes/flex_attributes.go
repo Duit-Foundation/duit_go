@@ -9,6 +9,7 @@ import (
 )
 
 type FlexAttributes struct {
+	ValueReferenceHolder
 	MainAxisAlignment  duit_main_axis.MainAxisAlignment   `json:"mainAxisAlignment,omitempty"`
 	MainAxisSize       duit_main_axis.MainAxisSize        `json:"mainAxisSize,omitempty"`
 	CrossAxisAlignment duit_cross_axis.CrossAxisAlignment `json:"crossAxisAlignment,omitempty"`

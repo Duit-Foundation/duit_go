@@ -235,6 +235,33 @@ func ConfigureRoutes(server *Server) {
 		view := internal.RichTextExample()
 		ctx.Data(200, "application/json", view)
 	})
+
+	eng.GET("/shoes", func(ctx *gin.Context) {
+		view := internal.ComponentExample()
+		ctx.Data(200, "application/json", view)
+	})
+
+	eng.GET("/send_component_update", func(ctx *gin.Context) {
+
+		updates := map[string]interface{}{
+			"shoes_card1": map[string]interface{}{
+				"image":       "https://resizer.mail.ru/p/b0685008-5021-5715-a506-e73621c958f5/AQAFGR6McYd06E2eQ8J-GzknNO9eDHZcCIpgrre-K3SwrZ0QnmOBQVPyD6yWisBlYJYZ38YEM768jMY1M4m4NYbQkmM.jpg",
+				"description": "Топовые и дорогие",
+				"primary":     "Ботильоны",
+				"cost":        `$228`,
+			},
+		}
+
+		var payload = duit_core.NewUpdateEvent(updates)
+
+		val, err := json.Marshal(payload)
+
+		if err != nil {
+			fmt.Println(err.Error())
+		}
+
+		ctx.Data(200, "application/json", val)
+	})
 }
 
 func main() {

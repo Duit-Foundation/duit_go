@@ -6,6 +6,7 @@ import (
 )
 
 type GestureDetectorAttributes struct {
+	ValueReferenceHolder
 	OnTap                 *duit_core.Action               `json:"onTap,omitempty"`
 	OnTapDown             *duit_core.Action               `json:"onTapDown,omitempty"`
 	OnTapUp               *duit_core.Action               `json:"onTapUp,omitempty"`

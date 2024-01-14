@@ -6,5 +6,5 @@ import (
 )
 
 func PositionedUiElement(attributes *duit_attributes.PositionedAttributes, id string, controlled bool) *duit_core.DuitElementModel {
-	return new(duit_core.DuitElementModel).CreateElement(duit_core.Positioned, id, "", attributes, nil, controlled, 1)
+	return new(duit_core.DuitElementModel).CreateElement(duit_core.Positioned, id, "", attributes, nil, controlled, 1, nil)
 }

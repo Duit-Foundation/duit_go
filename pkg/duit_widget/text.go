@@ -7,5 +7,5 @@ import (
 )
 
 func TextUiElement[T duit_color.Color](attributes *duit_attributes.TextAttributes[T], id string, controlled bool) *duit_core.DuitElementModel {
-	return new(duit_core.DuitElementModel).CreateElement(duit_core.Text, id, "", attributes, nil, controlled, 0)
+	return new(duit_core.DuitElementModel).CreateElement(duit_core.Text, id, "", attributes, nil, controlled, 0, nil)
 }
