@@ -20,8 +20,9 @@ type DuitElementModel struct {
 	//
 	//It helps determine how exactly the model should be interpreted,
 	//rendered and converted attributes on the side of the front-end framework
-	Tag      string              `json:"tag,omitempty"`
-	Data     *interface{}        `json:"data,omitempty"`
+	Tag string `json:"tag,omitempty"`
+	//Data set for populating components
+	Data     interface{}         `json:"data,omitempty"`
 	Child    *DuitElementModel   `json:"child,omitempty"`
 	Children []*DuitElementModel `json:"children,omitempty"`
 
@@ -46,7 +47,7 @@ type DuitElementModel struct {
 // - controlled: a boolean indicating whether the element is controlled
 //
 // It returns a pointer to the upgraded created DuitElement.
-func (element *DuitElementModel) CreateElement(elemType DuitElementType, elemId string, tag string, attributes interface{}, action *Action, controlled bool, mayHaveChildElements uint8, data *interface{}) *DuitElementModel {
+func (element *DuitElementModel) CreateElement(elemType DuitElementType, elemId string, tag string, attributes interface{}, action *Action, controlled bool, mayHaveChildElements uint8, data interface{}) *DuitElementModel {
 	var id string
 
 	if elemId == "" {
