@@ -262,6 +262,11 @@ func ConfigureRoutes(server *Server) {
 
 		ctx.Data(200, "application/json", val)
 	})
+
+	eng.GET("/scrollview", func(ctx *gin.Context) {
+		view := internal.ScrollviewExample()
+		ctx.Data(200, "application/json", view)
+	})
 }
 
 func main() {
