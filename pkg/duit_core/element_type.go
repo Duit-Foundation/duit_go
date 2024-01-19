@@ -29,4 +29,5 @@ const (
 	Wrap                   DuitElementType = "Wrap"
 	LifecycleEventListener DuitElementType = "LifecycleEventListener"
 	Component              DuitElementType = "Component"
+	SingleChildScrollView  DuitElementType = "SingleChildScrollView"
 )
