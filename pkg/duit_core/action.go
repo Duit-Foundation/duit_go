@@ -1,5 +1,10 @@
 package duit_core
 
+const (
+	Transport = iota
+	Local
+)
+
 type ActionDependency struct {
 	Id     string `json:"id"`
 	Target string `json:"target"`
@@ -11,7 +16,9 @@ type ActionDependency struct {
 //
 // Meta is an interface{} field that represents optional additional metadata for the action.
 type Action struct {
-	Event     string              `json:"event"`
-	DependsOn []*ActionDependency `json:"dependsOn"`
-	Meta      interface{}         `json:"meta,omitempty"`
+	ExecutionType uint8               `json:"executionType"`
+	Event         string              `json:"event"`
+	DependsOn     []*ActionDependency `json:"dependsOn"`
+	Meta          interface{}         `json:"meta,omitempty"`
+	Payload       *Event              `json:"payload,omitempty"`
 }

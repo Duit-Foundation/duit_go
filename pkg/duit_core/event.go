@@ -9,28 +9,28 @@ const (
 	openUrl      eventType = "openUrl"
 )
 
-type event struct {
+type Event struct {
 	Type eventType `json:"type"`
 }
 
 type updateEvent struct {
-	event
+	Event
 	Updates map[string]interface{} `json:"updates"`
 }
 
 type layoutUpdateEvent struct {
-	event
+	Event
 	Layout *DuitElementModel `json:"layout"`
 }
 
 type navigationEvent struct {
-	event
+	Event
 	Path  string                 `json:"path"`
 	Extra map[string]interface{} `json:"extra,omitempty"`
 }
 
 type openUrlEvent struct {
-	event
+	Event
 	Url string `json:"url"`
 }
 
@@ -40,7 +40,7 @@ type openUrlEvent struct {
 // It returns a pointer to an updateEvent.
 func NewUpdateEvent(updates map[string]interface{}) *updateEvent {
 	return &updateEvent{
-		event: event{
+		Event: Event{
 			Type: update,
 		},
 		Updates: updates,
@@ -49,7 +49,7 @@ func NewUpdateEvent(updates map[string]interface{}) *updateEvent {
 
 func NewLayoutUpdateEvent(payload *DuitElementModel) *layoutUpdateEvent {
 	return &layoutUpdateEvent{
-		event: event{
+		Event: Event{
 			Type: updateLayout,
 		},
 		Layout: payload,
@@ -58,7 +58,7 @@ func NewLayoutUpdateEvent(payload *DuitElementModel) *layoutUpdateEvent {
 
 func NewNavigationEvent(path string, extra map[string]interface{}) *navigationEvent {
 	return &navigationEvent{
-		event: event{
+		Event: Event{
 			Type: navigation,
 		},
 		Path:  path,
@@ -68,7 +68,7 @@ func NewNavigationEvent(path string, extra map[string]interface{}) *navigationEv
 
 func NewOpenUrlEvent(url string) *openUrlEvent {
 	return &openUrlEvent{
-		event: event{
+		Event: Event{
 			Type: openUrl,
 		},
 		Url: url,

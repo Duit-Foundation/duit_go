@@ -15,9 +15,10 @@ type HttpActionMetainfo struct {
 // The function returns a pointer to an instance of Action.
 func CreateHttpAction(event string, dependsOn []*ActionDependency, metainfo *HttpActionMetainfo) *Action {
 	return &Action{
-		Event:     event,
-		DependsOn: dependsOn,
-		Meta:      *metainfo,
+		ExecutionType: Transport,
+		Event:         event,
+		DependsOn:     dependsOn,
+		Meta:          *metainfo,
 	}
 }
 
@@ -27,7 +28,21 @@ func CreateHttpAction(event string, dependsOn []*ActionDependency, metainfo *Htt
 // It returns a pointer to an Action struct.
 func CreateWebSocketAction(event string, dependsOn []*ActionDependency) *Action {
 	return &Action{
-		Event:     event,
-		DependsOn: dependsOn,
+		ExecutionType: Transport,
+		Event:         event,
+		DependsOn:     dependsOn,
+	}
+}
+
+// CreateWebSocketAction creates a WebSocket action.
+//
+// It takes in an event string and dependsOn slice of strings as parameters.
+// It returns a pointer to an Action struct.
+func CreateLocalExecutedtAction(payload *Event) *Action {
+	return &Action{
+		ExecutionType: Local,
+		Event:         "local_event",
+		DependsOn:     []*ActionDependency{},
+		Payload:       payload,
 	}
 }
