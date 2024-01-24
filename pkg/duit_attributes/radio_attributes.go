@@ -11,6 +11,7 @@ type PrimitiveValue interface {
 }
 
 type RadioAttributes[TValue PrimitiveValue, TColor duit_color.Color] struct {
+	ValueReferenceHolder
 	Value                 TValue                                      `json:"value"`
 	Toggleable            bool                                        `json:"toggleable,omitempty"`
 	Autofocus             bool                                        `json:"autofocus,omitempty"`
@@ -25,5 +26,6 @@ type RadioAttributes[TValue PrimitiveValue, TColor duit_color.Color] struct {
 }
 
 type RadioGroupContextAttributes[TValue PrimitiveValue] struct {
+	ValueReferenceHolder
 	GroupValue TValue `json:"groupValue"`
 }
