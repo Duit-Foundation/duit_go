@@ -17,7 +17,7 @@ func InputsExample() []byte {
 	var holder duit_core.DuitView
 	builder := holder.Builder()
 
-	root := builder.CreateRootOfExactType(duit_core.Column, nil, "")
+	root := builder.CreateRootOfExactType(duit_core.Column, &duit_attributes.FlexAttributes{}, "")
 
 	root.AddChildren([]*duit_core.DuitElementModel{
 		duit_widget.TextUiElement[duit_color.ColorString](&duit_attributes.TextAttributes[duit_color.ColorString]{Data: "Text input 1"}, "", false),
@@ -42,7 +42,6 @@ func InputsExample() []byte {
 				{Id: "textInput1", Target: "value"},
 			}, &duit_core.HttpActionMetainfo{Method: "GET"})),
 		),
-		//
 		duit_widget.SizedBoxUiElement(&duit_attributes.SizedBoxAttributes{
 			Height: 24,
 		}, "", false),
@@ -89,8 +88,71 @@ func InputsExample() []byte {
 			{Id: "textInput1", Target: "value1"},
 			{Id: "textInput2", Target: "value2"},
 			{Id: "checkbox1", Target: "checkbox"},
+			{Id: "radioGroup1", Target: "radio"},
 		}, &duit_core.HttpActionMetainfo{Method: "POST"})).AddChild(
 			duit_widget.TextUiElement[duit_color.ColorString](&duit_attributes.TextAttributes[duit_color.ColorString]{Data: "ElevatedButton"}, "", false),
+		),
+		duit_widget.PaddingUiElement[duit_edge_insets.EdgeInsetsAll](
+			&duit_attributes.PaddingAttributes[duit_edge_insets.EdgeInsetsAll]{
+				Padding: 12,
+			}, "", false,
+		).AddChild(
+			duit_widget.ContainerUiElement[duit_edge_insets.EdgeInsetsAll, duit_color.ColorString](
+				&duit_attributes.ContainerAttributes[duit_edge_insets.EdgeInsetsAll, duit_color.ColorString]{
+					Decoration: &duit_decoration.BoxDecoration[duit_color.ColorString]{
+						Color:        "#f5f5f5",
+						BorderRadius: 12,
+						Boder:        &duit_decoration.BorderSide[duit_color.ColorString]{Width: 1.25, Color: "#f57b42"},
+					},
+				}, "", false,
+			).AddChild(
+				duit_widget.RadioGroupContextUiElement[string](
+					&duit_attributes.RadioGroupContextAttributes[string]{
+						GroupValue: "1",
+					}, "radioGroup1", nil,
+				).AddChild(
+					duit_widget.ColumnUiElement(
+						&duit_attributes.FlexAttributes{}, "", false,
+					).AddChildren([]*duit_core.DuitElementModel{
+						duit_widget.RowUiElement(
+							&duit_attributes.FlexAttributes{}, "", false,
+						).AddChildren([]*duit_core.DuitElementModel{
+							duit_widget.RadioUiElement[string, duit_color.ColorString](
+								&duit_attributes.RadioAttributes[string, duit_color.ColorString]{
+									Value:        "1",
+									SplashRadius: 12,
+									Toggleable:   true,
+								}, "", false,
+							),
+							duit_widget.TextUiElement[duit_color.ColorString](&duit_attributes.TextAttributes[duit_color.ColorString]{Data: "Toggle radio 1"}, "", false),
+						}),
+						duit_widget.RowUiElement(
+							&duit_attributes.FlexAttributes{}, "", false,
+						).AddChildren([]*duit_core.DuitElementModel{
+							duit_widget.RadioUiElement[string, duit_color.ColorString](
+								&duit_attributes.RadioAttributes[string, duit_color.ColorString]{
+									Value:        "2",
+									SplashRadius: 24,
+									Toggleable:   true,
+								}, "", false,
+							),
+							duit_widget.TextUiElement[duit_color.ColorString](&duit_attributes.TextAttributes[duit_color.ColorString]{Data: "Toggle radio 2"}, "", false),
+						}),
+						duit_widget.RowUiElement(
+							&duit_attributes.FlexAttributes{}, "", false,
+						).AddChildren([]*duit_core.DuitElementModel{
+							duit_widget.RadioUiElement[string, duit_color.ColorString](
+								&duit_attributes.RadioAttributes[string, duit_color.ColorString]{
+									Value:        "3",
+									SplashRadius: 36,
+									Toggleable:   true,
+								}, "", false,
+							),
+							duit_widget.TextUiElement[duit_color.ColorString](&duit_attributes.TextAttributes[duit_color.ColorString]{Data: "Toggle radio 3"}, "", false),
+						}),
+					}),
+				),
+			),
 		),
 		duit_widget.TextUiElement[duit_color.ColorString](&duit_attributes.TextAttributes[duit_color.ColorString]{Data: "Have a nice day"}, "text1", true),
 		duit_widget.TextUiElement[duit_color.ColorString](&duit_attributes.TextAttributes[duit_color.ColorString]{Data: "Have a nice day"}, "text2", true),
