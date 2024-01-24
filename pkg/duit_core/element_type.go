@@ -30,4 +30,6 @@ const (
 	LifecycleEventListener DuitElementType = "LifecycleEventListener"
 	Component              DuitElementType = "Component"
 	SingleChildScrollView  DuitElementType = "SingleChildScrollView"
+	Radio                  DuitElementType = "Radio"
+	RadioGroupContext      DuitElementType = "RadioGroupContext"
 )
