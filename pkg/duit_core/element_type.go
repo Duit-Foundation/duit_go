@@ -32,4 +32,5 @@ const (
 	SingleChildScrollView  DuitElementType = "SingleChildScrollView"
 	Radio                  DuitElementType = "Radio"
 	RadioGroupContext      DuitElementType = "RadioGroupContext"
+	Opacity                DuitElementType = "Opacity"
 )
