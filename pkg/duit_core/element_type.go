@@ -33,4 +33,5 @@ const (
 	Radio                  DuitElementType = "Radio"
 	RadioGroupContext      DuitElementType = "RadioGroupContext"
 	IgnorePointer          DuitElementType = "IgnorePointer"
+	Opacity                DuitElementType = "Opacity"
 )
