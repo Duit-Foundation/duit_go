@@ -92,6 +92,17 @@ func InputsExample() []byte {
 		}, &duit_core.HttpActionMetainfo{Method: "POST"})).AddChild(
 			duit_widget.TextUiElement[duit_color.ColorString](&duit_attributes.TextAttributes[duit_color.ColorString]{Data: "ElevatedButton"}, "", false),
 		),
+		duit_widget.SliderUiElement[duit_color.ColorString](
+			&duit_attributes.SliderAttributes[duit_color.ColorString]{
+				Value:                12,
+				Min:                  0,
+				Max:                  100,
+				SecondaryTrackValue:  50,
+				Divisions:            5,
+				SecondaryActiveColor: "#eb4034",
+				OnChangeEnd:          duit_core.CreateHttpAction("/slider", []*duit_core.ActionDependency{}, &duit_core.HttpActionMetainfo{Method: "GET"}),
+			}, "",
+		),
 		duit_widget.PaddingUiElement[duit_edge_insets.EdgeInsetsAll](
 			&duit_attributes.PaddingAttributes[duit_edge_insets.EdgeInsetsAll]{
 				Padding: 12,

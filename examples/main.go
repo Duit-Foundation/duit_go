@@ -144,6 +144,11 @@ func ConfigureRoutes(server *Server) {
 		ctx.Data(200, "application/json", []byte("{}"))
 	})
 
+	eng.GET("/slider", func(ctx *gin.Context) {
+		fmt.Println("Slider end change action")
+		ctx.Data(200, "application/json", []byte("{}"))
+	})
+
 	eng.POST("/apply", func(ctx *gin.Context) {
 		var data map[string]interface{}
 
