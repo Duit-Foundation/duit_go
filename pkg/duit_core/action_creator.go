@@ -34,10 +34,6 @@ func CreateWebSocketAction(event string, dependsOn []*ActionDependency) *Action 
 	}
 }
 
-// CreateWebSocketAction creates a WebSocket action.
-//
-// It takes in an event string and dependsOn slice of strings as parameters.
-// It returns a pointer to an Action struct.
 func CreateLocalExecutedtAction(payload *Event) *Action {
 	return &Action{
 		ExecutionType: Local,
