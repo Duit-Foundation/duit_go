@@ -35,4 +35,5 @@ const (
 	IgnorePointer          DuitElementType = "IgnorePointer"
 	Opacity                DuitElementType = "Opacity"
 	Slider                 DuitElementType = "Slider"
+	FittedBox              DuitElementType = "FittedBox"
 )
