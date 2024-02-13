@@ -36,4 +36,5 @@ const (
 	Opacity                DuitElementType = "Opacity"
 	Slider                 DuitElementType = "Slider"
 	FittedBox              DuitElementType = "FittedBox"
+	Switch                 DuitElementType = "Switch"
 )
