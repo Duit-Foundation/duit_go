@@ -7,6 +7,7 @@ const (
 	updateLayout eventType = "updateLayout"
 	navigation   eventType = "navigation"
 	openUrl      eventType = "openUrl"
+	custom       eventType = "custom"
 )
 
 type Event struct {
@@ -32,6 +33,12 @@ type navigationEvent struct {
 type openUrlEvent struct {
 	Event
 	Url string `json:"url"`
+}
+
+type customEvent struct {
+	Event
+	Key   string                 `json:"key"`
+	Extra map[string]interface{} `json:"extra,omitempty"`
 }
 
 // NewUpdateEvent creates a new update event.
@@ -72,5 +79,15 @@ func NewOpenUrlEvent(url string) *openUrlEvent {
 			Type: openUrl,
 		},
 		Url: url,
+	}
+}
+
+func NewCustomEvent(key string, extra map[string]interface{}) *customEvent {
+	return &customEvent{
+		Event: Event{
+			Type: custom,
+		},
+		Key:   key,
+		Extra: extra,
 	}
 }
