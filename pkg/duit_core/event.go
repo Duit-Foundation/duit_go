@@ -8,6 +8,8 @@ const (
 	navigation   eventType = "navigation"
 	openUrl      eventType = "openUrl"
 	custom       eventType = "custom"
+	sequenced    eventType = "sequenced"
+	grouped      eventType = "grouped"
 )
 
 type Event struct {
@@ -39,6 +41,21 @@ type customEvent struct {
 	Event
 	Key   string                 `json:"key"`
 	Extra map[string]interface{} `json:"extra,omitempty"`
+}
+
+type SequencedEvent struct {
+	Delay int         `json:"delay"`
+	Event interface{} `json:"event"`
+}
+
+type sequencedEventGroup struct {
+	Event
+	Events []*SequencedEvent `json:"events"`
+}
+
+type commonEventGroup struct {
+	Event
+	Events []interface{} `json:"events"`
 }
 
 // NewUpdateEvent creates a new update event.
@@ -89,5 +106,17 @@ func NewCustomEvent(key string, extra map[string]interface{}) *customEvent {
 		},
 		Key:   key,
 		Extra: extra,
+	}
+}
+
+func NewSequencedEventGroup(events []*SequencedEvent) *sequencedEventGroup {
+	return &sequencedEventGroup{
+		Events: events,
+	}
+}
+
+func NewCommonEventGroup(events []interface{}) *commonEventGroup {
+	return &commonEventGroup{
+		Events: events,
 	}
 }
