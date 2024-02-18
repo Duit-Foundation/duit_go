@@ -42,3 +42,12 @@ func CreateLocalExecutedtAction(payload *Event) *Action {
 		Payload:       payload,
 	}
 }
+
+func CreateScriptAction(event string, dependsOn []*ActionDependency, script *ScriptData) *Action {
+	return &Action{
+		ExecutionType: Script,
+		Event:         event,
+		DependsOn:     dependsOn,
+		Script:        script,
+	}
+}

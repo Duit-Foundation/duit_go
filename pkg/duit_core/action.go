@@ -3,11 +3,18 @@ package duit_core
 const (
 	Transport = iota
 	Local
+	Script
 )
 
 type ActionDependency struct {
 	Id     string `json:"id"`
 	Target string `json:"target"`
+}
+
+type ScriptData struct {
+	SourceCode   string      `json:"sourceCode"`
+	FunctionName string      `json:"functionName"`
+	Meta         interface{} `json:"meta,omitempty"`
 }
 
 // Event is a string field that represents the event associated with the action.
@@ -21,4 +28,5 @@ type Action struct {
 	DependsOn     []*ActionDependency `json:"dependsOn"`
 	Meta          interface{}         `json:"meta,omitempty"`
 	Payload       *Event              `json:"payload,omitempty"`
+	Script        *ScriptData         `json:"script,omitempty"`
 }
