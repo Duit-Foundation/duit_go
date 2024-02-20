@@ -37,4 +37,5 @@ const (
 	Slider                 DuitElementType = "Slider"
 	FittedBox              DuitElementType = "FittedBox"
 	Switch                 DuitElementType = "Switch"
+	Subtree                DuitElementType = "Subtree"
 )
