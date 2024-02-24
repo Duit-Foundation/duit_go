@@ -38,4 +38,5 @@ const (
 	FittedBox              DuitElementType = "FittedBox"
 	Switch                 DuitElementType = "Switch"
 	Subtree                DuitElementType = "Subtree"
+	Meta                   DuitElementType = "Meta"
 )
