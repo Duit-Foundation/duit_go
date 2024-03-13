@@ -39,4 +39,5 @@ const (
 	Switch                 DuitElementType = "Switch"
 	Subtree                DuitElementType = "Subtree"
 	Meta                   DuitElementType = "Meta"
+	ListView               DuitElementType = "ListView"
 )
