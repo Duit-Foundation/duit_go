@@ -40,4 +40,5 @@ const (
 	Subtree                DuitElementType = "Subtree"
 	Meta                   DuitElementType = "Meta"
 	ListView               DuitElementType = "ListView"
+	RepaintBoundary        DuitElementType = "RepaintBoundary"
 )
