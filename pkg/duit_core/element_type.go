@@ -41,4 +41,5 @@ const (
 	Meta                   DuitElementType = "Meta"
 	ListView               DuitElementType = "ListView"
 	RepaintBoundary        DuitElementType = "RepaintBoundary"
+	OverflowBox            DuitElementType = "OverflowBox"
 )
