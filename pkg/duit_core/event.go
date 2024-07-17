@@ -62,7 +62,7 @@ type commonEventGroup struct {
 //
 // It takes a map of updates as a parameter.
 // It returns a pointer to an updateEvent.
-func NewUpdateEvent(updates map[string]interface{}) *updateEvent {
+func UpdateEvent(updates map[string]interface{}) *updateEvent {
 	return &updateEvent{
 		Event: Event{
 			Type: update,
@@ -71,7 +71,7 @@ func NewUpdateEvent(updates map[string]interface{}) *updateEvent {
 	}
 }
 
-func NewLayoutUpdateEvent(payload *DuitElementModel) *layoutUpdateEvent {
+func LayoutUpdateEvent(payload *DuitElementModel) *layoutUpdateEvent {
 	return &layoutUpdateEvent{
 		Event: Event{
 			Type: updateLayout,
@@ -80,7 +80,7 @@ func NewLayoutUpdateEvent(payload *DuitElementModel) *layoutUpdateEvent {
 	}
 }
 
-func NewNavigationEvent(path string, extra map[string]interface{}) *navigationEvent {
+func NavigationEvent(path string, extra map[string]interface{}) *navigationEvent {
 	return &navigationEvent{
 		Event: Event{
 			Type: navigation,
@@ -90,7 +90,7 @@ func NewNavigationEvent(path string, extra map[string]interface{}) *navigationEv
 	}
 }
 
-func NewOpenUrlEvent(url string) *openUrlEvent {
+func OpenUrlEvent(url string) *openUrlEvent {
 	return &openUrlEvent{
 		Event: Event{
 			Type: openUrl,
@@ -99,7 +99,7 @@ func NewOpenUrlEvent(url string) *openUrlEvent {
 	}
 }
 
-func NewCustomEvent(key string, extra map[string]interface{}) *customEvent {
+func CustomEvent(key string, extra map[string]interface{}) *customEvent {
 	return &customEvent{
 		Event: Event{
 			Type: custom,
@@ -109,13 +109,13 @@ func NewCustomEvent(key string, extra map[string]interface{}) *customEvent {
 	}
 }
 
-func NewSequencedEventGroup(events []*SequencedEvent) *sequencedEventGroup {
+func SequencedEventGroup(events []*SequencedEvent) *sequencedEventGroup {
 	return &sequencedEventGroup{
 		Events: events,
 	}
 }
 
-func NewCommonEventGroup(events []interface{}) *commonEventGroup {
+func CommonEventGroup(events []interface{}) *commonEventGroup {
 	return &commonEventGroup{
 		Events: events,
 	}
