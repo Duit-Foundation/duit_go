@@ -36,6 +36,10 @@ type DuitElementModel struct {
 	MayHaveChildElements uint8 `json:"-"`
 }
 
+type DuitViewChild interface {
+	[1]*DuitElementModel | []*DuitElementModel
+}
+
 // CreateElement creates a new instance of DuitElement.
 //
 // It takes the following parameters:
@@ -47,13 +51,20 @@ type DuitElementModel struct {
 // - controlled: a boolean indicating whether the element is controlled
 //
 // It returns a pointer to the upgraded created DuitElement.
-func (element *DuitElementModel) CreateElement(elemType DuitElementType, elemId string, tag string, attributes interface{}, action *Action, controlled bool, mayHaveChildElements uint8, data interface{}) *DuitElementModel {
+func (element *DuitElementModel) CreateElement(elemType DuitElementType, elemId string, tag string, attributes interface{}, action *Action, controlled bool, mayHaveChildElements uint8, data interface{}, subviews ...*DuitElementModel) *DuitElementModel {
 	var id string
 
 	if elemId == "" {
 		id = uuid.NewString()
 	} else {
 		id = elemId
+	}
+
+	switch element.MayHaveChildElements {
+	case 1:
+		element.Child = subviews[0]
+	case 2:
+		element.Children = append(element.Children, subviews...)
 	}
 
 	element.Id = id
