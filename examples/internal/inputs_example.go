@@ -26,22 +26,20 @@ func InputsExample() []byte {
 		}, "", false, nil),
 		duit_widget.Padding[duit_edge_insets.EdgeInsetsLTRB](&duit_attributes.PaddingAttributes[duit_edge_insets.EdgeInsetsLTRB]{
 			Padding: [4]float32{12, 0, 0, 12},
-		}, "", false, nil).AddChild(
-			duit_widget.TextField[duit_edge_insets.EdgeInsetsAll, duit_color.ColorString](&duit_attributes.TextFieldAttributes[duit_edge_insets.EdgeInsetsAll, duit_color.ColorString]{
-				Decoration: &duit_decoration.InputDecoration[duit_edge_insets.EdgeInsetsAll, duit_color.ColorString]{
-					Border: &duit_decoration.InputBorder[duit_color.ColorString]{
-						Type: duit_decoration.Outline,
-						Options: &duit_decoration.InputBorderOptions[duit_color.ColorString]{
-							BorderSide: &duit_decoration.BorderSide[duit_color.ColorString]{
-								Width: 3,
-							},
+		}, "", false, duit_widget.TextField[duit_edge_insets.EdgeInsetsAll, duit_color.ColorString](&duit_attributes.TextFieldAttributes[duit_edge_insets.EdgeInsetsAll, duit_color.ColorString]{
+			Decoration: &duit_decoration.InputDecoration[duit_edge_insets.EdgeInsetsAll, duit_color.ColorString]{
+				Border: &duit_decoration.InputBorder[duit_color.ColorString]{
+					Type: duit_decoration.Outline,
+					Options: &duit_decoration.InputBorderOptions[duit_color.ColorString]{
+						BorderSide: &duit_decoration.BorderSide[duit_color.ColorString]{
+							Width: 3,
 						},
 					},
 				},
-			}, "textInput1", duit_core.HttpAction("/textInput1change", []*duit_core.ActionDependency{
-				{Id: "textInput1", Target: "value"},
-			}, &duit_core.HttpActionMetainfo{Method: "GET"})),
-		),
+			},
+		}, "textInput1", duit_core.HttpAction("/textInput1change", []*duit_core.ActionDependency{
+			{Id: "textInput1", Target: "value"},
+		}, &duit_core.HttpActionMetainfo{Method: "GET"}))),
 		duit_widget.SizedBox(&duit_attributes.SizedBoxAttributes{
 			Height: 24,
 		}, "", false, nil),

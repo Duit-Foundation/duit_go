@@ -60,7 +60,7 @@ func (element *DuitElementModel) CreateElement(elemType DuitElementType, elemId 
 		id = elemId
 	}
 
-	switch element.MayHaveChildElements {
+	switch mayHaveChildElements {
 	case 1:
 		element.Child = subviews[0]
 	case 2:
