@@ -16,7 +16,7 @@ import (
 )
 
 func ComponentTemplate() *duit_core.DuitElementModel {
-	layout := duit_widget.DecoratedBoxUiElement[duit_color.ColorString](
+	layout := duit_widget.DecoratedBox[duit_color.ColorString](
 		&duit_attributes.DecoratedBoxAttributes[duit_color.ColorString]{
 			Decoration: &duit_decoration.BoxDecoration[duit_color.ColorString]{
 				Color:        "#32a852",
@@ -33,12 +33,12 @@ func ComponentTemplate() *duit_core.DuitElementModel {
 					},
 				},
 			},
-		}, "", false).AddChild(duit_widget.PaddingUiElement[duit_edge_insets.EdgeInsetsAll](
+		}, "", false, nil).AddChild(duit_widget.Padding[duit_edge_insets.EdgeInsetsAll](
 		&duit_attributes.PaddingAttributes[duit_edge_insets.EdgeInsetsAll]{
 			Padding: 16.0,
-		}, "", false)).AddChild(duit_widget.RowUiElement(
-		&duit_attributes.FlexAttributes{}, "", false)).AddChildren([]*duit_core.DuitElementModel{
-		duit_widget.ImageUiElement[duit_color.ColorString](
+		}, "", false, nil)).AddChild(duit_widget.Row(
+		&duit_attributes.FlexAttributes{}, "", false, nil)).AddChildren([]*duit_core.DuitElementModel{
+		duit_widget.Image[duit_color.ColorString](
 			&duit_attributes.ImageAttributes[duit_color.ColorString]{
 				Type: duit_painting.Network,
 				Fit:  duit_flex.Contain,
@@ -49,13 +49,13 @@ func ComponentTemplate() *duit_core.DuitElementModel {
 					},
 				},
 			}, "", false),
-		duit_widget.SizedBoxUiElement(&duit_attributes.SizedBoxAttributes{
+		duit_widget.SizedBox(&duit_attributes.SizedBoxAttributes{
 			Width: 16.0,
-		}, "", false),
-		duit_widget.ColumnUiElement(&duit_attributes.FlexAttributes{
+		}, "", false, nil),
+		duit_widget.Column(&duit_attributes.FlexAttributes{
 			MainAxisAlignment: duit_main_axis.SpaceEvenly,
-		}, "", false).AddChildren([]*duit_core.DuitElementModel{
-			duit_widget.TextUiElement[duit_color.ColorString](
+		}, "", false, nil).AddChildren([]*duit_core.DuitElementModel{
+			duit_widget.Text[duit_color.ColorString](
 				&duit_attributes.TextAttributes[duit_color.ColorString]{
 					Style: &duit_text_properties.TextStyle[duit_color.ColorString]{
 						FontWeight: duit_text_properties.W900,
@@ -69,7 +69,7 @@ func ComponentTemplate() *duit_core.DuitElementModel {
 					},
 				}, "", false,
 			),
-			duit_widget.TextUiElement[duit_color.ColorString](
+			duit_widget.Text[duit_color.ColorString](
 				&duit_attributes.TextAttributes[duit_color.ColorString]{
 					Style: &duit_text_properties.TextStyle[duit_color.ColorString]{
 						FontWeight: duit_text_properties.W500,
@@ -83,7 +83,7 @@ func ComponentTemplate() *duit_core.DuitElementModel {
 					},
 				}, "", false,
 			),
-			duit_widget.TextUiElement[duit_color.ColorString](
+			duit_widget.Text[duit_color.ColorString](
 				&duit_attributes.TextAttributes[duit_color.ColorString]{
 					Style: &duit_text_properties.TextStyle[duit_color.ColorString]{
 						FontWeight: duit_text_properties.W400,
@@ -118,37 +118,37 @@ func ComponentExample() []byte {
 
 	root.AddChildren(
 		[]*duit_core.DuitElementModel{
-			duit_widget.SizedBoxUiElement(&duit_attributes.SizedBoxAttributes{
+			duit_widget.SizedBox(&duit_attributes.SizedBoxAttributes{
 				Height: 24.0,
-			}, "", false),
+			}, "", false, nil),
 			duit_widget.Component(&dataStruct{
 				Primary:     "Лабутены",
 				Description: "Топовые и дорогие",
 				Cost:        "$10000",
 				Image:       "https://resizer.mail.ru/p/b0685008-5021-5715-a506-e73621c958f5/AQAFGR6McYd06E2eQ8J-GzknNO9eDHZcCIpgrre-K3SwrZ0QnmOBQVPyD6yWisBlYJYZ38YEM768jMY1M4m4NYbQkmM.jpg",
 			}, "shoes_card", "shoes_card1"),
-			duit_widget.SizedBoxUiElement(&duit_attributes.SizedBoxAttributes{
+			duit_widget.SizedBox(&duit_attributes.SizedBoxAttributes{
 				Height: 24.0,
-			}, "", false),
+			}, "", false, nil),
 			duit_widget.Component(&dataStruct{
 				Primary:     "Найки",
 				Description: "Прямо с рынка",
 				Cost:        "$10",
 				Image:       "https://ae04.alicdn.com/kf/A1255f8c200964840b940a3c7537ab567g.jpeg",
 			}, "shoes_card", "shoes_card2"),
-			duit_widget.SizedBoxUiElement(&duit_attributes.SizedBoxAttributes{
+			duit_widget.SizedBox(&duit_attributes.SizedBoxAttributes{
 				Height: 24.0,
-			}, "", false),
+			}, "", false, nil),
 			duit_widget.Component(&dataStruct{
 				Primary:     "Туфельки",
 				Description: "Очень крутые!",
 				Cost:        "$150",
 				Image:       "https://static.lichi.com/product/44640/9d56d4435e5bc814b979c2ebcffdb9b7.jpg?v=0_44640.0&resize=size-middle",
 			}, "shoes_card", "shoes_card3"),
-			duit_widget.SizedBoxUiElement(&duit_attributes.SizedBoxAttributes{
+			duit_widget.SizedBox(&duit_attributes.SizedBoxAttributes{
 				Height: 24.0,
-			}, "", false),
-			duit_widget.ElevatedButtonUiElement(&duit_attributes.ElevatedButtonAttributes{}, "button1", duit_core.CreateHttpAction("/send_component_update", nil, &duit_core.HttpActionMetainfo{Method: "GET"})),
+			}, "", false, nil),
+			duit_widget.ElevatedButton(&duit_attributes.ElevatedButtonAttributes{}, "button1", duit_core.HttpAction("/send_component_update", nil, &duit_core.HttpActionMetainfo{Method: "GET"}), nil),
 		},
 	)
 
