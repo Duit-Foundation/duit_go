@@ -15,12 +15,12 @@ func DecoratedBoxExample() []byte {
 	var holder duit_core.DuitView
 	builder := holder.Builder()
 
-	child := duit_widget.SizedBoxUiElement(&duit_attributes.SizedBoxAttributes{
+	child := duit_widget.SizedBox(&duit_attributes.SizedBoxAttributes{
 		Width:  100,
 		Height: 100,
-	}, "", false)
+	}, "", false, nil)
 
-	child.AddChild(duit_widget.DecoratedBoxUiElement[duit_color.ColorString](
+	child.AddChild(duit_widget.DecoratedBox[duit_color.ColorString](
 		&duit_attributes.DecoratedBoxAttributes[duit_color.ColorString]{
 			Decoration: &duit_decoration.BoxDecoration[duit_color.ColorString]{
 				Gradient: &duit_decoration.LinearGradient[duit_color.ColorString]{
@@ -37,9 +37,9 @@ func DecoratedBoxExample() []byte {
 			},
 		},
 		"",
-		false).AddChild(
-		duit_widget.CenterUiElement(&duit_attributes.CenterAttributes{}, "", false).AddChild(
-			duit_widget.TextUiElement[duit_color.ColorString](
+		false, nil).AddChild(
+		duit_widget.Center(&duit_attributes.CenterAttributes{}, "", false, nil).AddChild(
+			duit_widget.Text[duit_color.ColorString](
 				&duit_attributes.TextAttributes[duit_color.ColorString]{Data: "Centred Text"},
 				"",
 				false),

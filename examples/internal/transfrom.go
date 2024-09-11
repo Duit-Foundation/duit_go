@@ -19,39 +19,39 @@ func TransformExample() []byte {
 	root := builder.CreateRootOfExactType(duit_core.Column, nil, "")
 
 	root.AddChildren([]*duit_core.DuitElementModel{
-		duit_widget.TextUiElement[duit_color.ColorString](&duit_attributes.TextAttributes[duit_color.ColorString]{
+		duit_widget.Text[duit_color.ColorString](&duit_attributes.TextAttributes[duit_color.ColorString]{
 			Data: "Rotate",
 		}, "", false),
-		duit_widget.TransformUiElement[duit_transform.RotateTransfrom](&duit_attributes.TransfromAttributes[duit_transform.RotateTransfrom]{
+		duit_widget.Transform[duit_transform.RotateTransfrom](&duit_attributes.TransfromAttributes[duit_transform.RotateTransfrom]{
 			Type: duit_transform.Rotate,
 			Data: &duit_transform.RotateTransfrom{Angle: 45},
-		}, "", false).AddChild(duit_widget.ContainerUiElement[duit_edge_insets.EdgeInsetsAll, duit_color.ColorString](&duit_attributes.ContainerAttributes[duit_edge_insets.EdgeInsetsAll, duit_color.ColorString]{
+		}, "", false, nil).AddChild(duit_widget.Container[duit_edge_insets.EdgeInsetsAll, duit_color.ColorString](&duit_attributes.ContainerAttributes[duit_edge_insets.EdgeInsetsAll, duit_color.ColorString]{
 			Color:  "#4287f5",
 			Width:  50,
 			Height: 50,
-		}, "", false)),
-		duit_widget.TextUiElement[duit_color.ColorString](&duit_attributes.TextAttributes[duit_color.ColorString]{
+		}, "", false, nil)),
+		duit_widget.Text[duit_color.ColorString](&duit_attributes.TextAttributes[duit_color.ColorString]{
 			Data: "Translate",
 		}, "", false),
-		duit_widget.TransformUiElement[duit_transform.TranslateTransfrom](&duit_attributes.TransfromAttributes[duit_transform.TranslateTransfrom]{
+		duit_widget.Transform[duit_transform.TranslateTransfrom](&duit_attributes.TransfromAttributes[duit_transform.TranslateTransfrom]{
 			Type: duit_transform.Translate,
 			Data: &duit_transform.TranslateTransfrom{Offset: &duit_flex.Offset{Dx: 100, Dy: 10}},
-		}, "", false).AddChild(duit_widget.ContainerUiElement[duit_edge_insets.EdgeInsetsAll, duit_color.ColorString](&duit_attributes.ContainerAttributes[duit_edge_insets.EdgeInsetsAll, duit_color.ColorString]{
+		}, "", false, nil).AddChild(duit_widget.Container[duit_edge_insets.EdgeInsetsAll, duit_color.ColorString](&duit_attributes.ContainerAttributes[duit_edge_insets.EdgeInsetsAll, duit_color.ColorString]{
 			Color:  "#4287f5",
 			Width:  50,
 			Height: 50,
-		}, "", false)),
-		duit_widget.TextUiElement[duit_color.ColorString](&duit_attributes.TextAttributes[duit_color.ColorString]{
+		}, "", false, nil)),
+		duit_widget.Text[duit_color.ColorString](&duit_attributes.TextAttributes[duit_color.ColorString]{
 			Data: "Scale",
 		}, "", false),
-		duit_widget.TransformUiElement[duit_transform.ScaleTransfrom](&duit_attributes.TransfromAttributes[duit_transform.ScaleTransfrom]{
+		duit_widget.Transform[duit_transform.ScaleTransfrom](&duit_attributes.TransfromAttributes[duit_transform.ScaleTransfrom]{
 			Type: duit_transform.Scale,
 			Data: &duit_transform.ScaleTransfrom{Scale: 2},
-		}, "", false).AddChild(duit_widget.ContainerUiElement[duit_edge_insets.EdgeInsetsAll, duit_color.ColorString](&duit_attributes.ContainerAttributes[duit_edge_insets.EdgeInsetsAll, duit_color.ColorString]{
+		}, "", false, nil).AddChild(duit_widget.Container[duit_edge_insets.EdgeInsetsAll, duit_color.ColorString](&duit_attributes.ContainerAttributes[duit_edge_insets.EdgeInsetsAll, duit_color.ColorString]{
 			Color:  "#4287f5",
 			Width:  50,
 			Height: 50,
-		}, "", false)),
+		}, "", false, nil)),
 	})
 
 	if value, err := builder.Build(); err != nil {

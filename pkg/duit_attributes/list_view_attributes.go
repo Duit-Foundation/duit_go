@@ -8,8 +8,8 @@ import (
 	"github.com/lesleysin/duit_go/pkg/duit_core"
 )
 
-type ListKind int
-type MergeStrategy int
+type ListKind uint8
+type MergeStrategy uint8
 
 const (
 	Common ListKind = iota
@@ -53,7 +53,7 @@ type ListViewBuilderAttributes[TInsets duit_edge_insets.EdgeInsets] struct {
 
 type ListViewSeparatedAttributes[TInsets duit_edge_insets.EdgeInsets] struct {
 	ListViewBuilderAttributes[TInsets]
-	Separator *duit_core.DuitElementModel `json:"separator,omitempty"`
+	Separator *duit_core.DuitElementModel `json:"separator"`
 }
 
 type ListViewAttributes[TInsets duit_edge_insets.EdgeInsets] interface {

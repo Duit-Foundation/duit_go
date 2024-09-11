@@ -5,7 +5,7 @@ type HttpActionMetainfo struct {
 	Method string `json:"method"`
 }
 
-// CreateHttpAction creates a new HTTP action.
+// HttpAction creates a new HTTP action.
 //
 // The function takes in the following parameters:
 // - event: a string representing the event of the action.
@@ -13,7 +13,7 @@ type HttpActionMetainfo struct {
 // - metainfo: a pointer to an instance of HttpActionMetainfo representing the meta information of the action.
 //
 // The function returns a pointer to an instance of Action.
-func CreateHttpAction(event string, dependsOn []*ActionDependency, metainfo *HttpActionMetainfo) *Action {
+func HttpAction(event string, dependsOn []*ActionDependency, metainfo *HttpActionMetainfo) *Action {
 	return &Action{
 		ExecutionType: Transport,
 		Event:         event,
@@ -22,11 +22,11 @@ func CreateHttpAction(event string, dependsOn []*ActionDependency, metainfo *Htt
 	}
 }
 
-// CreateWebSocketAction creates a WebSocket action.
+// WebSocketAction creates a WebSocket action.
 //
 // It takes in an event string and dependsOn slice of strings as parameters.
 // It returns a pointer to an Action struct.
-func CreateWebSocketAction(event string, dependsOn []*ActionDependency) *Action {
+func WebSocketAction(event string, dependsOn []*ActionDependency) *Action {
 	return &Action{
 		ExecutionType: Transport,
 		Event:         event,
@@ -34,7 +34,7 @@ func CreateWebSocketAction(event string, dependsOn []*ActionDependency) *Action 
 	}
 }
 
-func CreateLocalExecutedtAction(payload *Event) *Action {
+func LocalExecutedtAction(payload *Event) *Action {
 	return &Action{
 		ExecutionType: Local,
 		Event:         "local_event",
@@ -43,7 +43,7 @@ func CreateLocalExecutedtAction(payload *Event) *Action {
 	}
 }
 
-func CreateScriptAction(event string, dependsOn []*ActionDependency, script *ScriptData) *Action {
+func ScriptAction(event string, dependsOn []*ActionDependency, script *ScriptData) *Action {
 	return &Action{
 		ExecutionType: Script,
 		Event:         event,

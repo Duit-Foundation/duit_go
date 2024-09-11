@@ -42,4 +42,5 @@ const (
 	ListView               DuitElementType = "ListView"
 	RepaintBoundary        DuitElementType = "RepaintBoundary"
 	OverflowBox            DuitElementType = "OverflowBox"
+	AnimatedBuilder        DuitElementType = "AnimatedBuilder"
 )

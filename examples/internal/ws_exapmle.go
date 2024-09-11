@@ -14,7 +14,7 @@ func WsExample() []byte {
 	var holder duit_core.DuitView
 	builder := holder.Builder()
 
-	builder.RootFrom(duit_widget.TextUiElement[duit_color.ColorString](&duit_attributes.TextAttributes[duit_color.ColorString]{
+	builder.RootFrom(duit_widget.Text[duit_color.ColorString](&duit_attributes.TextAttributes[duit_color.ColorString]{
 		Data: "WebSocket Example",
 		Style: &duit_text_properties.TextStyle[duit_color.ColorString]{
 			FontWeight: duit_text_properties.W900,

@@ -14,13 +14,13 @@ func RichTextExample() []byte {
 	var holder duit_core.DuitView
 	builder := holder.Builder()
 
-	child := duit_widget.SizedBoxUiElement(&duit_attributes.SizedBoxAttributes{
+	child := duit_widget.SizedBox(&duit_attributes.SizedBoxAttributes{
 		Width:  100,
 		Height: 100,
-	}, "", false)
+	}, "", false, nil)
 
 	child.AddChild(
-		duit_widget.RichTextUiElement[duit_color.ColorString](&duit_attributes.RichTextAttributes[duit_color.ColorString]{
+		duit_widget.RichText[duit_color.ColorString](&duit_attributes.RichTextAttributes[duit_color.ColorString]{
 			TextSpan: &duit_text_properties.TextSpan[duit_color.ColorString]{
 				Children: []*duit_text_properties.TextSpan[duit_color.ColorString]{
 					{

@@ -17,7 +17,7 @@ func Component(data interface{}, tag string, id string) *duit_core.DuitElementMo
 	return componentUiElement(data, tag, id)
 }
 
-func CreateComponentDescription(tag string, layoutRoot *duit_core.DuitElementModel) *componentDescription {
+func ComponentDescription(tag string, layoutRoot *duit_core.DuitElementModel) *componentDescription {
 	return &componentDescription{
 		Tag:        tag,
 		LayoutRoot: layoutRoot,

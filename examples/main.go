@@ -186,7 +186,7 @@ func ConfigureRoutes(server *Server) {
 			},
 		}
 
-		var payload = duit_core.NewUpdateEvent(updates)
+		var payload = duit_core.UpdateEvent(updates)
 
 		val, err := json.Marshal(payload)
 
@@ -198,7 +198,7 @@ func ConfigureRoutes(server *Server) {
 	})
 
 	eng.GET("/updateLayout", func(ctx *gin.Context) {
-		data := duit_core.NewLayoutUpdateEvent(internal.UpdatePayload())
+		data := duit_core.LayoutUpdateEvent(internal.UpdatePayload())
 
 		val, err := json.Marshal(data)
 
@@ -257,7 +257,7 @@ func ConfigureRoutes(server *Server) {
 			},
 		}
 
-		var payload = duit_core.NewUpdateEvent(updates)
+		var payload = duit_core.UpdateEvent(updates)
 
 		val, err := json.Marshal(payload)
 

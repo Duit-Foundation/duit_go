@@ -20,21 +20,21 @@ func StackExample() []byte {
 	root := builder.CreateRootOfExactType(duit_core.Stack, nil, "")
 
 	root.AddChildren([]*duit_core.DuitElementModel{
-		duit_widget.PositionedUiElement(&duit_attributes.PositionedAttributes{
+		duit_widget.Positioned(&duit_attributes.PositionedAttributes{
 			Top:  25,
 			Left: 25,
-		}, "", false).AddChild(
-			duit_widget.ContainerUiElement[duit_edge_insets.EdgeInsetsAll, duit_color.ColorString](&duit_attributes.ContainerAttributes[duit_edge_insets.EdgeInsetsAll, duit_color.ColorString]{
+		}, "", false, nil).AddChild(
+			duit_widget.Container[duit_edge_insets.EdgeInsetsAll, duit_color.ColorString](&duit_attributes.ContainerAttributes[duit_edge_insets.EdgeInsetsAll, duit_color.ColorString]{
 				Width:  50,
 				Height: 50,
 				Color:  "#9e2f2f",
-			}, "", false),
+			}, "", false, nil),
 		),
-		duit_widget.PositionedUiElement(&duit_attributes.PositionedAttributes{
+		duit_widget.Positioned(&duit_attributes.PositionedAttributes{
 			Top:  50,
 			Left: 50,
-		}, "", false).AddChild(
-			duit_widget.ContainerUiElement[duit_edge_insets.EdgeInsetsAll, duit_color.ColorString](&duit_attributes.ContainerAttributes[duit_edge_insets.EdgeInsetsAll, duit_color.ColorString]{
+		}, "", false, nil).AddChild(
+			duit_widget.Container[duit_edge_insets.EdgeInsetsAll, duit_color.ColorString](&duit_attributes.ContainerAttributes[duit_edge_insets.EdgeInsetsAll, duit_color.ColorString]{
 				Width:  75,
 				Height: 75,
 				Decoration: &duit_decoration.BoxDecoration[duit_color.ColorString]{
@@ -45,19 +45,19 @@ func StackExample() []byte {
 						Color: "#FFFFF",
 					},
 				},
-			}, "", false),
+			}, "", false, nil),
 		),
-		duit_widget.PositionedUiElement(&duit_attributes.PositionedAttributes{
+		duit_widget.Positioned(&duit_attributes.PositionedAttributes{
 			Top:  75,
 			Left: 75,
-		}, "", false).AddChild(
-			duit_widget.SizedBoxUiElement(&duit_attributes.SizedBoxAttributes{
+		}, "", false, nil).AddChild(
+			duit_widget.SizedBox(&duit_attributes.SizedBoxAttributes{
 				Width:  50,
 				Height: 50,
-			}, "", false).AddChild(
-				duit_widget.ColoredBoxUiElement[duit_color.ColorRGBO](&duit_attributes.ColoredBoxAttributes[duit_color.ColorRGBO]{
+			}, "", false, nil).AddChild(
+				duit_widget.ColoredBox[duit_color.ColorRGBO](&duit_attributes.ColoredBoxAttributes[duit_color.ColorRGBO]{
 					Color: duit_color.ColorRGBO{R: 255, G: 255, B: 255, O: 1},
-				}, "", false),
+				}, "", false, nil),
 			),
 		),
 	})
