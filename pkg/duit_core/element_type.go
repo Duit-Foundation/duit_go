@@ -43,4 +43,5 @@ const (
 	RepaintBoundary        DuitElementType = "RepaintBoundary"
 	OverflowBox            DuitElementType = "OverflowBox"
 	AnimatedBuilder        DuitElementType = "AnimatedBuilder"
+	IntrinsicHeight        DuitElementType = "IntrinsicHeight"
 )
