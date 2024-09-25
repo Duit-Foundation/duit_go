@@ -1,15 +1,19 @@
 package duit_core
 
+import "github.com/lesleysin/duit_go/pkg/duit_attributes/duit_animations"
+
 type eventType string
 
 const (
-	update       eventType = "update"
-	updateLayout eventType = "updateLayout"
-	navigation   eventType = "navigation"
-	openUrl      eventType = "openUrl"
-	custom       eventType = "custom"
-	sequenced    eventType = "sequenced"
-	grouped      eventType = "grouped"
+	update           eventType = "update"
+	updateLayout     eventType = "updateLayout"
+	navigation       eventType = "navigation"
+	openUrl          eventType = "openUrl"
+	custom           eventType = "custom"
+	sequenced        eventType = "sequenced"
+	grouped          eventType = "grouped"
+	animationTrigger eventType = "animationTrigger"
+	timer            eventType = "timer"
 )
 
 type Event struct {
@@ -56,6 +60,19 @@ type sequencedEventGroup struct {
 type commonEventGroup struct {
 	Event
 	Events []interface{} `json:"events"`
+}
+
+type animationTriggerEvent struct {
+	Event
+	ControllerId    string                          `json:"controllerId"`
+	AnimatedPropKey string                          `json:"animatedPropKey"`
+	Method          duit_animations.AnimationMethod `json:"method"`
+}
+
+type timerEvent struct {
+	Event
+	Delay  int         `json:"delay"`
+	TEvent interface{} `json:"event"`
 }
 
 // NewUpdateEvent creates a new update event.
@@ -118,5 +135,26 @@ func SequencedEventGroup(events []*SequencedEvent) *sequencedEventGroup {
 func CommonEventGroup(events []interface{}) *commonEventGroup {
 	return &commonEventGroup{
 		Events: events,
+	}
+}
+
+func AnimationTriggerEvent(animatedPropKey, controllerId string, method duit_animations.AnimationMethod) *animationTriggerEvent {
+	return &animationTriggerEvent{
+		Event: Event{
+			Type: animationTrigger,
+		},
+		AnimatedPropKey: animatedPropKey,
+		ControllerId:    controllerId,
+		Method:          method,
+	}
+}
+
+func TimerEvent(delay int, event interface{}) *timerEvent {
+	return &timerEvent{
+		Event: Event{
+			Type: timer,
+		},
+		Delay:  delay,
+		TEvent: event,
 	}
 }
