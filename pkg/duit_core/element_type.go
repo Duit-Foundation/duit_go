@@ -44,4 +44,5 @@ const (
 	OverflowBox            DuitElementType = "OverflowBox"
 	AnimatedBuilder        DuitElementType = "AnimatedBuilder"
 	IntrinsicHeight        DuitElementType = "IntrinsicHeight"
+	RotatedBox             DuitElementType = "RotatedBox"
 )
