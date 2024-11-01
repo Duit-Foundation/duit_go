@@ -1,10 +1,10 @@
 package duit_widget
 
 import (
-	"github.com/lesleysin/duit_go/pkg/duit_attributes"
-	"github.com/lesleysin/duit_go/pkg/duit_attributes/duit_color"
-	"github.com/lesleysin/duit_go/pkg/duit_attributes/duit_edge_insets"
-	"github.com/lesleysin/duit_go/pkg/duit_core"
+	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes"
+	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_color"
+	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_edge_insets"
+	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_core"
 )
 
 func Container[TInsets duit_edge_insets.EdgeInsets, TColor duit_color.Color](attributes *duit_attributes.ContainerAttributes[TInsets, TColor], id string, controlled bool, child *duit_core.DuitElementModel) *duit_core.DuitElementModel {

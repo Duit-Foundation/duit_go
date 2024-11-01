@@ -1,10 +1,10 @@
 package duit_attributes
 
 import (
-	"github.com/lesleysin/duit_go/pkg/duit_attributes/duit_alignment"
-	"github.com/lesleysin/duit_go/pkg/duit_attributes/duit_color"
-	"github.com/lesleysin/duit_go/pkg/duit_attributes/duit_flex"
-	"github.com/lesleysin/duit_go/pkg/duit_attributes/duit_painting"
+	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_alignment"
+	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_color"
+	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_flex"
+	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_painting"
 )
 
 type ImageAttributes[TColor duit_color.Color] struct {
