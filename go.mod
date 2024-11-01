@@ -1,4 +1,4 @@
-module github.com/lesleysin/duit_go
+module github.com/Duit-Foundation/duit_go/v3
 
 go 1.20
 
