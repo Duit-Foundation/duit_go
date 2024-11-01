@@ -1,6 +1,6 @@
 package duit_decoration
 
-import "github.com/lesleysin/duit_go/pkg/duit_attributes/duit_color"
+import "github.com/Duit-Foundation/duit_go/pkg/duit_attributes/duit_color"
 
 type Border string
 type BorderStyle string

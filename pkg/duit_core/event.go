@@ -1,6 +1,6 @@
 package duit_core
 
-import "github.com/lesleysin/duit_go/pkg/duit_attributes/duit_animations"
+import "github.com/Duit-Foundation/duit_go/pkg/duit_attributes/duit_animations"
 
 type eventType string
 

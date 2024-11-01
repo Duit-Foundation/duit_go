@@ -4,9 +4,9 @@
 
 The framework consists of several parts:
 
-- [Flutter package](https://github.com/lesleysin/flutter_duit)
+- [Flutter package](https://github.com/Duit-Foundation/flutter_duit)
 - Go backend adapter (this repository)
-- [Node JS backend adapter](https://github.com/lesleysin/duit_js)
+- [Node JS backend adapter](https://github.com/Duit-Foundation/duit_js)
 
 The framework ensures that the layout model is received from the server, interacts with the backend via the Action API, and embeds custom components into the widget hierarchy processing pipeline. Duit is flexible and extensible, which allows it to create rich UI dynamically.
 

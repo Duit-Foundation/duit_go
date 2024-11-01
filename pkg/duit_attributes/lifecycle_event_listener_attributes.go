@@ -1,6 +1,6 @@
 package duit_attributes
 
-import "github.com/lesleysin/duit_go/pkg/duit_core"
+import "github.com/Duit-Foundation/duit_go/pkg/duit_core"
 
 type LifecycleEventListenerAttributes struct {
 	ValueReferenceHolder

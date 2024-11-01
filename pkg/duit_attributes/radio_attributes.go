@@ -1,9 +1,9 @@
 package duit_attributes
 
 import (
-	"github.com/lesleysin/duit_go/pkg/duit_attributes/duit_color"
-	"github.com/lesleysin/duit_go/pkg/duit_attributes/duit_flex"
-	"github.com/lesleysin/duit_go/pkg/duit_attributes/duit_material"
+	"github.com/Duit-Foundation/duit_go/pkg/duit_attributes/duit_color"
+	"github.com/Duit-Foundation/duit_go/pkg/duit_attributes/duit_flex"
+	"github.com/Duit-Foundation/duit_go/pkg/duit_attributes/duit_material"
 )
 
 type PrimitiveValue interface {

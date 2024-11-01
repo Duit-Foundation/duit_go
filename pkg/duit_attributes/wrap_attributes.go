@@ -4,11 +4,11 @@ import (
 	"encoding/json"
 	"errors"
 
-	"github.com/lesleysin/duit_go/pkg/duit_attributes/duit_clip"
-	"github.com/lesleysin/duit_go/pkg/duit_attributes/duit_cross_axis"
-	"github.com/lesleysin/duit_go/pkg/duit_attributes/duit_flex"
-	"github.com/lesleysin/duit_go/pkg/duit_attributes/duit_main_axis"
-	"github.com/lesleysin/duit_go/pkg/duit_attributes/duit_text_properties"
+	"github.com/Duit-Foundation/duit_go/pkg/duit_attributes/duit_clip"
+	"github.com/Duit-Foundation/duit_go/pkg/duit_attributes/duit_cross_axis"
+	"github.com/Duit-Foundation/duit_go/pkg/duit_attributes/duit_flex"
+	"github.com/Duit-Foundation/duit_go/pkg/duit_attributes/duit_main_axis"
+	"github.com/Duit-Foundation/duit_go/pkg/duit_attributes/duit_text_properties"
 )
 
 type WrapAttributes struct {

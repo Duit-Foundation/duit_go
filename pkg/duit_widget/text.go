@@ -1,9 +1,9 @@
 package duit_widget
 
 import (
-	"github.com/lesleysin/duit_go/pkg/duit_attributes"
-	"github.com/lesleysin/duit_go/pkg/duit_attributes/duit_color"
-	"github.com/lesleysin/duit_go/pkg/duit_core"
+	"github.com/Duit-Foundation/duit_go/pkg/duit_attributes"
+	"github.com/Duit-Foundation/duit_go/pkg/duit_attributes/duit_color"
+	"github.com/Duit-Foundation/duit_go/pkg/duit_core"
 )
 
 func Text[T duit_color.Color](attributes *duit_attributes.TextAttributes[T], id string, controlled bool) *duit_core.DuitElementModel {

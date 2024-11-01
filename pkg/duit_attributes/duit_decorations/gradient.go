@@ -1,8 +1,8 @@
 package duit_decoration
 
 import (
-	"github.com/lesleysin/duit_go/pkg/duit_attributes/duit_alignment"
-	"github.com/lesleysin/duit_go/pkg/duit_attributes/duit_color"
+	"github.com/Duit-Foundation/duit_go/pkg/duit_attributes/duit_alignment"
+	"github.com/Duit-Foundation/duit_go/pkg/duit_attributes/duit_color"
 )
 
 type LinearGradient[T duit_color.Color] struct {

@@ -1,11 +1,11 @@
 package duit_attributes
 
 import (
-	"github.com/lesleysin/duit_go/pkg/duit_attributes/duit_clip"
-	"github.com/lesleysin/duit_go/pkg/duit_attributes/duit_edge_insets"
-	"github.com/lesleysin/duit_go/pkg/duit_attributes/duit_flex"
-	"github.com/lesleysin/duit_go/pkg/duit_attributes/duit_gestures"
-	"github.com/lesleysin/duit_go/pkg/duit_core"
+	"github.com/Duit-Foundation/duit_go/pkg/duit_attributes/duit_clip"
+	"github.com/Duit-Foundation/duit_go/pkg/duit_attributes/duit_edge_insets"
+	"github.com/Duit-Foundation/duit_go/pkg/duit_attributes/duit_flex"
+	"github.com/Duit-Foundation/duit_go/pkg/duit_attributes/duit_gestures"
+	"github.com/Duit-Foundation/duit_go/pkg/duit_core"
 )
 
 type ListKind uint8

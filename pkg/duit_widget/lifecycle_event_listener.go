@@ -1,8 +1,8 @@
 package duit_widget
 
 import (
-	"github.com/lesleysin/duit_go/pkg/duit_attributes"
-	"github.com/lesleysin/duit_go/pkg/duit_core"
+	"github.com/Duit-Foundation/duit_go/pkg/duit_attributes"
+	"github.com/Duit-Foundation/duit_go/pkg/duit_core"
 )
 
 func LifecycleEvent(attributes *duit_attributes.LifecycleEventListenerAttributes, id string, child *duit_core.DuitElementModel) *duit_core.DuitElementModel {

@@ -1,10 +1,10 @@
 package duit_attributes
 
 import (
-	"github.com/lesleysin/duit_go/pkg/duit_attributes/duit_color"
-	duit_decoration "github.com/lesleysin/duit_go/pkg/duit_attributes/duit_decorations"
-	"github.com/lesleysin/duit_go/pkg/duit_attributes/duit_flex"
-	"github.com/lesleysin/duit_go/pkg/duit_attributes/duit_material"
+	"github.com/Duit-Foundation/duit_go/pkg/duit_attributes/duit_color"
+	duit_decoration "github.com/Duit-Foundation/duit_go/pkg/duit_attributes/duit_decorations"
+	"github.com/Duit-Foundation/duit_go/pkg/duit_attributes/duit_flex"
+	"github.com/Duit-Foundation/duit_go/pkg/duit_attributes/duit_material"
 )
 
 type CheckboxAttributes[T duit_color.Color] struct {
