@@ -45,4 +45,5 @@ const (
 	AnimatedBuilder        DuitElementType = "AnimatedBuilder"
 	IntrinsicHeight        DuitElementType = "IntrinsicHeight"
 	RotatedBox             DuitElementType = "RotatedBox"
+	ConstrainedBox         DuitElementType = "ConstrainedBox"
 )
