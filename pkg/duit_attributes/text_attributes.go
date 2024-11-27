@@ -1,12 +1,14 @@
 package duit_attributes
 
 import (
+	animations "github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_animations"
 	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_color"
 	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_text_properties"
 )
 
 type TextAttributes[T duit_color.Color] struct {
 	ValueReferenceHolder
+	animations.AnimatedPropertyOwner
 	Data           string                             `json:"data"`
 	SemanticsLabel string                             `json:"semanticsLabel,omitempty"`
 	TextAlign      duit_text_properties.TextAlign     `json:"textAlign,omitempty"`

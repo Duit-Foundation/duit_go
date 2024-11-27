@@ -2,6 +2,7 @@ package duit_attributes
 
 import (
 	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_alignment"
+	animations "github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_animations"
 	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_color"
 	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_flex"
 	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_painting"
@@ -9,6 +10,7 @@ import (
 
 type ImageAttributes[TColor duit_color.Color] struct {
 	ValueReferenceHolder
+	animations.AnimatedPropertyOwner
 	Width                float32                     `json:"width,omitempty"`
 	Height               float32                     `json:"height,omitempty"`
 	CacheWidth           int                         `json:"cacheWidth,omitempty"`

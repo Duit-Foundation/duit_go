@@ -8,6 +8,7 @@ import (
 )
 
 type SingleChildScrollViewAttributes[TInsets duit_edge_insets.EdgeInsets] struct {
+	ValueReferenceHolder
 	ScrollDirection         duit_flex.Axis                                  `json:"scrollDirection,omitempty"`
 	Reverse                 bool                                            `json:"reverse,omitempty"`
 	Primary                 bool                                            `json:"primary,omitempty"`
