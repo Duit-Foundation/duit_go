@@ -7,20 +7,18 @@ import (
 	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_edge_insets"
 	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_flex"
 	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_text_properties"
-	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_core"
 )
 
 type tweenBase[T any] struct {
-	TweenType       string            `json:"type"`
-	AnimatedPropKey string            `json:"animatedPropKey"`
-	Duration        int               `json:"duration"`
-	Curve           Curves            `json:"curve,omitempty"`
-	Begin           T                 `json:"begin"`
-	End             T                 `json:"end"`
-	ReverseOnRepeat bool              `json:"reverseOnRepeat,omitempty"`
-	OnAnimationEnd  *duit_core.Action `json:"onAnimationEnd,omitempty"`
-	Trigger         AnimationTrigger  `json:"trigger"`
-	Method          AnimationMethod   `json:"method"`
+	TweenType       string           `json:"type"`
+	AnimatedPropKey string           `json:"animatedPropKey"`
+	Duration        int              `json:"duration"`
+	Curve           Curves           `json:"curve,omitempty"`
+	Begin           T                `json:"begin"`
+	End             T                `json:"end"`
+	ReverseOnRepeat bool             `json:"reverseOnRepeat,omitempty"`
+	Trigger         AnimationTrigger `json:"trigger"`
+	Method          AnimationMethod  `json:"method"`
 }
 
 func prepareCurveValue(curve Curves) Curves {

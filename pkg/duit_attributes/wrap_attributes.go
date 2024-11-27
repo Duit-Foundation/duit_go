@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"errors"
 
+	animations "github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_animations"
 	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_clip"
 	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_cross_axis"
 	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_flex"
@@ -13,6 +14,7 @@ import (
 
 type WrapAttributes struct {
 	ValueReferenceHolder
+	animations.AnimatedPropertyOwner
 	TextDirection      duit_text_properties.TextDirection `json:"textDirection,omitempty"`
 	VerticalDirection  duit_flex.VerticalDirection        `json:"verticalDirection,omitempty"`
 	Alignment          duit_main_axis.MainAxisAlignment   `json:"alignment,omitempty"`

@@ -2,6 +2,7 @@ package duit_attributes
 
 import (
 	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_alignment"
+	animations "github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_animations"
 	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_clip"
 	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_color"
 	duit_decoration "github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_decorations"
@@ -11,6 +12,7 @@ import (
 
 type ContainerAttributes[TInsets duit_edge_insets.EdgeInsets, TColor duit_color.Color] struct {
 	ValueReferenceHolder
+	animations.AnimatedPropertyOwner
 	Width                float32                                `json:"width,omitempty"`
 	Height               float32                                `json:"height,omitempty"`
 	Color                TColor                                 `json:"color,omitempty"`

@@ -1,6 +1,7 @@
 package duit_attributes
 
 import (
+	animations "github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_animations"
 	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_clip"
 	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_cross_axis"
 	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_flex"
@@ -10,6 +11,7 @@ import (
 
 type FlexAttributes struct {
 	ValueReferenceHolder
+	animations.AnimatedPropertyOwner
 	MainAxisAlignment  duit_main_axis.MainAxisAlignment   `json:"mainAxisAlignment,omitempty"`
 	MainAxisSize       duit_main_axis.MainAxisSize        `json:"mainAxisSize,omitempty"`
 	CrossAxisAlignment duit_cross_axis.CrossAxisAlignment `json:"crossAxisAlignment,omitempty"`
