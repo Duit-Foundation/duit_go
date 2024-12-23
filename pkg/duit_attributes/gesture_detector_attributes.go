@@ -5,27 +5,27 @@ import (
 	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_core"
 )
 
-type GestureDetectorAttributes struct {
+type GestureDetectorAttributes[TAction duit_core.Action] struct {
 	ValueReferenceHolder
-	OnTap                 *duit_core.Action               `json:"onTap,omitempty"`
-	OnTapDown             *duit_core.Action               `json:"onTapDown,omitempty"`
-	OnTapUp               *duit_core.Action               `json:"onTapUp,omitempty"`
-	OnTapCancel           *duit_core.Action               `json:"onTapCancel,omitempty"`
-	OnDoubleTap           *duit_core.Action               `json:"onDoubleTap,omitempty"`
-	OnDoubleTapDown       *duit_core.Action               `json:"onDoubleTapDown,omitempty"`
-	OnDoubleTapCancel     *duit_core.Action               `json:"onDoubleTapCancel,omitempty"`
-	OnLongPressDown       *duit_core.Action               `json:"onLongPressDown,omitempty"`
-	OnLongPressCancel     *duit_core.Action               `json:"onLongPressCancel,omitempty"`
-	OnLongPress           *duit_core.Action               `json:"onLongPress,omitempty"`
-	OnLongPressStart      *duit_core.Action               `json:"onLongPressStart,omitempty"`
-	OnLongPressMoveUpdate *duit_core.Action               `json:"onLongPressMoveUpdate,omitempty"`
-	OnLongPressUp         *duit_core.Action               `json:"onLongPressUp,omitempty"`
-	OnLongPressEnd        *duit_core.Action               `json:"onLongPressEnd,omitempty"`
-	OnPanStart            *duit_core.Action               `json:"onPanStart,omitempty"`
-	OnPanDown             *duit_core.Action               `json:"onPanDown,omitempty"`
-	OnPanUpdate           *duit_core.Action               `json:"onPanUpdate,omitempty"`
-	OnPanEnd              *duit_core.Action               `json:"onPanEnd,omitempty"`
-	OnPanCancel           *duit_core.Action               `json:"onPanCancel,omitempty"`
+	OnTap                 *TAction                        `json:"onTap,omitempty"`
+	OnTapDown             *TAction                        `json:"onTapDown,omitempty"`
+	OnTapUp               *TAction                        `json:"onTapUp,omitempty"`
+	OnTapCancel           *TAction                        `json:"onTapCancel,omitempty"`
+	OnDoubleTap           *TAction                        `json:"onDoubleTap,omitempty"`
+	OnDoubleTapDown       *TAction                        `json:"onDoubleTapDown,omitempty"`
+	OnDoubleTapCancel     *TAction                        `json:"onDoubleTapCancel,omitempty"`
+	OnLongPressDown       *TAction                        `json:"onLongPressDown,omitempty"`
+	OnLongPressCancel     *TAction                        `json:"onLongPressCancel,omitempty"`
+	OnLongPress           *TAction                        `json:"onLongPress,omitempty"`
+	OnLongPressStart      *TAction                        `json:"onLongPressStart,omitempty"`
+	OnLongPressMoveUpdate *TAction                        `json:"onLongPressMoveUpdate,omitempty"`
+	OnLongPressUp         *TAction                        `json:"onLongPressUp,omitempty"`
+	OnLongPressEnd        *TAction                        `json:"onLongPressEnd,omitempty"`
+	OnPanStart            *TAction                        `json:"onPanStart,omitempty"`
+	OnPanDown             *TAction                        `json:"onPanDown,omitempty"`
+	OnPanUpdate           *TAction                        `json:"onPanUpdate,omitempty"`
+	OnPanEnd              *TAction                        `json:"onPanEnd,omitempty"`
+	OnPanCancel           *TAction                        `json:"onPanCancel,omitempty"`
 	ExcludeFromSemantics  bool                            `json:"excludeFromSemantics,omitempty"`
 	DragStarnBehavior     duit_gestures.DragStartBehavior `json:"dragStartBehavior,omitempty"`
 	Behavior              duit_gestures.HitTestBehavior   `json:"behavior,omitempty"`

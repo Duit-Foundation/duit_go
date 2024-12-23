@@ -13,8 +13,8 @@ type HttpActionMetainfo struct {
 // - metainfo: a pointer to an instance of HttpActionMetainfo representing the meta information of the action.
 //
 // The function returns a pointer to an instance of Action.
-func HttpAction(event string, dependsOn []*ActionDependency, metainfo *HttpActionMetainfo) *Action {
-	return &Action{
+func HttpAction(event string, dependsOn []*ActionDependency, metainfo *HttpActionMetainfo) *RemoteAction {
+	return &RemoteAction{
 		ExecutionType: Transport,
 		Event:         event,
 		DependsOn:     dependsOn,
@@ -26,25 +26,23 @@ func HttpAction(event string, dependsOn []*ActionDependency, metainfo *HttpActio
 //
 // It takes in an event string and dependsOn slice of strings as parameters.
 // It returns a pointer to an Action struct.
-func WebSocketAction(event string, dependsOn []*ActionDependency) *Action {
-	return &Action{
+func WebSocketAction(event string, dependsOn []*ActionDependency) *RemoteAction {
+	return &RemoteAction{
 		ExecutionType: Transport,
 		Event:         event,
 		DependsOn:     dependsOn,
 	}
 }
 
-func LocalExecutedtAction(payload *Event) *Action {
-	return &Action{
+func LocalExecutedtAction(payload any) *LocalAction {
+	return &LocalAction{
 		ExecutionType: Local,
-		Event:         "local_event",
-		DependsOn:     []*ActionDependency{},
 		Payload:       payload,
 	}
 }
 
-func ScriptAction(event string, dependsOn []*ActionDependency, script *ScriptData) *Action {
-	return &Action{
+func ScriptAction(event string, dependsOn []*ActionDependency, script *ScriptData) *ScriptActionS {
+	return &ScriptActionS{
 		ExecutionType: Script,
 		Event:         event,
 		DependsOn:     dependsOn,

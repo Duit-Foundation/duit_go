@@ -3,7 +3,7 @@ package duit_core
 import "github.com/google/uuid"
 
 type DuitWidget interface {
-	CreateElement(elemType string, elemId string, tag string, attributes interface{}, action *Action, controlled bool, mayHaveChildElements uint8) *DuitElementModel
+	CreateElement(elemType string, elemId string, tag string, attributes interface{}, action any, controlled bool, mayHaveChildElements uint8) *DuitElementModel
 }
 
 type DuitElementModel struct {
@@ -12,7 +12,7 @@ type DuitElementModel struct {
 	Id          string          `json:"id"`
 	Controlled  bool            `json:"controlled"`
 	Attributes  interface{}     `json:"attributes"`
-	Action      *Action         `json:"action,omitempty"`
+	Action      any             `json:"action,omitempty"`
 
 	//Special component tag.
 	//
@@ -51,7 +51,7 @@ type DuitViewChild interface {
 // - controlled: a boolean indicating whether the element is controlled
 //
 // It returns a pointer to the upgraded created DuitElement.
-func (element *DuitElementModel) CreateElement(elemType DuitElementType, elemId string, tag string, attributes interface{}, action *Action, controlled bool, mayHaveChildElements uint8, data interface{}, subviews ...*DuitElementModel) *DuitElementModel {
+func (element *DuitElementModel) CreateElement(elemType DuitElementType, elemId string, tag string, attributes interface{}, action any, controlled bool, mayHaveChildElements uint8, data interface{}, subviews ...*DuitElementModel) *DuitElementModel {
 	var id string
 
 	if elemId == "" {
