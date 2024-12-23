@@ -128,12 +128,18 @@ func CustomEvent(key string, extra map[string]interface{}) *customEvent {
 
 func SequencedEventGroup(events []*SequencedEvent) *sequencedEventGroup {
 	return &sequencedEventGroup{
+		Event: Event{
+			Type: sequenced,
+		},
 		Events: events,
 	}
 }
 
 func CommonEventGroup(events []interface{}) *commonEventGroup {
 	return &commonEventGroup{
+		Event: Event{
+			Type: grouped,
+		},
 		Events: events,
 	}
 }
