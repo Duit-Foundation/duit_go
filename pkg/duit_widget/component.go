@@ -8,7 +8,7 @@ func componentUiElement(data interface{}, tag string, id string) *duit_core.Duit
 	return new(duit_core.DuitElementModel).CreateElement(duit_core.Component, id, tag, nil, nil, true, 0, data)
 }
 
-type componentDescription struct {
+type ComponentDescription struct {
 	Tag        string                      `json:"tag"`
 	LayoutRoot *duit_core.DuitElementModel `json:"layoutRoot"`
 }
@@ -17,8 +17,8 @@ func Component(data interface{}, tag string, id string) *duit_core.DuitElementMo
 	return componentUiElement(data, tag, id)
 }
 
-func ComponentDescription(tag string, layoutRoot *duit_core.DuitElementModel) *componentDescription {
-	return &componentDescription{
+func NewComponentDescription(tag string, layoutRoot *duit_core.DuitElementModel) *ComponentDescription {
+	return &ComponentDescription{
 		Tag:        tag,
 		LayoutRoot: layoutRoot,
 	}
