@@ -23,7 +23,7 @@ type ScriptData struct {
 //
 // Meta is an interface{} field that represents optional additional metadata for the action.
 type Action interface {
-	RemoteAction | LocalAction | ScriptActionS
+	RemoteAction | LocalAction | ScriptAction
 }
 
 type RemoteAction struct {
@@ -38,7 +38,7 @@ type LocalAction struct {
 	Payload       any   `json:"payload,omitempty"`
 }
 
-type ScriptActionS struct {
+type ScriptAction struct {
 	ExecutionType uint8               `json:"executionType"`
 	Script        *ScriptData         `json:"script,omitempty"`
 	Event         string              `json:"event"`

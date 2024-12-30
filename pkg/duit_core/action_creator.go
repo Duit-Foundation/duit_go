@@ -5,7 +5,7 @@ type HttpActionMetainfo struct {
 	Method string `json:"method"`
 }
 
-// HttpAction creates a new HTTP action.
+// NewHttpAction creates a new HTTP action.
 //
 // The function takes in the following parameters:
 // - event: a string representing the event of the action.
@@ -13,20 +13,20 @@ type HttpActionMetainfo struct {
 // - metainfo: a pointer to an instance of HttpActionMetainfo representing the meta information of the action.
 //
 // The function returns a pointer to an instance of Action.
-func HttpAction(event string, dependsOn []*ActionDependency, metainfo *HttpActionMetainfo) *RemoteAction {
+func NewHttpAction(event string, dependsOn []*ActionDependency, metainfo *HttpActionMetainfo) *RemoteAction {
 	return &RemoteAction{
 		ExecutionType: Transport,
 		Event:         event,
 		DependsOn:     dependsOn,
-		Meta:          *metainfo,
+		Meta:          metainfo,
 	}
 }
 
-// WebSocketAction creates a WebSocket action.
+// NewWebSocketAction creates a WebSocket action.
 //
 // It takes in an event string and dependsOn slice of strings as parameters.
 // It returns a pointer to an Action struct.
-func WebSocketAction(event string, dependsOn []*ActionDependency) *RemoteAction {
+func NewWebSocketAction(event string, dependsOn []*ActionDependency) *RemoteAction {
 	return &RemoteAction{
 		ExecutionType: Transport,
 		Event:         event,
@@ -34,15 +34,30 @@ func WebSocketAction(event string, dependsOn []*ActionDependency) *RemoteAction 
 	}
 }
 
-func LocalExecutedtAction(payload any) *LocalAction {
+// NewLocalExecutedtAction creates a new local action.
+//
+// The function takes in the following parameter:
+// - payload: any type of data that will be passed to the action.
+//
+// The function returns a pointer to an instance of Action.
+func NewLocalExecutedtAction(payload any) *LocalAction {
 	return &LocalAction{
 		ExecutionType: Local,
 		Payload:       payload,
 	}
 }
 
-func ScriptAction(event string, dependsOn []*ActionDependency, script *ScriptData) *ScriptActionS {
-	return &ScriptActionS{
+// NewScriptAction creates a new script-based action.
+//
+// This function takes in the following parameters:
+// - event: a string representing the event associated with the action.
+// - dependsOn: a slice of ActionDependency pointers that the action depends on.
+// - script: a pointer to ScriptData containing the script details for the action.
+//
+// It returns a pointer to an instance of ScriptAction.
+
+func NewScriptAction(event string, dependsOn []*ActionDependency, script *ScriptData) *ScriptAction {
+	return &ScriptAction{
 		ExecutionType: Script,
 		Event:         event,
 		DependsOn:     dependsOn,
