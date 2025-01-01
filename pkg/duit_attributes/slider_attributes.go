@@ -7,16 +7,16 @@ import (
 	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_core"
 )
 
-type SliderAttributes[TColor duit_color.Color] struct {
+type SliderAttributes[TAction duit_core.Action, TColor duit_color.Color] struct {
 	ValueReferenceHolder
 	Value                float32                                      `json:"value"`
 	Min                  float32                                      `json:"min,omitempty"`
 	Max                  float32                                      `json:"max,omitempty"`
 	Divisions            uint32                                       `json:"divisions,omitempty"`
 	SecondaryTrackValue  float32                                      `json:"secondaryTrackValue,omitempty"`
-	OnChanged            *duit_core.Action                            `json:"onChanged,omitempty"`
-	OnChangeStart        *duit_core.Action                            `json:"onChangeStart,omitempty"`
-	OnChangeEnd          *duit_core.Action                            `json:"onChangeEnd,omitempty"`
+	OnChanged            *TAction                                     `json:"onChanged,omitempty"`
+	OnChangeStart        *TAction                                     `json:"onChangeStart,omitempty"`
+	OnChangeEnd          *TAction                                     `json:"onChangeEnd,omitempty"`
 	ActiveColor          TColor                                       `json:"activeColor,omitempty"`
 	InactiveColor        TColor                                       `json:"inactiveColor,omitempty"`
 	ThumbColor           TColor                                       `json:"thumbColor,omitempty"`

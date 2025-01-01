@@ -1,9 +1,11 @@
 package duit_core
 
-import "github.com/google/uuid"
+import (
+	"github.com/google/uuid"
+)
 
 type DuitWidget interface {
-	CreateElement(elemType string, elemId string, tag string, attributes interface{}, action *Action, controlled bool, mayHaveChildElements uint8) *DuitElementModel
+	CreateElement(elemType string, elemId string, tag string, attributes interface{}, action any, controlled bool, mayHaveChildElements uint8) *DuitElementModel
 }
 
 type DuitElementModel struct {
@@ -12,7 +14,7 @@ type DuitElementModel struct {
 	Id          string          `json:"id"`
 	Controlled  bool            `json:"controlled"`
 	Attributes  interface{}     `json:"attributes"`
-	Action      *Action         `json:"action,omitempty"`
+	Action      any             `json:"action,omitempty"`
 
 	//Special component tag.
 	//
@@ -51,7 +53,7 @@ type DuitViewChild interface {
 // - controlled: a boolean indicating whether the element is controlled
 //
 // It returns a pointer to the upgraded created DuitElement.
-func (element *DuitElementModel) CreateElement(elemType DuitElementType, elemId string, tag string, attributes interface{}, action *Action, controlled bool, mayHaveChildElements uint8, data interface{}, subviews ...*DuitElementModel) *DuitElementModel {
+func (e *DuitElementModel) CreateElement(elemType DuitElementType, elemId string, tag string, attributes interface{}, action any, controlled bool, mayHaveChildElements uint8, data interface{}, subviews ...*DuitElementModel) *DuitElementModel {
 	var id string
 
 	if elemId == "" {
@@ -60,22 +62,32 @@ func (element *DuitElementModel) CreateElement(elemType DuitElementType, elemId 
 		id = elemId
 	}
 
-	switch mayHaveChildElements {
-	case 1:
-		element.Child = subviews[0]
-	case 2:
-		element.Children = append(element.Children, subviews...)
+	switch act := action.(type) {
+	case *RemoteAction:
+	case *LocalAction:
+	case *ScriptAction:
+	case nil:
+		e.Action = act
+	default:
+		panic("Invalid action type. Must be instance of duit_core.Action or nil")
 	}
 
-	element.Id = id
-	element.ElementType = elemType
-	element.Action = action
-	element.Attributes = attributes
-	element.Tag = tag
-	element.Controlled = controlled
-	element.MayHaveChildElements = mayHaveChildElements
-	element.Data = data
-	return element
+	switch mayHaveChildElements {
+	case 1:
+		e.Child = subviews[0]
+	case 2:
+		e.Children = append(e.Children, subviews...)
+	}
+
+	e.Id = id
+	e.ElementType = elemType
+	e.Action = action
+	e.Attributes = attributes
+	e.Tag = tag
+	e.Controlled = controlled
+	e.MayHaveChildElements = mayHaveChildElements
+	e.Data = data
+	return e
 }
 
 // AddChild adds a child element to the DuitElement.
