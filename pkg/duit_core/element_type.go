@@ -46,4 +46,5 @@ const (
 	IntrinsicHeight        DuitElementType = "IntrinsicHeight"
 	RotatedBox             DuitElementType = "RotatedBox"
 	ConstrainedBox         DuitElementType = "ConstrainedBox"
+	BackdropFilter         DuitElementType = "BackdropFilter"
 )
