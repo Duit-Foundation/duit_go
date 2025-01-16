@@ -47,4 +47,5 @@ const (
 	RotatedBox             DuitElementType = "RotatedBox"
 	ConstrainedBox         DuitElementType = "ConstrainedBox"
 	BackdropFilter         DuitElementType = "BackdropFilter"
+	AnimatedOpacity        DuitElementType = "AnimatedOpacity"
 )
