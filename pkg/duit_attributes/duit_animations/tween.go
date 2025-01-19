@@ -21,6 +21,30 @@ type tweenBase[T any] struct {
 	Method          AnimationMethod  `json:"method"`
 }
 
+type tweenGroup struct {
+	TweenType       string           `json:"type"`
+	GroupId         string           `json:"groupId"`
+	Tweens          []any            `json:"tweens"`
+	Duration        int              `json:"duration"`
+	Trigger         AnimationTrigger `json:"trigger"`
+	Method          AnimationMethod  `json:"method"`
+	Curve           Curves           `json:"curve,omitempty"`
+	ReverseOnRepeat bool             `json:"reverseOnRepeat,omitempty"`
+}
+
+func TweenGroup(tweens []any, groupId string, duration int, trigger AnimationTrigger, method AnimationMethod, reverseOnRepeat bool, curve Curves) *tweenGroup {
+	return &tweenGroup{
+		Tweens:          tweens,
+		GroupId:         groupId,
+		TweenType:       "group",
+		Duration:        duration,
+		Curve:           prepareCurveValue(curve),
+		ReverseOnRepeat: reverseOnRepeat,
+		Trigger:         trigger,
+		Method:          method,
+	}
+}
+
 func prepareCurveValue(curve Curves) Curves {
 	if len(curve) > 0 {
 		return curve
