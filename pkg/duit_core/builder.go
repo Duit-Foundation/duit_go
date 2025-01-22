@@ -13,7 +13,24 @@ type UiBuilder struct {
 //
 // It returns a byte slice and an error.
 func (builder *UiBuilder) Build() ([]byte, error) {
-	json, err := json.Marshal(*builder.root)
+	content := map[string]interface{}{
+		"root": builder.root,
+	}
+
+	json, err := json.Marshal(content)
+
+	if err != nil {
+		return nil, errors.New("Failed to build JSON: " + err.Error())
+	}
+
+	return json, nil
+}
+
+// Build generates a JSON representation of the UiBuilder without wrapping it in a map.
+//
+// It returns a byte slice and an error.
+func (builder *UiBuilder) BuildUnwrapped() ([]byte, error) {
+	json, err := json.Marshal(builder.root)
 
 	if err != nil {
 		return nil, errors.New("Failed to build JSON: " + err.Error())
