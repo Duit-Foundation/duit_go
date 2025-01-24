@@ -6,7 +6,8 @@ import (
 )
 
 type UiBuilder struct {
-	root *DuitElementModel
+	root    *DuitElementModel
+	widgets []*DuitElementModel
 }
 
 // Build generates a JSON representation of the UiBuilder.
@@ -15,6 +16,24 @@ type UiBuilder struct {
 func (builder *UiBuilder) Build() ([]byte, error) {
 	content := map[string]interface{}{
 		"root": builder.root,
+	}
+
+	json, err := json.Marshal(content)
+
+	if err != nil {
+		return nil, errors.New("Failed to build JSON: " + err.Error())
+	}
+
+	return json, nil
+}
+
+func (builder *UiBuilder) BuildMultiview() ([]byte, error) {
+	if len(builder.widgets) == 0 {
+		return nil, errors.New("no widgets provided")
+	}
+ 
+	content := map[string]interface{}{
+		"widgets": builder.widgets,
 	}
 
 	json, err := json.Marshal(content)
@@ -42,10 +61,10 @@ func (builder *UiBuilder) BuildUnwrapped() ([]byte, error) {
 // CreateRoot creates a root DuitElementModel for the UiBuilder.
 //
 // No parameters.
-// Returns a pointer to the created root DuitElementModel.
+// Returns a pointer to the created root Subtree widget model.
 func (builder *UiBuilder) CreateRoot() *DuitElementModel {
 	builder.root = &DuitElementModel{
-		ElementType: Column,
+		ElementType: Subtree,
 	}
 	return builder.root
 }
@@ -59,34 +78,6 @@ func (builder *UiBuilder) RootFrom(rootElement *DuitElementModel) *DuitElementMo
 	return builder.root
 }
 
-// CreateRootOfExactType creates a root element of the specified type and sets it as the root of the UiBuilder.
-//
-// Parameters:
-// - elType: The type of the root element.
-// - attributes: The attributes of the root element.
-// - id: The ID of the root element.
-//
-// Returns:
-// - *DuitElementModel: The root element created.
-func (builder *UiBuilder) CreateRootOfExactType(elType DuitElementType, attributes interface{}, id string) *DuitElementModel {
-	switch elType {
-	case Column:
-		builder.root = new(DuitElementModel).CreateElement(elType, id, "", attributes, nil, false, 2, nil)
-	case Row:
-		builder.root = new(DuitElementModel).CreateElement(elType, id, "", attributes, nil, false, 2, nil)
-	case Stack:
-		builder.root = new(DuitElementModel).CreateElement(elType, id, "", attributes, nil, false, 2, nil)
-	case Center:
-		builder.root = new(DuitElementModel).CreateElement(elType, id, "", attributes, nil, false, 1, nil)
-	case ColoredBox:
-		builder.root = new(DuitElementModel).CreateElement(elType, id, "", attributes, nil, false, 1, nil)
-	case Container:
-		builder.root = new(DuitElementModel).CreateElement(elType, id, "", attributes, nil, false, 1, nil)
-	case DecoratedBox:
-		builder.root = new(DuitElementModel).CreateElement(elType, id, "", attributes, nil, false, 1, nil)
-	default:
-		panic("Invalid element type")
-	}
-
-	return builder.root
+func (builder *UiBuilder) AddWidgets(widgets ...*DuitElementModel) {
+	builder.widgets = append(builder.widgets, widgets...)
 }
