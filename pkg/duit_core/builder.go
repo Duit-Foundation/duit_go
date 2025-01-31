@@ -8,6 +8,7 @@ import (
 type UiBuilder struct {
 	root    *DuitElementModel
 	widgets []*DuitElementModel
+	embedded []*ComponentDescription
 }
 
 // Build generates a JSON representation of the UiBuilder.
@@ -16,6 +17,7 @@ type UiBuilder struct {
 func (builder *UiBuilder) Build() ([]byte, error) {
 	content := map[string]interface{}{
 		"root": builder.root,
+		"embedded": builder.embedded,
 	}
 
 	json, err := json.Marshal(content)
@@ -34,6 +36,7 @@ func (builder *UiBuilder) BuildMultiview() ([]byte, error) {
  
 	content := map[string]interface{}{
 		"widgets": builder.widgets,
+		"embedded": builder.embedded,
 	}
 
 	json, err := json.Marshal(content)
@@ -49,6 +52,10 @@ func (builder *UiBuilder) BuildMultiview() ([]byte, error) {
 //
 // It returns a byte slice and an error.
 func (builder *UiBuilder) BuildUnwrapped() ([]byte, error) {
+	if (builder.embedded != nil) {
+		return nil, errors.New("embedded components not supported")
+	}
+
 	json, err := json.Marshal(builder.root)
 
 	if err != nil {
@@ -80,4 +87,13 @@ func (builder *UiBuilder) RootFrom(rootElement *DuitElementModel) *DuitElementMo
 
 func (builder *UiBuilder) AddWidgets(widgets ...*DuitElementModel) {
 	builder.widgets = append(builder.widgets, widgets...)
+}
+
+// AddComponents adds components to the UiBuilder.
+//
+// Components are arbitrary data structures that are stored in the "embedded" field of the JSON representation of the UiBuilder.
+//
+// components: The components to add.
+func (builder *UiBuilder) AddComponents(components ...*ComponentDescription) {
+	builder.embedded = append(builder.embedded, components...)
 }
