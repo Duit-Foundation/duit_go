@@ -48,4 +48,5 @@ const (
 	ConstrainedBox         DuitElementType = "ConstrainedBox"
 	BackdropFilter         DuitElementType = "BackdropFilter"
 	AnimatedOpacity        DuitElementType = "AnimatedOpacity"
+	SafeArea               DuitElementType = "SafeArea"
 )
