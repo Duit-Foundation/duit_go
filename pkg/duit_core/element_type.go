@@ -49,4 +49,5 @@ const (
 	BackdropFilter         DuitElementType = "BackdropFilter"
 	AnimatedOpacity        DuitElementType = "AnimatedOpacity"
 	SafeArea               DuitElementType = "SafeArea"
+	RemoteSubtree          DuitElementType = "RemoteSubtree"
 )
