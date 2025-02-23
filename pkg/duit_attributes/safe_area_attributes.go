@@ -8,10 +8,10 @@ import (
 type SafeAreaAttributes[TInsets duit_edge_insets.EdgeInsets] struct {
 	ValueReferenceHolder
 	animations.AnimatedPropertyOwner
-	Left                      bool    `json:"left,omitempty"`
-	Top                       bool    `json:"top,omitempty"`
-	Right                     bool    `json:"right,omitempty"`
-	Bottom                    bool    `json:"bottom,omitempty"`
+	Left                      *bool    `json:"left,omitempty"`
+	Top                       *bool    `json:"top,omitempty"`
+	Right                     *bool    `json:"right,omitempty"`
+	Bottom                    *bool    `json:"bottom,omitempty"`
 	Minimum                   TInsets `json:"minimum,omitempty"`
-	MaintainBottomViewPadding bool    `json:"maintainBottomViewPadding,omitempty"`
+	MaintainBottomViewPadding *bool    `json:"maintainBottomViewPadding,omitempty"`
 }
