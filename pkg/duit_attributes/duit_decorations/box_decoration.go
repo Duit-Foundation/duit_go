@@ -7,6 +7,6 @@ type BoxDecoration[T duit_color.Color] struct {
 	Boder        *BorderSide[T]     `json:"border,omitempty"`
 	BorderRadius float32            `json:"borderRadius,omitempty"`
 	Shape        BoxShape           `json:"shape,omitempty"`
-	BoxShadow    []BoxShadow[T]     `json:"boxShadow"`
+	BoxShadow    []BoxShadow[T]     `json:"boxShadow,omitempty"`
 	Gradient     *LinearGradient[T] `json:"gradient,omitempty"`
 }
