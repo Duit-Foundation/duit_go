@@ -46,7 +46,7 @@ type ListView[TInsets duit_edge_insets.EdgeInsets] struct {
 
 type ListViewBuilderAttributes[TInsets duit_edge_insets.EdgeInsets] struct {
 	ListView[TInsets]
-	ChildObjects              []*duit_core.DuitElementModel `json:"children,omitempty"`
+	ChildObjects              []*duit_core.DuitElementModel `json:"childObjects,omitempty"`
 	ScrollEndReachedThreshold float32                       `json:"scrollEndReachedThreshold,omitempty"`
 	MergeStrategy             MergeStrategy                 `json:"mergeStrategy,omitempty"`
 }
