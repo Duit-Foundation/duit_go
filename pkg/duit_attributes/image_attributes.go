@@ -11,6 +11,7 @@ import (
 type ImageAttributes[TColor duit_color.Color] struct {
 	ValueReferenceHolder
 	animations.AnimatedPropertyOwner
+	ThemeConsumer
 	Width                float32                     `json:"width,omitempty"`
 	Height               float32                     `json:"height,omitempty"`
 	CacheWidth           int                         `json:"cacheWidth,omitempty"`

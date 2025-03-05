@@ -9,6 +9,7 @@ import (
 type TextAttributes[T duit_color.Color] struct {
 	ValueReferenceHolder
 	animations.AnimatedPropertyOwner
+	ThemeConsumer
 	Data           string                             `json:"data"`
 	SemanticsLabel string                             `json:"semanticsLabel,omitempty"`
 	TextAlign      duit_text_properties.TextAlign     `json:"textAlign,omitempty"`

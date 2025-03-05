@@ -8,6 +8,7 @@ import (
 type BackdropFilterAttributes[T duit_painting.ImageFilter] struct {
 	ValueReferenceHolder
 	animations.AnimatedPropertyOwner
+	ThemeConsumer
 	Filter *T `json:"filter,omitempty"`
 	BlendMode duit_painting.BlendMode `json:"blendMode,omitempty"`
 }

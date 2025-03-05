@@ -8,5 +8,6 @@ import (
 type PaddingAttributes[T duit_edge_insets.EdgeInsets] struct {
 	ValueReferenceHolder
 	animations.AnimatedPropertyOwner
+	ThemeConsumer
 	Padding T `json:"padding,omitempty"`
 }

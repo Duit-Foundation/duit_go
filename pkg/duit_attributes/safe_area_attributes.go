@@ -8,6 +8,7 @@ import (
 type SafeAreaAttributes[TInsets duit_edge_insets.EdgeInsets] struct {
 	ValueReferenceHolder
 	animations.AnimatedPropertyOwner
+	ThemeConsumer
 	Left                      *bool    `json:"left,omitempty"`
 	Top                       *bool    `json:"top,omitempty"`
 	Right                     *bool    `json:"right,omitempty"`

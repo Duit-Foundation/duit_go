@@ -8,6 +8,7 @@ import (
 type TransfromAttributes[T duit_transform.Transform] struct {
 	ValueReferenceHolder
 	animations.AnimatedPropertyOwner
+	ThemeConsumer
 	Type duit_transform.TransfromType `json:"type"`
 	Data *T                           `json:"data"`
 }

@@ -5,6 +5,7 @@ import animations "github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/dui
 type ConstrainedBoxAttributes struct {
 	ValueReferenceHolder
 	animations.AnimatedPropertyOwner
+	ThemeConsumer
 	MinWidth  float32 `json:"minWidth,omitempty"`
 	MaxWidth  float32 `json:"maxWidth,omitempty"`
 	MinHeight float32 `json:"minHeight,omitempty"`

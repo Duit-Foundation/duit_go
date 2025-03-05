@@ -8,6 +8,7 @@ import (
 type AlignAttributes struct {
 	ValueReferenceHolder
 	animations.AnimatedPropertyOwner
+	ThemeConsumer
 	Alignment    duit_alignment.Alignment `json:"alignment,omitempty"`
 	WidthFactor  float32                  `json:"widthFactor,omitempty"`
 	HeightFactor float32                  `json:"heightFactor,omitempty"`
