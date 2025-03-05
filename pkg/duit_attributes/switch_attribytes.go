@@ -7,6 +7,7 @@ import (
 
 type SwitchAttributes[TColor duit_color.Color] struct {
 	ValueReferenceHolder
+	ThemeConsumer
 	Value                 bool                                          `json:"value"`
 	ActiveColor           TColor                                        `json:"activeColor,omitempty"`
 	FocusColor            TColor                                        `json:"focusColor,omitempty"`

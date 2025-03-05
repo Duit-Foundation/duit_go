@@ -10,6 +10,7 @@ import (
 type OpacityAttributes struct {
 	ValueReferenceHolder
 	animations.AnimatedPropertyOwner
+	ThemeConsumer
 	Opacity float32 `json:"opacity"`
 }
 

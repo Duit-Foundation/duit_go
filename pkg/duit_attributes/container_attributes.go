@@ -13,6 +13,7 @@ import (
 type ContainerAttributes[TInsets duit_edge_insets.EdgeInsets, TColor duit_color.Color] struct {
 	ValueReferenceHolder
 	animations.AnimatedPropertyOwner
+	ThemeConsumer
 	Width                float32                                `json:"width,omitempty"`
 	Height               float32                                `json:"height,omitempty"`
 	Color                TColor                                 `json:"color,omitempty"`

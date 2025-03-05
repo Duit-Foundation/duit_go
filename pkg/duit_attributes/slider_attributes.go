@@ -9,6 +9,7 @@ import (
 
 type SliderAttributes[TAction duit_core.Action, TColor duit_color.Color] struct {
 	ValueReferenceHolder
+	ThemeConsumer
 	Value                float32                                      `json:"value"`
 	Min                  float32                                      `json:"min,omitempty"`
 	Max                  float32                                      `json:"max,omitempty"`

@@ -14,6 +14,7 @@ type PrimitiveValue interface {
 type RadioAttributes[TValue PrimitiveValue, TColor duit_color.Color] struct {
 	ValueReferenceHolder
 	animations.AnimatedPropertyOwner
+	ThemeConsumer
 	Value                 TValue                                      `json:"value"`
 	Toggleable            bool                                        `json:"toggleable,omitempty"`
 	Autofocus             bool                                        `json:"autofocus,omitempty"`

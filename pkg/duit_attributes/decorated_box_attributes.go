@@ -9,5 +9,6 @@ import (
 type DecoratedBoxAttributes[T duit_color.Color] struct {
 	ValueReferenceHolder
 	animations.AnimatedPropertyOwner
+	ThemeConsumer
 	Decoration *duit_decoration.BoxDecoration[T] `json:"decoration,omitempty"`
 }

@@ -11,6 +11,7 @@ import (
 type AnimatedOpacityAttributes struct {
 	ValueReferenceHolder
 	animations.ImplicitAnimatable
+	ThemeConsumer
 	Opacity float32 `json:"opacity"`
 }
 

@@ -5,6 +5,7 @@ import animations "github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/dui
 type PositionedAttributes struct {
 	ValueReferenceHolder
 	animations.AnimatedPropertyOwner
+	ThemeConsumer
 	Left   float32 `json:"left,omitempty"`
 	Top    float32 `json:"top,omitempty"`
 	Right  float32 `json:"right,omitempty"`

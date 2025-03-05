@@ -8,5 +8,6 @@ import (
 type ColoredBoxAttributes[T duit_color.Color] struct {
 	ValueReferenceHolder
 	animations.AnimatedPropertyOwner
+	ThemeConsumer
 	Color T `json:"color,omitempty"`
 }
