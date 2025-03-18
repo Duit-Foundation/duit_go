@@ -1,6 +1,7 @@
 package duit_attributes
 
 import (
+	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_builder"
 	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_clip"
 	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_edge_insets"
 	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_flex"
@@ -9,18 +10,11 @@ import (
 )
 
 type ListKind uint8
-type MergeStrategy uint8
 
 const (
 	Common ListKind = iota
 	Builder
 	Separated
-)
-
-const (
-	AddToEnd MergeStrategy = iota
-	AddToStart
-	Replace
 )
 
 type ListView[TInsets duit_edge_insets.EdgeInsets] struct {
@@ -46,9 +40,7 @@ type ListView[TInsets duit_edge_insets.EdgeInsets] struct {
 
 type ListViewBuilderAttributes[TInsets duit_edge_insets.EdgeInsets] struct {
 	ListView[TInsets]
-	ChildObjects              []*duit_core.DuitElementModel `json:"childObjects,omitempty"`
-	ScrollEndReachedThreshold float32                       `json:"scrollEndReachedThreshold,omitempty"`
-	MergeStrategy             MergeStrategy                 `json:"mergeStrategy,omitempty"`
+	duit_builder.Builder
 }
 
 type ListViewSeparatedAttributes[TInsets duit_edge_insets.EdgeInsets] struct {

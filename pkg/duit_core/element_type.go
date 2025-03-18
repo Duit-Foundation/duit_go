@@ -51,4 +51,5 @@ const (
 	AnimatedOpacity        DuitElementType = "AnimatedOpacity"
 	SafeArea               DuitElementType = "SafeArea"
 	RemoteSubtree          DuitElementType = "RemoteSubtree"
+	GridView               DuitElementType = "GridView"
 )
