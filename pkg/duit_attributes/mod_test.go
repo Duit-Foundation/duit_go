@@ -58,7 +58,7 @@ func TestContainerAttributes(t *testing.T) {
 
 func TestSafeAreaAttributes(t *testing.T) {
 	cont := &SafeAreaAttributes[duit_edge_insets.EdgeInsetsAll]{
-		Top: duit_utils.BoolPtr(false),
+		Top:    duit_utils.BoolPtr(false),
 		Bottom: duit_utils.BoolPtr(true),
 	}
 
@@ -87,4 +87,56 @@ func TestSafeAreaAttributes(t *testing.T) {
 	if val["right"] != nil {
 		t.Fatal("right is not nil")
 	}
+}
+
+func TestGridViewAttributes(t *testing.T) {
+	attrsCommonWithValidationErr := &GridViewCommonAttributes[duit_edge_insets.EdgeInsetsAll]{}
+
+	_, err := json.Marshal(attrsCommonWithValidationErr)
+
+	if err == nil {
+		t.Fatal(err)
+	}
+
+	if attrsCommonWithValidationErr.Constructor != GridCommon {
+		t.Fatal("constructor is not GridCommon")
+	}
+
+	attrsCountWithValidationErr := &GridViewCountAttributes[duit_edge_insets.EdgeInsetsAll]{}
+
+	_, err = json.Marshal(attrsCountWithValidationErr)
+
+	if err == nil {
+		t.Fatal(err)
+	}
+
+	if attrsCountWithValidationErr.Constructor != GridCount {
+		t.Fatal(attrsCountWithValidationErr.Constructor)
+		t.Fatal("constructor is not GridCount")
+	}
+
+	attrsExtentWithValidationErr := &GridViewExtentAttributes[duit_edge_insets.EdgeInsetsAll]{}
+
+	_, err = json.Marshal(attrsExtentWithValidationErr)
+
+	if err == nil {
+		t.Fatal(err)
+	}
+
+	if attrsExtentWithValidationErr.Constructor != GridExtent {
+		t.Fatal("constructor is not GridExtent")
+	}
+
+	attrsBuilderWithValidationErr := &GridViewBuilderAttributes[duit_edge_insets.EdgeInsetsAll]{}
+
+	_, err = json.Marshal(attrsBuilderWithValidationErr)
+
+	if err == nil {
+		t.Fatal(err)
+	}
+
+	if attrsBuilderWithValidationErr.Constructor != GridBuilder {
+		t.Fatal("constructor is not GridBuilder")
+	}
+
 }

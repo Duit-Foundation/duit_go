@@ -48,11 +48,12 @@ type GridViewCommonAttributes[TInsets duit_edge_insets.EdgeInsets] struct {
 }
 
 func (attributes *GridViewCommonAttributes[TInsets]) MarshalJSON() ([]byte, error) {
+	attributes.Constructor = GridCommon
+	
 	if len(attributes.SliverGridDelegateKey) == 0 {
 		return nil, errors.New("SliverGridDelegateKey is required")
 	}
 
-	attributes.Constructor = GridCommon
 	return json.Marshal(*attributes)
 }
 
@@ -67,11 +68,12 @@ type GridViewCountAttributes[TInsets duit_edge_insets.EdgeInsets] struct {
 }
 
 func (attributes *GridViewCountAttributes[TInsets]) MarshalJSON() ([]byte, error) {
+	attributes.Constructor = GridCount
+
 	if attributes.CrossAxisCount == 0 {
 		return nil, errors.New("CrossAxisCount is required and must be greater than 0")
 	}
 
-	attributes.Constructor = GridCount
 	return json.Marshal(*attributes)
 }
 
@@ -85,11 +87,12 @@ type GridViewBuilderAttributes[TInsets duit_edge_insets.EdgeInsets] struct {
 }
 
 func (attributes *GridViewBuilderAttributes[TInsets]) MarshalJSON() ([]byte, error) {
+	attributes.Constructor = GridBuilder
+
 	if len(attributes.SliverGridDelegateKey) == 0 {
 		return nil, errors.New("SliverGridDelegateKey is required")
 	}
 
-	attributes.Constructor = GridBuilder
 	return json.Marshal(*attributes)
 }
 
@@ -104,11 +107,12 @@ type GridViewExtentAttributes[TInsets duit_edge_insets.EdgeInsets] struct {
 }
 
 func (attributes *GridViewExtentAttributes[TInsets]) MarshalJSON() ([]byte, error) {
+	attributes.Constructor = GridExtent
+
 	if attributes.MaxCrossAxisExtent == 0 {
 		return nil, errors.New("MaxCrossAxisExtent is required and must be greater than 0")
 	}
 
-	attributes.Constructor = GridExtent
 	return json.Marshal(*attributes)
 }
 
