@@ -52,4 +52,5 @@ const (
 	SafeArea               DuitElementType = "SafeArea"
 	RemoteSubtree          DuitElementType = "RemoteSubtree"
 	GridView               DuitElementType = "GridView"
+	Card                   DuitElementType = "Card"
 )
