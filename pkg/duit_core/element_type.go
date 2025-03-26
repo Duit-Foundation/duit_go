@@ -54,4 +54,5 @@ const (
 	GridView               DuitElementType = "GridView"
 	Card                   DuitElementType = "Card"
 	AppBar                 DuitElementType = "AppBar"
+	Scaffold               DuitElementType = "Scaffold"
 )
