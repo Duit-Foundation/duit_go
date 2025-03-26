@@ -140,3 +140,31 @@ func TestGridViewAttributes(t *testing.T) {
 	}
 
 }
+
+func TestAppBarAttributes(t *testing.T) {
+	attrs := &AppBarAttributes[duit_color.ColorString, duit_edge_insets.EdgeInsetsAll, duit_decoration.RoundedRectangleBorder[duit_color.ColorString]]{}
+
+	_, err := json.Marshal(attrs)
+
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if *attrs.AutomaticallyImplyLeading == false {
+		t.Fatal("automaticallyImplyLeading is not true")
+	}
+
+	if *attrs.Primary == false {
+		t.Fatal("primary is not true")
+	}
+
+	invalidAttrs := &AppBarAttributes[duit_color.ColorString, duit_edge_insets.EdgeInsetsAll, duit_decoration.RoundedRectangleBorder[duit_color.ColorString]]{
+		ToolbarOpacity: 1.1,
+	}
+
+	_, err = json.Marshal(invalidAttrs)
+
+	if err == nil {
+		t.Fatal("must throw error")
+	}
+}
