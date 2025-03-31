@@ -55,4 +55,5 @@ const (
 	Card                   DuitElementType = "Card"
 	AppBar                 DuitElementType = "AppBar"
 	Scaffold               DuitElementType = "Scaffold"
+	InkWell                DuitElementType = "InkWell"
 )
