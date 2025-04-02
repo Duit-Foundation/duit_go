@@ -56,4 +56,5 @@ const (
 	AppBar                 DuitElementType = "AppBar"
 	Scaffold               DuitElementType = "Scaffold"
 	InkWell                DuitElementType = "InkWell"
+	CarouselView           DuitElementType = "CarouselView"
 )
