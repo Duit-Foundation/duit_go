@@ -57,4 +57,5 @@ const (
 	Scaffold               DuitElementType = "Scaffold"
 	InkWell                DuitElementType = "InkWell"
 	CarouselView           DuitElementType = "CarouselView"
+	AnimatedContainer      DuitElementType = "AnimatedContainer"
 )
