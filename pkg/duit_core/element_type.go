@@ -58,4 +58,5 @@ const (
 	InkWell                DuitElementType = "InkWell"
 	CarouselView           DuitElementType = "CarouselView"
 	AnimatedContainer      DuitElementType = "AnimatedContainer"
+	AnimatedSize           DuitElementType = "AnimatedSize"
 )
