@@ -59,4 +59,5 @@ const (
 	CarouselView           DuitElementType = "CarouselView"
 	AnimatedContainer      DuitElementType = "AnimatedContainer"
 	AnimatedSize           DuitElementType = "AnimatedSize"
+	AnimatedAlign          DuitElementType = "AnimatedAlign"
 )
