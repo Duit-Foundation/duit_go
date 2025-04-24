@@ -63,4 +63,5 @@ const (
 	AnimatedRotation       DuitElementType = "AnimatedRotation"
 	AnimatedPadding        DuitElementType = "AnimatedPadding"
 	AnimatedPositioned     DuitElementType = "AnimatedPositioned"
+	AnimatedScale          DuitElementType = "AnimatedScale"
 )
