@@ -168,3 +168,15 @@ func TestAppBarAttributes(t *testing.T) {
 		t.Fatal("must throw error")
 	}
 }
+
+func TestAnimatedScaleAttributes(t *testing.T) {
+	attrs := &AnimatedScaleAttributes{
+		Scale: 0.0,
+	}
+
+	_, err := json.Marshal(attrs)
+
+	if err == nil {
+		t.Fatal("must throw error")
+	}
+}
