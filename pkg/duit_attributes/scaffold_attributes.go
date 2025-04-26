@@ -11,7 +11,6 @@ type ScaffoldAttributes[TColor duit_color.Color] struct {
 	ValueReferenceHolder
 	ThemeConsumer
 	AppBar                    *duit_core.DuitElementModel  `json:"appBar,omitempty"`
-	Body                      *duit_core.DuitElementModel  `json:"body,omitempty"`
 	BottomNavigationBar       *duit_core.DuitElementModel  `json:"bottomNavigationBar,omitempty"`
 	BottomSheet               *duit_core.DuitElementModel  `json:"bottomSheet,omitempty"`
 	FloatingActionButton      *duit_core.DuitElementModel  `json:"floatingActionButton,omitempty"`
