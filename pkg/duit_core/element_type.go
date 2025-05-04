@@ -64,4 +64,6 @@ const (
 	AnimatedPadding        DuitElementType = "AnimatedPadding"
 	AnimatedPositioned     DuitElementType = "AnimatedPositioned"
 	AnimatedScale          DuitElementType = "AnimatedScale"
+	CustomScrollView       DuitElementType = "CustomScrollView"
+	SliverPadding          DuitElementType = "SliverPadding"
 )
