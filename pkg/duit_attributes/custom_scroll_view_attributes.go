@@ -9,7 +9,7 @@ import (
 type CustomScrollViewAttributes struct {
 	ValueReferenceHolder
 	ThemeConsumer
-	Physics           duit_gestures.ScrollPhysics                     `json:"physics,omitempty"`
+	Physics                 duit_gestures.ScrollPhysics                     `json:"physics,omitempty"`
 	Reverse                 bool                                            `json:"reverse,omitempty"`
 	Primary                 bool                                            `json:"primary,omitempty"`
 	ShrinkWrap              bool                                            `json:"shrinkWrap,omitempty"`
@@ -22,4 +22,5 @@ type CustomScrollViewAttributes struct {
 	KeyboardDismissBehavior duit_gestures.ScrollViewKeyboardDismissBehavior `json:"keyboardDismissBehavior,omitempty"`
 	HitTestBehavior         duit_gestures.HitTestBehavior                   `json:"hitTestBehavior,omitempty"`
 	CacheExtent             float32                                         `json:"cacheExtent,omitempty"`
+	Center                  string                                          `json:"center,omitempty"`
 }
