@@ -9,7 +9,7 @@ import (
 type CustomScrollViewAttributes struct {
 	ValueReferenceHolder
 	ThemeConsumer
-	ScrollPhysics           duit_gestures.ScrollPhysics                     `json:"scrollPhysics,omitempty"`
+	Physics           duit_gestures.ScrollPhysics                     `json:"physics,omitempty"`
 	Reverse                 bool                                            `json:"reverse,omitempty"`
 	Primary                 bool                                            `json:"primary,omitempty"`
 	ShrinkWrap              bool                                            `json:"shrinkWrap,omitempty"`
