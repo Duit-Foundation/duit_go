@@ -67,4 +67,5 @@ const (
 	CustomScrollView       DuitElementType = "CustomScrollView"
 	SliverPadding          DuitElementType = "SliverPadding"
 	SliverFillRemaining    DuitElementType = "SliverFillRemaining"
+	SliverFillViewport     DuitElementType = "SliverFillViewport"
 )
