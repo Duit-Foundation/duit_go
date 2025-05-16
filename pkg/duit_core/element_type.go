@@ -68,4 +68,5 @@ const (
 	SliverPadding          DuitElementType = "SliverPadding"
 	SliverFillRemaining    DuitElementType = "SliverFillRemaining"
 	SliverToBoxAdapter     DuitElementType = "SliverToBoxAdapter"
+	SliverFillViewport     DuitElementType = "SliverFillViewport"
 )
