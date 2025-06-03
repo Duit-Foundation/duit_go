@@ -3,11 +3,10 @@ package duit_attributes
 import (
 	"encoding/json"
 	
-	animations "github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_animations"
+	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_utils"
 )
 
 type OffstageAttributes struct {
-	animations.AnimatedPropertyOwner
 	ValueReferenceHolder
 
 	Offstage	*bool	`json:"offstage,omitempty"`
