@@ -6,7 +6,7 @@ import (
 )
 
 type AbsorbPointerAttributes struct {
-	duit_utils.DuitAttributes
+	ValueReferenceHolder
 	Absorbing *bool `json:"absorbing,omitempty"`
 }
 
