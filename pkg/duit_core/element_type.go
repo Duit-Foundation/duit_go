@@ -66,4 +66,5 @@ const (
 	AnimatedScale          DuitElementType = "AnimatedScale"
 	CustomScrollView       DuitElementType = "CustomScrollView"
 	SliverPadding          DuitElementType = "SliverPadding"
+	Offstage               DuitElementType = "Offstage"
 )
