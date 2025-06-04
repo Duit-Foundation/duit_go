@@ -67,4 +67,5 @@ const (
 	CustomScrollView       DuitElementType = "CustomScrollView"
 	SliverPadding          DuitElementType = "SliverPadding"
 	AbsorbPointer          DuitElementType = "AbsorbPointer"
+	Offstage               DuitElementType = "Offstage"
 )
