@@ -180,3 +180,29 @@ func TestAnimatedScaleAttributes(t *testing.T) {
 		t.Fatal("must throw error")
 	}
 }
+
+func TestSliverOpacityAttributes(t *testing.T) {
+	attrs := &SliverOpacityAttributes{
+		Opacity: 1.0,
+	}
+
+	_, err := json.Marshal(attrs)
+
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if attrs.Opacity != 1.0 {
+		t.Fatal("opacity is not 1.0")
+	}
+
+	invalidAttrs := &SliverOpacityAttributes{
+		Opacity: 1.1,
+	}
+
+	_, err = json.Marshal(invalidAttrs)
+
+	if err == nil {
+		t.Fatal("must throw error")
+	}
+}

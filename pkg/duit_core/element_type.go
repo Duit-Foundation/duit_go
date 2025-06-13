@@ -70,4 +70,5 @@ const (
 	SliverToBoxAdapter     DuitElementType = "SliverToBoxAdapter"
 	SliverFillViewport     DuitElementType = "SliverFillViewport"
 	SliverVisibility       DuitElementType = "SliverVisibility"
+	SliverOpacity          DuitElementType = "SliverOpacity"
 )
