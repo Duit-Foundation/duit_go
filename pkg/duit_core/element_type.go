@@ -68,4 +68,5 @@ const (
 	SliverPadding          DuitElementType = "SliverPadding"
 	AbsorbPointer          DuitElementType = "AbsorbPointer"
 	Offstage               DuitElementType = "Offstage"
+	AnimatedCrossFade      DuitElementType = "AnimatedCrossFade"
 )
