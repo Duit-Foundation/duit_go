@@ -69,4 +69,5 @@ const (
 	AbsorbPointer          DuitElementType = "AbsorbPointer"
 	Offstage               DuitElementType = "Offstage"
 	AnimatedCrossFade      DuitElementType = "AnimatedCrossFade"
+	PageView               DuitElementType = "PageView"
 )
