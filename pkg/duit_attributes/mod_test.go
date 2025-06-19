@@ -89,6 +89,45 @@ func TestSafeAreaAttributes(t *testing.T) {
 	}
 }
 
+func TestSliverSafeAreaAttributes(t *testing.T) {
+	cont := &SliverSafeAreaAttributes[duit_edge_insets.EdgeInsetsAll]{
+		Top:    duit_utils.BoolPtr(false),
+		Bottom: duit_utils.BoolPtr(true),
+		Left:   duit_utils.BoolPtr(true),
+		Right:  duit_utils.BoolPtr(false),
+	}
+
+	j, err := json.Marshal(cont)
+
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	val := map[string]interface{}{}
+
+	err = json.Unmarshal(j, &val)
+
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if val["top"] != false {
+		t.Fatal("top is not false")
+	}
+
+	if val["bottom"] != true {
+		t.Fatal("bottom is not true")
+	}
+
+	if val["left"] != true {
+		t.Fatal("left is not true")
+	}
+
+	if val["right"] != false {
+		t.Fatal("right is not false")
+	}
+}
+
 func TestGridViewAttributes(t *testing.T) {
 	attrsCommonWithValidationErr := &GridViewCommonAttributes[duit_edge_insets.EdgeInsetsAll]{}
 
