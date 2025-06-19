@@ -72,4 +72,5 @@ const (
 	SliverVisibility       DuitElementType = "SliverVisibility"
 	SliverOpacity          DuitElementType = "SliverOpacity"
 	SliverAnimatedOpacity  DuitElementType = "SliverAnimatedOpacity"
+	SliverSafeArea         DuitElementType = "SliverSafeArea"
 )
