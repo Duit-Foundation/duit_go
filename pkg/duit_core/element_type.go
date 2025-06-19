@@ -73,4 +73,5 @@ const (
 	SliverOpacity          DuitElementType = "SliverOpacity"
 	SliverAnimatedOpacity  DuitElementType = "SliverAnimatedOpacity"
 	SliverOffstage         DuitElementType = "SliverOffstage"
+	SliverIgnorePointer    DuitElementType = "SliverIgnorePointer"
 )
