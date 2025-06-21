@@ -7,7 +7,7 @@ import (
 	duit_decoration "github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_decorations"
 )
 
-type PhysicalModelAttributes[TColor duit_color.Color,TShape duit_decoration.ShapeBorder[TColor]] struct {
+type PhysicalModelAttributes[TColor duit_color.Color, TShape duit_decoration.ShapeBorder[TColor]] struct {
 	ValueReferenceHolder
 	duit_animations.AnimatedPropertyOwner
 	ThemeConsumer
