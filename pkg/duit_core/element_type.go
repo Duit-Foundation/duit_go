@@ -69,4 +69,6 @@ const (
 	AbsorbPointer          DuitElementType = "AbsorbPointer"
 	Offstage               DuitElementType = "Offstage"
 	AnimatedCrossFade      DuitElementType = "AnimatedCrossFade"
+	PhysicalModel          DuitElementType = "PhysicalModel"
+	AnimatedPhysicalModel  DuitElementType = "AnimatedPhysicalModel"
 )
