@@ -65,6 +65,7 @@ const (
 	AnimatedPositioned     DuitElementType = "AnimatedPositioned"
 	AnimatedScale          DuitElementType = "AnimatedScale"
 	CustomScrollView       DuitElementType = "CustomScrollView"
+	SliverList             DuitElementType = "SliverList"
 	SliverPadding          DuitElementType = "SliverPadding"
 	SliverFillRemaining    DuitElementType = "SliverFillRemaining"
 	SliverToBoxAdapter     DuitElementType = "SliverToBoxAdapter"
