@@ -75,4 +75,6 @@ const (
 	SliverSafeArea         DuitElementType = "SliverSafeArea"
 	SliverOffstage         DuitElementType = "SliverOffstage"
 	SliverIgnorePointer    DuitElementType = "SliverIgnorePointer"
+	SliverAppBar           DuitElementType = "SliverAppBar"
+	FlexibleSpaceBar       DuitElementType = "FlexibleSpaceBar"
 )
