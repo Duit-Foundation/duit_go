@@ -77,5 +77,6 @@ const (
 	SliverOffstage         DuitElementType = "SliverOffstage"
 	SliverIgnorePointer    DuitElementType = "SliverIgnorePointer"
 	SliverAppBar           DuitElementType = "SliverAppBar"
+	SliverGrid             DuitElementType = "SliverGrid"
 	FlexibleSpaceBar       DuitElementType = "FlexibleSpaceBar"
 )
