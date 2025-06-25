@@ -79,4 +79,12 @@ const (
 	SliverAppBar           DuitElementType = "SliverAppBar"
 	SliverGrid             DuitElementType = "SliverGrid"
 	FlexibleSpaceBar       DuitElementType = "FlexibleSpaceBar"
+	AnimatedSlide          DuitElementType = "AnimatedSlide"
+	CustomScrollView       DuitElementType = "CustomScrollView"
+	SliverPadding          DuitElementType = "SliverPadding"
+	AbsorbPointer          DuitElementType = "AbsorbPointer"
+	Offstage               DuitElementType = "Offstage"
+	AnimatedCrossFade      DuitElementType = "AnimatedCrossFade"
+	PhysicalModel          DuitElementType = "PhysicalModel"
+	AnimatedPhysicalModel  DuitElementType = "AnimatedPhysicalModel"
 )
