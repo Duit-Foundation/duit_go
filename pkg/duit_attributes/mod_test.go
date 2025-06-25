@@ -89,6 +89,45 @@ func TestSafeAreaAttributes(t *testing.T) {
 	}
 }
 
+func TestSliverSafeAreaAttributes(t *testing.T) {
+	cont := &SliverSafeAreaAttributes[duit_edge_insets.EdgeInsetsAll]{
+		Top:    duit_utils.BoolPtr(false),
+		Bottom: duit_utils.BoolPtr(true),
+		Left:   duit_utils.BoolPtr(true),
+		Right:  duit_utils.BoolPtr(false),
+	}
+
+	j, err := json.Marshal(cont)
+
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	val := map[string]interface{}{}
+
+	err = json.Unmarshal(j, &val)
+
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if val["top"] != false {
+		t.Fatal("top is not false")
+	}
+
+	if val["bottom"] != true {
+		t.Fatal("bottom is not true")
+	}
+
+	if val["left"] != true {
+		t.Fatal("left is not true")
+	}
+
+	if val["right"] != false {
+		t.Fatal("right is not false")
+	}
+}
+
 func TestGridViewAttributes(t *testing.T) {
 	attrsCommonWithValidationErr := &GridViewCommonAttributes[duit_edge_insets.EdgeInsetsAll]{}
 
@@ -175,6 +214,32 @@ func TestAnimatedScaleAttributes(t *testing.T) {
 	}
 
 	_, err := json.Marshal(attrs)
+
+	if err == nil {
+		t.Fatal("must throw error")
+	}
+}
+
+func TestSliverOpacityAttributes(t *testing.T) {
+	attrs := &SliverOpacityAttributes{
+		Opacity: 1.0,
+	}
+
+	_, err := json.Marshal(attrs)
+
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if attrs.Opacity != 1.0 {
+		t.Fatal("opacity is not 1.0")
+	}
+
+	invalidAttrs := &SliverOpacityAttributes{
+		Opacity: 1.1,
+	}
+
+	_, err = json.Marshal(invalidAttrs)
 
 	if err == nil {
 		t.Fatal("must throw error")
