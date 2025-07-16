@@ -1,19 +1,17 @@
 package duit_core
 
-import "github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_animations"
-
 type eventType string
 
 const (
-	update           eventType = "update"
-	updateLayout     eventType = "updateLayout"
-	navigation       eventType = "navigation"
-	openUrl          eventType = "openUrl"
-	custom           eventType = "custom"
-	sequenced        eventType = "sequenced"
-	grouped          eventType = "grouped"
-	animationTrigger eventType = "animationTrigger"
-	timer            eventType = "timer"
+	update       eventType = "update"
+	updateLayout eventType = "updateLayout"
+	navigation   eventType = "navigation"
+	openUrl      eventType = "openUrl"
+	custom       eventType = "custom"
+	sequenced    eventType = "sequenced"
+	grouped      eventType = "grouped"
+	timer        eventType = "timer"
+	command      eventType = "command"
 )
 
 type Event struct {
@@ -62,17 +60,16 @@ type commonEventGroup struct {
 	Events []interface{} `json:"events"`
 }
 
-type animationTriggerEvent struct {
-	Event
-	ControllerId    string                          `json:"controllerId"`
-	AnimatedPropKey string                          `json:"animatedPropKey"`
-	Method          duit_animations.AnimationMethod `json:"method"`
-}
-
 type timerEvent struct {
 	Event
 	Delay  int         `json:"delay"`
 	TEvent interface{} `json:"event"`
+}
+
+type commandEvent struct {
+	Event
+	ControllerId string `json:"controllerId"`
+	CommandData  any    `json:"commandData"`
 }
 
 // NewUpdateEvent creates a new update event.
@@ -144,17 +141,6 @@ func CommonEventGroup(events []interface{}) *commonEventGroup {
 	}
 }
 
-func AnimationTriggerEvent(animatedPropKey, controllerId string, method duit_animations.AnimationMethod) *animationTriggerEvent {
-	return &animationTriggerEvent{
-		Event: Event{
-			Type: animationTrigger,
-		},
-		AnimatedPropKey: animatedPropKey,
-		ControllerId:    controllerId,
-		Method:          method,
-	}
-}
-
 func TimerEvent(delay int, event interface{}) *timerEvent {
 	return &timerEvent{
 		Event: Event{
@@ -162,5 +148,15 @@ func TimerEvent(delay int, event interface{}) *timerEvent {
 		},
 		Delay:  delay,
 		TEvent: event,
+	}
+}
+
+func CommandEvent(controllerId string, commandData any) *commandEvent {
+	return &commandEvent{
+		Event: Event{
+			Type: command,
+		},
+		ControllerId: controllerId,
+		CommandData:  commandData,
 	}
 }
