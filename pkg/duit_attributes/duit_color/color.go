@@ -22,5 +22,5 @@ func (color *ColorRGBO) MarshalJSON() ([]byte, error) {
 }
 
 type Color interface {
-	ColorString |  *ColorRGBO
+	ColorString | *ColorRGBO
 }

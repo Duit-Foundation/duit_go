@@ -1,6 +1,6 @@
 package duit_flex
 
-type BoxConstraits struct {
+type BoxConstraints struct {
 	MinWidth  float32 `json:"minWidth,omitempty"`
 	MaxWidth  float32 `json:"maxWidth,omitempty"`
 	MinHeight float32 `json:"minHeight,omitempty"`
