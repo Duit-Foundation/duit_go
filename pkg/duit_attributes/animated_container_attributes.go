@@ -24,5 +24,5 @@ type AnimatedContainerAttributes[TInsets duit_edge_insets.EdgeInsets, TColor dui
 	Margin               TInsets                                `json:"margin,omitempty"`
 	Alignment            duit_alignment.Alignment               `json:"alignment,omitempty"`
 	TransformAlignment   duit_alignment.Alignment               `json:"transformAlignment,omitempty"`
-	Constraints          *duit_flex.BoxConstraits               `json:"constraints,omitempty"`
+	Constraints          *duit_flex.BoxConstraints               `json:"constraints,omitempty"`
 }

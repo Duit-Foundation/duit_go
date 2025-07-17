@@ -137,8 +137,8 @@ func EdgeInsetsTween[TInsets duit_edge_insets.EdgeInsets](animatedPropKey string
 	}
 }
 
-func BoxConstraintsTween(animatedPropKey string, begin, end duit_flex.BoxConstraits, duration int, trigger AnimationTrigger, method AnimationMethod, reverseOnRepeat bool, curve Curves) *tweenBase[duit_flex.BoxConstraits] {
-	return &tweenBase[duit_flex.BoxConstraits]{
+func BoxConstraintsTween(animatedPropKey string, begin, end duit_flex.BoxConstraints, duration int, trigger AnimationTrigger, method AnimationMethod, reverseOnRepeat bool, curve Curves) *tweenBase[duit_flex.BoxConstraints] {
+	return &tweenBase[duit_flex.BoxConstraints]{
 		TweenType:       "boxConstraintsTween",
 		AnimatedPropKey: animatedPropKey,
 		Duration:        duration,

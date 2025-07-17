@@ -9,7 +9,7 @@ import (
 	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_utils"
 )
 
-type bottomSheetCommand[TAction duit_core.Action, TColor duit_color.Color, TShape duit_decoration.ShapeBorder[TColor]] struct {
+type BottomSheetCommand[TAction duit_core.Action, TColor duit_color.Color, TShape duit_decoration.ShapeBorder[TColor]] struct {
 	Type                                string                              `json:"type"`
 	Action                              OverlayAction                       `json:"action"`
 	OnClose                             *TAction                            `json:"onClose,omitempty"`
@@ -21,7 +21,7 @@ type bottomSheetCommand[TAction duit_core.Action, TColor duit_color.Color, TShap
 	EnableDrag                          duit_utils.Tristate[bool]           `json:"enableDrag,omitempty"`
 	ShowDragHandle                      duit_utils.Tristate[bool]           `json:"showDragHandle,omitempty"`
 	ScrollControlDisabledMaxHeightRatio duit_utils.Tristate[float32]        `json:"scrollControlDisabledMaxHeightRatio,omitempty"`
-	Constraints                         *duit_flex.BoxConstraits            `json:"constraints,omitempty"`
+	Constraints                         *duit_flex.BoxConstraints            `json:"constraints,omitempty"`
 	AnchorPoint                         *duit_flex.Offset                   `json:"anchorPoint,omitempty"`
 	BackgroundColor                     TColor                              `json:"backgroundColor,omitempty"`
 	BarrierColor                        TColor                              `json:"barrierColor,omitempty"`
@@ -37,7 +37,7 @@ type BottomSheetUIProps[TColor duit_color.Color, TShape duit_decoration.ShapeBor
 	EnableDrag                          duit_utils.Tristate[bool]           `json:"enableDrag,omitempty"`
 	ShowDragHandle                      duit_utils.Tristate[bool]           `json:"showDragHandle,omitempty"`
 	ScrollControlDisabledMaxHeightRatio duit_utils.Tristate[float32]        `json:"scrollControlDisabledMaxHeightRatio,omitempty"`
-	Constraints                         *duit_flex.BoxConstraits            `json:"constraints,omitempty"`
+	Constraints                         *duit_flex.BoxConstraints            `json:"constraints,omitempty"`
 	AnchorPoint                         *duit_flex.Offset                   `json:"anchorPoint,omitempty"`
 	BackgroundColor                     TColor        `json:"backgroundColor,omitempty"`
 	BarrierColor                        TColor         `json:"barrierColor,omitempty"`
@@ -48,8 +48,8 @@ type BottomSheetUIProps[TColor duit_color.Color, TShape duit_decoration.ShapeBor
 func NewBottomSheetCommand[TAction duit_core.Action, TColor duit_color.Color, TShape duit_decoration.ShapeBorder[TColor]](
 	commandProps *OverlayCommandProps[TAction],
 	uiProps *BottomSheetUIProps[TColor, TShape],
-) *bottomSheetCommand[TAction, TColor, TShape] {
-	return &bottomSheetCommand[TAction, TColor, TShape]{
+) *BottomSheetCommand[TAction, TColor, TShape] {
+	return &BottomSheetCommand[TAction, TColor, TShape]{
 		Type:                                "bottomSheet",
 		Content:                             commandProps.Content,
 		Action:                              commandProps.Action,
