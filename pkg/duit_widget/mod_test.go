@@ -27,6 +27,14 @@ func TextAnimatedCrossFadeChildValidation(t *testing.T) {
 			Text(&duit_attributes.TextAttributes[duit_color.ColorString]{}, "text3", false),
 		},
 	)
+}
 
-	// t.Errorf("AnimatedCrossFade must panic")
+func TestFragment(t *testing.T) {
+	defer func() {
+		if r := recover(); r == nil {
+			t.Errorf("The code did not panic")
+		}
+	}()
+
+	Fragment("", "")
 }
