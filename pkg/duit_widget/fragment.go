@@ -1,6 +1,6 @@
 package duit_widget
 
-import "github.com/Duit-Foundation/duit_go/v3/pkg/duit_core"
+import "github.com/Duit-Foundation/duit_go/v4/pkg/duit_core"
 
 // Fragment creates a Fragment widget element.
 //

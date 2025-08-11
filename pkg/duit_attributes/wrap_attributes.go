@@ -4,12 +4,12 @@ import (
 	"encoding/json"
 	"errors"
 
-	animations "github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_animations"
-	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_clip"
-	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_cross_axis"
-	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_flex"
-	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_main_axis"
-	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_text_properties"
+	animations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_clip"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_cross_axis"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_main_axis"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_text_properties"
 )
 
 type WrapAttributes struct {

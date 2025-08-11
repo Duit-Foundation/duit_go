@@ -1,8 +1,8 @@
 package duit_widget
 
 import (
-	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes"
-	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_core"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_core"
 )
 
 func AnimatedCrossFade(attributes *duit_attributes.AnimatedCrossFadeAttributes, id string, children []*duit_core.DuitElementModel) *duit_core.DuitElementModel {

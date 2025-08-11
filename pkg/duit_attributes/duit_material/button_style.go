@@ -1,11 +1,11 @@
 package duit_material
 
 import (
-	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_color"
-	duit_decoration "github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_decorations"
-	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_edge_insets"
-	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_flex"
-	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_text_properties"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_color"
+	duit_decoration "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_decorations"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_edge_insets"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_text_properties"
 )
 
 type ButtonStyle[TColor duit_color.Color, TInsets duit_edge_insets.EdgeInsets, TShape duit_decoration.ShapeBorder[TColor]] struct {

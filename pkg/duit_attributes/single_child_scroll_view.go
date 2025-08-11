@@ -1,10 +1,10 @@
 package duit_attributes
 
 import (
-	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_clip"
-	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_edge_insets"
-	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_flex"
-	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_gestures"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_clip"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_edge_insets"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_gestures"
 )
 
 type SingleChildScrollViewAttributes[TInsets duit_edge_insets.EdgeInsets] struct {

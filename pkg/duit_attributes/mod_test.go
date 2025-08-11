@@ -4,11 +4,11 @@ import (
 	"encoding/json"
 	"testing"
 
-	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_color"
-	duit_decoration "github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_decorations"
-	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_edge_insets"
-	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_painting"
-	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_utils"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_color"
+	duit_decoration "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_decorations"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_edge_insets"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_painting"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
 func TestBackdropFilter(t *testing.T) {

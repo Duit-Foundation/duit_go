@@ -3,7 +3,7 @@ package duit_attributes
 import (
 	"encoding/json"
 	
-	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_utils"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
 type OffstageAttributes struct {

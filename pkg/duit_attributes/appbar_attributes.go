@@ -4,14 +4,14 @@ import (
 	"encoding/json"
 	"fmt"
 
-	animations "github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_animations"
-	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_clip"
-	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_color"
-	decorations "github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_decorations"
-	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_edge_insets"
-	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_text_properties"
-	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_core"
-	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_utils"
+	animations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_clip"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_color"
+	decorations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_decorations"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_edge_insets"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_text_properties"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_core"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
 type AppBarAttributes[TColor duit_color.Color, TInsets duit_edge_insets.EdgeInsets, TShape decorations.ShapeBorder[TColor]] struct {

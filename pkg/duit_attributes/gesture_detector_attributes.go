@@ -1,8 +1,8 @@
 package duit_attributes
 
 import (
-	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_gestures"
-	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_core"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_gestures"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_core"
 )
 
 type GestureDetectorAttributes[TAction duit_core.Action] struct {

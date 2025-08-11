@@ -1,10 +1,10 @@
 package duit_attributes
 
 import (
-	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_color"
-	duit_decoration "github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_decorations"
-	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_material"
-	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_core"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_color"
+	duit_decoration "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_decorations"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_material"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_core"
 )
 
 type InkwellAttributes[TColor duit_color.Color, TAction duit_core.Action, TShape duit_decoration.ShapeBorder[TColor]] struct {

@@ -1,8 +1,8 @@
 package duit_widget
 
 import (
-	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes"
-	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_core"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_core"
 )
 
 func CustomScrollView(attributes *duit_attributes.CustomScrollViewAttributes, id string, controlled bool, slivers []*duit_core.DuitElementModel) *duit_core.DuitElementModel {

@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"errors"
 
-	animations "github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_animations"
+	animations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
 )
 
 type SliverAnimatedpacityAttributes struct {

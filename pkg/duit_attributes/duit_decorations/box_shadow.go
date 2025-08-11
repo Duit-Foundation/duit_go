@@ -1,8 +1,8 @@
 package duit_decoration
 
 import (
-	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_color"
-	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_flex"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_color"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
 )
 
 type BoxShadow[T duit_color.Color] struct {

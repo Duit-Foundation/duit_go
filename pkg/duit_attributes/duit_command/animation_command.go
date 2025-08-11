@@ -1,6 +1,6 @@
 package duit_command
 
-import "github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_animations"
+import "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
 
 type AnimationCommand struct {
 	Type            string                           `json:"type"`

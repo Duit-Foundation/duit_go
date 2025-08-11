@@ -1,8 +1,8 @@
 package duit_attributes
 
 import (
-	animations "github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_animations"
-	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_painting"
+	animations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_painting"
 )
 
 type BackdropFilterAttributes[T duit_painting.ImageFilter] struct {

@@ -1,6 +1,6 @@
 package duit_builder
 
-import "github.com/Duit-Foundation/duit_go/v3/pkg/duit_core"
+import "github.com/Duit-Foundation/duit_go/v4/pkg/duit_core"
 
 type Builder struct {
 	ChildObjects              []*duit_core.DuitElementModel `json:"childObjects,omitempty"`

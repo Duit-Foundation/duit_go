@@ -1,9 +1,9 @@
 package duit_decoration
 
 import (
-	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_color"
-	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_edge_insets"
-	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_text_properties"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_color"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_edge_insets"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_text_properties"
 )
 
 type InputDecoration[TInsets duit_edge_insets.EdgeInsets, TColor duit_color.Color] struct {

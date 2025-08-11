@@ -1,8 +1,8 @@
 package duit_widget
 
 import (
-	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes"
-	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_core"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_core"
 )
 
 func RemoteSubtree(attributes *duit_attributes.RemoteSubtreeAttributes, id string) *duit_core.DuitElementModel {
