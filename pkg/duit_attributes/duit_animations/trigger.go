@@ -1,6 +1,6 @@
 package duit_animations
 
-type AnimationTrigger uint8
+type AnimationTrigger = uint8
 
 const (
 	OnEnter = iota

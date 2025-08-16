@@ -1,20 +1,18 @@
 package duit_attributes
 
 import (
-	"encoding/json"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
 type AbsorbPointerAttributes struct {
-	ValueReferenceHolder
-	Absorbing *bool `json:"absorbing,omitempty"`
+	*ValueReferenceHolder
+	Absorbing duit_utils.Tristate[bool] `json:"absorbing,omitempty"`
 }
 
-func (attributes *AbsorbPointerAttributes) MarshalJSON() ([]byte, error) {
-	if attributes.Absorbing == nil {
-		var bPtr = duit_utils.BoolPtr(true)
-		attributes.Absorbing = bPtr
+func (r *AbsorbPointerAttributes) Validate() error {
+	if err := r.ValueReferenceHolder.Validate(); err != nil {
+		return err
 	}
 
-	return json.Marshal(*attributes)
+	return nil
 }

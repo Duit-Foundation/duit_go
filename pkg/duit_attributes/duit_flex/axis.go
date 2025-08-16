@@ -1,6 +1,6 @@
 package duit_flex
 
-type Axis string
+type Axis = string
 
 const (
 	Horizontal Axis = "horizontal"

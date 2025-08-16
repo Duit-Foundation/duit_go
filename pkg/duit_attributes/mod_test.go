@@ -1,247 +1,191 @@
 package duit_attributes
 
 import (
-	"encoding/json"
 	"testing"
 
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_color"
 	duit_decoration "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_decorations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_edge_insets"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_painting"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_text_properties"
 )
 
-func TestBackdropFilter(t *testing.T) {
-	blur := duit_painting.NewBlurImageFilter(1, 2, "")
-
-	attr := &BackdropFilterAttributes[duit_painting.BlurImageFilter]{
-		Filter:    blur,
-		BlendMode: duit_painting.Clear,
+func TestAlignAttributesValidation(t *testing.T) {
+	attrs := &AlignAttributes{
+		WidthFactor: 1.1,
+		ValueReferenceHolder: &ValueReferenceHolder{
+			Refs: []ValueRef{},
+		},
+		AnimatedPropertyOwner: &duit_animations.AnimatedPropertyOwner{
+			AffectedProperties: []string{},
+		},
+		ThemeConsumer: &ThemeConsumer{},
 	}
 
-	_, err := json.Marshal(attr)
+	err := attrs.Validate()
+
+	if err == nil {
+		t.Fatal("must throw error")
+	}
+
+	attrs = &AlignAttributes{
+		Alignment: "center",
+	}
+
+	err = attrs.Validate()
 
 	if err != nil {
 		t.Fatal(err)
 	}
 }
 
-func TestContainerAttributes(t *testing.T) {
-	cont := &ContainerAttributes[duit_edge_insets.EdgeInsetsAll, *duit_color.ColorRGBO]{
-		Decoration: &duit_decoration.BoxDecoration[*duit_color.ColorRGBO]{
-			Color: &duit_color.ColorRGBO{R: 255, G: 0, B: 0, O: 1},
+func TestAnimatedAlignAttributesValidation(t *testing.T) {
+	attrs := &AnimatedAlignAttributes{
+		Alignment: "center",
+		ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
+			Duration: 1,
 		},
 	}
 
-	j, err := json.Marshal(cont)
+	err := attrs.Validate()
 
 	if err != nil {
 		t.Fatal(err)
 	}
 
-	val := map[string]interface{}{}
-
-	err = json.Unmarshal(j, &val)
-
-	if err != nil {
-		t.Fatal(err)
+	attrs = &AnimatedAlignAttributes{
+		ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
+			Duration: 1,
+		},
 	}
 
-	if val["decoration"] == nil {
-		t.Fatal("decoration is nil")
-	}
-
-	if val["color"] != nil {
-		t.Fatal("color is not nil")
-	}
-}
-
-func TestSafeAreaAttributes(t *testing.T) {
-	cont := &SafeAreaAttributes[duit_edge_insets.EdgeInsetsAll]{
-		Top:    duit_utils.BoolPtr(false),
-		Bottom: duit_utils.BoolPtr(true),
-	}
-
-	j, err := json.Marshal(cont)
-
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	val := map[string]interface{}{}
-
-	err = json.Unmarshal(j, &val)
-
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if val["top"] != false {
-		t.Fatal("top is nil")
-	}
-
-	if val["bottom"] != true {
-		t.Fatal("botton is nil")
-	}
-
-	if val["right"] != nil {
-		t.Fatal("right is not nil")
-	}
-}
-
-func TestSliverSafeAreaAttributes(t *testing.T) {
-	cont := &SliverSafeAreaAttributes[duit_edge_insets.EdgeInsetsAll]{
-		Top:    duit_utils.BoolPtr(false),
-		Bottom: duit_utils.BoolPtr(true),
-		Left:   duit_utils.BoolPtr(true),
-		Right:  duit_utils.BoolPtr(false),
-	}
-
-	j, err := json.Marshal(cont)
-
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	val := map[string]interface{}{}
-
-	err = json.Unmarshal(j, &val)
-
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if val["top"] != false {
-		t.Fatal("top is not false")
-	}
-
-	if val["bottom"] != true {
-		t.Fatal("bottom is not true")
-	}
-
-	if val["left"] != true {
-		t.Fatal("left is not true")
-	}
-
-	if val["right"] != false {
-		t.Fatal("right is not false")
-	}
-}
-
-func TestGridViewAttributes(t *testing.T) {
-	attrsCommonWithValidationErr := &GridViewCommonAttributes[duit_edge_insets.EdgeInsetsAll]{}
-
-	_, err := json.Marshal(attrsCommonWithValidationErr)
+	err = attrs.Validate()
 
 	if err == nil {
-		t.Fatal(err)
+		t.Fatal("must throw error")
 	}
 
-	if attrsCommonWithValidationErr.Constructor != GridCommon {
-		t.Fatal("constructor is not GridCommon")
+	attrs = &AnimatedAlignAttributes{
+		ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
+			Duration: 1,
+		},
 	}
 
-	attrsCountWithValidationErr := &GridViewCountAttributes[duit_edge_insets.EdgeInsetsAll]{}
-
-	_, err = json.Marshal(attrsCountWithValidationErr)
-
-	if err == nil {
-		t.Fatal(err)
-	}
-
-	if attrsCountWithValidationErr.Constructor != GridCount {
-		t.Fatal(attrsCountWithValidationErr.Constructor)
-		t.Fatal("constructor is not GridCount")
-	}
-
-	attrsExtentWithValidationErr := &GridViewExtentAttributes[duit_edge_insets.EdgeInsetsAll]{}
-
-	_, err = json.Marshal(attrsExtentWithValidationErr)
-
-	if err == nil {
-		t.Fatal(err)
-	}
-
-	if attrsExtentWithValidationErr.Constructor != GridExtent {
-		t.Fatal("constructor is not GridExtent")
-	}
-
-	attrsBuilderWithValidationErr := &GridViewBuilderAttributes[duit_edge_insets.EdgeInsetsAll]{}
-
-	_, err = json.Marshal(attrsBuilderWithValidationErr)
-
-	if err == nil {
-		t.Fatal(err)
-	}
-
-	if attrsBuilderWithValidationErr.Constructor != GridBuilder {
-		t.Fatal("constructor is not GridBuilder")
-	}
-
-}
-
-func TestAppBarAttributes(t *testing.T) {
-	attrs := &AppBarAttributes[duit_color.ColorString, duit_edge_insets.EdgeInsetsAll, duit_decoration.RoundedRectangleBorder[duit_color.ColorString]]{}
-
-	_, err := json.Marshal(attrs)
-
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if *attrs.AutomaticallyImplyLeading == false {
-		t.Fatal("automaticallyImplyLeading is not true")
-	}
-
-	if *attrs.Primary == false {
-		t.Fatal("primary is not true")
-	}
-
-	invalidAttrs := &AppBarAttributes[duit_color.ColorString, duit_edge_insets.EdgeInsetsAll, duit_decoration.RoundedRectangleBorder[duit_color.ColorString]]{
-		ToolbarOpacity: 1.1,
-	}
-
-	_, err = json.Marshal(invalidAttrs)
+	err = attrs.Validate()
 
 	if err == nil {
 		t.Fatal("must throw error")
 	}
 }
 
-func TestAnimatedScaleAttributes(t *testing.T) {
-	attrs := &AnimatedScaleAttributes{
-		Scale: 0.0,
+func TestAnimatedBuilderAttributesValidation(t *testing.T) {
+	attrs := &AnimatedBuilderAttributes{
+		Tweens: []any{
+			duit_animations.Tween("opacity", 0.0, 1.0, 1, duit_animations.OnEnter, duit_animations.Forward, false, ""),
+		},
 	}
 
-	_, err := json.Marshal(attrs)
-
-	if err == nil {
-		t.Fatal("must throw error")
-	}
-}
-
-func TestSliverOpacityAttributes(t *testing.T) {
-	attrs := &SliverOpacityAttributes{
-		Opacity: 1.0,
-	}
-
-	_, err := json.Marshal(attrs)
+	err := attrs.Validate()
 
 	if err != nil {
 		t.Fatal(err)
 	}
+}
 
-	if attrs.Opacity != 1.0 {
-		t.Fatal("opacity is not 1.0")
-	}
+func TestAnimatedBuilderAttributes_Validate_EmptyTweens(t *testing.T) {
+	attrs := &AnimatedBuilderAttributes{}
 
-	invalidAttrs := &SliverOpacityAttributes{
-		Opacity: 1.1,
-	}
-
-	_, err = json.Marshal(invalidAttrs)
-
+	err := attrs.Validate()
 	if err == nil {
-		t.Fatal("must throw error")
+		t.Fatal("must throw error for empty tweens")
+	}
+}
+
+func TestAnimatedBuilderAttributes_Validate_InvalidTweenType(t *testing.T) {
+	attrs := &AnimatedBuilderAttributes{
+		Tweens: []any{
+			"invalid",
+		},
+	}
+
+	err := attrs.Validate()
+	if err == nil {
+		t.Fatal("must throw error for invalid tween type")
+	}
+}
+
+func TestAnimatedBuilderAttributes_Validate_AllSupportedTweens(t *testing.T) {
+	textStyleBeginString := duit_text_properties.TextStyle[duit_color.ColorString]{
+		Color: duit_color.ColorString("#ff00ff"),
+	}
+	textStyleEndString := duit_text_properties.TextStyle[duit_color.ColorString]{
+		Color: duit_color.ColorString("#00ff00"),
+	}
+
+	textStyleBeginRGBO := duit_text_properties.TextStyle[*duit_color.ColorRGBO]{
+		Color: &duit_color.ColorRGBO{R: 10, G: 20, B: 30, O: 1},
+	}
+	textStyleEndRGBO := duit_text_properties.TextStyle[*duit_color.ColorRGBO]{
+		Color: &duit_color.ColorRGBO{R: 30, G: 20, B: 10, O: 1},
+	}
+
+	decorationBeginString := duit_decoration.BoxDecoration[duit_color.ColorString]{
+		Color: duit_color.ColorString("#123456"),
+	}
+	decorationEndString := duit_decoration.BoxDecoration[duit_color.ColorString]{
+		Color: duit_color.ColorString("#abcdef"),
+	}
+
+	decorationBeginRGBO := duit_decoration.BoxDecoration[*duit_color.ColorRGBO]{
+		Color: &duit_color.ColorRGBO{R: 1, G: 2, B: 3, O: 1},
+	}
+	decorationEndRGBO := duit_decoration.BoxDecoration[*duit_color.ColorRGBO]{
+		Color: &duit_color.ColorRGBO{R: 3, G: 2, B: 1, O: 1},
+	}
+
+	attrs := &AnimatedBuilderAttributes{
+		Tweens: []any{
+			// float
+			duit_animations.Tween("opacity", 0.0, 1.0, 1, duit_animations.OnEnter, duit_animations.Forward, false, ""),
+			// colors
+			duit_animations.ColorTween("color", duit_color.ColorString("#000000"), duit_color.ColorString("#ffffff"), 1, duit_animations.OnEnter, duit_animations.Forward, false, ""),
+			duit_animations.ColorTween("color", &duit_color.ColorRGBO{R: 0, G: 0, B: 0, O: 1}, &duit_color.ColorRGBO{R: 255, G: 255, B: 255, O: 1}, 1, duit_animations.OnEnter, duit_animations.Forward, false, ""),
+			// text styles
+			duit_animations.TextStyleTween("textStyle", textStyleBeginString, textStyleEndString, 1, duit_animations.OnEnter, duit_animations.Forward, false, ""),
+			duit_animations.TextStyleTween("textStyle", textStyleBeginRGBO, textStyleEndRGBO, 1, duit_animations.OnEnter, duit_animations.Forward, false, ""),
+			// decorations
+			duit_animations.DecorationTween("decoration", decorationBeginString, decorationEndString, 1, duit_animations.OnEnter, duit_animations.Forward, false, ""),
+			duit_animations.DecorationTween("decoration", decorationBeginRGBO, decorationEndRGBO, 1, duit_animations.OnEnter, duit_animations.Forward, false, ""),
+			// alignment
+			duit_animations.AlignmentTween("alignment", "center", "topLeft", 1, duit_animations.OnEnter, duit_animations.Forward, false, ""),
+			// edge insets
+			duit_animations.EdgeInsetsTween("paddingAll", duit_edge_insets.EdgeInsetsAll(4), duit_edge_insets.EdgeInsetsAll(8), 1, duit_animations.OnEnter, duit_animations.Forward, false, ""),
+			duit_animations.EdgeInsetsTween("paddingLTRB", duit_edge_insets.EdgeInsetsLTRB{1, 2, 3, 4}, duit_edge_insets.EdgeInsetsLTRB{4, 3, 2, 1}, 1, duit_animations.OnEnter, duit_animations.Forward, false, ""),
+			duit_animations.EdgeInsetsTween("paddingSym", duit_edge_insets.EdgeInsetsSymmentric{5, 10}, duit_edge_insets.EdgeInsetsSymmentric{10, 5}, 1, duit_animations.OnEnter, duit_animations.Forward, false, ""),
+			// constraints and size
+			duit_animations.BoxConstraintsTween("constraints", duit_flex.BoxConstraints{MinWidth: 0, MinHeight: 0}, duit_flex.BoxConstraints{MaxWidth: 100, MaxHeight: 100}, 1, duit_animations.OnEnter, duit_animations.Forward, false, ""),
+			duit_animations.SizeTween("size", duit_flex.Size{Width: 10, Height: 20}, duit_flex.Size{Width: 20, Height: 40}, 1, duit_animations.OnEnter, duit_animations.Forward, false, ""),
+			// border
+			duit_animations.BorderTween("border", duit_decoration.Outline, duit_decoration.Underline, 1, duit_animations.OnEnter, duit_animations.Forward, false, ""),
+			// group
+			duit_animations.TweenGroup([]any{
+				duit_animations.Tween("opacity", 0.0, 1.0, 1, duit_animations.OnEnter, duit_animations.Forward, false, ""),
+			}, "group1", 1, duit_animations.OnEnter, duit_animations.Forward, false, ""),
+		},
+	}
+
+	if err := attrs.Validate(); err != nil {
+		t.Fatal(err)
+	}
+}
+
+func TestAnimatedBuilderAttributes_Validate_NilTweenIsOk(t *testing.T) {
+	attrs := &AnimatedBuilderAttributes{
+		Tweens: []any{nil},
+	}
+
+	if err := attrs.Validate(); err != nil {
+		t.Fatal(err)
 	}
 }
