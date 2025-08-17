@@ -3,7 +3,7 @@ package duit_attributes
 import (
 	"errors"
 
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_action"
 )
 
 type LifecycleEventListenerAttributes struct {
@@ -25,27 +25,27 @@ func (r *LifecycleEventListenerAttributes) Validate() error {
 		return errors.New("at least one of the onStateChanged, onResumed, onInactive, onPaused, onDetached, onHidden properties must be non-nil")
 	}
 
-	if err := duit_utils.CheckActionType(r.OnStateChanged); err != nil {
+	if err := duit_action.CheckActionType(r.OnStateChanged); err != nil {
 		return err
 	}
 
-	if err := duit_utils.CheckActionType(r.OnResumed); err != nil {
+	if err := duit_action.CheckActionType(r.OnResumed); err != nil {
 		return err
 	}
 
-	if err := duit_utils.CheckActionType(r.OnInactive); err != nil {
+	if err := duit_action.CheckActionType(r.OnInactive); err != nil {
 		return err
 	}
 
-	if err := duit_utils.CheckActionType(r.OnPaused); err != nil {
+	if err := duit_action.CheckActionType(r.OnPaused); err != nil {
 		return err
 	}
 
-	if err := duit_utils.CheckActionType(r.OnDetached); err != nil {
+	if err := duit_action.CheckActionType(r.OnDetached); err != nil {
 		return err
 	}
 
-	if err := duit_utils.CheckActionType(r.OnHidden); err != nil {
+	if err := duit_action.CheckActionType(r.OnHidden); err != nil {
 		return err
 	}
 

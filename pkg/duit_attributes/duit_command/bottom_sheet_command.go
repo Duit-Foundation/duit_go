@@ -1,6 +1,7 @@
 package duit_command
 
 import (
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_action"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_clip"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_color"
 	duit_decoration "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_decorations"
@@ -9,7 +10,7 @@ import (
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
-type BottomSheetCommand[TAction duit_core.Action, TColor duit_color.Color, TShape duit_decoration.ShapeBorder[TColor]] struct {
+type BottomSheetCommand[TAction duit_action.Action, TColor duit_color.Color, TShape duit_decoration.ShapeBorder[TColor]] struct {
 	Type                                string                              `json:"type"`
 	Action                              OverlayAction                       `json:"action"`
 	OnClose                             *TAction                            `json:"onClose,omitempty"`
@@ -45,7 +46,7 @@ type BottomSheetUIProps[TColor duit_color.Color, TShape duit_decoration.ShapeBor
 	ClipBehavior                        duit_utils.Tristate[duit_clip.Clip] `json:"clipBehavior,omitempty"`
 }
 
-func NewBottomSheetCommand[TAction duit_core.Action, TColor duit_color.Color, TShape duit_decoration.ShapeBorder[TColor]](
+func NewBottomSheetCommand[TAction duit_action.Action, TColor duit_color.Color, TShape duit_decoration.ShapeBorder[TColor]](
 	commandProps *OverlayCommandProps[TAction],
 	uiProps *BottomSheetUIProps[TColor, TShape],
 ) *BottomSheetCommand[TAction, TColor, TShape] {

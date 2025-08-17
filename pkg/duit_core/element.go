@@ -1,6 +1,7 @@
 package duit_core
 
 import (
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_action"
 	"github.com/google/uuid"
 )
 
@@ -61,15 +62,12 @@ func (e *DuitElementModel) CreateElement(elemType DuitElementType, elemId string
 		id = elemId
 	}
 
-	switch act := action.(type) {
-	case *RemoteAction:
-	case *LocalAction:
-	case *ScriptAction:
-	case nil:
-		e.Action = act
-	default:
-		panic("Invalid action type. Must be instance of duit_core.Action or nil")
+	err := duit_action.CheckActionType(action)
+	if err != nil {
+		panic(err)
 	}
+
+	e.Action = action
 
 	switch mayHaveChildElements {
 	case 1:

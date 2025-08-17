@@ -3,7 +3,7 @@ package duit_animations
 import (
 	"errors"
 
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_action"
 )
 
 type ImplicitAnimatable struct {
@@ -21,7 +21,7 @@ func (r *ImplicitAnimatable) Validate() error {
 		return errors.New("duration property is required and must be greater than 0")
 	}
 
-	if err := duit_utils.CheckActionType(r.OnEnd); err != nil {
+	if err := duit_action.CheckActionType(r.OnEnd); err != nil {
 		return err
 	}
 

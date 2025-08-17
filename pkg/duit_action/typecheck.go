@@ -1,16 +1,14 @@
-package duit_utils
+package duit_action
 
 import (
 	"errors"
-
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_core"
 )
 
 func CheckActionType(action any) error {
 	switch action.(type) {
-	case *duit_core.RemoteAction:
-	case *duit_core.LocalAction:
-	case *duit_core.ScriptAction:
+	case *RemoteAction:
+	case *LocalAction:
+	case *ScriptAction:
 	case nil:
 		return nil
 	default:

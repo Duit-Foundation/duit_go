@@ -1,11 +1,11 @@
 package duit_attributes
 
 import (
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_action"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_gestures"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_core"
 )
 
-type GestureDetectorAttributes[TAction duit_core.Action] struct {
+type GestureDetectorAttributes[TAction duit_action.Action] struct {
 	ValueReferenceHolder
 	OnTap                 *TAction                        `json:"onTap,omitempty"`
 	OnTapDown             *TAction                        `json:"onTapDown,omitempty"`

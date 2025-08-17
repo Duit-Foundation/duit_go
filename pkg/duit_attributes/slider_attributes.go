@@ -1,13 +1,13 @@
 package duit_attributes
 
 import (
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_action"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_color"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_gestures"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_material"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_core"
 )
 
-type SliderAttributes[TAction duit_core.Action, TColor duit_color.Color] struct {
+type SliderAttributes[TAction duit_action.Action, TColor duit_color.Color] struct {
 	ValueReferenceHolder
 	ThemeConsumer
 	Value                float32                                      `json:"value"`
