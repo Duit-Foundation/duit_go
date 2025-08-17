@@ -1,0 +1,6 @@
+---
+description: Writing tests for structures representing widget attributes
+alwaysApply: false
+---
+
+- Never cover embedded fields of structures with tests unless explicitly required.

@@ -2,6 +2,9 @@ package duit_decoration
 
 import "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_color"
 
+// BoxDecoration is a description of how to paint a box.
+//
+// Ref: https://api.flutter.dev/flutter/painting/BoxDecoration-class.html
 type BoxDecoration[T duit_color.Color] struct {
 	Color        T                  `json:"color,omitempty"`
 	Boder        *BorderSide[T]     `json:"border,omitempty"`
