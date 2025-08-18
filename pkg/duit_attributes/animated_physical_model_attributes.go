@@ -24,45 +24,49 @@ type AnimatedPhysicalModelAttributes struct {
 	AnimateShadowColor duit_utils.Tristate[bool]       `json:"animateShadowColor,omitempty"`
 }
 
-func (a *AnimatedPhysicalModelAttributes) Validate() error {
-	if err := a.ImplicitAnimatable.Validate(); err != nil {
+func (r *AnimatedPhysicalModelAttributes) Validate() error {
+	if r.ImplicitAnimatable != nil {
+		if err := r.ImplicitAnimatable.Validate(); err != nil {
+			return err
+		}
+	} else {
+		return errors.New("implicitAnimatable property is required on implicit animated widgets")
+	}
+
+	if err := r.ThemeConsumer.Validate(); err != nil {
 		return err
 	}
 
-	if err := a.ThemeConsumer.Validate(); err != nil {
+	if err := r.ValueReferenceHolder.Validate(); err != nil {
 		return err
 	}
 
-	if err := a.ValueReferenceHolder.Validate(); err != nil {
-		return err
-	}
-
-	if a.Elevation != nil {
-		if *a.Elevation < 0 {
+	if r.Elevation != nil {
+		if *r.Elevation < 0 {
 			return errors.New("elevation must be greater than 0")
 		}
 	} else {
 		return errors.New("elevation property is required")
 	}
 
-	if a.Color != nil {
-		if err := a.Color.Validate(); err != nil {
+	if r.Color != nil {
+		if err := r.Color.Validate(); err != nil {
 			return err
 		}
 	} else {
 		return errors.New("color property is required")
 	}
 
-	if a.ShadowColor != nil {
-		if err := a.ShadowColor.Validate(); err != nil {
+	if r.ShadowColor != nil {
+		if err := r.ShadowColor.Validate(); err != nil {
 			return err
 		}
 	} else {
 		return errors.New("shadowColor property is required")
 	}
 
-	if a.BorderRadius != nil {
-		if err := a.BorderRadius.Validate(); err != nil {
+	if r.BorderRadius != nil {
+		if err := r.BorderRadius.Validate(); err != nil {
 			return err
 		}
 	}

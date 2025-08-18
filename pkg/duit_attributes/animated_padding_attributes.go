@@ -14,21 +14,25 @@ type AnimatedPaddingAttributes struct {
 	Padding *duit_edge_insets.EdgeInsetsV2 `json:"padding,omitempty"`
 }
 
-func (a *AnimatedPaddingAttributes) Validate() error {
-	if err := a.ImplicitAnimatable.Validate(); err != nil {
+func (r *AnimatedPaddingAttributes) Validate() error {
+	if r.ImplicitAnimatable != nil {
+		if err := r.ImplicitAnimatable.Validate(); err != nil {
+			return err
+		}
+	} else {
+		return errors.New("implicitAnimatable property is required on implicit animated widgets")
+	}
+
+	if err := r.ThemeConsumer.Validate(); err != nil {
 		return err
 	}
 
-	if err := a.ThemeConsumer.Validate(); err != nil {
+	if err := r.ValueReferenceHolder.Validate(); err != nil {
 		return err
 	}
 
-	if err := a.ValueReferenceHolder.Validate(); err != nil {
-		return err
-	}
-
-	if a.Padding != nil {
-		if err := a.Padding.Validate(); err != nil {
+	if r.Padding != nil {
+		if err := r.Padding.Validate(); err != nil {
 			return err
 		}
 	} else {

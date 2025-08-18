@@ -17,8 +17,12 @@ type AnimatedAlignAttributes struct {
 }
 
 func (r *AnimatedAlignAttributes) Validate() error {
-	if err := r.ImplicitAnimatable.Validate(); err != nil {
-		return err
+	if r.ImplicitAnimatable != nil {
+		if err := r.ImplicitAnimatable.Validate(); err != nil {
+			return err
+		}
+	} else {
+		return errors.New("implicitAnimatable property is required on implicit animated widgets")
 	}
 
 	if err := r.ThemeConsumer.Validate(); err != nil {

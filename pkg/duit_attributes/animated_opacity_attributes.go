@@ -1,6 +1,8 @@
 package duit_attributes
 
 import (
+	"errors"
+
 	animations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
@@ -12,21 +14,25 @@ type AnimatedOpacityAttributes struct {
 	Opacity duit_utils.Tristate[float32] `json:"opacity,omitempty"`
 }
 
-func (a *AnimatedOpacityAttributes) Validate() error {
-	if err := a.ImplicitAnimatable.Validate(); err != nil {
+func (r *AnimatedOpacityAttributes) Validate() error {
+	if r.ImplicitAnimatable != nil {
+		if err := r.ImplicitAnimatable.Validate(); err != nil {
+			return err
+		}
+	} else {
+		return errors.New("implicitAnimatable property is required on implicit animated widgets")
+	}
+
+	if err := r.ThemeConsumer.Validate(); err != nil {
 		return err
 	}
 
-	if err := a.ThemeConsumer.Validate(); err != nil {
+	if err := r.ValueReferenceHolder.Validate(); err != nil {
 		return err
 	}
 
-	if err := a.ValueReferenceHolder.Validate(); err != nil {
-		return err
-	}
-
-	if a.Opacity != nil {
-		if err := RangeValidator(*a.Opacity, 0, 1); err != nil {
+	if r.Opacity != nil {
+		if err := RangeValidator(*r.Opacity, 0, 1); err != nil {
 			return err
 		}
 	}

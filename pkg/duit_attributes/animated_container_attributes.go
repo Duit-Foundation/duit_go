@@ -1,6 +1,8 @@
 package duit_attributes
 
 import (
+	"errors"
+
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_alignment"
 	animations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_clip"
@@ -28,16 +30,20 @@ type AnimatedContainerAttributes[TInsets duit_edge_insets.EdgeInsets, TColor dui
 }
 
 //Делать валидацию внутренних свойств, где это требуется
-func (a *AnimatedContainerAttributes[TInsets, TColor]) Validate() error {
-	if err := a.ImplicitAnimatable.Validate(); err != nil {
+func (r *AnimatedContainerAttributes[TInsets, TColor]) Validate() error {
+	if r.ImplicitAnimatable != nil {
+		if err := r.ImplicitAnimatable.Validate(); err != nil {
+			return err
+		}
+	} else {
+		return errors.New("implicitAnimatable property is required on implicit animated widgets")
+	}
+
+	if err := r.ValueReferenceHolder.Validate(); err != nil {
 		return err
 	}
 
-	if err := a.ValueReferenceHolder.Validate(); err != nil {
-		return err
-	}
-
-	if err := a.ThemeConsumer.Validate(); err != nil {
+	if err := r.ThemeConsumer.Validate(); err != nil {
 		return err
 	}
 

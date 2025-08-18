@@ -22,20 +22,24 @@ type AnimatedCrossFadeAttributes struct {
 	CrossFadeState uint8 `json:"crossFadeState"`
 }
 
-func (a *AnimatedCrossFadeAttributes) Validate() error {
-	if err := a.ImplicitAnimatable.Validate(); err != nil {
+func (r *AnimatedCrossFadeAttributes) Validate() error {
+	if r.ImplicitAnimatable != nil {
+		if err := r.ImplicitAnimatable.Validate(); err != nil {
+			return err
+		}
+	} else {
+		return errors.New("implicitAnimatable property is required on implicit animated widgets")
+	}
+
+	if err := r.ThemeConsumer.Validate(); err != nil {
 		return err
 	}
 
-	if err := a.ThemeConsumer.Validate(); err != nil {
+	if err := r.ValueReferenceHolder.Validate(); err != nil {
 		return err
 	}
 
-	if err := a.ValueReferenceHolder.Validate(); err != nil {
-		return err
-	}
-
-	if a.CrossFadeState != 0 && a.CrossFadeState != 1 {
+	if r.CrossFadeState != 0 && r.CrossFadeState != 1 {
 		return errors.New("crossFadeState must be 0 or 1")
 	}
 
