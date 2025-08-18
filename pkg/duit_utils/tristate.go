@@ -1,6 +1,32 @@
 package duit_utils
 
-// Tristate represents a pointer to type T (can be nil)
+// Tristate represents a pointer to type T (can be nil).
+//
+// Tristate is used in the project in two main contexts:
+//
+// 1. JSON Serialization with omitempty for bool fields:
+//    Solves the problem where Go's omitempty excludes false values from JSON.
+//    With Tristate[bool]:
+//    - nil: field is omitted from JSON
+//    - &false: field appears in JSON as "field":false
+//    - &true: field appears in JSON as "field":true
+//
+//    Example:
+//        type Widget struct {
+//            Enabled Tristate[bool] `json:"enabled,omitempty"`
+//        }
+//
+// 2. Validation of required fields:
+//    Allows distinguishing between "field not provided" and "field has default value".
+//    Used in Validate() methods to check if required fields were explicitly set:
+//
+//    Example:
+//        func (w *Widget) Validate() error {
+//            if w.Value == nil {
+//                return errors.New("value property is required")
+//            }
+//            return nil
+//        }
 type Tristate[T any] *T
 
 // TristateFrom converts an input value of any type to a Tristate of type T.

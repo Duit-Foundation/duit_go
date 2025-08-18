@@ -6,8 +6,26 @@ import (
 )
 
 type ColoredBoxAttributes[T duit_color.Color] struct {
-	ValueReferenceHolder
-	animations.AnimatedPropertyOwner
-	ThemeConsumer
+	*ValueReferenceHolder
+	*animations.AnimatedPropertyOwner
+	*ThemeConsumer
 	Color T `json:"color,omitempty"`
+}
+
+func (r *ColoredBoxAttributes[T]) Validate() error {
+	if err := r.ThemeConsumer.Validate(); err != nil {
+		return err
+	}
+
+	if err := r.ValueReferenceHolder.Validate(); err != nil {
+		return err
+	}
+
+	if err := r.AnimatedPropertyOwner.Validate(); err != nil {
+		return err
+	}
+
+	//TODO: реализовать валидацию цвета, без рефликсии дженерик тип нельзя проверить корректно
+
+	return nil
 }
