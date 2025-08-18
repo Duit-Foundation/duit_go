@@ -1,9 +1,6 @@
 package duit_attributes
 
 import (
-	"encoding/json"
-	"fmt"
-
 	animations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_clip"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_color"
@@ -15,9 +12,9 @@ import (
 )
 
 type AppBarAttributes[TColor duit_color.Color, TInsets duit_edge_insets.EdgeInsets, TShape decorations.ShapeBorder[TColor]] struct {
-	ValueReferenceHolder
-	animations.AnimatedPropertyOwner
-	ThemeConsumer
+	*ValueReferenceHolder
+	*animations.AnimatedPropertyOwner
+	*ThemeConsumer
 	Title                     *duit_core.DuitElementModel             `json:"title,omitempty"`
 	Leading                   *duit_core.DuitElementModel             `json:"leading,omitempty"`
 	Actions                   []*duit_core.DuitElementModel           `json:"actions,omitempty"`
@@ -37,33 +34,39 @@ type AppBarAttributes[TColor duit_color.Color, TInsets duit_edge_insets.EdgeInse
 	ToolbarHeight             float32                                 `json:"toolbarHeight,omitempty"`
 	LeadingWidth              float32                                 `json:"leadingWidth,omitempty"`
 	ScrolledUnderElevation    float32                                 `json:"scrolledUnderElevation,omitempty"`
-	BottomOpacity             float32                                 `json:"bottomOpacity,omitempty"`
-	ToolbarOpacity            float32                                 `json:"toolbarOpacity,omitempty"`
-	ForceMaterialTransparency *bool                                   `json:"forceMaterialTransparency,omitempty"`
-	CenterTitle               *bool                                   `json:"centerTitle,omitempty"`
-	AutomaticallyImplyLeading *bool                                   `json:"automaticallyImplyLeading,omitempty"`
-	ExcludeHeaderSemantics    *bool                                   `json:"excludeHeaderSemantics,omitempty"`
-	Primary                   *bool                                   `json:"primary,omitempty"`
+	BottomOpacity             duit_utils.Tristate[float32]            `json:"bottomOpacity,omitempty"`
+	ToolbarOpacity            duit_utils.Tristate[float32]            `json:"toolbarOpacity,omitempty"`
+	ForceMaterialTransparency duit_utils.Tristate[bool]               `json:"forceMaterialTransparency,omitempty"`
+	CenterTitle               duit_utils.Tristate[bool]               `json:"centerTitle,omitempty"`
+	AutomaticallyImplyLeading duit_utils.Tristate[bool]               `json:"automaticallyImplyLeading,omitempty"`
+	ExcludeHeaderSemantics    duit_utils.Tristate[bool]               `json:"excludeHeaderSemantics,omitempty"`
+	Primary                   duit_utils.Tristate[bool]               `json:"primary,omitempty"`
 }
 
-func (a *AppBarAttributes[TColor, TInsets, TShape]) MarshalJSON() ([]byte, error) {
-	if a.AutomaticallyImplyLeading == nil {
-		var bPtr = duit_utils.BoolPtr(true)
-		a.AutomaticallyImplyLeading = bPtr
+func (r *AppBarAttributes[TColor, TInsets, TShape]) Validate() error {
+	if err := r.ThemeConsumer.Validate(); err != nil {
+		return err
 	}
 
-	if a.Primary == nil {
-		var bPtr = duit_utils.BoolPtr(true)
-		a.Primary = bPtr
+	if err := r.ValueReferenceHolder.Validate(); err != nil {
+		return err
 	}
 
-	if a.ToolbarOpacity < 0 || a.ToolbarOpacity > 1 {
-		return nil, fmt.Errorf("toolbarOpacity must be between 0 and 1")
+	if err := r.AnimatedPropertyOwner.Validate(); err != nil {
+		return err
 	}
 
-	if a.BottomOpacity < 0 || a.BottomOpacity > 1 {
-		return nil, fmt.Errorf("bottomOpacity must be between 0 and 1")
+	if r.BottomOpacity != nil {
+		if err := RangeValidator(*r.BottomOpacity, 0, 1); err != nil {
+			return err
+		}
 	}
-	
-	return json.Marshal(*a)
+
+	if r.ToolbarOpacity != nil {
+		if err := RangeValidator(*r.ToolbarOpacity, 0, 1); err != nil {
+			return err
+		}
+	}
+
+	return nil
 }

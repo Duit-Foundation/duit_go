@@ -6,3 +6,4 @@ alwaysApply: false
 - Never cover embedded fields and embedded structsures of structures with tests unless explicitly required.
 - Always add tests for a struct property if the property is of type duit_utils.Tristate[T]. Serialization to json should be tested.
 - The name of the file containing tests for the structure is formed according to the principle NAME_OF_TARGET_FILE + "_test.go"
+- When writing tests, you should only test those properties of structures that are explicitly used in the structure's methods.

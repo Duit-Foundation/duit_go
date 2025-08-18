@@ -1,0 +1,46 @@
+package duit_attributes_test
+
+import (
+	"testing"
+
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_alignment"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_clip"
+)
+
+func TestAnimatedSizeAttributes_Validate_ValidAttributes(t *testing.T) {
+	attrs := &duit_attributes.AnimatedSizeAttributes{
+		ClipBehavior: duit_clip.AntiAlias,
+		Alignment:    duit_alignment.Center,
+		ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
+			Duration: 300,
+			Curve:    duit_animations.Ease,
+		},
+	}
+
+	err := attrs.Validate()
+	if err != nil {
+		t.Fatal("expected no error for valid attributes, got:", err)
+	}
+}
+
+// Tests for ImplicitAnimatable embedded struct
+
+func TestAnimatedSizeAttributes_Validate_NilImplicitAnimatable(t *testing.T) {
+	attrs := &duit_attributes.AnimatedSizeAttributes{
+		ClipBehavior:       duit_clip.AntiAlias,
+		Alignment:          duit_alignment.Center,
+		ImplicitAnimatable: nil,
+	}
+
+	err := attrs.Validate()
+	if err == nil {
+		t.Fatal("expected error for nil ImplicitAnimatable")
+	}
+
+	expected := "implicitAnimatable property is required on implicit animated widgets"
+	if err.Error() != expected {
+		t.Fatalf("expected error message '%s', got '%s'", expected, err.Error())
+	}
+}
