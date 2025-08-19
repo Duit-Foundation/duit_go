@@ -78,3 +78,33 @@ func TestCheckTweenType(t *testing.T) {
 		}
 	}
 }
+
+func TestCheckTweenType_InvalidTypes(t *testing.T) {
+	invalidTypes := []any{
+		"invalid string",
+		123,
+		struct{ field string }{field: "test"},
+		[]string{"test"},
+		map[string]int{"key": 1},
+		func() {},
+		&struct{ field int }{field: 42},
+	}
+
+	for i, invalidType := range invalidTypes {
+		err := duit_animations.CheckTweenType(invalidType)
+		if err == nil {
+			t.Fatalf("expected error for invalid type at index %d (%T), but got nil", i, invalidType)
+		}
+		
+		if err.Error() != "invalid tween type. Must be instance of tweenBase or tweenGroup or nil" {
+			t.Fatalf("expected specific error message for invalid type at index %d, got: %s", i, err.Error())
+		}
+	}
+}
+
+func TestCheckTweenType_NilValue(t *testing.T) {
+	err := duit_animations.CheckTweenType(nil)
+	if err != nil {
+		t.Fatalf("expected no error for nil value, got: %s", err.Error())
+	}
+}
