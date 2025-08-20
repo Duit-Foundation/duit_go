@@ -66,6 +66,7 @@ func (c *ColorV2) Validate() error {
 
 		return nil
 	case [4]uint8:
+		//TODO: добавть валидацию i <= 0 || i >= 255
 		return nil
 	default:
 		return errors.New("invalid color type")
