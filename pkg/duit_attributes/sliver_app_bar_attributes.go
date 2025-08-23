@@ -1,9 +1,6 @@
 package duit_attributes
 
 import (
-	"encoding/json"
-	"fmt"
-
 	animations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_clip"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_color"
@@ -11,7 +8,6 @@ import (
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_edge_insets"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_text_properties"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_core"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
 type SliverAppBarAttributes[TColor duit_color.Color, TInsets duit_edge_insets.EdgeInsets, TShape decorations.ShapeBorder[TColor]] struct {
@@ -56,24 +52,24 @@ type SliverAppBarAttributes[TColor duit_color.Color, TInsets duit_edge_insets.Ed
 	Stretch                   *bool                                   `json:"stretch,omitempty"`
 }
 
-func (s *SliverAppBarAttributes[TColor, TInsets, TShape]) MarshalJSON() ([]byte, error) {
-	if s.AutomaticallyImplyLeading == nil {
-		var bPtr = duit_utils.BoolPtr(true)
-		s.AutomaticallyImplyLeading = bPtr
-	}
+// func (s *SliverAppBarAttributes[TColor, TInsets, TShape]) MarshalJSON() ([]byte, error) {
+// 	if s.AutomaticallyImplyLeading == nil {
+// 		var bPtr = duit_utils.BoolPtr(true)
+// 		s.AutomaticallyImplyLeading = bPtr
+// 	}
 
-	if s.Primary == nil {
-		var bPtr = duit_utils.BoolPtr(true)
-		s.Primary = bPtr
-	}
+// 	if s.Primary == nil {
+// 		var bPtr = duit_utils.BoolPtr(true)
+// 		s.Primary = bPtr
+// 	}
 
-	if s.ToolbarOpacity < 0 || s.ToolbarOpacity > 1 {
-		return nil, fmt.Errorf("toolbarOpacity must be between 0 and 1")
-	}
+// 	if s.ToolbarOpacity < 0 || s.ToolbarOpacity > 1 {
+// 		return nil, fmt.Errorf("toolbarOpacity must be between 0 and 1")
+// 	}
 
-	if s.BottomOpacity < 0 || s.BottomOpacity > 1 {
-		return nil, fmt.Errorf("bottomOpacity must be between 0 and 1")
-	}
+// 	if s.BottomOpacity < 0 || s.BottomOpacity > 1 {
+// 		return nil, fmt.Errorf("bottomOpacity must be between 0 and 1")
+// 	}
 
-	return json.Marshal(*s)
-}
+// 	return json.Marshal(*s)
+// }
