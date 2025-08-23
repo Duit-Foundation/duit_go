@@ -1,14 +1,17 @@
 package duit_attributes
 
 import (
+	"errors"
+
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_color"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_material"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
 type SwitchAttributes[TColor duit_color.Color] struct {
-	ValueReferenceHolder
-	ThemeConsumer
-	Value                 bool                                          `json:"value"`
+	*ValueReferenceHolder
+	*ThemeConsumer
+	Value                 duit_utils.Tristate[bool]                     `json:"value,omitempty"`
 	ActiveColor           TColor                                        `json:"activeColor,omitempty"`
 	FocusColor            TColor                                        `json:"focusColor,omitempty"`
 	HoverColor            TColor                                        `json:"hoverColor,omitempty"`
@@ -21,5 +24,21 @@ type SwitchAttributes[TColor duit_color.Color] struct {
 	TrackOutlineWidth     *duit_material.MaterialStateProperty[float32] `json:"trackOutlineWidth,omitempty"`
 	SplashRadius          float32                                       `json:"splashRadius,omitempty"`
 	MaterialTapTargetSize duit_material.MaterialTapTargetSize           `json:"materialTapTargetSize,omitempty"`
-	Autofocus             bool                                          `json:"autofocus,omitempty"`
+	Autofocus             duit_utils.Tristate[bool]                     `json:"autofocus,omitempty"`
+}
+
+func (r *SwitchAttributes[TColor]) Validate() error {
+	if err := r.ValueReferenceHolder.Validate(); err != nil {
+		return err
+	}
+
+	if err := r.ThemeConsumer.Validate(); err != nil {
+		return err
+	}
+
+	if r.Value == nil {
+		return errors.New("value property is required")
+	}
+
+	return nil
 }
