@@ -1,23 +1,24 @@
 package duit_attributes
 
 import (
-	"encoding/json"
-	
+	"errors"
+
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
 type OffstageAttributes struct {
-	ValueReferenceHolder
-
-	Offstage	*bool	`json:"offstage,omitempty"`
+	*ValueReferenceHolder
+	Offstage	duit_utils.Tristate[bool]	`json:"offstage,omitempty"`
 }
 
-func (attributes *OffstageAttributes) MarshalJSON() ([]byte, error) {
-
-	if attributes.Offstage == nil {
-		var bPtr = duit_utils.BoolPtr(true)
-		attributes.Offstage = bPtr
+func (r *OffstageAttributes) Validate() error {
+	if err := r.ValueReferenceHolder.Validate(); err != nil {
+		return err
 	}
 
-	return json.Marshal(*attributes)
+	if r.Offstage == nil {
+		return errors.New("offstage property is required")
+	}
+
+	return nil
 }

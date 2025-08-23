@@ -1,9 +1,9 @@
 package duit_animations
 
-type AnimationMethod uint8
+type AnimationMethod = uint8
 
 const (
-	Forward = iota
+	Forward AnimationMethod = iota
 	Repeat
 	Reverse
 	Toggle

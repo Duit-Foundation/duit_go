@@ -1,4 +1,4 @@
-package duit_core
+package duit_action
 
 // HttpActionMetainfo represents metadata for an HTTP action.
 type HttpActionMetainfo struct {

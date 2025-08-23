@@ -1,7 +1,6 @@
 package duit_attributes
 
 import (
-	"encoding/json"
 	"errors"
 
 	animations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
@@ -9,22 +8,34 @@ import (
 )
 
 type AnimatedOpacityAttributes struct {
-	ValueReferenceHolder
-	animations.ImplicitAnimatable
-	ThemeConsumer
-	Opacity float32 `json:"opacity"`
+	*ValueReferenceHolder
+	*animations.ImplicitAnimatable
+	*ThemeConsumer
+	Opacity duit_utils.Tristate[float32] `json:"opacity,omitempty"`
 }
 
-func (attributes *AnimatedOpacityAttributes) MarshalJSON() ([]byte, error) {
-	err := duit_utils.CheckActionType(attributes.ImplicitAnimatable.OnEnd)
-
-	if err != nil {
-		return nil, err
+func (r *AnimatedOpacityAttributes) Validate() error {
+	if r.ImplicitAnimatable != nil {
+		if err := r.ImplicitAnimatable.Validate(); err != nil {
+			return err
+		}
+	} else {
+		return errors.New("implicitAnimatable property is required on implicit animated widgets")
 	}
 
-	if attributes.Opacity >= 0 && attributes.Opacity <= 1 {
-		return json.Marshal(*attributes)
+	if err := r.ThemeConsumer.Validate(); err != nil {
+		return err
 	}
 
-	return nil, errors.New("opacity must be between 0 and 1")
+	if err := r.ValueReferenceHolder.Validate(); err != nil {
+		return err
+	}
+
+	if r.Opacity != nil {
+		if err := RangeValidator(*r.Opacity, 0, 1); err != nil {
+			return err
+		}
+	}
+
+	return nil
 }

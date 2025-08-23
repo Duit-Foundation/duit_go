@@ -7,20 +7,21 @@ import (
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_edge_insets"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_material"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
-type CarouselViewConstructor uint
+// type CarouselViewConstructor uint
 
-const (
-	CarouselViewCommon CarouselViewConstructor = iota
-	CarouselViewWeighted
-)
+// const (
+// 	CarouselViewCommon CarouselViewConstructor = iota
+// 	CarouselViewWeighted
+// )
 
 type CarouselViewAttributes[TColor duit_color.Color, TInsets duit_edge_insets.EdgeInsets, TShape decorations.ShapeBorder[TColor]] struct {
-	ValueReferenceHolder
-	animations.AnimatedPropertyOwner
-	ThemeConsumer
-	Constructor      CarouselViewConstructor                     `json:"constructor"`
+	*ValueReferenceHolder
+	*animations.AnimatedPropertyOwner
+	*ThemeConsumer
+	// Constructor      CarouselViewConstructor                     `json:"constructor"`
 	Padding          TInsets                                     `json:"padding,omitempty"`
 	BackgroundColor  TColor                                      `json:"backgroundColor,omitempty"`
 	Shape            *TShape                                     `json:"shape,omitempty"`
@@ -29,9 +30,25 @@ type CarouselViewAttributes[TColor duit_color.Color, TInsets duit_edge_insets.Ed
 	ShrinkExtent     float32                                     `json:"shrinkExtent,omitempty"`
 	ItemExtent       float32                                     `json:"itemExtent,omitempty"`
 	ScrollDirection  duit_flex.Axis                              `json:"scrollDirection,omitempty"`
-	EnableSplash     *bool                                       `json:"enableSplash,omitempty"`
-	Reverse          *bool                                       `json:"reverse,omitempty"`
-	ItemSnapping     *bool                                       `json:"itemSnapping,omitempty"`
-	ConsumeMaxWeight *bool                                       `json:"consumeMaxWeight,omitempty"`
+	EnableSplash     duit_utils.Tristate[bool]                   `json:"enableSplash,omitempty"`
+	Reverse          duit_utils.Tristate[bool]                   `json:"reverse,omitempty"`
+	ItemSnapping     duit_utils.Tristate[bool]                   `json:"itemSnapping,omitempty"`
+	ConsumeMaxWeight duit_utils.Tristate[bool]                   `json:"consumeMaxWeight,omitempty"`
 	FlexWeights      []uint                                      `json:"flexWeights,omitempty"`
+}
+
+func (r *CarouselViewAttributes[TColor, TInsets, TShape]) Validate() error {
+	if err := r.ThemeConsumer.Validate(); err != nil {
+		return err
+	}
+
+	if err := r.ValueReferenceHolder.Validate(); err != nil {
+		return err
+	}
+
+	if err := r.AnimatedPropertyOwner.Validate(); err != nil {
+		return err
+	}
+
+	return nil
 }

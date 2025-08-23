@@ -1,4 +1,4 @@
-package duit_core
+package duit_action
 
 const (
 	Transport = iota

@@ -1,19 +1,22 @@
 package duit_attributes
 
 import (
+	"errors"
+
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_color"
 	duit_decoration "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_decorations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_material"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
 type CheckboxAttributes[T duit_color.Color] struct {
-	ValueReferenceHolder
-	ThemeConsumer
-	Value         bool                                    `json:"value"`
-	Autofocus     bool                                    `json:"autofocus,omitempty"`
-	Tristate      bool                                    `json:"tristate,omitempty"`
-	IsError       bool                                    `json:"isError,omitempty"`
+	*ValueReferenceHolder
+	*ThemeConsumer
+	Value         duit_utils.Tristate[bool]               `json:"value"`
+	Autofocus     duit_utils.Tristate[bool]               `json:"autofocus,omitempty"`
+	Tristate      duit_utils.Tristate[bool]               `json:"tristate,omitempty"`
+	IsError       duit_utils.Tristate[bool]               `json:"isError,omitempty"`
 	SplashRadius  float32                                 `json:"splashRadius,omitempty"`
 	SemanticLabel string                                  `json:"semanticLabel,omitempty"`
 	Side          *duit_decoration.BorderSide[T]          `json:"side,omitempty"`
@@ -24,4 +27,20 @@ type CheckboxAttributes[T duit_color.Color] struct {
 	FocusColor    T                                       `json:"focusColor,omitempty"`
 	FillColor     *duit_material.MaterialStateProperty[T] `json:"fillColor,omitempty"`
 	OverlayColor  *duit_material.MaterialStateProperty[T] `json:"overlayColor,omitempty"`
+}
+
+func (r *CheckboxAttributes[T]) Validate() error {
+	if err := r.ThemeConsumer.Validate(); err != nil {
+		return err
+	}
+
+	if err := r.ValueReferenceHolder.Validate(); err != nil {
+		return err
+	}
+
+	if r.Value == nil {
+		return errors.New("value property is required")
+	}
+
+	return nil
 }

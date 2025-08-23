@@ -1,6 +1,6 @@
 package duit_alignment
 
-type Alignment string
+type Alignment = string
 
 const (
 	TopCenter    Alignment = "topCenter"

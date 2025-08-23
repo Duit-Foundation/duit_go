@@ -1,7 +1,6 @@
 package duit_attributes
 
 import (
-	"encoding/json"
 	"errors"
 
 	animations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
@@ -13,9 +12,9 @@ import (
 )
 
 type WrapAttributes struct {
-	ValueReferenceHolder
-	animations.AnimatedPropertyOwner
-	ThemeConsumer
+	*ValueReferenceHolder
+	*animations.AnimatedPropertyOwner
+	*ThemeConsumer
 	TextDirection      duit_text_properties.TextDirection `json:"textDirection,omitempty"`
 	VerticalDirection  duit_flex.VerticalDirection        `json:"verticalDirection,omitempty"`
 	Alignment          duit_main_axis.MainAxisAlignment   `json:"alignment,omitempty"`
@@ -27,16 +26,22 @@ type WrapAttributes struct {
 	Direction          duit_flex.Axis                     `json:"direction,omitempty"`
 }
 
-func (attrs *WrapAttributes) MarshalJSON() ([]byte, error) {
-	if attrs.CrossAxisAlignment == duit_cross_axis.Baseline || attrs.CrossAxisAlignment == duit_cross_axis.Stretch {
-		return nil, errors.New("CrossAxisAlignment property cannot have 'baseline' or 'stretch' values for curret kind of attribute")
+func (r *WrapAttributes) Validate() error {
+	if err := r.ValueReferenceHolder.Validate(); err != nil {
+		return err
 	}
 
-	data, err := json.Marshal(attrs)
-
-	if err != nil {
-		return nil, err
+	if err := r.AnimatedPropertyOwner.Validate(); err != nil {
+		return err
 	}
 
-	return data, nil
+	if err := r.ThemeConsumer.Validate(); err != nil {
+		return err
+	}
+
+	if r.CrossAxisAlignment == duit_cross_axis.Baseline || r.CrossAxisAlignment == duit_cross_axis.Stretch {
+		return errors.New("CrossAxisAlignment property cannot have 'baseline' or 'stretch' values for curret kind of attribute")
+	}
+
+	return nil
 }

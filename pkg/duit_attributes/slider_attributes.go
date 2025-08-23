@@ -1,16 +1,19 @@
 package duit_attributes
 
 import (
+	"errors"
+
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_action"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_color"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_gestures"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_material"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_core"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
-type SliderAttributes[TAction duit_core.Action, TColor duit_color.Color] struct {
-	ValueReferenceHolder
-	ThemeConsumer
-	Value                float32                                      `json:"value"`
+type SliderAttributes[TAction duit_action.Action, TColor duit_color.Color] struct {
+	*ValueReferenceHolder
+	*ThemeConsumer
+	Value                duit_utils.Tristate[float32]                 `json:"value,omitempty"`
 	Min                  float32                                      `json:"min,omitempty"`
 	Max                  float32                                      `json:"max,omitempty"`
 	Divisions            uint32                                       `json:"divisions,omitempty"`
@@ -23,7 +26,23 @@ type SliderAttributes[TAction duit_core.Action, TColor duit_color.Color] struct 
 	ThumbColor           TColor                                       `json:"thumbColor,omitempty"`
 	SecondaryActiveColor TColor                                       `json:"secondaryActiveColor,omitempty"`
 	OverlayColor         *duit_material.MaterialStateProperty[TColor] `json:"overlayColor,omitempty"`
-	Autofocus            bool                                         `json:"autofocus,omitempty"`
+	Autofocus            duit_utils.Tristate[bool]                    `json:"autofocus,omitempty"`
 	Label                string                                       `json:"label,omitempty"`
 	AllowedInteraction   duit_gestures.SliderInteraction              `json:"allowedInteraction,omitempty"`
+}
+
+func (r *SliderAttributes[TAction, TColor]) Validate() error {
+	if err := r.ValueReferenceHolder.Validate(); err != nil {
+		return err
+	}
+
+	if err := r.ThemeConsumer.Validate(); err != nil {
+		return err
+	}
+
+	if r.Value == nil {
+		return errors.New("value property is required")
+	}
+
+	return nil
 }

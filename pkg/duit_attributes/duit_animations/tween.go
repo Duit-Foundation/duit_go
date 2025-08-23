@@ -49,7 +49,7 @@ func prepareCurveValue(curve Curves) Curves {
 	if len(curve) > 0 {
 		return curve
 	} else {
-		return linear
+		return Linear
 	}
 }
 

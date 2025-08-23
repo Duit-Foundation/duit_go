@@ -11,9 +11,9 @@ import (
 )
 
 type ContainerAttributes[TInsets duit_edge_insets.EdgeInsets, TColor duit_color.Color] struct {
-	ValueReferenceHolder
-	animations.AnimatedPropertyOwner
-	ThemeConsumer
+	*ValueReferenceHolder
+	*animations.AnimatedPropertyOwner
+	*ThemeConsumer
 	Width                float32                                `json:"width,omitempty"`
 	Height               float32                                `json:"height,omitempty"`
 	Color                TColor                                 `json:"color,omitempty"`
@@ -24,5 +24,21 @@ type ContainerAttributes[TInsets duit_edge_insets.EdgeInsets, TColor duit_color.
 	Margin               TInsets                                `json:"margin,omitempty"`
 	Alignment            duit_alignment.Alignment               `json:"alignment,omitempty"`
 	TransformAlignment   duit_alignment.Alignment               `json:"transformAlignment,omitempty"`
-	Constraints          *duit_flex.BoxConstraints               `json:"constraints,omitempty"`
+	Constraints          *duit_flex.BoxConstraints              `json:"constraints,omitempty"`
+}
+
+func (r *ContainerAttributes[TInsets, TColor]) Validate() error {
+	if err := r.ThemeConsumer.Validate(); err != nil {
+		return err
+	}
+
+	if err := r.ValueReferenceHolder.Validate(); err != nil {
+		return err
+	}
+
+	if err := r.AnimatedPropertyOwner.Validate(); err != nil {
+		return err
+	}
+
+	return nil
 }

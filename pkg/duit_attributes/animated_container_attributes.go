@@ -1,6 +1,8 @@
 package duit_attributes
 
 import (
+	"errors"
+
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_alignment"
 	animations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_clip"
@@ -11,9 +13,9 @@ import (
 )
 
 type AnimatedContainerAttributes[TInsets duit_edge_insets.EdgeInsets, TColor duit_color.Color] struct {
-	ValueReferenceHolder
-	animations.ImplicitAnimatable
-	ThemeConsumer
+	*ValueReferenceHolder
+	*animations.ImplicitAnimatable
+	*ThemeConsumer
 	Width                float32                                `json:"width,omitempty"`
 	Height               float32                                `json:"height,omitempty"`
 	Color                TColor                                 `json:"color,omitempty"`
@@ -24,5 +26,26 @@ type AnimatedContainerAttributes[TInsets duit_edge_insets.EdgeInsets, TColor dui
 	Margin               TInsets                                `json:"margin,omitempty"`
 	Alignment            duit_alignment.Alignment               `json:"alignment,omitempty"`
 	TransformAlignment   duit_alignment.Alignment               `json:"transformAlignment,omitempty"`
-	Constraints          *duit_flex.BoxConstraints               `json:"constraints,omitempty"`
+	Constraints          *duit_flex.BoxConstraints              `json:"constraints,omitempty"`
+}
+
+//Делать валидацию внутренних свойств, где это требуется
+func (r *AnimatedContainerAttributes[TInsets, TColor]) Validate() error {
+	if r.ImplicitAnimatable != nil {
+		if err := r.ImplicitAnimatable.Validate(); err != nil {
+			return err
+		}
+	} else {
+		return errors.New("implicitAnimatable property is required on implicit animated widgets")
+	}
+
+	if err := r.ValueReferenceHolder.Validate(); err != nil {
+		return err
+	}
+
+	if err := r.ThemeConsumer.Validate(); err != nil {
+		return err
+	}
+
+	return nil
 }

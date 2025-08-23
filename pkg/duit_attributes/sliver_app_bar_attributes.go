@@ -1,9 +1,6 @@
 package duit_attributes
 
 import (
-	"encoding/json"
-	"fmt"
-
 	animations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_clip"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_color"
@@ -15,10 +12,10 @@ import (
 )
 
 type SliverAppBarAttributes[TColor duit_color.Color, TInsets duit_edge_insets.EdgeInsets, TShape decorations.ShapeBorder[TColor]] struct {
-	ValueReferenceHolder
-	animations.AnimatedPropertyOwner
-	ThemeConsumer
-	SliverProps
+	*ValueReferenceHolder
+	*animations.AnimatedPropertyOwner
+	*ThemeConsumer
+	*SliverProps
 	Title                     *duit_core.DuitElementModel             `json:"title,omitempty"`
 	Leading                   *duit_core.DuitElementModel             `json:"leading,omitempty"`
 	Actions                   []*duit_core.DuitElementModel           `json:"actions,omitempty"`
@@ -38,42 +35,48 @@ type SliverAppBarAttributes[TColor duit_color.Color, TInsets duit_edge_insets.Ed
 	ToolbarHeight             float32                                 `json:"toolbarHeight,omitempty"`
 	LeadingWidth              float32                                 `json:"leadingWidth,omitempty"`
 	ScrolledUnderElevation    float32                                 `json:"scrolledUnderElevation,omitempty"`
-	BottomOpacity             float32                                 `json:"bottomOpacity,omitempty"`
-	ToolbarOpacity            float32                                 `json:"toolbarOpacity,omitempty"`
+	BottomOpacity             duit_utils.Tristate[float32]            `json:"bottomOpacity,omitempty"`
+	ToolbarOpacity            duit_utils.Tristate[float32]            `json:"toolbarOpacity,omitempty"`
 	ExpandedHeight            float32                                 `json:"expandedHeight,omitempty"`
 	CollapsedHeight           float32                                 `json:"collapsedHeight,omitempty"`
 	StretchTriggerOffset      float32                                 `json:"stretchTriggerOffset,omitempty"`
-	ForceElevated             *bool                                   `json:"forceElevated,omitempty"`
-	UseDefaultSemanticsOrder  *bool                                   `json:"useDefaultSemanticsOrder,omitempty"`
-	ForceMaterialTransparency *bool                                   `json:"forceMaterialTransparency,omitempty"`
-	CenterTitle               *bool                                   `json:"centerTitle,omitempty"`
-	AutomaticallyImplyLeading *bool                                   `json:"automaticallyImplyLeading,omitempty"`
-	ExcludeHeaderSemantics    *bool                                   `json:"excludeHeaderSemantics,omitempty"`
-	Primary                   *bool                                   `json:"primary,omitempty"`
-	Floating                  *bool                                   `json:"floating,omitempty"`
-	Pinned                    *bool                                   `json:"pinned,omitempty"`
-	Snap                      *bool                                   `json:"snap,omitempty"`
-	Stretch                   *bool                                   `json:"stretch,omitempty"`
+	ForceElevated             duit_utils.Tristate[bool]               `json:"forceElevated,omitempty"`
+	UseDefaultSemanticsOrder  duit_utils.Tristate[bool]               `json:"useDefaultSemanticsOrder,omitempty"`
+	ForceMaterialTransparency duit_utils.Tristate[bool]               `json:"forceMaterialTransparency,omitempty"`
+	CenterTitle               duit_utils.Tristate[bool]               `json:"centerTitle,omitempty"`
+	AutomaticallyImplyLeading duit_utils.Tristate[bool]               `json:"automaticallyImplyLeading,omitempty"`
+	ExcludeHeaderSemantics    duit_utils.Tristate[bool]               `json:"excludeHeaderSemantics,omitempty"`
+	Primary                   duit_utils.Tristate[bool]               `json:"primary,omitempty"`
+	Floating                  duit_utils.Tristate[bool]               `json:"floating,omitempty"`
+	Pinned                    duit_utils.Tristate[bool]               `json:"pinned,omitempty"`
+	Snap                      duit_utils.Tristate[bool]               `json:"snap,omitempty"`
+	Stretch                   duit_utils.Tristate[bool]               `json:"stretch,omitempty"`
 }
 
-func (s *SliverAppBarAttributes[TColor, TInsets, TShape]) MarshalJSON() ([]byte, error) {
-	if s.AutomaticallyImplyLeading == nil {
-		var bPtr = duit_utils.BoolPtr(true)
-		s.AutomaticallyImplyLeading = bPtr
+func (r *SliverAppBarAttributes[TColor, TInsets, TShape]) Validate() error {
+	if err := r.ValueReferenceHolder.Validate(); err != nil {
+		return err
 	}
 
-	if s.Primary == nil {
-		var bPtr = duit_utils.BoolPtr(true)
-		s.Primary = bPtr
+	if err := r.ThemeConsumer.Validate(); err != nil {
+		return err
 	}
 
-	if s.ToolbarOpacity < 0 || s.ToolbarOpacity > 1 {
-		return nil, fmt.Errorf("toolbarOpacity must be between 0 and 1")
+	if err := r.AnimatedPropertyOwner.Validate(); err != nil {
+		return err
 	}
 
-	if s.BottomOpacity < 0 || s.BottomOpacity > 1 {
-		return nil, fmt.Errorf("bottomOpacity must be between 0 and 1")
+	if r.BottomOpacity != nil {
+		if err := RangeValidator(*r.BottomOpacity, 0, 1); err != nil {
+			return err
+		}
 	}
 
-	return json.Marshal(*s)
+	if r.ToolbarOpacity != nil {
+		if err := RangeValidator(*r.ToolbarOpacity, 0, 1); err != nil {
+			return err
+		}
+	}
+
+	return nil
 }

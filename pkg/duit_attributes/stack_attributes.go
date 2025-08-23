@@ -9,11 +9,27 @@ import (
 )
 
 type StackAttributes struct {
-	ValueReferenceHolder
-	animations.AnimatedPropertyOwner
-	ThemeConsumer
+	*ValueReferenceHolder
+	*animations.AnimatedPropertyOwner
+	*ThemeConsumer
 	TextDirection duit_text_properties.TextDirection `json:"textDirection,omitempty"`
 	ClipBehavior  duit_clip.Clip                     `json:"clipBehavior,omitempty"`
 	Alignment     duit_alignment.Alignment           `json:"alignment,omitempty"`
 	Fit           duit_flex.StackFit                 `json:"fit,omitempty"`
+}
+
+func (r *StackAttributes) Validate() error {
+	if err := r.ValueReferenceHolder.Validate(); err != nil {
+		return err
+	}
+
+	if err := r.AnimatedPropertyOwner.Validate(); err != nil {
+		return err
+	}
+
+	if err := r.ThemeConsumer.Validate(); err != nil {
+		return err
+	}
+
+	return nil
 }
