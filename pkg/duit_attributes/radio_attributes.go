@@ -1,10 +1,13 @@
 package duit_attributes
 
 import (
+	"errors"
+
 	animations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_color"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_material"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
 type PrimitiveValue interface {
@@ -12,10 +15,10 @@ type PrimitiveValue interface {
 }
 
 type RadioAttributes[TValue PrimitiveValue, TColor duit_color.Color] struct {
-	ValueReferenceHolder
-	animations.AnimatedPropertyOwner
-	ThemeConsumer
-	Value                 TValue                                      `json:"value"`
+	*ValueReferenceHolder
+	*animations.AnimatedPropertyOwner
+	*ThemeConsumer
+	Value                 duit_utils.Tristate[TValue]                 `json:"value,omitempty"`
 	Toggleable            bool                                        `json:"toggleable,omitempty"`
 	Autofocus             bool                                        `json:"autofocus,omitempty"`
 	ActiveColor           TColor                                      `json:"activeColor,omitempty"`
@@ -28,7 +31,39 @@ type RadioAttributes[TValue PrimitiveValue, TColor duit_color.Color] struct {
 	MaterialTapTargetSize duit_material.MaterialTapTargetSize         `json:"materialTapTargetSize,omitempty"`
 }
 
+func (r *RadioAttributes[TValue, TColor]) Validate() error {
+	if err := r.ValueReferenceHolder.Validate(); err != nil {
+		return err
+	}
+
+	if err := r.AnimatedPropertyOwner.Validate(); err != nil {
+		return err
+	}
+
+	if err := r.ThemeConsumer.Validate(); err != nil {
+		return err
+	}
+
+	if r.Value == nil {
+		return errors.New("value property is required")
+	}
+
+	return nil
+}
+
 type RadioGroupContextAttributes[TValue PrimitiveValue] struct {
-	ValueReferenceHolder
-	GroupValue TValue `json:"groupValue"`
+	*ValueReferenceHolder
+	GroupValue duit_utils.Tristate[TValue] `json:"groupValue,omitempty"`
+}
+
+func (r *RadioGroupContextAttributes[TValue]) Validate() error {
+	if err := r.ValueReferenceHolder.Validate(); err != nil {
+		return err
+	}
+
+	if r.GroupValue == nil {
+		return errors.New("groupValue property is required")
+	}
+
+	return nil
 }

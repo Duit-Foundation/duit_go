@@ -25,28 +25,19 @@ func (r *LifecycleEventListenerAttributes) Validate() error {
 		return errors.New("at least one of the onStateChanged, onResumed, onInactive, onPaused, onDetached, onHidden properties must be non-nil")
 	}
 
-	if err := duit_action.CheckActionType(r.OnStateChanged); err != nil {
-		return err
+	callbacks := []any{
+		r.OnStateChanged,
+		r.OnResumed,
+		r.OnInactive,
+		r.OnPaused,
+		r.OnDetached,
+		r.OnHidden,
 	}
 
-	if err := duit_action.CheckActionType(r.OnResumed); err != nil {
-		return err
-	}
-
-	if err := duit_action.CheckActionType(r.OnInactive); err != nil {
-		return err
-	}
-
-	if err := duit_action.CheckActionType(r.OnPaused); err != nil {
-		return err
-	}
-
-	if err := duit_action.CheckActionType(r.OnDetached); err != nil {
-		return err
-	}
-
-	if err := duit_action.CheckActionType(r.OnHidden); err != nil {
-		return err
+	for _, callback := range callbacks {
+		if err := duit_action.CheckActionType(callback); err != nil {
+			return err
+		}
 	}
 
 	return nil

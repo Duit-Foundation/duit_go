@@ -1,12 +1,15 @@
 package duit_attributes
 
 import (
+	"errors"
+
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_builder"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_clip"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_edge_insets"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_gestures"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_core"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
 type ListKind uint8
@@ -17,16 +20,16 @@ const (
 	Separated
 )
 
-type ListView[TInsets duit_edge_insets.EdgeInsets] struct {
-	Type                    ListKind                                        `json:"type"`
-	ScrollPhysics           duit_gestures.ScrollPhysics                     `json:"scrollPhysics,omitempty"`
-	Reverse                 bool                                            `json:"reverse,omitempty"`
-	Primary                 bool                                            `json:"primary,omitempty"`
-	ShrinkWrap              bool                                            `json:"shrinkWrap,omitempty"`
-	AddAutomaticKeepAlives  bool                                            `json:"addAutomaticKeepAlives,omitempty"`
-	AddRepaintBoundaries    bool                                            `json:"addRepaintBoundaries,omitempty"`
-	AddSemanticIndexes      bool                                            `json:"addSemanticIndexes,omitempty"`
+type ListViewBaseAttributes[TInsets duit_edge_insets.EdgeInsets] struct {
+	Type                    duit_utils.Tristate[ListKind]                   `json:"type,omitempty"`
+	Reverse                 duit_utils.Tristate[bool]                       `json:"reverse,omitempty"`
+	Primary                 duit_utils.Tristate[bool]                       `json:"primary,omitempty"`
+	ShrinkWrap              duit_utils.Tristate[bool]                       `json:"shrinkWrap,omitempty"`
+	AddAutomaticKeepAlives  duit_utils.Tristate[bool]                       `json:"addAutomaticKeepAlives,omitempty"`
+	AddRepaintBoundaries    duit_utils.Tristate[bool]                       `json:"addRepaintBoundaries,omitempty"`
+	AddSemanticIndexes      duit_utils.Tristate[bool]                       `json:"addSemanticIndexes,omitempty"`
 	ScrollDirection         duit_flex.Axis                                  `json:"scrollDirection,omitempty"`
+	ScrollPhysics           duit_gestures.ScrollPhysics                     `json:"scrollPhysics,omitempty"`
 	CacheExtent             float32                                         `json:"cacheExtent,omitempty"`
 	Anchor                  float32                                         `json:"anchors,omitempty"`
 	SemantickChildCount     int                                             `json:"semanticChildCount,omitempty"`
@@ -38,16 +41,59 @@ type ListView[TInsets duit_edge_insets.EdgeInsets] struct {
 	KeyboardDismissBehavior duit_gestures.ScrollViewKeyboardDismissBehavior `json:"keyboardDismissBehavior,omitempty"`
 }
 
+func (r *ListViewBaseAttributes[TInsets]) Validate() error {
+	if r.Type != nil {
+
+	} else {
+		return errors.New("type is required")
+	}
+
+	return nil
+}
+
 type ListViewBuilderAttributes[TInsets duit_edge_insets.EdgeInsets] struct {
-	ListView[TInsets]
-	duit_builder.Builder
+	*ListViewBaseAttributes[TInsets]
+	*duit_builder.Builder
+}
+
+func (r *ListViewBuilderAttributes[TInsets]) Validate() error {
+	if r.ListViewBaseAttributes != nil {
+		if err := r.ListViewBaseAttributes.Validate(); err != nil {
+			return err
+		}
+
+	} else {
+		return errors.New("listView property is required")
+	}
+
+	if r.Builder == nil {
+		return errors.New("builder property is required")
+	}
+
+	return nil
 }
 
 type ListViewSeparatedAttributes[TInsets duit_edge_insets.EdgeInsets] struct {
-	ListViewBuilderAttributes[TInsets]
+	*ListViewBuilderAttributes[TInsets]
 	Separator *duit_core.DuitElementModel `json:"separator"`
 }
 
+func (r *ListViewSeparatedAttributes[TInsets]) Validate() error {
+	if r.ListViewBuilderAttributes != nil {
+		if err := r.ListViewBuilderAttributes.Validate(); err != nil {
+			return err
+		}
+	} else {
+		return errors.New("listViewBuilderAttributes property is required")
+	}
+
+	if r.Separator == nil {
+		return errors.New("separator property is required")
+	}
+
+	return nil
+}
+
 type ListViewAttributes[TInsets duit_edge_insets.EdgeInsets] interface {
-	ListView[TInsets] | ListViewBuilderAttributes[TInsets] | ListViewSeparatedAttributes[TInsets]
+	ListViewBaseAttributes[TInsets] | ListViewBuilderAttributes[TInsets] | ListViewSeparatedAttributes[TInsets]
 }

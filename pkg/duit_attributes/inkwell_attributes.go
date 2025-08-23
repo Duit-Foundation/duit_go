@@ -5,11 +5,12 @@ import (
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_color"
 	duit_decoration "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_decorations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_material"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
 type InkwellAttributes[TColor duit_color.Color, TAction duit_action.Action, TShape duit_decoration.ShapeBorder[TColor]] struct {
-	ValueReferenceHolder
-	ThemeConsumer
+	*ValueReferenceHolder
+	*ThemeConsumer
 	OnTap                *TAction                                     `json:"onTap,omitempty"`
 	OnDoubleTap          *TAction                                     `json:"onDoubleTap,omitempty"`
 	OnLongPress          *TAction                                     `json:"onLongPress,omitempty"`
@@ -28,9 +29,39 @@ type InkwellAttributes[TColor duit_color.Color, TAction duit_action.Action, TSha
 	Radius               float32                                      `json:"radius,omitempty"`
 	BorderRadius         *duit_decoration.BorderRadius                `json:"borderRadius,omitempty"`
 	CustomBorder         *TShape                                      `json:"customBorder,omitempty"`
-	EnableFeedback       *bool                                        `json:"enableFeedback,omitempty"`
-	ExcludeFromSemantics *bool                                        `json:"excludeFromSemantics,omitempty"`
-	Autofocus            *bool                                        `json:"autofocus,omitempty"`
-	CanRequestFocus      *bool                                        `json:"canRequestFocus,omitempty"`
+	EnableFeedback       duit_utils.Tristate[bool]                    `json:"enableFeedback,omitempty"`
+	ExcludeFromSemantics duit_utils.Tristate[bool]                    `json:"excludeFromSemantics,omitempty"`
+	Autofocus            duit_utils.Tristate[bool]                    `json:"autofocus,omitempty"`
+	CanRequestFocus      duit_utils.Tristate[bool]                    `json:"canRequestFocus,omitempty"`
 	HoverDuration        uint                                         `json:"hoverDuration,omitempty"`
+}
+
+func (r *InkwellAttributes[TColor, TAction, TShape]) Validate() error {
+	if err := r.ValueReferenceHolder.Validate(); err != nil {
+		return err
+	}
+	if err := r.ThemeConsumer.Validate(); err != nil {
+		return err
+	}
+
+	callbacks := []*TAction{
+		r.OnTap,
+		r.OnDoubleTap,
+		r.OnLongPress,
+		r.OnTapDown,
+		r.OnTapUp,
+		r.OnTapCancel,
+		r.OnSecondaryTapDown,
+		r.OnSecondaryTapCancel,
+		r.OnSecondaryTap,
+		r.OnSecondaryTapUp,
+	}
+
+	for _, callback := range callbacks {
+		if err := duit_action.CheckActionType(callback); err != nil {
+			return err
+		}
+	}
+
+	return nil
 }

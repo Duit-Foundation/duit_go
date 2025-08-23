@@ -1,3 +1,4 @@
 package duit_attributes
 
-type MetaAttributes map[string]interface{}
+//TODO: Добавить больше документации о том, как эта шляпа работает и как ее использовать
+type MetaAttributes = map[string]any

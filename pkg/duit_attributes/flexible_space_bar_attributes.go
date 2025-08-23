@@ -6,11 +6,8 @@ import (
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_core"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
-
-//wrapgen:enable
-
 type FlexibleSpaceBarAttributes[TInsets duit_edge_insets.EdgeInsets] struct {
-	*ValueReferenceHolder `gen:"wrap"`
+	*ValueReferenceHolder
 	*ThemeConsumer
 	Title              *duit_core.DuitElementModel `json:"title,omitempty"`
 	Background         *duit_core.DuitElementModel `json:"background,omitempty"`

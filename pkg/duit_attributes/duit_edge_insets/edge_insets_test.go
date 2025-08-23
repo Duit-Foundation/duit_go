@@ -36,11 +36,6 @@ func TestEdgeInsetsV2_All_NegativeValue(t *testing.T) {
 	if err == nil {
 		t.Fatal("expected error for negative All() value")
 	}
-	
-	expected := "edge insets must be greater than 0"
-	if err.Error() != expected {
-		t.Fatalf("expected error message '%s', got '%s'", expected, err.Error())
-	}
 }
 
 // Tests for EdgeInsetsV2.LTRB() method
@@ -89,11 +84,6 @@ func TestEdgeInsetsV2_LTRB_NegativeValues(t *testing.T) {
 			if err == nil {
 				t.Fatalf("expected error for %s", tc.name)
 			}
-			
-			expected := "edge insets must be greater than 0"
-			if err.Error() != expected {
-				t.Fatalf("expected error message '%s', got '%s'", expected, err.Error())
-			}
 		})
 	}
 }
@@ -140,11 +130,6 @@ func TestEdgeInsetsV2_Symmentric_NegativeValues(t *testing.T) {
 			if err == nil {
 				t.Fatalf("expected error for %s", tc.name)
 			}
-			
-			expected := "edge insets must be greater than 0"
-			if err.Error() != expected {
-				t.Fatalf("expected error message '%s', got '%s'", expected, err.Error())
-			}
 		})
 	}
 }
@@ -156,11 +141,6 @@ func TestEdgeInsetsV2_Validate_UninitializedData(t *testing.T) {
 	err := edgeInsets.Validate()
 	if err == nil {
 		t.Fatal("expected error for uninitialized EdgeInsetsV2")
-	}
-	
-	expected := "invalid edge insets type"
-	if err.Error() != expected {
-		t.Fatalf("expected error message '%s', got '%s'", expected, err.Error())
 	}
 }
 

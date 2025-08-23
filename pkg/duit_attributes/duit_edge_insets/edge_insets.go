@@ -3,6 +3,7 @@ package duit_edge_insets
 import (
 	"encoding/json"
 	"errors"
+	"strconv"
 )
 
 type EdgeInsetsAll float32
@@ -43,12 +44,16 @@ func (e *EdgeInsetsV2) Validate() error {
 			return errors.New("edge insets must be greater than 0")
 		}
 	case EdgeInsetsLTRB:
-		if e.data.(EdgeInsetsLTRB)[0] < 0 || e.data.(EdgeInsetsLTRB)[1] < 0 || e.data.(EdgeInsetsLTRB)[2] < 0 || e.data.(EdgeInsetsLTRB)[3] < 0 {
-			return errors.New("edge insets must be greater than 0")
+		for index, value := range e.data.(EdgeInsetsLTRB) {
+			if value < 0 {
+				return errors.New("edge insets must be greater than 0, error at index: " + strconv.Itoa(index))
+			}
 		}
 	case EdgeInsetsSymmentric:
-		if e.data.(EdgeInsetsSymmentric)[0] < 0 || e.data.(EdgeInsetsSymmentric)[1] < 0 {
-			return errors.New("edge insets must be greater than 0")
+		for index, value := range e.data.(EdgeInsetsSymmentric) {
+			if value < 0 {
+				return errors.New("edge insets must be greater than 0, error at index: " + strconv.Itoa(index))
+			}
 		}
 	default:
 		return errors.New("invalid edge insets type")
