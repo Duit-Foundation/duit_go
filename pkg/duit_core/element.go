@@ -6,14 +6,14 @@ import (
 )
 
 type DuitWidget interface {
-	CreateElement(elemType string, elemId string, tag string, attributes interface{}, action any, controlled bool, mayHaveChildElements uint8) *DuitElementModel
+	CreateElement(elemType string, elemId string, tag string, attributes any, action any, controlled bool, mayHaveChildElements uint8) *DuitElementModel
 }
 
 type DuitElementModel struct {
 	ElementType DuitElementType `json:"type"`
 	Id          string          `json:"id"`
 	Controlled  bool            `json:"controlled"`
-	Attributes  interface{}     `json:"attributes"`
+	Attributes  any             `json:"attributes"`
 	Action      any             `json:"action,omitempty"`
 
 	//Special component tag.
@@ -24,7 +24,7 @@ type DuitElementModel struct {
 	//rendered and converted attributes on the side of the front-end framework
 	Tag string `json:"tag,omitempty"`
 	//Data set for populating components
-	Data     interface{}         `json:"data,omitempty"`
+	Data     any                 `json:"data,omitempty"`
 	Child    *DuitElementModel   `json:"child,omitempty"`
 	Children []*DuitElementModel `json:"children,omitempty"`
 
@@ -53,7 +53,7 @@ type DuitViewChild interface {
 // - controlled: a boolean indicating whether the element is controlled
 //
 // It returns a pointer to the upgraded created DuitElement.
-func (e *DuitElementModel) CreateElement(elemType DuitElementType, elemId string, tag string, attributes interface{}, action any, controlled bool, mayHaveChildElements uint8, data interface{}, subviews ...*DuitElementModel) *DuitElementModel {
+func (e *DuitElementModel) CreateElement(elemType DuitElementType, elemId string, tag string, attributes any, action any, controlled bool, mayHaveChildElements uint8, data any, subviews ...*DuitElementModel) *DuitElementModel {
 	var id string
 
 	if elemId == "" {
