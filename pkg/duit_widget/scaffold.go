@@ -29,6 +29,10 @@ func Scaffold[TColor duit_color.Color](
 		children = append(children, persistentFooterButtons...)
 	}
 
+	if attributes == nil {
+		panic("attributes must not be nil")
+	}
+
 	if err := attributes.Validate(); err != nil {
 		panic(err)
 	}
