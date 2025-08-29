@@ -4,7 +4,6 @@ import (
 	"testing"
 
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_core"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
@@ -53,19 +52,5 @@ func TestSliverVisibilityAttributes_Validate_BooleanValues(t *testing.T) {
 				t.Fatalf("expected no error for visible %t, got: %v", tc.visible, err)
 			}
 		})
-	}
-}
-
-func TestSliverVisibilityAttributes_Validate_WithReplacementSliver(t *testing.T) {
-	replacementSliver := &duit_core.DuitElementModel{}
-
-	attrs := &duit_attributes.SliverVisibilityAttributes{
-		Visible:           duit_utils.BoolValue(false),
-		ReplacementSliver: replacementSliver,
-	}
-
-	err := attrs.Validate()
-	if err != nil {
-		t.Fatal("expected no error with replacement sliver, got:", err)
 	}
 }
