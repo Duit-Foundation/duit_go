@@ -7,7 +7,6 @@ import (
 	decorations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_decorations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_edge_insets"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_text_properties"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_core"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
@@ -16,11 +15,6 @@ type SliverAppBarAttributes[TColor duit_color.Color, TInsets duit_edge_insets.Ed
 	*animations.AnimatedPropertyOwner
 	*ThemeConsumer
 	*SliverProps
-	Title                     *duit_core.DuitElementModel             `json:"title,omitempty"`
-	Leading                   *duit_core.DuitElementModel             `json:"leading,omitempty"`
-	Actions                   []*duit_core.DuitElementModel           `json:"actions,omitempty"`
-	FlexibleSpace             *duit_core.DuitElementModel             `json:"flexibleSpace,omitempty"`
-	Bottom                    *duit_core.DuitElementModel             `json:"bottom,omitempty"`
 	TitleTextStyle            *duit_text_properties.TextStyle[TColor] `json:"titleTextStyle,omitempty"`
 	ToolbarTextStyle          *duit_text_properties.TextStyle[TColor] `json:"toolbarTextStyle,omitempty"`
 	ShadowColor               TColor                                  `json:"shadowColor,omitempty"`
