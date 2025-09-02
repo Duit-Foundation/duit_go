@@ -4,11 +4,11 @@ import (
 	"errors"
 
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_builder"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_clip"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_edge_insets"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_gestures"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_core"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
@@ -35,7 +35,7 @@ type ListViewBaseAttributes[TInsets duit_edge_insets.EdgeInsets] struct {
 	SemantickChildCount     int                                             `json:"semanticChildCount,omitempty"`
 	Padding                 *TInsets                                        `json:"padding,omitempty"`
 	ItemExtent              float32                                         `json:"itemExtent,omitempty"`
-	ClipBehavior            duit_clip.Clip                                  `json:"clipBehavior,omitempty"`
+	ClipBehavior            duit_props.Clip                                  `json:"clipBehavior,omitempty"`
 	RestorationId           string                                          `json:"restorationId,omitempty"`
 	DragStarnBehavior       duit_gestures.DragStartBehavior                 `json:"dragStartBehavior,omitempty"`
 	KeyboardDismissBehavior duit_gestures.ScrollViewKeyboardDismissBehavior `json:"keyboardDismissBehavior,omitempty"`

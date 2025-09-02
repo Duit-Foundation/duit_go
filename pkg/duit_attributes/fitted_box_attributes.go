@@ -2,7 +2,6 @@ package duit_attributes
 
 import (
 	animations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_clip"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 )
@@ -12,7 +11,7 @@ type FittedBoxAttributes struct {
 	*animations.AnimatedPropertyOwner
 	*ThemeConsumer
 	Fit          duit_flex.BoxFit         `json:"fit,omitempty"`
-	ClipBehavior duit_clip.Clip           `json:"clipBehavior,omitempty"`
+	ClipBehavior duit_props.Clip           `json:"clipBehavior,omitempty"`
 	Alignment    duit_props.Alignment `json:"alignment,omitempty"`
 }
 

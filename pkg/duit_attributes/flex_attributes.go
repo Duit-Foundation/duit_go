@@ -2,11 +2,11 @@ package duit_attributes
 
 import (
 	animations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_clip"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_cross_axis"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_main_axis"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_text_properties"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 )
 
 type FlexAttributes struct {
@@ -18,7 +18,7 @@ type FlexAttributes struct {
 	CrossAxisAlignment duit_cross_axis.CrossAxisAlignment `json:"crossAxisAlignment,omitempty"`
 	TextDirection      duit_text_properties.TextDirection `json:"textDirection,omitempty"`
 	VerticalDirection  duit_flex.VerticalDirection        `json:"verticalDirection,omitempty"`
-	ClipBehavior       duit_clip.Clip                     `json:"clipBehavior,omitempty"`
+	ClipBehavior       duit_props.Clip                     `json:"clipBehavior,omitempty"`
 }
 
 func (r *FlexAttributes) Validate() error {

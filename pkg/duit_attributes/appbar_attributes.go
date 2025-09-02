@@ -2,11 +2,11 @@ package duit_attributes
 
 import (
 	animations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_clip"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_color"
 	decorations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_decorations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_edge_insets"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_text_properties"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
@@ -22,7 +22,7 @@ type AppBarAttributes[TColor duit_color.Color, TInsets duit_edge_insets.EdgeInse
 	SurfaceTintColor          TColor                                  `json:"surfaceTintColor,omitempty"`
 	ActionsPadding            TInsets                                 `json:"actionsPadding,omitempty"`
 	Shape                     *TShape                                 `json:"shape,omitempty"`
-	ClipBehavior              duit_clip.Clip                          `json:"clipBehavior,omitempty"`
+	ClipBehavior              duit_props.Clip                          `json:"clipBehavior,omitempty"`
 	TitleSpacing              float32                                 `json:"titleSpacing,omitempty"`
 	Elevation                 float32                                 `json:"elevation,omitempty"`
 	ToolbarHeight             float32                                 `json:"toolbarHeight,omitempty"`

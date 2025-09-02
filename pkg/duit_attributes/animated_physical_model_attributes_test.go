@@ -7,9 +7,9 @@ import (
 
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_clip"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_color"
 	duit_decoration "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_decorations"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
@@ -193,7 +193,7 @@ func TestAnimatedPhysicalModelAttributes_Validate_WithOptionalFields(t *testing.
 		Elevation:          duit_utils.Float32Value(4.0),
 		Color:              color,
 		ShadowColor:        shadowColor,
-		ClipBehavior:       duit_clip.AntiAlias,
+		ClipBehavior:       duit_props.ClipAntiAlias,
 		BorderRadius:       borderRadius,
 		Shape:              duit_decoration.Rectangle,
 		AnimateColor:       duit_utils.BoolValue(true),

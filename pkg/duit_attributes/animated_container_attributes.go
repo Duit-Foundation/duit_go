@@ -4,7 +4,6 @@ import (
 	"errors"
 
 	animations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_clip"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_color"
 	duit_decoration "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_decorations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_edge_insets"
@@ -19,7 +18,7 @@ type AnimatedContainerAttributes[TInsets duit_edge_insets.EdgeInsets, TColor dui
 	Width                float32                                `json:"width,omitempty"`
 	Height               float32                                `json:"height,omitempty"`
 	Color                TColor                                 `json:"color,omitempty"`
-	ClipBehavior         duit_clip.Clip                         `json:"clipBehavior,omitempty"`
+	ClipBehavior         duit_props.Clip                         `json:"clipBehavior,omitempty"`
 	Decoration           *duit_decoration.BoxDecoration[TColor] `json:"decoration,omitempty"`
 	ForegroundDecoration *duit_decoration.BoxDecoration[TColor] `json:"foregroundDecoration,omitempty"`
 	Padding              TInsets                                `json:"padding,omitempty"`

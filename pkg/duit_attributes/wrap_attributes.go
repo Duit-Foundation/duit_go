@@ -4,11 +4,11 @@ import (
 	"errors"
 
 	animations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_clip"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_cross_axis"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_main_axis"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_text_properties"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 )
 
 type WrapAttributes struct {
@@ -22,7 +22,7 @@ type WrapAttributes struct {
 	CrossAxisAlignment duit_cross_axis.CrossAxisAlignment `json:"crossAxisAlignment,omitempty"`
 	Spacing            float32                            `json:"spacing,omitempty"`
 	RunSpacing         float32                            `json:"runSpacing,omitempty"`
-	ClipBehavior       duit_clip.Clip                     `json:"clipBehavior,omitempty"`
+	ClipBehavior       duit_props.Clip                     `json:"clipBehavior,omitempty"`
 	Direction          duit_flex.Axis                     `json:"direction,omitempty"`
 }
 

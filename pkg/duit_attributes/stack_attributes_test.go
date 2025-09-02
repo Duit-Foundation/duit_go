@@ -4,7 +4,6 @@ import (
 	"testing"
 
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_clip"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_text_properties"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
@@ -13,7 +12,7 @@ import (
 func TestStackAttributes_Validate_ValidAttributes(t *testing.T) {
 	attrs := &duit_attributes.StackAttributes{
 		TextDirection: duit_text_properties.Ltr,
-		ClipBehavior:  duit_clip.AntiAlias,
+		ClipBehavior:  duit_props.ClipAntiAlias,
 		Alignment:     duit_props.AlignmentCenter,
 		Fit:           duit_flex.Loose,
 	}

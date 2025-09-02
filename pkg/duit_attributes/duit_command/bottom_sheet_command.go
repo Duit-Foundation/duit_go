@@ -2,11 +2,11 @@ package duit_command
 
 import (
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_action"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_clip"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_color"
 	duit_decoration "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_decorations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_core"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
@@ -27,7 +27,7 @@ type BottomSheetCommand[TAction duit_action.Action, TColor duit_color.Color, TSh
 	BackgroundColor                     TColor                              `json:"backgroundColor,omitempty"`
 	BarrierColor                        TColor                              `json:"barrierColor,omitempty"`
 	Shape                               *TShape                             `json:"shape,omitempty"`
-	ClipBehavior                        duit_utils.Tristate[duit_clip.Clip] `json:"clipBehavior,omitempty"`
+	ClipBehavior                        duit_utils.Tristate[duit_props.Clip] `json:"clipBehavior,omitempty"`
 }
 
 type BottomSheetUIProps[TColor duit_color.Color, TShape duit_decoration.ShapeBorder[TColor]] struct {
@@ -43,7 +43,7 @@ type BottomSheetUIProps[TColor duit_color.Color, TShape duit_decoration.ShapeBor
 	BackgroundColor                     TColor        `json:"backgroundColor,omitempty"`
 	BarrierColor                        TColor         `json:"barrierColor,omitempty"`
 	Shape                               *TShape                             `json:"shape,omitempty"`
-	ClipBehavior                        duit_utils.Tristate[duit_clip.Clip] `json:"clipBehavior,omitempty"`
+	ClipBehavior                        duit_utils.Tristate[duit_props.Clip] `json:"clipBehavior,omitempty"`
 }
 
 func NewBottomSheetCommand[TAction duit_action.Action, TColor duit_color.Color, TShape duit_decoration.ShapeBorder[TColor]](

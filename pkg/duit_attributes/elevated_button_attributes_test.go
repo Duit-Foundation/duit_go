@@ -7,11 +7,11 @@ import (
 
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_action"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_clip"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_color"
 	duit_decorations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_decorations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_edge_insets"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_material"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
@@ -36,7 +36,7 @@ func TestElevatedButtonAttributes_Validate_WithAllFields(t *testing.T) {
 
 	attrs := &duit_attributes.ElevatedButtonAttributes[duit_color.ColorString, duit_edge_insets.EdgeInsetsAll, duit_decorations.RoundedRectangleBorder[duit_color.ColorString], duit_action.RemoteAction]{
 		Autofocus:    duit_utils.BoolValue(true),
-		ClipBehavior: duit_clip.AntiAlias,
+		ClipBehavior: duit_props.ClipAntiAlias,
 		Style:        buttonStyle,
 		OnLongPress:  remoteAction,
 	}
@@ -101,7 +101,7 @@ func TestElevatedButtonAttributes_Autofocus_JSON_Nil(t *testing.T) {
 
 func TestElevatedButtonAttributes_ClipBehavior_JSON(t *testing.T) {
 	attrs := &duit_attributes.ElevatedButtonAttributes[duit_color.ColorString, duit_edge_insets.EdgeInsetsAll, duit_decorations.RoundedRectangleBorder[duit_color.ColorString], duit_action.RemoteAction]{
-		ClipBehavior: duit_clip.AntiAlias,
+		ClipBehavior: duit_props.ClipAntiAlias,
 	}
 
 	jsonData, err := json.Marshal(attrs)

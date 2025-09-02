@@ -7,11 +7,11 @@ import (
 
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_builder"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_clip"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_edge_insets"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_gestures"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_core"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
@@ -54,7 +54,7 @@ func TestListViewBaseAttributes_Validate_WithAllProperties(t *testing.T) {
 		SemantickChildCount:     10,
 		Padding:                 duit_utils.TristateFrom[duit_edge_insets.EdgeInsetsAll](duit_edge_insets.EdgeInsetsAll(16.0)),
 		ItemExtent:              50.0,
-		ClipBehavior:            duit_clip.AntiAlias,
+		ClipBehavior:            duit_props.ClipAntiAlias,
 		RestorationId:           "test_restoration",
 		DragStarnBehavior:       duit_gestures.Start,
 		KeyboardDismissBehavior: duit_gestures.Manual,

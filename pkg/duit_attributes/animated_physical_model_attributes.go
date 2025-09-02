@@ -4,9 +4,9 @@ import (
 	"errors"
 
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_clip"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_color"
 	duit_decoration "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_decorations"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
@@ -17,7 +17,7 @@ type AnimatedPhysicalModelAttributes struct {
 	Elevation          duit_utils.Tristate[float32]    `json:"elevation"`
 	Color              *duit_color.ColorV2             `json:"color,omitempty"`
 	ShadowColor        *duit_color.ColorV2             `json:"shadowColor,omitempty"`
-	ClipBehavior       duit_clip.Clip                  `json:"clipBehavior,omitempty"`
+	ClipBehavior       duit_props.Clip                  `json:"clipBehavior,omitempty"`
 	BorderRadius       *duit_decoration.BorderRadiusV2 `json:"borderRadius,omitempty"`
 	Shape              duit_decoration.BoxShape        `json:"shape,omitempty"`
 	AnimateColor       duit_utils.Tristate[bool]       `json:"animateColor,omitempty"`

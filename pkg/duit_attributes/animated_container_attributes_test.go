@@ -7,7 +7,6 @@ import (
 
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_clip"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_color"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_edge_insets"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
@@ -83,7 +82,7 @@ func TestAnimatedContainerAttributes_Validate_WithColorAndClip(t *testing.T) {
 		Width:        100.0,
 		Height:       200.0,
 		Color:        "#FF0000",
-		ClipBehavior: duit_clip.AntiAlias,
+		ClipBehavior: duit_props.ClipAntiAlias,
 		ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
 			Duration: 300,
 			Curve:    duit_animations.Ease,
