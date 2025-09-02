@@ -7,15 +7,14 @@ import (
 
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_color"
 	duit_decoration "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_decorations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
 func TestAnimatedPhysicalModelAttributes_Validate_ValidAttributes(t *testing.T) {
-	color := duit_color.ColorV2{}.FromString("#FF0000")
-	shadowColor := duit_color.ColorV2{}.FromString("#000000")
+	color := duit_props.ColorV2{}.FromString("#FF0000")
+	shadowColor := duit_props.ColorV2{}.FromString("#000000")
 
 	attrs := &duit_attributes.AnimatedPhysicalModelAttributes{
 		Elevation:   duit_utils.Float32Value(4.0),
@@ -62,8 +61,8 @@ func TestAnimatedPhysicalModelAttributes_Validate_ValidElevationValues(t *testin
 
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
-			color := duit_color.ColorV2{}.FromString("#FF0000")
-			shadowColor := duit_color.ColorV2{}.FromString("#000000")
+			color := duit_props.ColorV2{}.FromString("#FF0000")
+			shadowColor := duit_props.ColorV2{}.FromString("#000000")
 
 			attrs := &duit_attributes.AnimatedPhysicalModelAttributes{
 				Elevation:   duit_utils.Float32Value(tc.elevation),
@@ -84,8 +83,8 @@ func TestAnimatedPhysicalModelAttributes_Validate_ValidElevationValues(t *testin
 }
 
 func TestAnimatedPhysicalModelAttributes_Validate_InvalidElevation(t *testing.T) {
-	color := duit_color.ColorV2{}.FromString("#FF0000")
-	shadowColor := duit_color.ColorV2{}.FromString("#000000")
+	color := duit_props.ColorV2{}.FromString("#FF0000")
+	shadowColor := duit_props.ColorV2{}.FromString("#000000")
 
 	attrs := &duit_attributes.AnimatedPhysicalModelAttributes{
 		Elevation:   duit_utils.Float32Value(-1.0), // Invalid negative elevation
@@ -109,8 +108,8 @@ func TestAnimatedPhysicalModelAttributes_Validate_InvalidElevation(t *testing.T)
 }
 
 func TestAnimatedPhysicalModelAttributes_Validate_NilElevation(t *testing.T) {
-	color := duit_color.ColorV2{}.FromString("#FF0000")
-	shadowColor := duit_color.ColorV2{}.FromString("#000000")
+	color := duit_props.ColorV2{}.FromString("#FF0000")
+	shadowColor := duit_props.ColorV2{}.FromString("#000000")
 
 	attrs := &duit_attributes.AnimatedPhysicalModelAttributes{
 		Elevation:   nil, // Required field
@@ -134,7 +133,7 @@ func TestAnimatedPhysicalModelAttributes_Validate_NilElevation(t *testing.T) {
 }
 
 func TestAnimatedPhysicalModelAttributes_Validate_NilColor(t *testing.T) {
-	shadowColor := duit_color.ColorV2{}.FromString("#000000")
+	shadowColor := duit_props.ColorV2{}.FromString("#000000")
 
 	attrs := &duit_attributes.AnimatedPhysicalModelAttributes{
 		Elevation:   duit_utils.Float32Value(4.0),
@@ -158,7 +157,7 @@ func TestAnimatedPhysicalModelAttributes_Validate_NilColor(t *testing.T) {
 }
 
 func TestAnimatedPhysicalModelAttributes_Validate_NilShadowColor(t *testing.T) {
-	color := duit_color.ColorV2{}.FromString("#FF0000")
+	color := duit_props.ColorV2{}.FromString("#FF0000")
 
 	attrs := &duit_attributes.AnimatedPhysicalModelAttributes{
 		Elevation:   duit_utils.Float32Value(4.0),
@@ -182,8 +181,8 @@ func TestAnimatedPhysicalModelAttributes_Validate_NilShadowColor(t *testing.T) {
 }
 
 func TestAnimatedPhysicalModelAttributes_Validate_WithOptionalFields(t *testing.T) {
-	color := duit_color.ColorV2{}.FromString("#FF0000")
-	shadowColor := duit_color.ColorV2{}.FromString("#000000")
+	color := duit_props.ColorV2{}.FromString("#FF0000")
+	shadowColor := duit_props.ColorV2{}.FromString("#000000")
 
 	borderRadius := duit_decoration.BorderRadiusV2{}.All(
 		duit_decoration.RadiusV2{}.Circular(8.0),
@@ -213,8 +212,8 @@ func TestAnimatedPhysicalModelAttributes_Validate_WithOptionalFields(t *testing.
 // JSON Serialization tests for Tristate fields
 
 func TestAnimatedPhysicalModelAttributes_MarshalJSON_ElevationField(t *testing.T) {
-	color := duit_color.ColorV2{}.FromString("#FF0000")
-	shadowColor := duit_color.ColorV2{}.FromString("#000000")
+	color := duit_props.ColorV2{}.FromString("#FF0000")
+	shadowColor := duit_props.ColorV2{}.FromString("#000000")
 
 	attrs := &duit_attributes.AnimatedPhysicalModelAttributes{
 		Elevation:   duit_utils.Float32Value(6.0),
@@ -238,8 +237,8 @@ func TestAnimatedPhysicalModelAttributes_MarshalJSON_ElevationField(t *testing.T
 }
 
 func TestAnimatedPhysicalModelAttributes_MarshalJSON_AnimateColorField(t *testing.T) {
-	color := duit_color.ColorV2{}.FromString("#FF0000")
-	shadowColor := duit_color.ColorV2{}.FromString("#000000")
+	color := duit_props.ColorV2{}.FromString("#FF0000")
+	shadowColor := duit_props.ColorV2{}.FromString("#000000")
 
 	attrs := &duit_attributes.AnimatedPhysicalModelAttributes{
 		Elevation:    duit_utils.Float32Value(4.0),
@@ -264,8 +263,8 @@ func TestAnimatedPhysicalModelAttributes_MarshalJSON_AnimateColorField(t *testin
 }
 
 func TestAnimatedPhysicalModelAttributes_MarshalJSON_AnimateShadowColorField(t *testing.T) {
-	color := duit_color.ColorV2{}.FromString("#FF0000")
-	shadowColor := duit_color.ColorV2{}.FromString("#000000")
+	color := duit_props.ColorV2{}.FromString("#FF0000")
+	shadowColor := duit_props.ColorV2{}.FromString("#000000")
 
 	attrs := &duit_attributes.AnimatedPhysicalModelAttributes{
 		Elevation:          duit_utils.Float32Value(4.0),
@@ -290,8 +289,8 @@ func TestAnimatedPhysicalModelAttributes_MarshalJSON_AnimateShadowColorField(t *
 }
 
 func TestAnimatedPhysicalModelAttributes_MarshalJSON_NilTristateFields(t *testing.T) {
-	color := duit_color.ColorV2{}.FromString("#FF0000")
-	shadowColor := duit_color.ColorV2{}.FromString("#000000")
+	color := duit_props.ColorV2{}.FromString("#FF0000")
+	shadowColor := duit_props.ColorV2{}.FromString("#000000")
 
 	attrs := &duit_attributes.AnimatedPhysicalModelAttributes{
 		Elevation:          duit_utils.Float32Value(4.0),
@@ -323,8 +322,8 @@ func TestAnimatedPhysicalModelAttributes_MarshalJSON_NilTristateFields(t *testin
 // Tests for ImplicitAnimatable embedded struct
 
 func TestAnimatedPhysicalModelAttributes_Validate_NilImplicitAnimatable(t *testing.T) {
-	color := duit_color.ColorV2{}.FromString("#FF0000")
-	shadowColor := duit_color.ColorV2{}.FromString("#000000")
+	color := duit_props.ColorV2{}.FromString("#FF0000")
+	shadowColor := duit_props.ColorV2{}.FromString("#000000")
 
 	attrs := &duit_attributes.AnimatedPhysicalModelAttributes{
 		Elevation:          duit_utils.Float32Value(4.0),

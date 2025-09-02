@@ -4,13 +4,12 @@ import (
 	"errors"
 
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_color"
 	duit_decoration "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_decorations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
-type PhysicalModelAttributes[TColor duit_color.Color] struct {
+type PhysicalModelAttributes[TColor duit_props.Color] struct {
 	*ValueReferenceHolder
 	*duit_animations.AnimatedPropertyOwner
 	*ThemeConsumer

@@ -1,8 +1,8 @@
 package duit_text_properties
 
-import "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_color"
+import "github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 
-type TextSpan[T duit_color.Color] struct {
+type TextSpan[T duit_props.Color] struct {
 	Text     string         `json:"text,omitempty"`
 	Style    *TextStyle[T]  `json:"style,omitempty"`
 	SpellOut bool           `json:"spellOut,omitempty"`

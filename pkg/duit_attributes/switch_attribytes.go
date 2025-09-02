@@ -3,12 +3,12 @@ package duit_attributes
 import (
 	"errors"
 
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_color"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_material"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
-type SwitchAttributes[TColor duit_color.Color] struct {
+type SwitchAttributes[TColor duit_props.Color] struct {
 	*ValueReferenceHolder
 	*ThemeConsumer
 	Value                 duit_utils.Tristate[bool]                     `json:"value,omitempty"`

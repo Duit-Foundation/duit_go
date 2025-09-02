@@ -2,13 +2,13 @@ package duit_attributes
 
 import (
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_action"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_color"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	duit_decoration "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_decorations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_material"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
-type InkwellAttributes[TColor duit_color.Color, TAction duit_action.Action, TShape duit_decoration.ShapeBorder[TColor]] struct {
+type InkwellAttributes[TColor duit_props.Color, TAction duit_action.Action, TShape duit_decoration.ShapeBorder[TColor]] struct {
 	*ValueReferenceHolder
 	*ThemeConsumer
 	OnTap                *TAction                                     `json:"onTap,omitempty"`

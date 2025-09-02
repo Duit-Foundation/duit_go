@@ -3,14 +3,14 @@ package duit_attributes
 import (
 	"errors"
 
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_color"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	duit_decoration "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_decorations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_material"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
-type CheckboxAttributes[T duit_color.Color] struct {
+type CheckboxAttributes[T duit_props.Color] struct {
 	*ValueReferenceHolder
 	*ThemeConsumer
 	Value         duit_utils.Tristate[bool]               `json:"value"`

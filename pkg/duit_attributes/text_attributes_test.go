@@ -6,13 +6,13 @@ import (
 	"testing"
 
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_color"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_text_properties"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
 func TestTextAttributes_Validate_ValidAttributes(t *testing.T) {
-	attrs := &duit_attributes.TextAttributes[duit_color.ColorString]{
+	attrs := &duit_attributes.TextAttributes[duit_props.ColorString]{
 		Data: "Hello World",
 	}
 
@@ -23,7 +23,7 @@ func TestTextAttributes_Validate_ValidAttributes(t *testing.T) {
 }
 
 func TestTextAttributes_Validate_MissingData(t *testing.T) {
-	attrs := &duit_attributes.TextAttributes[duit_color.ColorString]{
+	attrs := &duit_attributes.TextAttributes[duit_props.ColorString]{
 		Data: "",
 	}
 
@@ -38,9 +38,9 @@ func TestTextAttributes_Validate_MissingData(t *testing.T) {
 }
 
 func TestTextAttributes_Validate_WithAllProperties(t *testing.T) {
-	style := &duit_text_properties.TextStyle[duit_color.ColorString]{}
+	style := &duit_text_properties.TextStyle[duit_props.ColorString]{}
 	
-	attrs := &duit_attributes.TextAttributes[duit_color.ColorString]{
+	attrs := &duit_attributes.TextAttributes[duit_props.ColorString]{
 		Data:           "Test text with all properties",
 		SemanticsLabel: "Test label",
 		TextAlign:      duit_text_properties.Center,
@@ -59,7 +59,7 @@ func TestTextAttributes_Validate_WithAllProperties(t *testing.T) {
 
 // Tests for SoftWrap Tristate[bool] property serialization
 func TestTextAttributes_SoftWrap_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.TextAttributes[duit_color.ColorString]{
+	attrs := &duit_attributes.TextAttributes[duit_props.ColorString]{
 		Data:     "Test text",
 		SoftWrap: duit_utils.BoolValue(true),
 	}
@@ -76,7 +76,7 @@ func TestTextAttributes_SoftWrap_JSON_True(t *testing.T) {
 }
 
 func TestTextAttributes_SoftWrap_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.TextAttributes[duit_color.ColorString]{
+	attrs := &duit_attributes.TextAttributes[duit_props.ColorString]{
 		Data:     "Test text",
 		SoftWrap: duit_utils.BoolValue(false),
 	}
@@ -93,7 +93,7 @@ func TestTextAttributes_SoftWrap_JSON_False(t *testing.T) {
 }
 
 func TestTextAttributes_SoftWrap_JSON_Nil(t *testing.T) {
-	attrs := &duit_attributes.TextAttributes[duit_color.ColorString]{
+	attrs := &duit_attributes.TextAttributes[duit_props.ColorString]{
 		Data:     "Test text",
 		SoftWrap: duit_utils.Nillable[bool](),
 	}
@@ -111,7 +111,7 @@ func TestTextAttributes_SoftWrap_JSON_Nil(t *testing.T) {
 
 // Tests for MaxLines property serialization
 func TestTextAttributes_MaxLines_JSON_WithValue(t *testing.T) {
-	attrs := &duit_attributes.TextAttributes[duit_color.ColorString]{
+	attrs := &duit_attributes.TextAttributes[duit_props.ColorString]{
 		Data:     "Test text",
 		MaxLines: 10,
 	}
@@ -128,7 +128,7 @@ func TestTextAttributes_MaxLines_JSON_WithValue(t *testing.T) {
 }
 
 func TestTextAttributes_MaxLines_JSON_ZeroValue(t *testing.T) {
-	attrs := &duit_attributes.TextAttributes[duit_color.ColorString]{
+	attrs := &duit_attributes.TextAttributes[duit_props.ColorString]{
 		Data:     "Test text",
 		MaxLines: 0,
 	}

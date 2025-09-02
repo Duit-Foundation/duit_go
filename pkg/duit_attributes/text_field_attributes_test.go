@@ -6,14 +6,14 @@ import (
 	"testing"
 
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_color"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_edge_insets"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_text_properties"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
 func TestTextFieldAttributes_Validate_ValidAttributes(t *testing.T) {
-	attrs := &duit_attributes.TextFieldAttributes[duit_edge_insets.EdgeInsetsLTRB, duit_color.ColorString]{
+	attrs := &duit_attributes.TextFieldAttributes[duit_edge_insets.EdgeInsetsLTRB, duit_props.ColorString]{
 		Autocorrect:       duit_utils.BoolValue(true),
 		EnableSuggestions: duit_utils.BoolValue(false),
 		Expands:           duit_utils.BoolValue(true),
@@ -26,9 +26,9 @@ func TestTextFieldAttributes_Validate_ValidAttributes(t *testing.T) {
 }
 
 func TestTextFieldAttributes_Validate_WithAllProperties(t *testing.T) {
-	style := &duit_text_properties.TextStyle[duit_color.ColorString]{}
+	style := &duit_text_properties.TextStyle[duit_props.ColorString]{}
 	
-	attrs := &duit_attributes.TextFieldAttributes[duit_edge_insets.EdgeInsetsLTRB, duit_color.ColorString]{
+	attrs := &duit_attributes.TextFieldAttributes[duit_edge_insets.EdgeInsetsLTRB, duit_props.ColorString]{
 		Style:              style,
 		TextAlign:          duit_text_properties.Start,
 		TextDirection:      duit_text_properties.Ltr,
@@ -54,7 +54,7 @@ func TestTextFieldAttributes_Validate_WithAllProperties(t *testing.T) {
 
 // Tests for Autocorrect Tristate[bool] property serialization
 func TestTextFieldAttributes_Autocorrect_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.TextFieldAttributes[duit_edge_insets.EdgeInsetsLTRB, duit_color.ColorString]{
+	attrs := &duit_attributes.TextFieldAttributes[duit_edge_insets.EdgeInsetsLTRB, duit_props.ColorString]{
 		Autocorrect: duit_utils.BoolValue(true),
 	}
 
@@ -70,7 +70,7 @@ func TestTextFieldAttributes_Autocorrect_JSON_True(t *testing.T) {
 }
 
 func TestTextFieldAttributes_Autocorrect_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.TextFieldAttributes[duit_edge_insets.EdgeInsetsLTRB, duit_color.ColorString]{
+	attrs := &duit_attributes.TextFieldAttributes[duit_edge_insets.EdgeInsetsLTRB, duit_props.ColorString]{
 		Autocorrect: duit_utils.BoolValue(false),
 	}
 
@@ -86,7 +86,7 @@ func TestTextFieldAttributes_Autocorrect_JSON_False(t *testing.T) {
 }
 
 func TestTextFieldAttributes_Autocorrect_JSON_Nil(t *testing.T) {
-	attrs := &duit_attributes.TextFieldAttributes[duit_edge_insets.EdgeInsetsLTRB, duit_color.ColorString]{
+	attrs := &duit_attributes.TextFieldAttributes[duit_edge_insets.EdgeInsetsLTRB, duit_props.ColorString]{
 		Autocorrect: duit_utils.Nillable[bool](),
 	}
 
@@ -103,7 +103,7 @@ func TestTextFieldAttributes_Autocorrect_JSON_Nil(t *testing.T) {
 
 // Tests for EnableSuggestions Tristate[bool] property serialization
 func TestTextFieldAttributes_EnableSuggestions_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.TextFieldAttributes[duit_edge_insets.EdgeInsetsLTRB, duit_color.ColorString]{
+	attrs := &duit_attributes.TextFieldAttributes[duit_edge_insets.EdgeInsetsLTRB, duit_props.ColorString]{
 		EnableSuggestions: duit_utils.BoolValue(true),
 	}
 
@@ -119,7 +119,7 @@ func TestTextFieldAttributes_EnableSuggestions_JSON_True(t *testing.T) {
 }
 
 func TestTextFieldAttributes_EnableSuggestions_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.TextFieldAttributes[duit_edge_insets.EdgeInsetsLTRB, duit_color.ColorString]{
+	attrs := &duit_attributes.TextFieldAttributes[duit_edge_insets.EdgeInsetsLTRB, duit_props.ColorString]{
 		EnableSuggestions: duit_utils.BoolValue(false),
 	}
 
@@ -136,7 +136,7 @@ func TestTextFieldAttributes_EnableSuggestions_JSON_False(t *testing.T) {
 
 // Tests for Autofocus Tristate[bool] property serialization
 func TestTextFieldAttributes_Autofocus_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.TextFieldAttributes[duit_edge_insets.EdgeInsetsLTRB, duit_color.ColorString]{
+	attrs := &duit_attributes.TextFieldAttributes[duit_edge_insets.EdgeInsetsLTRB, duit_props.ColorString]{
 		Autofocus: duit_utils.BoolValue(true),
 	}
 
@@ -152,7 +152,7 @@ func TestTextFieldAttributes_Autofocus_JSON_True(t *testing.T) {
 }
 
 func TestTextFieldAttributes_Autofocus_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.TextFieldAttributes[duit_edge_insets.EdgeInsetsLTRB, duit_color.ColorString]{
+	attrs := &duit_attributes.TextFieldAttributes[duit_edge_insets.EdgeInsetsLTRB, duit_props.ColorString]{
 		Autofocus: duit_utils.BoolValue(false),
 	}
 

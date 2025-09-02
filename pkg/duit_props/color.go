@@ -1,4 +1,4 @@
-package duit_color
+package duit_props
 
 import (
 	"encoding/json"
@@ -7,7 +7,7 @@ import (
 )
 
 // Hex string
-type ColorString string
+type ColorString = string
 
 // Array of 4 uint8, last item of array will be assigned as opacity
 type ColorRGBO struct {

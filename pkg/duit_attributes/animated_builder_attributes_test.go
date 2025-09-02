@@ -7,7 +7,7 @@ import (
 
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_color"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
 )
 
@@ -68,7 +68,7 @@ func TestAnimatedBuilderAttributes_Validate_ValidTweenTypes(t *testing.T) {
 		},
 		{
 			name:  "ColorTween",
-			tween: duit_animations.ColorTween[duit_color.ColorString]("color", "#FF0000", "#00FF00", 300, duit_animations.OnEnter, duit_animations.Forward, false, duit_animations.Ease),
+			tween: duit_animations.ColorTween[duit_props.ColorString]("color", "#FF0000", "#00FF00", 300, duit_animations.OnEnter, duit_animations.Forward, false, duit_animations.Ease),
 		},
 		{
 			name: "SizeTween",
@@ -99,7 +99,7 @@ func TestAnimatedBuilderAttributes_Validate_ValidTweenTypes(t *testing.T) {
 func TestAnimatedBuilderAttributes_Validate_MultipleTweens(t *testing.T) {
 	tweens := []any{
 		duit_animations.Tween("opacity", 0.0, 1.0, 300, duit_animations.OnEnter, duit_animations.Forward, false, duit_animations.Ease),
-		duit_animations.ColorTween[duit_color.ColorString]("color", "#FF0000", "#00FF00", 300, duit_animations.OnEnter, duit_animations.Forward, false, duit_animations.Ease),
+		duit_animations.ColorTween[duit_props.ColorString]("color", "#FF0000", "#00FF00", 300, duit_animations.OnEnter, duit_animations.Forward, false, duit_animations.Ease),
 		duit_animations.SizeTween("size", 
 			duit_flex.Size{Width: 100.0, Height: 100.0}, 
 			duit_flex.Size{Width: 200.0, Height: 200.0}, 

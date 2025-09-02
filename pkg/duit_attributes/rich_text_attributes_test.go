@@ -4,16 +4,16 @@ import (
 	"testing"
 
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_color"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_text_properties"
 )
 
 func TestRichTextAttributes_Validate_ValidAttributes(t *testing.T) {
-	textSpan := &duit_text_properties.TextSpan[duit_color.ColorString]{
+	textSpan := &duit_text_properties.TextSpan[duit_props.ColorString]{
 		Text: "Test text",
 	}
 
-	attrs := &duit_attributes.RichTextAttributes[duit_color.ColorString]{
+	attrs := &duit_attributes.RichTextAttributes[duit_props.ColorString]{
 		TextSpan: textSpan,
 	}
 
@@ -24,7 +24,7 @@ func TestRichTextAttributes_Validate_ValidAttributes(t *testing.T) {
 }
 
 func TestRichTextAttributes_Validate_MissingTextSpan(t *testing.T) {
-	attrs := &duit_attributes.RichTextAttributes[duit_color.ColorString]{
+	attrs := &duit_attributes.RichTextAttributes[duit_props.ColorString]{
 		TextSpan: nil,
 	}
 

@@ -6,13 +6,13 @@ import (
 	"testing"
 
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_color"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
 // Tests for RadioAttributes
 func TestRadioAttributes_Validate_ValidAttributes(t *testing.T) {
-	attrs := &duit_attributes.RadioAttributes[string, duit_color.ColorString]{
+	attrs := &duit_attributes.RadioAttributes[string, duit_props.ColorString]{
 		Value: duit_utils.StringValue("option1"),
 	}
 
@@ -23,7 +23,7 @@ func TestRadioAttributes_Validate_ValidAttributes(t *testing.T) {
 }
 
 func TestRadioAttributes_Validate_WithoutValue(t *testing.T) {
-	attrs := &duit_attributes.RadioAttributes[string, duit_color.ColorString]{}
+	attrs := &duit_attributes.RadioAttributes[string, duit_props.ColorString]{}
 
 	err := attrs.Validate()
 	if err == nil {
@@ -33,7 +33,7 @@ func TestRadioAttributes_Validate_WithoutValue(t *testing.T) {
 
 // Tests for Tristate[string] property serialization in RadioAttributes
 func TestRadioAttributes_Tristate_JSON_ValidValue(t *testing.T) {
-	attrs := &duit_attributes.RadioAttributes[string, duit_color.ColorString]{
+	attrs := &duit_attributes.RadioAttributes[string, duit_props.ColorString]{
 		Value: duit_utils.StringValue("test_option"),
 	}
 
@@ -49,7 +49,7 @@ func TestRadioAttributes_Tristate_JSON_ValidValue(t *testing.T) {
 }
 
 func TestRadioAttributes_Tristate_JSON_EmptyString(t *testing.T) {
-	attrs := &duit_attributes.RadioAttributes[string, duit_color.ColorString]{
+	attrs := &duit_attributes.RadioAttributes[string, duit_props.ColorString]{
 		Value: duit_utils.StringValue(""),
 	}
 
@@ -65,7 +65,7 @@ func TestRadioAttributes_Tristate_JSON_EmptyString(t *testing.T) {
 }
 
 func TestRadioAttributes_Tristate_JSON_Nil(t *testing.T) {
-	attrs := &duit_attributes.RadioAttributes[string, duit_color.ColorString]{
+	attrs := &duit_attributes.RadioAttributes[string, duit_props.ColorString]{
 		Value: duit_utils.Nillable[string](),
 	}
 

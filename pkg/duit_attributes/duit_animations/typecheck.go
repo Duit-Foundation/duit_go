@@ -3,7 +3,6 @@ package duit_animations
 import (
 	"errors"
 
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_color"
 	duit_decoration "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_decorations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_edge_insets"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
@@ -14,13 +13,12 @@ import (
 func CheckTweenType(tween any) error {
 	switch tween.(type) {
 	case *tweenBase[float32],
-		*tweenBase[*duit_color.ColorRGBO],
-		*tweenBase[duit_color.ColorString],
-		*tweenBase[duit_text_properties.TextStyle[*duit_color.ColorRGBO]],
-		*tweenBase[duit_text_properties.TextStyle[duit_color.ColorString]],
-		*tweenBase[duit_decoration.BoxDecoration[*duit_color.ColorRGBO]],
-		*tweenBase[duit_decoration.BoxDecoration[duit_color.ColorString]],
-		*tweenBase[duit_props.Alignment],
+		*tweenBase[*duit_props.ColorRGBO],
+		*tweenBase[duit_props.ColorString],
+		*tweenBase[duit_text_properties.TextStyle[*duit_props.ColorRGBO]],
+		*tweenBase[duit_text_properties.TextStyle[duit_props.ColorString]],
+		*tweenBase[duit_decoration.BoxDecoration[*duit_props.ColorRGBO]],
+		*tweenBase[duit_decoration.BoxDecoration[duit_props.ColorString]],
 		*tweenBase[duit_edge_insets.EdgeInsetsAll],
 		*tweenBase[duit_edge_insets.EdgeInsetsSymmentric],
 		*tweenBase[duit_edge_insets.EdgeInsetsLTRB],

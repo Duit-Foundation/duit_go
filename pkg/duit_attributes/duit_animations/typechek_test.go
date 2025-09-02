@@ -4,7 +4,7 @@ import (
 	"testing"
 
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_color"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	duit_decoration "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_decorations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_edge_insets"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
@@ -12,32 +12,32 @@ import (
 )
 
 var (
-	textStyleBeginString = duit_text_properties.TextStyle[duit_color.ColorString]{
-		Color: duit_color.ColorString("#ff00ff"),
+	textStyleBeginString = duit_text_properties.TextStyle[duit_props.ColorString]{
+		Color: duit_props.ColorString("#ff00ff"),
 	}
-	textStyleEndString = duit_text_properties.TextStyle[duit_color.ColorString]{
-		Color: duit_color.ColorString("#00ff00"),
-	}
-
-	textStyleBeginRGBO = duit_text_properties.TextStyle[*duit_color.ColorRGBO]{
-		Color: &duit_color.ColorRGBO{R: 10, G: 20, B: 30, O: 1},
-	}
-	textStyleEndRGBO = duit_text_properties.TextStyle[*duit_color.ColorRGBO]{
-		Color: &duit_color.ColorRGBO{R: 30, G: 20, B: 10, O: 1},
+	textStyleEndString = duit_text_properties.TextStyle[duit_props.ColorString]{
+		Color: duit_props.ColorString("#00ff00"),
 	}
 
-	decorationBeginString = duit_decoration.BoxDecoration[duit_color.ColorString]{
-		Color: duit_color.ColorString("#123456"),
+	textStyleBeginRGBO = duit_text_properties.TextStyle[*duit_props.ColorRGBO]{
+		Color: &duit_props.ColorRGBO{R: 10, G: 20, B: 30, O: 1},
 	}
-	decorationEndString = duit_decoration.BoxDecoration[duit_color.ColorString]{
-		Color: duit_color.ColorString("#abcdef"),
+	textStyleEndRGBO = duit_text_properties.TextStyle[*duit_props.ColorRGBO]{
+		Color: &duit_props.ColorRGBO{R: 30, G: 20, B: 10, O: 1},
 	}
 
-	decorationBeginRGBO = duit_decoration.BoxDecoration[*duit_color.ColorRGBO]{
-		Color: &duit_color.ColorRGBO{R: 1, G: 2, B: 3, O: 1},
+	decorationBeginString = duit_decoration.BoxDecoration[duit_props.ColorString]{
+		Color: duit_props.ColorString("#123456"),
 	}
-	decorationEndRGBO = duit_decoration.BoxDecoration[*duit_color.ColorRGBO]{
-		Color: &duit_color.ColorRGBO{R: 3, G: 2, B: 1, O: 1},
+	decorationEndString = duit_decoration.BoxDecoration[duit_props.ColorString]{
+		Color: duit_props.ColorString("#abcdef"),
+	}
+
+	decorationBeginRGBO = duit_decoration.BoxDecoration[*duit_props.ColorRGBO]{
+		Color: &duit_props.ColorRGBO{R: 1, G: 2, B: 3, O: 1},
+	}
+	decorationEndRGBO = duit_decoration.BoxDecoration[*duit_props.ColorRGBO]{
+		Color: &duit_props.ColorRGBO{R: 3, G: 2, B: 1, O: 1},
 	}
 )
 
@@ -47,8 +47,8 @@ func TestCheckTweenType(t *testing.T) {
 		// float
 		duit_animations.Tween("opacity", 0.0, 1.0, 1, duit_animations.OnEnter, duit_animations.Forward, false, ""),
 		// colors
-		duit_animations.ColorTween("color", duit_color.ColorString("#000000"), duit_color.ColorString("#ffffff"), 1, duit_animations.OnEnter, duit_animations.Forward, false, ""),
-		duit_animations.ColorTween("color", &duit_color.ColorRGBO{R: 0, G: 0, B: 0, O: 1}, &duit_color.ColorRGBO{R: 255, G: 255, B: 255, O: 1}, 1, duit_animations.OnEnter, duit_animations.Forward, false, ""),
+		duit_animations.ColorTween("color", duit_props.ColorString("#000000"), duit_props.ColorString("#ffffff"), 1, duit_animations.OnEnter, duit_animations.Forward, false, ""),
+		duit_animations.ColorTween("color", &duit_props.ColorRGBO{R: 0, G: 0, B: 0, O: 1}, &duit_props.ColorRGBO{R: 255, G: 255, B: 255, O: 1}, 1, duit_animations.OnEnter, duit_animations.Forward, false, ""),
 		// text styles
 		duit_animations.TextStyleTween("textStyle", textStyleBeginString, textStyleEndString, 1, duit_animations.OnEnter, duit_animations.Forward, false, ""),
 		duit_animations.TextStyleTween("textStyle", textStyleBeginRGBO, textStyleEndRGBO, 1, duit_animations.OnEnter, duit_animations.Forward, false, ""),

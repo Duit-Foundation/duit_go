@@ -4,13 +4,13 @@ import (
 	"errors"
 
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_action"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_color"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_gestures"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_material"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
-type SliderAttributes[TAction duit_action.Action, TColor duit_color.Color] struct {
+type SliderAttributes[TAction duit_action.Action, TColor duit_props.Color] struct {
 	*ValueReferenceHolder
 	*ThemeConsumer
 	Value                duit_utils.Tristate[float32]                 `json:"value,omitempty"`

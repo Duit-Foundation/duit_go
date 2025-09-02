@@ -4,7 +4,7 @@ import (
 	"testing"
 
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_color"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_core"
 )
 
@@ -22,9 +22,9 @@ func TextAnimatedCrossFadeChildValidation(t *testing.T) {
 
 	AnimatedCrossFade(
 		&duit_attributes.AnimatedCrossFadeAttributes{}, "", []*duit_core.DuitElementModel{
-			Text(&duit_attributes.TextAttributes[duit_color.ColorString]{}, "text1", false),
-			Text(&duit_attributes.TextAttributes[duit_color.ColorString]{}, "text2", false),
-			Text(&duit_attributes.TextAttributes[duit_color.ColorString]{}, "text3", false),
+			Text(&duit_attributes.TextAttributes[duit_props.ColorString]{}, "text1", false),
+			Text(&duit_attributes.TextAttributes[duit_props.ColorString]{}, "text2", false),
+			Text(&duit_attributes.TextAttributes[duit_props.ColorString]{}, "text3", false),
 		},
 	)
 }

@@ -6,12 +6,12 @@ import (
 	"testing"
 
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_color"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
 func TestSwitchAttributes_Validate_ValidAttributes(t *testing.T) {
-	attrs := &duit_attributes.SwitchAttributes[duit_color.ColorString]{
+	attrs := &duit_attributes.SwitchAttributes[duit_props.ColorString]{
 		Value: duit_utils.BoolValue(true),
 	}
 
@@ -22,7 +22,7 @@ func TestSwitchAttributes_Validate_ValidAttributes(t *testing.T) {
 }
 
 func TestSwitchAttributes_Validate_MissingValue(t *testing.T) {
-	attrs := &duit_attributes.SwitchAttributes[duit_color.ColorString]{
+	attrs := &duit_attributes.SwitchAttributes[duit_props.ColorString]{
 		Value: nil,
 	}
 
@@ -37,7 +37,7 @@ func TestSwitchAttributes_Validate_MissingValue(t *testing.T) {
 }
 
 func TestSwitchAttributes_Validate_WithAllProperties(t *testing.T) {
-	attrs := &duit_attributes.SwitchAttributes[duit_color.ColorString]{
+	attrs := &duit_attributes.SwitchAttributes[duit_props.ColorString]{
 		Value:                 duit_utils.BoolValue(false),
 		ActiveColor:           "#FF0000",
 		FocusColor:            "#00FF00",
@@ -57,7 +57,7 @@ func TestSwitchAttributes_Validate_WithAllProperties(t *testing.T) {
 
 // Tests for Value Tristate[bool] property serialization
 func TestSwitchAttributes_Value_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.SwitchAttributes[duit_color.ColorString]{
+	attrs := &duit_attributes.SwitchAttributes[duit_props.ColorString]{
 		Value: duit_utils.BoolValue(true),
 	}
 
@@ -73,7 +73,7 @@ func TestSwitchAttributes_Value_JSON_True(t *testing.T) {
 }
 
 func TestSwitchAttributes_Value_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.SwitchAttributes[duit_color.ColorString]{
+	attrs := &duit_attributes.SwitchAttributes[duit_props.ColorString]{
 		Value: duit_utils.BoolValue(false),
 	}
 
@@ -89,7 +89,7 @@ func TestSwitchAttributes_Value_JSON_False(t *testing.T) {
 }
 
 func TestSwitchAttributes_Value_JSON_Nil(t *testing.T) {
-	attrs := &duit_attributes.SwitchAttributes[duit_color.ColorString]{
+	attrs := &duit_attributes.SwitchAttributes[duit_props.ColorString]{
 		Value: duit_utils.Nillable[bool](),
 	}
 
@@ -106,7 +106,7 @@ func TestSwitchAttributes_Value_JSON_Nil(t *testing.T) {
 
 // Tests for Autofocus Tristate[bool] property serialization
 func TestSwitchAttributes_Autofocus_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.SwitchAttributes[duit_color.ColorString]{
+	attrs := &duit_attributes.SwitchAttributes[duit_props.ColorString]{
 		Value:     duit_utils.BoolValue(true),
 		Autofocus: duit_utils.BoolValue(true),
 	}
@@ -123,7 +123,7 @@ func TestSwitchAttributes_Autofocus_JSON_True(t *testing.T) {
 }
 
 func TestSwitchAttributes_Autofocus_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.SwitchAttributes[duit_color.ColorString]{
+	attrs := &duit_attributes.SwitchAttributes[duit_props.ColorString]{
 		Value:     duit_utils.BoolValue(true),
 		Autofocus: duit_utils.BoolValue(false),
 	}

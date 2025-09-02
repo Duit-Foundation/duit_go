@@ -19,10 +19,10 @@ Example:
 		},
 		"flexibleSpaceBarId",
 		true,
-		Text(&duit_attributes.TextAttributes[duit_color.Color]{
+		Text(&duit_attributes.TextAttributes[duit_props.Color]{
 			Data: "Flexible Title",
 		}, "title"),
-		Text(&duit_attributes.TextAttributes[duit_color.Color]{
+		Text(&duit_attributes.TextAttributes[duit_props.Color]{
 			Data: "Flexible Background",
 		}, "background"),
 	)

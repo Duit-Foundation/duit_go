@@ -1,7 +1,6 @@
 package duit_animations
 
 import (
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_color"
 	duit_decoration "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_decorations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_edge_insets"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
@@ -67,7 +66,7 @@ func Tween(animatedPropKey string, begin, end float32, duration int, trigger Ani
 	}
 }
 
-func ColorTween[TColor duit_color.Color](animatedPropKey string, begin, end TColor, duration int, trigger AnimationTrigger, method AnimationMethod, reverseOnRepeat bool, curve Curves) *tweenBase[TColor] {
+func ColorTween[TColor duit_props.Color](animatedPropKey string, begin, end TColor, duration int, trigger AnimationTrigger, method AnimationMethod, reverseOnRepeat bool, curve Curves) *tweenBase[TColor] {
 	return &tweenBase[TColor]{
 		TweenType:       "colorTween",
 		AnimatedPropKey: animatedPropKey,
@@ -81,7 +80,7 @@ func ColorTween[TColor duit_color.Color](animatedPropKey string, begin, end TCol
 	}
 }
 
-func TextStyleTween[TColor duit_color.Color](animatedPropKey string, begin, end duit_text_properties.TextStyle[TColor], duration int, trigger AnimationTrigger, method AnimationMethod, reverseOnRepeat bool, curve Curves) *tweenBase[duit_text_properties.TextStyle[TColor]] {
+func TextStyleTween[TColor duit_props.Color](animatedPropKey string, begin, end duit_text_properties.TextStyle[TColor], duration int, trigger AnimationTrigger, method AnimationMethod, reverseOnRepeat bool, curve Curves) *tweenBase[duit_text_properties.TextStyle[TColor]] {
 	return &tweenBase[duit_text_properties.TextStyle[TColor]]{
 		TweenType:       "textStyleTween",
 		AnimatedPropKey: animatedPropKey,
@@ -95,7 +94,7 @@ func TextStyleTween[TColor duit_color.Color](animatedPropKey string, begin, end 
 	}
 }
 
-func DecorationTween[TColor duit_color.Color](animatedPropKey string, begin, end duit_decoration.BoxDecoration[TColor], duration int, trigger AnimationTrigger, method AnimationMethod, reverseOnRepeat bool, curve Curves) *tweenBase[duit_decoration.BoxDecoration[TColor]] {
+func DecorationTween[TColor duit_props.Color](animatedPropKey string, begin, end duit_decoration.BoxDecoration[TColor], duration int, trigger AnimationTrigger, method AnimationMethod, reverseOnRepeat bool, curve Curves) *tweenBase[duit_decoration.BoxDecoration[TColor]] {
 	return &tweenBase[duit_decoration.BoxDecoration[TColor]]{
 		TweenType:       "decorationTween",
 		AnimatedPropKey: animatedPropKey,
