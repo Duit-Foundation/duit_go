@@ -5,7 +5,6 @@ import (
 
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_action"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_gestures"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_material"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
@@ -28,7 +27,7 @@ type SliderAttributes[TAction duit_action.Action, TColor duit_props.Color] struc
 	OverlayColor         *duit_material.MaterialStateProperty[TColor] `json:"overlayColor,omitempty"`
 	Autofocus            duit_utils.Tristate[bool]                    `json:"autofocus,omitempty"`
 	Label                string                                       `json:"label,omitempty"`
-	AllowedInteraction   duit_gestures.SliderInteraction              `json:"allowedInteraction,omitempty"`
+	AllowedInteraction   duit_props.SliderInteraction              `json:"allowedInteraction,omitempty"`
 }
 
 func (r *SliderAttributes[TAction, TColor]) Validate() error {

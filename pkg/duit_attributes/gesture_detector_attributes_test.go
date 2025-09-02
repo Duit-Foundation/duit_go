@@ -7,7 +7,7 @@ import (
 
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_action"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_gestures"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
@@ -65,8 +65,8 @@ func TestGestureDetectorAttributes_Validate_WithAllGestureActions(t *testing.T) 
 		OnPanEnd:              remoteAction,
 		OnPanCancel:           remoteAction,
 		ExcludeFromSemantics:  duit_utils.BoolValue(true),
-		DragStarnBehavior:     duit_gestures.Start,
-		Behavior:              duit_gestures.Opaque,
+		DragStarnBehavior:     duit_props.DragStartBehaviorStart,
+		Behavior:              duit_props.HitTestBehaviorOpaque,
 	}
 
 	err := attrs.Validate()
@@ -232,7 +232,7 @@ func TestGestureDetectorAttributes_PanGestures_JSON(t *testing.T) {
 
 func TestGestureDetectorAttributes_DragStartBehavior_JSON(t *testing.T) {
 	attrs := &duit_attributes.GestureDetectorAttributes[duit_action.RemoteAction]{
-		DragStarnBehavior: duit_gestures.Down,
+		DragStarnBehavior: duit_props.DragStartBehaviorDown,
 	}
 
 	jsonData, err := json.Marshal(attrs)
@@ -248,7 +248,7 @@ func TestGestureDetectorAttributes_DragStartBehavior_JSON(t *testing.T) {
 
 func TestGestureDetectorAttributes_Behavior_JSON(t *testing.T) {
 	attrs := &duit_attributes.GestureDetectorAttributes[duit_action.RemoteAction]{
-		Behavior: duit_gestures.Translucent,
+		Behavior: duit_props.HitTestBehaviorTranslucent,
 	}
 
 	jsonData, err := json.Marshal(attrs)
@@ -359,8 +359,8 @@ func TestGestureDetectorAttributes_ComprehensiveTest_JSON(t *testing.T) {
 		OnLongPress:           remoteAction,
 		OnPanStart:            remoteAction,
 		ExcludeFromSemantics:  duit_utils.BoolValue(false),
-		DragStarnBehavior:     duit_gestures.Start,
-		Behavior:              duit_gestures.DeferToChild,
+		DragStarnBehavior:     duit_props.DragStartBehaviorStart,
+		Behavior:              duit_props.HitTestBehaviorDeferToChild,
 	}
 
 	err := attrs.Validate()

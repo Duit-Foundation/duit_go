@@ -6,7 +6,6 @@ import (
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_builder"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_gestures"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_core"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
@@ -28,7 +27,7 @@ type ListViewBaseAttributes[TInsets duit_props.EdgeInsets] struct {
 	AddRepaintBoundaries    duit_utils.Tristate[bool]                       `json:"addRepaintBoundaries,omitempty"`
 	AddSemanticIndexes      duit_utils.Tristate[bool]                       `json:"addSemanticIndexes,omitempty"`
 	ScrollDirection         duit_flex.Axis                                  `json:"scrollDirection,omitempty"`
-	ScrollPhysics           duit_gestures.ScrollPhysics                     `json:"scrollPhysics,omitempty"`
+	ScrollPhysics           duit_props.ScrollPhysics                     `json:"scrollPhysics,omitempty"`
 	CacheExtent             float32                                         `json:"cacheExtent,omitempty"`
 	Anchor                  float32                                         `json:"anchors,omitempty"`
 	SemantickChildCount     int                                             `json:"semanticChildCount,omitempty"`
@@ -36,8 +35,8 @@ type ListViewBaseAttributes[TInsets duit_props.EdgeInsets] struct {
 	ItemExtent              float32                                         `json:"itemExtent,omitempty"`
 	ClipBehavior            duit_props.Clip                                  `json:"clipBehavior,omitempty"`
 	RestorationId           string                                          `json:"restorationId,omitempty"`
-	DragStarnBehavior       duit_gestures.DragStartBehavior                 `json:"dragStartBehavior,omitempty"`
-	KeyboardDismissBehavior duit_gestures.ScrollViewKeyboardDismissBehavior `json:"keyboardDismissBehavior,omitempty"`
+	DragStarnBehavior       duit_props.DragStartBehavior                 `json:"dragStartBehavior,omitempty"`
+	KeyboardDismissBehavior duit_props.ScrollViewKeyboardDismissBehavior `json:"keyboardDismissBehavior,omitempty"`
 }
 
 func (r *ListViewBaseAttributes[TInsets]) Validate() error {

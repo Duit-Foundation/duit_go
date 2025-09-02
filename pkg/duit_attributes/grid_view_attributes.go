@@ -6,7 +6,6 @@ import (
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_builder"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_gestures"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
@@ -31,10 +30,10 @@ type DefautlGridViewAttributes[TInsets duit_props.EdgeInsets] struct {
 	Padding                 TInsets                                         `json:"padding,omitempty"`
 	CacheExtent             float32                                         `json:"cacheExtent,omitempty"`
 	SemanticChildCount      int                                             `json:"semanticChildCount,omitempty"`
-	DragStartBehavior       duit_gestures.DragStartBehavior                 `json:"dragStartBehavior,omitempty"`
+	DragStartBehavior       duit_props.DragStartBehavior                 `json:"dragStartBehavior,omitempty"`
 	ClipBehavior            duit_props.Clip                                  `json:"clipBehavior,omitempty"`
-	KeyboardDismissBehavior duit_gestures.ScrollViewKeyboardDismissBehavior `json:"keyboardDismissBehavior,omitempty"`
-	Physics                 duit_gestures.ScrollPhysics                     `json:"physics,omitempty"`
+	KeyboardDismissBehavior duit_props.ScrollViewKeyboardDismissBehavior `json:"keyboardDismissBehavior,omitempty"`
+	Physics                 duit_props.ScrollPhysics                     `json:"physics,omitempty"`
 	RestorationId           string                                          `json:"restorationId,omitempty"`
 }
 

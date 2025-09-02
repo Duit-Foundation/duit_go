@@ -7,10 +7,9 @@ import (
 
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_builder"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_gestures"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_core"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
@@ -47,7 +46,7 @@ func TestListViewBaseAttributes_Validate_WithAllProperties(t *testing.T) {
 		AddRepaintBoundaries:    duit_utils.BoolValue(true),
 		AddSemanticIndexes:      duit_utils.BoolValue(false),
 		ScrollDirection:         duit_flex.Vertical,
-		ScrollPhysics:           duit_gestures.AlwaysScrollableScrollPhysics,
+		ScrollPhysics:           duit_props.ScrollPhysicsAlwaysScrollable,
 		CacheExtent:             100.0,
 		Anchor:                  0.5,
 		SemantickChildCount:     10,
@@ -55,8 +54,8 @@ func TestListViewBaseAttributes_Validate_WithAllProperties(t *testing.T) {
 		ItemExtent:              50.0,
 		ClipBehavior:            duit_props.ClipAntiAlias,
 		RestorationId:           "test_restoration",
-		DragStarnBehavior:       duit_gestures.Start,
-		KeyboardDismissBehavior: duit_gestures.Manual,
+		DragStarnBehavior:       duit_props.DragStartBehaviorStart,
+		KeyboardDismissBehavior: duit_props.ScrollViewKeyboardDismissBehaviorManual,
 	}
 
 	err := attrs.Validate()
