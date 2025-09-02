@@ -9,7 +9,6 @@ import (
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
 	duit_decorations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_decorations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_material"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
@@ -28,7 +27,7 @@ func TestElevatedButtonAttributes_Validate_WithAllFields(t *testing.T) {
 		Event:         "button_clicked",
 	}
 
-	buttonStyle := &duit_material.ButtonStyle[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_decorations.RoundedRectangleBorder[duit_props.ColorString]]{
+	buttonStyle := &duit_props.ButtonStyle[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_decorations.RoundedRectangleBorder[duit_props.ColorString]]{
 		AnimationDuration: 200,
 	}
 
@@ -114,7 +113,7 @@ func TestElevatedButtonAttributes_ClipBehavior_JSON(t *testing.T) {
 }
 
 func TestElevatedButtonAttributes_Style_JSON(t *testing.T) {
-	buttonStyle := &duit_material.ButtonStyle[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_decorations.RoundedRectangleBorder[duit_props.ColorString]]{
+	buttonStyle := &duit_props.ButtonStyle[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_decorations.RoundedRectangleBorder[duit_props.ColorString]]{
 		AnimationDuration: 300,
 	}
 

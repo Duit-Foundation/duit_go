@@ -7,7 +7,6 @@ import (
 
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_text_properties"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
@@ -25,12 +24,12 @@ func TestTextFieldAttributes_Validate_ValidAttributes(t *testing.T) {
 }
 
 func TestTextFieldAttributes_Validate_WithAllProperties(t *testing.T) {
-	style := &duit_text_properties.TextStyle[duit_props.ColorString]{}
+	style := &duit_props.TextStyle[duit_props.ColorString]{}
 	
 	attrs := &duit_attributes.TextFieldAttributes[duit_props.EdgeInsetsLTRB, duit_props.ColorString]{
 		Style:              style,
-		TextAlign:          duit_text_properties.Start,
-		TextDirection:      duit_text_properties.Ltr,
+		TextAlign:          duit_props.TextAlignStart,
+		TextDirection:      duit_props.TextDirectionLtr,
 		Autocorrect:        duit_utils.BoolValue(true),
 		EnableSuggestions:  duit_utils.BoolValue(true),
 		Expands:            duit_utils.BoolValue(false),

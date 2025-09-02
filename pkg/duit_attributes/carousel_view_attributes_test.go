@@ -9,7 +9,6 @@ import (
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	duit_decorations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_decorations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_material"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
@@ -27,7 +26,7 @@ func TestCarouselViewAttributes_Validate_WithAllProperties(t *testing.T) {
 		Padding:          duit_props.EdgeInsetsAll(8.0),
 		BackgroundColor:  "#FF0000",
 		Shape:            nil,
-		OverlayColor:     duit_material.MaterialStateProperty[duit_props.ColorString]{},
+		OverlayColor:     duit_props.MaterialStateProperty[duit_props.ColorString]{},
 		Elevation:        4.0,
 		ShrinkExtent:     100.0,
 		ItemExtent:       200.0,

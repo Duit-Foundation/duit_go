@@ -6,7 +6,6 @@ import (
 	animations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_material"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
@@ -24,11 +23,11 @@ type RadioAttributes[TValue PrimitiveValue, TColor duit_props.Color] struct {
 	ActiveColor           TColor                                      `json:"activeColor,omitempty"`
 	FocusColor            TColor                                      `json:"focusColor,omitempty"`
 	HoverColor            TColor                                      `json:"hoverColor,omitempty"`
-	FillColor             duit_material.MaterialStateProperty[TColor] `json:"fillColor,omitempty"`
-	OverlayColor          duit_material.MaterialStateProperty[TColor] `json:"overlayColor,omitempty"`
+	FillColor             duit_props.MaterialStateProperty[TColor] `json:"fillColor,omitempty"`
+	OverlayColor          duit_props.MaterialStateProperty[TColor] `json:"overlayColor,omitempty"`
 	SplashRadius          float32                                     `json:"splashRadius,omitempty"`
 	VisualDensity         *duit_flex.VisualDensity                    `json:"visualDensity,omitempty"`
-	MaterialTapTargetSize duit_material.MaterialTapTargetSize         `json:"materialTapTargetSize,omitempty"`
+	MaterialTapTargetSize duit_props.MaterialTapTargetSize         `json:"materialTapTargetSize,omitempty"`
 }
 
 func (r *RadioAttributes[TValue, TColor]) Validate() error {

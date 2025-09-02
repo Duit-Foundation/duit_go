@@ -7,21 +7,20 @@ import (
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	duit_decoration "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_decorations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_text_properties"
 )
 
 var (
-	textStyleBeginString = duit_text_properties.TextStyle[duit_props.ColorString]{
+	textStyleBeginString = duit_props.TextStyle[duit_props.ColorString]{
 		Color: duit_props.ColorString("#ff00ff"),
 	}
-	textStyleEndString = duit_text_properties.TextStyle[duit_props.ColorString]{
+	textStyleEndString = duit_props.TextStyle[duit_props.ColorString]{
 		Color: duit_props.ColorString("#00ff00"),
 	}
 
-	textStyleBeginRGBO = duit_text_properties.TextStyle[*duit_props.ColorRGBO]{
+	textStyleBeginRGBO = duit_props.TextStyle[*duit_props.ColorRGBO]{
 		Color: &duit_props.ColorRGBO{R: 10, G: 20, B: 30, O: 1},
 	}
-	textStyleEndRGBO = duit_text_properties.TextStyle[*duit_props.ColorRGBO]{
+	textStyleEndRGBO = duit_props.TextStyle[*duit_props.ColorRGBO]{
 		Color: &duit_props.ColorRGBO{R: 30, G: 20, B: 10, O: 1},
 	}
 

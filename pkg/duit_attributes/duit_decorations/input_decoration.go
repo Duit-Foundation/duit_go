@@ -1,21 +1,20 @@
 package duit_decoration
 
 import (
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_text_properties"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 )
 
 type InputDecoration[TInsets duit_props.EdgeInsets, TColor duit_props.Color] struct {
 	LabelText          string                                  `json:"labelText,omitempty"`
-	LabelStyle         *duit_text_properties.TextStyle[TColor] `json:"labelStyle,omitempty"`
-	FloatingLabelStyle *duit_text_properties.TextStyle[TColor] `json:"floatingLabelStyle,omitempty"`
+	LabelStyle         *duit_props.TextStyle[TColor] `json:"labelStyle,omitempty"`
+	FloatingLabelStyle *duit_props.TextStyle[TColor] `json:"floatingLabelStyle,omitempty"`
 	HelperText         string                                  `json:"helperText,omitempty"`
-	HelperStyle        *duit_text_properties.TextStyle[TColor] `json:"helperStyle,omitempty"`
+	HelperStyle        *duit_props.TextStyle[TColor] `json:"helperStyle,omitempty"`
 	HintText           string                                  `json:"hintText,omitempty"`
-	HintStyle          *duit_text_properties.TextStyle[TColor] `json:"hintStyle,omitempty"`
+	HintStyle          *duit_props.TextStyle[TColor] `json:"hintStyle,omitempty"`
 	HintMaxLines       int                                     `json:"hintMaxLines,omitempty"`
 	ErrorText          string                                  `json:"errorText,omitempty"`
-	ErrorStyle         *duit_text_properties.TextStyle[TColor] `json:"errorStyle,omitempty"`
+	ErrorStyle         *duit_props.TextStyle[TColor] `json:"errorStyle,omitempty"`
 	ErrorMaxLines      int                                     `json:"errorMaxLines,omitempty"`
 	Border             *InputBorder[TColor]                    `json:"border,omitempty"`
 	ErrorBorder        *InputBorder[TColor]                    `json:"errorBorder,omitempty"`
@@ -26,11 +25,11 @@ type InputDecoration[TInsets duit_props.EdgeInsets, TColor duit_props.Color] str
 	IsCollapsed        bool                                    `json:"isCollapsed,omitempty"`
 	IsDense            bool                                    `json:"isDense,omitempty"`
 	SuffixText         string                                  `json:"suffixText,omitempty"`
-	SuffixStyle        *duit_text_properties.TextStyle[TColor] `json:"suffixStyle,omitempty"`
+	SuffixStyle        *duit_props.TextStyle[TColor] `json:"suffixStyle,omitempty"`
 	PrefixText         string                                  `json:"prefixText,omitempty"`
-	PrefixStyle        *duit_text_properties.TextStyle[TColor] `json:"prefixStyle,omitempty"`
+	PrefixStyle        *duit_props.TextStyle[TColor] `json:"prefixStyle,omitempty"`
 	CounterText        string                                  `json:"counterText,omitempty"`
-	CounterStyle       *duit_text_properties.TextStyle[TColor] `json:"counterStyle,omitempty"`
+	CounterStyle       *duit_props.TextStyle[TColor] `json:"counterStyle,omitempty"`
 	AlignLabelWithHint bool                                    `json:"alignLabelWithHint,omitempty"`
 	Filled             bool                                    `json:"filled,omitempty"`
 	FillColor          string                                  `json:"fillColor,omitempty"`

@@ -5,7 +5,6 @@ import (
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	decorations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_decorations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_material"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
@@ -24,7 +23,7 @@ type CarouselViewAttributes[TColor duit_props.Color, TInsets duit_props.EdgeInse
 	Padding          TInsets                                     `json:"padding,omitempty"`
 	BackgroundColor  TColor                                      `json:"backgroundColor,omitempty"`
 	Shape            *TShape                                     `json:"shape,omitempty"`
-	OverlayColor     duit_material.MaterialStateProperty[TColor] `json:"overlayColor,omitempty"`
+	OverlayColor     duit_props.MaterialStateProperty[TColor] `json:"overlayColor,omitempty"`
 	Elevation        float32                                     `json:"elevation,omitempty"`
 	ShrinkExtent     float32                                     `json:"shrinkExtent,omitempty"`
 	ItemExtent       float32                                     `json:"itemExtent,omitempty"`

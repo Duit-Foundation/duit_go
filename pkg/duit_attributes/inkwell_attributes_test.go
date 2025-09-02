@@ -9,7 +9,6 @@ import (
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	duit_decoration "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_decorations"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_material"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
@@ -54,7 +53,7 @@ func TestInkwellAttributes_Validate_WithAllFields(t *testing.T) {
 }
 
 func TestInkwellAttributes_Validate_WithMaterialStateProperty(t *testing.T) {
-	overlayColor := &duit_material.MaterialStateProperty[duit_props.ColorString]{
+	overlayColor := &duit_props.MaterialStateProperty[duit_props.ColorString]{
 		Hovered: "#FF0000",
 	}
 

@@ -1,4 +1,4 @@
-package duit_material
+package duit_props
 
 type MaterialStateProperty[T any] struct {
 	Disabled T `json:"disabled,omitempty"`

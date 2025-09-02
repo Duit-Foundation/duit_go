@@ -1,7 +1,6 @@
 package duit_attributes
 
 import (
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_material"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
@@ -15,7 +14,7 @@ type ScaffoldAttributes[TColor duit_props.Color] struct {
 	ResizeToAvoidBottomInset     duit_utils.Tristate[bool]     `json:"resizeToAvoidBottomInset,omitempty"`
 	BackgroundColor              TColor                        `json:"backgroundColor,omitempty"`
 	RestorationId                string                        `json:"restorationId,omitempty"`
-	FloatingActionButtonLocation duit_material.FabLocation     `json:"floatingActionButtonLocation,omitempty"`
+	FloatingActionButtonLocation duit_props.FabLocation     `json:"floatingActionButtonLocation,omitempty"`
 }
 
 func (r *ScaffoldAttributes[TColor]) Validate() error {

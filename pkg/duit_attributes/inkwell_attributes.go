@@ -4,7 +4,6 @@ import (
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_action"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	duit_decoration "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_decorations"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_material"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
@@ -25,7 +24,7 @@ type InkwellAttributes[TColor duit_props.Color, TAction duit_action.Action, TSha
 	HoverColor           TColor                                       `json:"hoverColor,omitempty"`
 	HighlightColor       TColor                                       `json:"highlightColor,omitempty"`
 	SplashColor          TColor                                       `json:"splashColor,omitempty"`
-	OverlayColor         *duit_material.MaterialStateProperty[TColor] `json:"overlayColor,omitempty"`
+	OverlayColor         *duit_props.MaterialStateProperty[TColor] `json:"overlayColor,omitempty"`
 	Radius               float32                                      `json:"radius,omitempty"`
 	BorderRadius         *duit_decoration.BorderRadius                `json:"borderRadius,omitempty"`
 	CustomBorder         *TShape                                      `json:"customBorder,omitempty"`

@@ -4,7 +4,6 @@ import (
 	"errors"
 
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_material"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
@@ -17,13 +16,13 @@ type SwitchAttributes[TColor duit_props.Color] struct {
 	HoverColor            TColor                                        `json:"hoverColor,omitempty"`
 	ActiveTrackColor      TColor                                        `json:"activeTrackColor,omitempty"`
 	InactiveTrackColor    TColor                                        `json:"inactiveTrackColor,omitempty"`
-	OverlayColor          *duit_material.MaterialStateProperty[TColor]  `json:"overlayColor,omitempty"`
-	TrackColor            *duit_material.MaterialStateProperty[TColor]  `json:"trackColor,omitempty"`
-	ThumbColor            *duit_material.MaterialStateProperty[TColor]  `json:"thumbColor,omitempty"`
-	TrackOutlineColor     *duit_material.MaterialStateProperty[TColor]  `json:"trackOutlineColor,omitempty"`
-	TrackOutlineWidth     *duit_material.MaterialStateProperty[float32] `json:"trackOutlineWidth,omitempty"`
+	OverlayColor          *duit_props.MaterialStateProperty[TColor]  `json:"overlayColor,omitempty"`
+	TrackColor            *duit_props.MaterialStateProperty[TColor]  `json:"trackColor,omitempty"`
+	ThumbColor            *duit_props.MaterialStateProperty[TColor]  `json:"thumbColor,omitempty"`
+	TrackOutlineColor     *duit_props.MaterialStateProperty[TColor]  `json:"trackOutlineColor,omitempty"`
+	TrackOutlineWidth     *duit_props.MaterialStateProperty[float32] `json:"trackOutlineWidth,omitempty"`
 	SplashRadius          float32                                       `json:"splashRadius,omitempty"`
-	MaterialTapTargetSize duit_material.MaterialTapTargetSize           `json:"materialTapTargetSize,omitempty"`
+	MaterialTapTargetSize duit_props.MaterialTapTargetSize           `json:"materialTapTargetSize,omitempty"`
 	Autofocus             duit_utils.Tristate[bool]                     `json:"autofocus,omitempty"`
 }
 

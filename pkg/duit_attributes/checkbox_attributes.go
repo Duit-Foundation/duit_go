@@ -6,7 +6,6 @@ import (
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	duit_decoration "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_decorations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_material"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
@@ -25,8 +24,8 @@ type CheckboxAttributes[T duit_props.Color] struct {
 	HoverColor    T                                       `json:"hoverColor,omitempty"`
 	ActiveColor   T                                       `json:"activeColor,omitempty"`
 	FocusColor    T                                       `json:"focusColor,omitempty"`
-	FillColor     *duit_material.MaterialStateProperty[T] `json:"fillColor,omitempty"`
-	OverlayColor  *duit_material.MaterialStateProperty[T] `json:"overlayColor,omitempty"`
+	FillColor     *duit_props.MaterialStateProperty[T] `json:"fillColor,omitempty"`
+	OverlayColor  *duit_props.MaterialStateProperty[T] `json:"overlayColor,omitempty"`
 }
 
 func (r *CheckboxAttributes[T]) Validate() error {

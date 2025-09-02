@@ -7,7 +7,6 @@ import (
 
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_material"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
@@ -32,7 +31,7 @@ func TestScaffoldAttributes_Validate_WithAllProperties(t *testing.T) {
 		BackgroundColor:              "#FFFFFF",
 		RestorationId:                "test_restoration_id",
 		PersistentFooterAlignment:    "center",
-		FloatingActionButtonLocation: duit_material.EndFloat,
+		FloatingActionButtonLocation: duit_props.FabLocationEndFloat,
 	}
 
 	err := attrs.Validate()

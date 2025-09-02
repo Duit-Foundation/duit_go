@@ -7,7 +7,6 @@ import (
 
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_text_properties"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
@@ -38,14 +37,14 @@ func TestTextAttributes_Validate_MissingData(t *testing.T) {
 }
 
 func TestTextAttributes_Validate_WithAllProperties(t *testing.T) {
-	style := &duit_text_properties.TextStyle[duit_props.ColorString]{}
+	style := &duit_props.TextStyle[duit_props.ColorString]{}
 	
 	attrs := &duit_attributes.TextAttributes[duit_props.ColorString]{
 		Data:           "Test text with all properties",
 		SemanticsLabel: "Test label",
-		TextAlign:      duit_text_properties.Center,
-		TextDirection:  duit_text_properties.Ltr,
-		Overflow:       duit_text_properties.Ellipsis,
+		TextAlign:      duit_props.TextAlignCenter,
+		TextDirection:  duit_props.TextDirectionLtr,
+		Overflow:       duit_props.TextOverflowEllipsis,
 		SoftWrap:       duit_utils.BoolValue(true),
 		MaxLines:       5,
 		Style:          style,

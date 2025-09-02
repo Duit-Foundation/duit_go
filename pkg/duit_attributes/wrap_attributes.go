@@ -7,7 +7,6 @@ import (
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_cross_axis"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_main_axis"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_text_properties"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 )
 
@@ -15,7 +14,7 @@ type WrapAttributes struct {
 	*ValueReferenceHolder
 	*animations.AnimatedPropertyOwner
 	*ThemeConsumer
-	TextDirection      duit_text_properties.TextDirection `json:"textDirection,omitempty"`
+	TextDirection      duit_props.TextDirection `json:"textDirection,omitempty"`
 	VerticalDirection  duit_flex.VerticalDirection        `json:"verticalDirection,omitempty"`
 	Alignment          duit_main_axis.MainAxisAlignment   `json:"alignment,omitempty"`
 	RunAlignment       duit_main_axis.MainAxisAlignment   `json:"runAlignment,omitempty"`

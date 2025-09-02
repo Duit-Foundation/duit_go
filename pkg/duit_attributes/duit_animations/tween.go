@@ -4,7 +4,6 @@ import (
 	duit_decoration "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_decorations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_text_properties"
 )
 
 type tweenBase[T any] struct {
@@ -79,8 +78,8 @@ func ColorTween[TColor duit_props.Color](animatedPropKey string, begin, end TCol
 	}
 }
 
-func TextStyleTween[TColor duit_props.Color](animatedPropKey string, begin, end duit_text_properties.TextStyle[TColor], duration int, trigger AnimationTrigger, method AnimationMethod, reverseOnRepeat bool, curve Curves) *tweenBase[duit_text_properties.TextStyle[TColor]] {
-	return &tweenBase[duit_text_properties.TextStyle[TColor]]{
+func TextStyleTween[TColor duit_props.Color](animatedPropKey string, begin, end duit_props.TextStyle[TColor], duration int, trigger AnimationTrigger, method AnimationMethod, reverseOnRepeat bool, curve Curves) *tweenBase[duit_props.TextStyle[TColor]] {
+	return &tweenBase[duit_props.TextStyle[TColor]]{
 		TweenType:       "textStyleTween",
 		AnimatedPropKey: animatedPropKey,
 		Duration:        duration,
