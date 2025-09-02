@@ -3,12 +3,11 @@ package duit_attributes
 import (
 	animations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
 	duit_decoration "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_decorations"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_edge_insets"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
 )
 
-type ContainerAttributes[TInsets duit_edge_insets.EdgeInsets, TColor duit_props.Color] struct {
+type ContainerAttributes[TInsets duit_props.EdgeInsets, TColor duit_props.Color] struct {
 	*ValueReferenceHolder
 	*animations.AnimatedPropertyOwner
 	*ThemeConsumer

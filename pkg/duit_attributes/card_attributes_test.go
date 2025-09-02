@@ -8,12 +8,11 @@ import (
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	duit_decorations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_decorations"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_edge_insets"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
 func TestCardAttributes_Validate_ValidAttributes(t *testing.T) {
-	attrs := &duit_attributes.CardAttributes[duit_props.ColorString, duit_edge_insets.EdgeInsetsAll, duit_decorations.RoundedRectangleBorder[duit_props.ColorString]]{}
+	attrs := &duit_attributes.CardAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_decorations.RoundedRectangleBorder[duit_props.ColorString]]{}
 
 	err := attrs.Validate()
 	if err != nil {
@@ -22,13 +21,13 @@ func TestCardAttributes_Validate_ValidAttributes(t *testing.T) {
 }
 
 func TestCardAttributes_Validate_WithAllProperties(t *testing.T) {
-	attrs := &duit_attributes.CardAttributes[duit_props.ColorString, duit_edge_insets.EdgeInsetsAll, duit_decorations.RoundedRectangleBorder[duit_props.ColorString]]{
+	attrs := &duit_attributes.CardAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_decorations.RoundedRectangleBorder[duit_props.ColorString]]{
 		Color:              "#FF0000",
 		ShadowColor:        "#000000",
 		Elevation:          4.0,
 		BorderOnForeground: duit_utils.BoolValue(true),
 		SemanticContainer:  duit_utils.BoolValue(false),
-		Margin:             duit_edge_insets.EdgeInsetsAll(8.0),
+		Margin:             duit_props.EdgeInsetsAll(8.0),
 		Shape:              nil,
 	}
 
@@ -40,7 +39,7 @@ func TestCardAttributes_Validate_WithAllProperties(t *testing.T) {
 
 // Tests for BorderOnForeground Tristate[bool] property serialization
 func TestCardAttributes_BorderOnForeground_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.CardAttributes[duit_props.ColorString, duit_edge_insets.EdgeInsetsAll, duit_decorations.RoundedRectangleBorder[duit_props.ColorString]]{
+	attrs := &duit_attributes.CardAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_decorations.RoundedRectangleBorder[duit_props.ColorString]]{
 		BorderOnForeground: duit_utils.BoolValue(true),
 	}
 
@@ -56,7 +55,7 @@ func TestCardAttributes_BorderOnForeground_JSON_True(t *testing.T) {
 }
 
 func TestCardAttributes_BorderOnForeground_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.CardAttributes[duit_props.ColorString, duit_edge_insets.EdgeInsetsAll, duit_decorations.RoundedRectangleBorder[duit_props.ColorString]]{
+	attrs := &duit_attributes.CardAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_decorations.RoundedRectangleBorder[duit_props.ColorString]]{
 		BorderOnForeground: duit_utils.BoolValue(false),
 	}
 
@@ -73,7 +72,7 @@ func TestCardAttributes_BorderOnForeground_JSON_False(t *testing.T) {
 
 // Tests for SemanticContainer Tristate[bool] property serialization
 func TestCardAttributes_SemanticContainer_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.CardAttributes[duit_props.ColorString, duit_edge_insets.EdgeInsetsAll, duit_decorations.RoundedRectangleBorder[duit_props.ColorString]]{
+	attrs := &duit_attributes.CardAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_decorations.RoundedRectangleBorder[duit_props.ColorString]]{
 		SemanticContainer: duit_utils.BoolValue(true),
 	}
 
@@ -89,7 +88,7 @@ func TestCardAttributes_SemanticContainer_JSON_True(t *testing.T) {
 }
 
 func TestCardAttributes_SemanticContainer_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.CardAttributes[duit_props.ColorString, duit_edge_insets.EdgeInsetsAll, duit_decorations.RoundedRectangleBorder[duit_props.ColorString]]{
+	attrs := &duit_attributes.CardAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_decorations.RoundedRectangleBorder[duit_props.ColorString]]{
 		SemanticContainer: duit_utils.BoolValue(false),
 	}
 
@@ -105,7 +104,7 @@ func TestCardAttributes_SemanticContainer_JSON_False(t *testing.T) {
 }
 
 func TestCardAttributes_SemanticContainer_JSON_Nil(t *testing.T) {
-	attrs := &duit_attributes.CardAttributes[duit_props.ColorString, duit_edge_insets.EdgeInsetsAll, duit_decorations.RoundedRectangleBorder[duit_props.ColorString]]{
+	attrs := &duit_attributes.CardAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_decorations.RoundedRectangleBorder[duit_props.ColorString]]{
 		SemanticContainer: duit_utils.Nillable[bool](),
 	}
 

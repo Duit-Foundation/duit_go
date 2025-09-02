@@ -4,11 +4,10 @@ import (
 	animations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	duit_decoration "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_decorations"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_edge_insets"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
-type CardAttributes[TColor duit_props.Color, TInsets duit_edge_insets.EdgeInsets, TShape duit_decoration.ShapeBorder[TColor]] struct {
+type CardAttributes[TColor duit_props.Color, TInsets duit_props.EdgeInsets, TShape duit_decoration.ShapeBorder[TColor]] struct {
 	*ValueReferenceHolder
 	*animations.AnimatedPropertyOwner
 	*ThemeConsumer

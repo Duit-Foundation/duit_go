@@ -7,15 +7,15 @@ import (
 
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_builder"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_edge_insets"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
 // GridViewCommonAttributes tests
 
 func TestGridViewCommonAttributes_Validate_ValidAttributes(t *testing.T) {
-	attrs := &duit_attributes.GridViewCommonAttributes[duit_edge_insets.EdgeInsetsAll]{
-		DefautlGridViewAttributes: &duit_attributes.DefautlGridViewAttributes[duit_edge_insets.EdgeInsetsAll]{
+	attrs := &duit_attributes.GridViewCommonAttributes[duit_props.EdgeInsetsAll]{
+		DefautlGridViewAttributes: &duit_attributes.DefautlGridViewAttributes[duit_props.EdgeInsetsAll]{
 			Constructor: duit_utils.TristateFrom[duit_attributes.GridConstructor](duit_attributes.GridCommon),
 		},
 		SliverGridDelegateKey: "test-key",
@@ -28,8 +28,8 @@ func TestGridViewCommonAttributes_Validate_ValidAttributes(t *testing.T) {
 }
 
 func TestGridViewCommonAttributes_Validate_MissingConstructor(t *testing.T) {
-	attrs := &duit_attributes.GridViewCommonAttributes[duit_edge_insets.EdgeInsetsAll]{
-		DefautlGridViewAttributes: &duit_attributes.DefautlGridViewAttributes[duit_edge_insets.EdgeInsetsAll]{},
+	attrs := &duit_attributes.GridViewCommonAttributes[duit_props.EdgeInsetsAll]{
+		DefautlGridViewAttributes: &duit_attributes.DefautlGridViewAttributes[duit_props.EdgeInsetsAll]{},
 		SliverGridDelegateKey:     "test-key",
 	}
 
@@ -44,7 +44,7 @@ func TestGridViewCommonAttributes_Validate_MissingConstructor(t *testing.T) {
 }
 
 func TestGridViewCommonAttributes_Validate_NilDefautlGridViewAttributes(t *testing.T) {
-	attrs := &duit_attributes.GridViewCommonAttributes[duit_edge_insets.EdgeInsetsAll]{
+	attrs := &duit_attributes.GridViewCommonAttributes[duit_props.EdgeInsetsAll]{
 		SliverGridDelegateKey: "test-key",
 	}
 
@@ -55,8 +55,8 @@ func TestGridViewCommonAttributes_Validate_NilDefautlGridViewAttributes(t *testi
 }
 
 func TestGridViewCommonAttributes_Validate_WrongConstructor(t *testing.T) {
-	attrs := &duit_attributes.GridViewCommonAttributes[duit_edge_insets.EdgeInsetsAll]{
-		DefautlGridViewAttributes: &duit_attributes.DefautlGridViewAttributes[duit_edge_insets.EdgeInsetsAll]{
+	attrs := &duit_attributes.GridViewCommonAttributes[duit_props.EdgeInsetsAll]{
+		DefautlGridViewAttributes: &duit_attributes.DefautlGridViewAttributes[duit_props.EdgeInsetsAll]{
 			Constructor: duit_utils.TristateFrom[duit_attributes.GridConstructor](duit_attributes.GridCount),
 		},
 		SliverGridDelegateKey: "test-key",
@@ -69,8 +69,8 @@ func TestGridViewCommonAttributes_Validate_WrongConstructor(t *testing.T) {
 }
 
 func TestGridViewCommonAttributes_Validate_MissingSliverGridDelegateKey(t *testing.T) {
-	attrs := &duit_attributes.GridViewCommonAttributes[duit_edge_insets.EdgeInsetsAll]{
-		DefautlGridViewAttributes: &duit_attributes.DefautlGridViewAttributes[duit_edge_insets.EdgeInsetsAll]{
+	attrs := &duit_attributes.GridViewCommonAttributes[duit_props.EdgeInsetsAll]{
+		DefautlGridViewAttributes: &duit_attributes.DefautlGridViewAttributes[duit_props.EdgeInsetsAll]{
 			Constructor: duit_utils.TristateFrom[duit_attributes.GridConstructor](duit_attributes.GridCommon),
 		},
 	}
@@ -82,8 +82,8 @@ func TestGridViewCommonAttributes_Validate_MissingSliverGridDelegateKey(t *testi
 }
 
 func TestGridViewCommonAttributes_Validate_NilConstructor(t *testing.T) {
-	attrs := &duit_attributes.GridViewCommonAttributes[duit_edge_insets.EdgeInsetsAll]{
-		DefautlGridViewAttributes: &duit_attributes.DefautlGridViewAttributes[duit_edge_insets.EdgeInsetsAll]{
+	attrs := &duit_attributes.GridViewCommonAttributes[duit_props.EdgeInsetsAll]{
+		DefautlGridViewAttributes: &duit_attributes.DefautlGridViewAttributes[duit_props.EdgeInsetsAll]{
 		},
 		SliverGridDelegateKey: "test-key",
 	}
@@ -97,8 +97,8 @@ func TestGridViewCommonAttributes_Validate_NilConstructor(t *testing.T) {
 // GridViewCountAttributes tests
 
 func TestGridViewCountAttributes_Validate_ValidAttributes(t *testing.T) {
-	attrs := &duit_attributes.GridViewCountAttributes[duit_edge_insets.EdgeInsetsAll]{
-		DefautlGridViewAttributes: &duit_attributes.DefautlGridViewAttributes[duit_edge_insets.EdgeInsetsAll]{
+	attrs := &duit_attributes.GridViewCountAttributes[duit_props.EdgeInsetsAll]{
+		DefautlGridViewAttributes: &duit_attributes.DefautlGridViewAttributes[duit_props.EdgeInsetsAll]{
 			Constructor: duit_utils.TristateFrom[duit_attributes.GridConstructor](duit_attributes.GridCount),
 		},
 		CrossAxisCount: 2,
@@ -111,8 +111,8 @@ func TestGridViewCountAttributes_Validate_ValidAttributes(t *testing.T) {
 }
 
 func TestGridViewCountAttributes_Validate_MissingCrossAxisCount(t *testing.T) {
-	attrs := &duit_attributes.GridViewCountAttributes[duit_edge_insets.EdgeInsetsAll]{
-		DefautlGridViewAttributes: &duit_attributes.DefautlGridViewAttributes[duit_edge_insets.EdgeInsetsAll]{
+	attrs := &duit_attributes.GridViewCountAttributes[duit_props.EdgeInsetsAll]{
+		DefautlGridViewAttributes: &duit_attributes.DefautlGridViewAttributes[duit_props.EdgeInsetsAll]{
 			Constructor: duit_utils.TristateFrom[duit_attributes.GridConstructor](duit_attributes.GridCount),
 		},
 	}
@@ -128,7 +128,7 @@ func TestGridViewCountAttributes_Validate_MissingCrossAxisCount(t *testing.T) {
 }
 
 func TestGridViewCountAttributes_Validate_NilDefautlGridViewAttributes(t *testing.T) {
-	attrs := &duit_attributes.GridViewCountAttributes[duit_edge_insets.EdgeInsetsAll]{
+	attrs := &duit_attributes.GridViewCountAttributes[duit_props.EdgeInsetsAll]{
 		CrossAxisCount: 2,
 	}
 
@@ -139,8 +139,8 @@ func TestGridViewCountAttributes_Validate_NilDefautlGridViewAttributes(t *testin
 }
 
 func TestGridViewCountAttributes_Validate_WrongConstructor(t *testing.T) {
-	attrs := &duit_attributes.GridViewCountAttributes[duit_edge_insets.EdgeInsetsAll]{
-		DefautlGridViewAttributes: &duit_attributes.DefautlGridViewAttributes[duit_edge_insets.EdgeInsetsAll]{
+	attrs := &duit_attributes.GridViewCountAttributes[duit_props.EdgeInsetsAll]{
+		DefautlGridViewAttributes: &duit_attributes.DefautlGridViewAttributes[duit_props.EdgeInsetsAll]{
 			Constructor: duit_utils.TristateFrom[duit_attributes.GridConstructor](duit_attributes.GridCommon),
 		},
 		CrossAxisCount: 2,
@@ -153,8 +153,8 @@ func TestGridViewCountAttributes_Validate_WrongConstructor(t *testing.T) {
 }
 
 func TestGridViewCountAttributes_Validate_NilConstructor(t *testing.T) {
-	attrs := &duit_attributes.GridViewCountAttributes[duit_edge_insets.EdgeInsetsAll]{
-		DefautlGridViewAttributes: &duit_attributes.DefautlGridViewAttributes[duit_edge_insets.EdgeInsetsAll]{
+	attrs := &duit_attributes.GridViewCountAttributes[duit_props.EdgeInsetsAll]{
+		DefautlGridViewAttributes: &duit_attributes.DefautlGridViewAttributes[duit_props.EdgeInsetsAll]{
 		},
 		CrossAxisCount: 2,
 	}
@@ -168,9 +168,9 @@ func TestGridViewCountAttributes_Validate_NilConstructor(t *testing.T) {
 // GridViewBuilderAttributes tests
 
 func TestGridViewBuilderAttributes_Validate_ValidAttributes(t *testing.T) {
-	attrs := &duit_attributes.GridViewBuilderAttributes[duit_edge_insets.EdgeInsetsAll]{
+	attrs := &duit_attributes.GridViewBuilderAttributes[duit_props.EdgeInsetsAll]{
 		Builder: &duit_builder.Builder{},
-		DefautlGridViewAttributes: &duit_attributes.DefautlGridViewAttributes[duit_edge_insets.EdgeInsetsAll]{
+		DefautlGridViewAttributes: &duit_attributes.DefautlGridViewAttributes[duit_props.EdgeInsetsAll]{
 			Constructor: duit_utils.TristateFrom[duit_attributes.GridConstructor](duit_attributes.GridBuilder),
 		},
 		SliverGridDelegateKey: "test-key",
@@ -183,8 +183,8 @@ func TestGridViewBuilderAttributes_Validate_ValidAttributes(t *testing.T) {
 }
 
 func TestGridViewBuilderAttributes_Validate_MissingBuilder(t *testing.T) {
-	attrs := &duit_attributes.GridViewBuilderAttributes[duit_edge_insets.EdgeInsetsAll]{
-		DefautlGridViewAttributes: &duit_attributes.DefautlGridViewAttributes[duit_edge_insets.EdgeInsetsAll]{
+	attrs := &duit_attributes.GridViewBuilderAttributes[duit_props.EdgeInsetsAll]{
+		DefautlGridViewAttributes: &duit_attributes.DefautlGridViewAttributes[duit_props.EdgeInsetsAll]{
 			Constructor: duit_utils.TristateFrom[duit_attributes.GridConstructor](duit_attributes.GridBuilder),
 		},
 		SliverGridDelegateKey: "test-key",
@@ -197,7 +197,7 @@ func TestGridViewBuilderAttributes_Validate_MissingBuilder(t *testing.T) {
 }
 
 func TestGridViewBuilderAttributes_Validate_NilDefautlGridViewAttributes(t *testing.T) {
-	attrs := &duit_attributes.GridViewBuilderAttributes[duit_edge_insets.EdgeInsetsAll]{
+	attrs := &duit_attributes.GridViewBuilderAttributes[duit_props.EdgeInsetsAll]{
 		Builder:               &duit_builder.Builder{},
 		SliverGridDelegateKey: "test-key",
 	}
@@ -209,9 +209,9 @@ func TestGridViewBuilderAttributes_Validate_NilDefautlGridViewAttributes(t *test
 }
 
 func TestGridViewBuilderAttributes_Validate_MissingSliverGridDelegateKey(t *testing.T) {
-	attrs := &duit_attributes.GridViewBuilderAttributes[duit_edge_insets.EdgeInsetsAll]{
+	attrs := &duit_attributes.GridViewBuilderAttributes[duit_props.EdgeInsetsAll]{
 		Builder: &duit_builder.Builder{},
-		DefautlGridViewAttributes: &duit_attributes.DefautlGridViewAttributes[duit_edge_insets.EdgeInsetsAll]{
+		DefautlGridViewAttributes: &duit_attributes.DefautlGridViewAttributes[duit_props.EdgeInsetsAll]{
 			Constructor: duit_utils.TristateFrom[duit_attributes.GridConstructor](duit_attributes.GridBuilder),
 		},
 	}
@@ -223,9 +223,9 @@ func TestGridViewBuilderAttributes_Validate_MissingSliverGridDelegateKey(t *test
 }
 
 func TestGridViewBuilderAttributes_Validate_WrongConstructor(t *testing.T) {
-	attrs := &duit_attributes.GridViewBuilderAttributes[duit_edge_insets.EdgeInsetsAll]{
+	attrs := &duit_attributes.GridViewBuilderAttributes[duit_props.EdgeInsetsAll]{
 		Builder: &duit_builder.Builder{},
-		DefautlGridViewAttributes: &duit_attributes.DefautlGridViewAttributes[duit_edge_insets.EdgeInsetsAll]{
+		DefautlGridViewAttributes: &duit_attributes.DefautlGridViewAttributes[duit_props.EdgeInsetsAll]{
 			Constructor: duit_utils.TristateFrom[duit_attributes.GridConstructor](duit_attributes.GridCommon),
 		},
 		SliverGridDelegateKey: "test-key",
@@ -238,9 +238,9 @@ func TestGridViewBuilderAttributes_Validate_WrongConstructor(t *testing.T) {
 }
 
 func TestGridViewBuilderAttributes_Validate_NilConstructor(t *testing.T) {
-	attrs := &duit_attributes.GridViewBuilderAttributes[duit_edge_insets.EdgeInsetsAll]{
+	attrs := &duit_attributes.GridViewBuilderAttributes[duit_props.EdgeInsetsAll]{
 		Builder:                   &duit_builder.Builder{},
-		DefautlGridViewAttributes: &duit_attributes.DefautlGridViewAttributes[duit_edge_insets.EdgeInsetsAll]{
+		DefautlGridViewAttributes: &duit_attributes.DefautlGridViewAttributes[duit_props.EdgeInsetsAll]{
 		},
 		SliverGridDelegateKey: "test-key",
 	}
@@ -254,8 +254,8 @@ func TestGridViewBuilderAttributes_Validate_NilConstructor(t *testing.T) {
 // GridViewExtentAttributes tests
 
 func TestGridViewExtentAttributes_Validate_ValidAttributes(t *testing.T) {
-	attrs := &duit_attributes.GridViewExtentAttributes[duit_edge_insets.EdgeInsetsAll]{
-		DefautlGridViewAttributes: &duit_attributes.DefautlGridViewAttributes[duit_edge_insets.EdgeInsetsAll]{
+	attrs := &duit_attributes.GridViewExtentAttributes[duit_props.EdgeInsetsAll]{
+		DefautlGridViewAttributes: &duit_attributes.DefautlGridViewAttributes[duit_props.EdgeInsetsAll]{
 			Constructor: duit_utils.TristateFrom[duit_attributes.GridConstructor](duit_attributes.GridExtent),
 		},
 		MaxCrossAxisExtent: 100.0,
@@ -268,8 +268,8 @@ func TestGridViewExtentAttributes_Validate_ValidAttributes(t *testing.T) {
 }
 
 func TestGridViewExtentAttributes_Validate_MissingMaxCrossAxisExtent(t *testing.T) {
-	attrs := &duit_attributes.GridViewExtentAttributes[duit_edge_insets.EdgeInsetsAll]{
-		DefautlGridViewAttributes: &duit_attributes.DefautlGridViewAttributes[duit_edge_insets.EdgeInsetsAll]{
+	attrs := &duit_attributes.GridViewExtentAttributes[duit_props.EdgeInsetsAll]{
+		DefautlGridViewAttributes: &duit_attributes.DefautlGridViewAttributes[duit_props.EdgeInsetsAll]{
 			Constructor: duit_utils.TristateFrom[duit_attributes.GridConstructor](duit_attributes.GridExtent),
 		},
 		MaxCrossAxisExtent: 0,
@@ -282,7 +282,7 @@ func TestGridViewExtentAttributes_Validate_MissingMaxCrossAxisExtent(t *testing.
 }
 
 func TestGridViewExtentAttributes_Validate_NilDefautlGridViewAttributes(t *testing.T) {
-	attrs := &duit_attributes.GridViewExtentAttributes[duit_edge_insets.EdgeInsetsAll]{
+	attrs := &duit_attributes.GridViewExtentAttributes[duit_props.EdgeInsetsAll]{
 		MaxCrossAxisExtent: 100.0,
 	}
 
@@ -293,8 +293,8 @@ func TestGridViewExtentAttributes_Validate_NilDefautlGridViewAttributes(t *testi
 }
 
 func TestGridViewExtentAttributes_Validate_WrongConstructor(t *testing.T) {
-	attrs := &duit_attributes.GridViewExtentAttributes[duit_edge_insets.EdgeInsetsAll]{
-		DefautlGridViewAttributes: &duit_attributes.DefautlGridViewAttributes[duit_edge_insets.EdgeInsetsAll]{
+	attrs := &duit_attributes.GridViewExtentAttributes[duit_props.EdgeInsetsAll]{
+		DefautlGridViewAttributes: &duit_attributes.DefautlGridViewAttributes[duit_props.EdgeInsetsAll]{
 			Constructor: duit_utils.TristateFrom[duit_attributes.GridConstructor](duit_attributes.GridCommon),
 		},
 		MaxCrossAxisExtent: 100.0,
@@ -307,8 +307,8 @@ func TestGridViewExtentAttributes_Validate_WrongConstructor(t *testing.T) {
 }
 
 func TestGridViewExtentAttributes_Validate_NilConstructor(t *testing.T) {
-	attrs := &duit_attributes.GridViewExtentAttributes[duit_edge_insets.EdgeInsetsAll]{
-		DefautlGridViewAttributes: &duit_attributes.DefautlGridViewAttributes[duit_edge_insets.EdgeInsetsAll]{},
+	attrs := &duit_attributes.GridViewExtentAttributes[duit_props.EdgeInsetsAll]{
+		DefautlGridViewAttributes: &duit_attributes.DefautlGridViewAttributes[duit_props.EdgeInsetsAll]{},
 		MaxCrossAxisExtent:        100.0,
 	}
 
@@ -323,7 +323,7 @@ func TestGridViewExtentAttributes_Validate_NilConstructor(t *testing.T) {
 
 func TestDefautlGridViewAttributes_Constructor_JSON_GridCommon(t *testing.T) {
 	constructor := duit_attributes.GridCommon
-	attrs := &duit_attributes.DefautlGridViewAttributes[duit_edge_insets.EdgeInsetsAll]{
+	attrs := &duit_attributes.DefautlGridViewAttributes[duit_props.EdgeInsetsAll]{
 		Constructor: &constructor,
 	}
 
@@ -340,7 +340,7 @@ func TestDefautlGridViewAttributes_Constructor_JSON_GridCommon(t *testing.T) {
 
 func TestDefautlGridViewAttributes_Constructor_JSON_GridCount(t *testing.T) {
 	constructor := duit_attributes.GridCount
-	attrs := &duit_attributes.DefautlGridViewAttributes[duit_edge_insets.EdgeInsetsAll]{
+	attrs := &duit_attributes.DefautlGridViewAttributes[duit_props.EdgeInsetsAll]{
 		Constructor: &constructor,
 	}
 
@@ -357,7 +357,7 @@ func TestDefautlGridViewAttributes_Constructor_JSON_GridCount(t *testing.T) {
 
 func TestDefautlGridViewAttributes_Reverse_JSON_True(t *testing.T) {
 	constructor := duit_attributes.GridCommon
-	attrs := &duit_attributes.DefautlGridViewAttributes[duit_edge_insets.EdgeInsetsAll]{
+	attrs := &duit_attributes.DefautlGridViewAttributes[duit_props.EdgeInsetsAll]{
 		Constructor: &constructor,
 		Reverse:     duit_utils.BoolValue(true),
 	}
@@ -375,7 +375,7 @@ func TestDefautlGridViewAttributes_Reverse_JSON_True(t *testing.T) {
 
 func TestDefautlGridViewAttributes_Reverse_JSON_False(t *testing.T) {
 	constructor := duit_attributes.GridCommon
-	attrs := &duit_attributes.DefautlGridViewAttributes[duit_edge_insets.EdgeInsetsAll]{
+	attrs := &duit_attributes.DefautlGridViewAttributes[duit_props.EdgeInsetsAll]{
 		Constructor: &constructor,
 		Reverse:     duit_utils.BoolValue(false),
 	}
@@ -393,7 +393,7 @@ func TestDefautlGridViewAttributes_Reverse_JSON_False(t *testing.T) {
 
 func TestDefautlGridViewAttributes_Primary_JSON_True(t *testing.T) {
 	constructor := duit_attributes.GridCommon
-	attrs := &duit_attributes.DefautlGridViewAttributes[duit_edge_insets.EdgeInsetsAll]{
+	attrs := &duit_attributes.DefautlGridViewAttributes[duit_props.EdgeInsetsAll]{
 		Constructor: &constructor,
 		Primary:     duit_utils.BoolValue(true),
 	}
@@ -411,7 +411,7 @@ func TestDefautlGridViewAttributes_Primary_JSON_True(t *testing.T) {
 
 func TestDefautlGridViewAttributes_ShrinkWrap_JSON_True(t *testing.T) {
 	constructor := duit_attributes.GridCommon
-	attrs := &duit_attributes.DefautlGridViewAttributes[duit_edge_insets.EdgeInsetsAll]{
+	attrs := &duit_attributes.DefautlGridViewAttributes[duit_props.EdgeInsetsAll]{
 		Constructor: &constructor,
 		ShrinkWrap:  duit_utils.BoolValue(true),
 	}
@@ -429,7 +429,7 @@ func TestDefautlGridViewAttributes_ShrinkWrap_JSON_True(t *testing.T) {
 
 func TestDefautlGridViewAttributes_AddAutomaticKeepAlives_JSON_True(t *testing.T) {
 	constructor := duit_attributes.GridCommon
-	attrs := &duit_attributes.DefautlGridViewAttributes[duit_edge_insets.EdgeInsetsAll]{
+	attrs := &duit_attributes.DefautlGridViewAttributes[duit_props.EdgeInsetsAll]{
 		Constructor:            &constructor,
 		AddAutomaticKeepAlives: duit_utils.BoolValue(true),
 	}
@@ -447,7 +447,7 @@ func TestDefautlGridViewAttributes_AddAutomaticKeepAlives_JSON_True(t *testing.T
 
 func TestDefautlGridViewAttributes_AddRepaintBoundaries_JSON_True(t *testing.T) {
 	constructor := duit_attributes.GridCommon
-	attrs := &duit_attributes.DefautlGridViewAttributes[duit_edge_insets.EdgeInsetsAll]{
+	attrs := &duit_attributes.DefautlGridViewAttributes[duit_props.EdgeInsetsAll]{
 		Constructor:          &constructor,
 		AddRepaintBoundaries: duit_utils.BoolValue(true),
 	}
@@ -465,7 +465,7 @@ func TestDefautlGridViewAttributes_AddRepaintBoundaries_JSON_True(t *testing.T) 
 
 func TestDefautlGridViewAttributes_AddSemanticIndexes_JSON_True(t *testing.T) {
 	constructor := duit_attributes.GridCommon
-	attrs := &duit_attributes.DefautlGridViewAttributes[duit_edge_insets.EdgeInsetsAll]{
+	attrs := &duit_attributes.DefautlGridViewAttributes[duit_props.EdgeInsetsAll]{
 		Constructor:        &constructor,
 		AddSemanticIndexes: duit_utils.BoolValue(true),
 	}

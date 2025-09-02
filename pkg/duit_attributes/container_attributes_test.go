@@ -5,11 +5,10 @@ import (
 
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_edge_insets"
 )
 
 func TestContainerAttributes_Validate_ValidAttributes(t *testing.T) {
-	attrs := &duit_attributes.ContainerAttributes[duit_edge_insets.EdgeInsetsAll, duit_props.ColorString]{
+	attrs := &duit_attributes.ContainerAttributes[duit_props.EdgeInsetsAll, duit_props.ColorString]{
 		Width:  100.0,
 		Height: 200.0,
 		Color:  "#FF0000",

@@ -8,14 +8,13 @@ import (
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_action"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
 	duit_decorations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_decorations"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_edge_insets"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_material"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_material"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
 func TestElevatedButtonAttributes_Validate_ValidAttributes(t *testing.T) {
-	attrs := &duit_attributes.ElevatedButtonAttributes[duit_props.ColorString, duit_edge_insets.EdgeInsetsAll, duit_decorations.RoundedRectangleBorder[duit_props.ColorString], duit_action.RemoteAction]{}
+	attrs := &duit_attributes.ElevatedButtonAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_decorations.RoundedRectangleBorder[duit_props.ColorString], duit_action.RemoteAction]{}
 
 	err := attrs.Validate()
 	if err != nil {
@@ -29,11 +28,11 @@ func TestElevatedButtonAttributes_Validate_WithAllFields(t *testing.T) {
 		Event:         "button_clicked",
 	}
 
-	buttonStyle := &duit_material.ButtonStyle[duit_props.ColorString, duit_edge_insets.EdgeInsetsAll, duit_decorations.RoundedRectangleBorder[duit_props.ColorString]]{
+	buttonStyle := &duit_material.ButtonStyle[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_decorations.RoundedRectangleBorder[duit_props.ColorString]]{
 		AnimationDuration: 200,
 	}
 
-	attrs := &duit_attributes.ElevatedButtonAttributes[duit_props.ColorString, duit_edge_insets.EdgeInsetsAll, duit_decorations.RoundedRectangleBorder[duit_props.ColorString], duit_action.RemoteAction]{
+	attrs := &duit_attributes.ElevatedButtonAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_decorations.RoundedRectangleBorder[duit_props.ColorString], duit_action.RemoteAction]{
 		Autofocus:    duit_utils.BoolValue(true),
 		ClipBehavior: duit_props.ClipAntiAlias,
 		Style:        buttonStyle,
@@ -49,7 +48,7 @@ func TestElevatedButtonAttributes_Validate_WithAllFields(t *testing.T) {
 // Tests for Tristate[bool] field Autofocus JSON serialization
 
 func TestElevatedButtonAttributes_Autofocus_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.ElevatedButtonAttributes[duit_props.ColorString, duit_edge_insets.EdgeInsetsAll, duit_decorations.RoundedRectangleBorder[duit_props.ColorString], duit_action.RemoteAction]{
+	attrs := &duit_attributes.ElevatedButtonAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_decorations.RoundedRectangleBorder[duit_props.ColorString], duit_action.RemoteAction]{
 		Autofocus: duit_utils.BoolValue(true),
 	}
 
@@ -65,7 +64,7 @@ func TestElevatedButtonAttributes_Autofocus_JSON_True(t *testing.T) {
 }
 
 func TestElevatedButtonAttributes_Autofocus_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.ElevatedButtonAttributes[duit_props.ColorString, duit_edge_insets.EdgeInsetsAll, duit_decorations.RoundedRectangleBorder[duit_props.ColorString], duit_action.RemoteAction]{
+	attrs := &duit_attributes.ElevatedButtonAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_decorations.RoundedRectangleBorder[duit_props.ColorString], duit_action.RemoteAction]{
 		Autofocus: duit_utils.BoolValue(false),
 	}
 
@@ -81,7 +80,7 @@ func TestElevatedButtonAttributes_Autofocus_JSON_False(t *testing.T) {
 }
 
 func TestElevatedButtonAttributes_Autofocus_JSON_Nil(t *testing.T) {
-	attrs := &duit_attributes.ElevatedButtonAttributes[duit_props.ColorString, duit_edge_insets.EdgeInsetsAll, duit_decorations.RoundedRectangleBorder[duit_props.ColorString], duit_action.RemoteAction]{
+	attrs := &duit_attributes.ElevatedButtonAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_decorations.RoundedRectangleBorder[duit_props.ColorString], duit_action.RemoteAction]{
 		Autofocus: duit_utils.Nillable[bool](),
 	}
 
@@ -99,7 +98,7 @@ func TestElevatedButtonAttributes_Autofocus_JSON_Nil(t *testing.T) {
 // Tests for other fields JSON serialization
 
 func TestElevatedButtonAttributes_ClipBehavior_JSON(t *testing.T) {
-	attrs := &duit_attributes.ElevatedButtonAttributes[duit_props.ColorString, duit_edge_insets.EdgeInsetsAll, duit_decorations.RoundedRectangleBorder[duit_props.ColorString], duit_action.RemoteAction]{
+	attrs := &duit_attributes.ElevatedButtonAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_decorations.RoundedRectangleBorder[duit_props.ColorString], duit_action.RemoteAction]{
 		ClipBehavior: duit_props.ClipAntiAlias,
 	}
 
@@ -115,11 +114,11 @@ func TestElevatedButtonAttributes_ClipBehavior_JSON(t *testing.T) {
 }
 
 func TestElevatedButtonAttributes_Style_JSON(t *testing.T) {
-	buttonStyle := &duit_material.ButtonStyle[duit_props.ColorString, duit_edge_insets.EdgeInsetsAll, duit_decorations.RoundedRectangleBorder[duit_props.ColorString]]{
+	buttonStyle := &duit_material.ButtonStyle[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_decorations.RoundedRectangleBorder[duit_props.ColorString]]{
 		AnimationDuration: 300,
 	}
 
-	attrs := &duit_attributes.ElevatedButtonAttributes[duit_props.ColorString, duit_edge_insets.EdgeInsetsAll, duit_decorations.RoundedRectangleBorder[duit_props.ColorString], duit_action.RemoteAction]{
+	attrs := &duit_attributes.ElevatedButtonAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_decorations.RoundedRectangleBorder[duit_props.ColorString], duit_action.RemoteAction]{
 		Style: buttonStyle,
 	}
 
@@ -143,7 +142,7 @@ func TestElevatedButtonAttributes_OnLongPress_JSON(t *testing.T) {
 		Event:         "long_press_event",
 	}
 
-	attrs := &duit_attributes.ElevatedButtonAttributes[duit_props.ColorString, duit_edge_insets.EdgeInsetsAll, duit_decorations.RoundedRectangleBorder[duit_props.ColorString], duit_action.RemoteAction]{
+	attrs := &duit_attributes.ElevatedButtonAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_decorations.RoundedRectangleBorder[duit_props.ColorString], duit_action.RemoteAction]{
 		OnLongPress: remoteAction,
 	}
 
@@ -162,7 +161,7 @@ func TestElevatedButtonAttributes_OnLongPress_JSON(t *testing.T) {
 }
 
 func TestElevatedButtonAttributes_NilFields_JSON(t *testing.T) {
-	attrs := &duit_attributes.ElevatedButtonAttributes[duit_props.ColorString, duit_edge_insets.EdgeInsetsAll, duit_decorations.RoundedRectangleBorder[duit_props.ColorString], duit_action.RemoteAction]{
+	attrs := &duit_attributes.ElevatedButtonAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_decorations.RoundedRectangleBorder[duit_props.ColorString], duit_action.RemoteAction]{
 		Style:       nil,
 		OnLongPress: nil,
 	}
@@ -190,7 +189,7 @@ func TestElevatedButtonAttributes_WithLocalAction_JSON(t *testing.T) {
 		Payload:       map[string]interface{}{"key": "value"},
 	}
 
-	attrs := &duit_attributes.ElevatedButtonAttributes[duit_props.ColorString, duit_edge_insets.EdgeInsetsAll, duit_decorations.RoundedRectangleBorder[duit_props.ColorString], duit_action.LocalAction]{
+	attrs := &duit_attributes.ElevatedButtonAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_decorations.RoundedRectangleBorder[duit_props.ColorString], duit_action.LocalAction]{
 		OnLongPress: localAction,
 	}
 
@@ -218,7 +217,7 @@ func TestElevatedButtonAttributes_WithScriptAction_JSON(t *testing.T) {
 		},
 	}
 
-	attrs := &duit_attributes.ElevatedButtonAttributes[duit_props.ColorString, duit_edge_insets.EdgeInsetsAll, duit_decorations.RoundedRectangleBorder[duit_props.ColorString], duit_action.ScriptAction]{
+	attrs := &duit_attributes.ElevatedButtonAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_decorations.RoundedRectangleBorder[duit_props.ColorString], duit_action.ScriptAction]{
 		OnLongPress: scriptAction,
 	}
 

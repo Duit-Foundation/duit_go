@@ -2,10 +2,9 @@ package duit_animations
 
 import (
 	duit_decoration "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_decorations"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_edge_insets"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_text_properties"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 )
 
 type tweenBase[T any] struct {
@@ -122,7 +121,7 @@ func AlignmentTween(animatedPropKey string, begin, end duit_props.Alignment, dur
 	}
 }
 
-func EdgeInsetsTween[TInsets duit_edge_insets.EdgeInsets](animatedPropKey string, begin, end TInsets, duration int, trigger AnimationTrigger, method AnimationMethod, reverseOnRepeat bool, curve Curves) *tweenBase[TInsets] {
+func EdgeInsetsTween[TInsets duit_props.EdgeInsets](animatedPropKey string, begin, end TInsets, duration int, trigger AnimationTrigger, method AnimationMethod, reverseOnRepeat bool, curve Curves) *tweenBase[TInsets] {
 	return &tweenBase[TInsets]{
 		TweenType:       "edgeInsetsTween",
 		AnimatedPropKey: animatedPropKey,

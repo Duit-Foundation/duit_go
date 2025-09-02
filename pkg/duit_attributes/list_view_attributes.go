@@ -4,11 +4,10 @@ import (
 	"errors"
 
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_builder"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_edge_insets"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_gestures"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_core"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
@@ -20,7 +19,7 @@ const (
 	Separated
 )
 
-type ListViewBaseAttributes[TInsets duit_edge_insets.EdgeInsets] struct {
+type ListViewBaseAttributes[TInsets duit_props.EdgeInsets] struct {
 	Type                    duit_utils.Tristate[ListKind]                   `json:"type,omitempty"`
 	Reverse                 duit_utils.Tristate[bool]                       `json:"reverse,omitempty"`
 	Primary                 duit_utils.Tristate[bool]                       `json:"primary,omitempty"`
@@ -51,7 +50,7 @@ func (r *ListViewBaseAttributes[TInsets]) Validate() error {
 	return nil
 }
 
-type ListViewBuilderAttributes[TInsets duit_edge_insets.EdgeInsets] struct {
+type ListViewBuilderAttributes[TInsets duit_props.EdgeInsets] struct {
 	*ListViewBaseAttributes[TInsets]
 	*duit_builder.Builder
 }
@@ -73,7 +72,7 @@ func (r *ListViewBuilderAttributes[TInsets]) Validate() error {
 	return nil
 }
 
-type ListViewSeparatedAttributes[TInsets duit_edge_insets.EdgeInsets] struct {
+type ListViewSeparatedAttributes[TInsets duit_props.EdgeInsets] struct {
 	*ListViewBuilderAttributes[TInsets]
 	Separator *duit_core.DuitElementModel `json:"separator"`
 }
@@ -94,6 +93,6 @@ func (r *ListViewSeparatedAttributes[TInsets]) Validate() error {
 	return nil
 }
 
-type ListViewAttributes[TInsets duit_edge_insets.EdgeInsets] interface {
+type ListViewAttributes[TInsets duit_props.EdgeInsets] interface {
 	ListViewBaseAttributes[TInsets] | ListViewBuilderAttributes[TInsets] | ListViewSeparatedAttributes[TInsets]
 }

@@ -3,13 +3,12 @@ package duit_attributes
 import (
 	animations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
 	decorations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_decorations"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_edge_insets"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_text_properties"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_text_properties"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
-type AppBarAttributes[TColor duit_props.Color, TInsets duit_edge_insets.EdgeInsets, TShape decorations.ShapeBorder[TColor]] struct {
+type AppBarAttributes[TColor duit_props.Color, TInsets duit_props.EdgeInsets, TShape decorations.ShapeBorder[TColor]] struct {
 	*ValueReferenceHolder
 	*animations.AnimatedPropertyOwner
 	*ThemeConsumer

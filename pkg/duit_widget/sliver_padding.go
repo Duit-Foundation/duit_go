@@ -9,7 +9,7 @@ import (
 Example:
 	SliverPadding(
 		&duit_attributes.SliverPaddingAttributes{
-			Padding: &duit_edge_insets.EdgeInsetsAll{
+			Padding: &duit_props.EdgeInsetsAll{
 				Top:    12.0,
 				Right:  12.0,
 				Bottom: 12.0,

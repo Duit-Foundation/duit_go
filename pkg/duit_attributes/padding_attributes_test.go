@@ -6,11 +6,11 @@ import (
 	"testing"
 
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_edge_insets"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 )
 
 func TestPaddingAttributes_Validate_ValidAttributes(t *testing.T) {
-	padding := &duit_edge_insets.EdgeInsetsV2{}
+	padding := &duit_props.EdgeInsetsV2{}
 	padding = padding.LTRB(10.0, 20.0, 15.0, 25.0)
 
 	attrs := &duit_attributes.PaddingAttributes{
@@ -33,7 +33,7 @@ func TestPaddingAttributes_Validate_WithoutPadding(t *testing.T) {
 }
 
 func TestPaddingAttributes_Validate_WithZeroPadding(t *testing.T) {
-	padding := &duit_edge_insets.EdgeInsetsV2{}
+	padding := &duit_props.EdgeInsetsV2{}
 	padding = padding.LTRB(0.0, 0.0, 0.0, 0.0)
 
 	attrs := &duit_attributes.PaddingAttributes{
@@ -47,7 +47,7 @@ func TestPaddingAttributes_Validate_WithZeroPadding(t *testing.T) {
 }
 
 func TestPaddingAttributes_Validate_WithPartialPadding(t *testing.T) {
-	padding := &duit_edge_insets.EdgeInsetsV2{}
+	padding := &duit_props.EdgeInsetsV2{}
 	padding = padding.LTRB(10.0, 20.0, 0.0, 0.0)
 
 	attrs := &duit_attributes.PaddingAttributes{
@@ -61,7 +61,7 @@ func TestPaddingAttributes_Validate_WithPartialPadding(t *testing.T) {
 }
 
 func TestPaddingAttributes_MarshalJSON_WithPadding(t *testing.T) {
-	padding := &duit_edge_insets.EdgeInsetsV2{}
+	padding := &duit_props.EdgeInsetsV2{}
 	padding = padding.LTRB(10.0, 20.0, 15.0, 25.0)
 
 	attrs := &duit_attributes.PaddingAttributes{

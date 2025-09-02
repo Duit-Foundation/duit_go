@@ -4,11 +4,11 @@ import (
 	"testing"
 
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_edge_insets"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 )
 
 func TestSliverPaddingAttributes_Validate_ValidAttributes(t *testing.T) {
-	padding := &duit_edge_insets.EdgeInsetsV2{}
+	padding := &duit_props.EdgeInsetsV2{}
 	padding = padding.LTRB(10.0, 20.0, 15.0, 25.0)
 
 	attrs := &duit_attributes.SliverPaddingAttributes{
@@ -31,7 +31,7 @@ func TestSliverPaddingAttributes_Validate_WithoutPadding(t *testing.T) {
 }
 
 func TestSliverPaddingAttributes_Validate_WithZeroPadding(t *testing.T) {
-	padding := &duit_edge_insets.EdgeInsetsV2{}
+	padding := &duit_props.EdgeInsetsV2{}
 	padding = padding.LTRB(0.0, 0.0, 0.0, 0.0)
 
 	attrs := &duit_attributes.SliverPaddingAttributes{
@@ -45,7 +45,7 @@ func TestSliverPaddingAttributes_Validate_WithZeroPadding(t *testing.T) {
 }
 
 func TestSliverPaddingAttributes_Validate_WithPartialPadding(t *testing.T) {
-	padding := &duit_edge_insets.EdgeInsetsV2{}
+	padding := &duit_props.EdgeInsetsV2{}
 	padding = padding.LTRB(10.0, 20.0, 0.0, 0.0)
 
 	attrs := &duit_attributes.SliverPaddingAttributes{
@@ -59,7 +59,7 @@ func TestSliverPaddingAttributes_Validate_WithPartialPadding(t *testing.T) {
 }
 
 func TestSliverPaddingAttributes_Validate_WithSymmetricPadding(t *testing.T) {
-	padding := &duit_edge_insets.EdgeInsetsV2{}
+	padding := &duit_props.EdgeInsetsV2{}
 	padding = padding.Symmentric(10.0, 20.0)
 
 	attrs := &duit_attributes.SliverPaddingAttributes{
@@ -73,7 +73,7 @@ func TestSliverPaddingAttributes_Validate_WithSymmetricPadding(t *testing.T) {
 }
 
 func TestSliverPaddingAttributes_Validate_WithAllPadding(t *testing.T) {
-	padding := &duit_edge_insets.EdgeInsetsV2{}
+	padding := &duit_props.EdgeInsetsV2{}
 	padding = padding.All(15.0)
 
 	attrs := &duit_attributes.SliverPaddingAttributes{

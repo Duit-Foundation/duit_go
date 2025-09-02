@@ -3,12 +3,11 @@ package duit_material
 import (
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	duit_decoration "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_decorations"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_edge_insets"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_text_properties"
 )
 
-type ButtonStyle[TColor duit_props.Color, TInsets duit_edge_insets.EdgeInsets, TShape duit_decoration.ShapeBorder[TColor]] struct {
+type ButtonStyle[TColor duit_props.Color, TInsets duit_props.EdgeInsets, TShape duit_decoration.ShapeBorder[TColor]] struct {
 	TextStyle         MaterialStateProperty[duit_text_properties.TextStyle[TColor]] `json:"textStyle,omitempty"`
 	BackgroundColor   MaterialStateProperty[TColor]                                 `json:"backgroundColor,omitempty"`
 	ForegroundColor   MaterialStateProperty[TColor]                                 `json:"foregroundColor,omitempty"`

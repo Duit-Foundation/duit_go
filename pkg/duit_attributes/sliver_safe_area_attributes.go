@@ -1,11 +1,11 @@
 package duit_attributes
 
 import (
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_edge_insets"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
-type SliverSafeAreaAttributes[TInsets duit_edge_insets.EdgeInsets] struct {
+type SliverSafeAreaAttributes[TInsets duit_props.EdgeInsets] struct {
 	*ValueReferenceHolder
 	*ThemeConsumer
 	*SliverProps

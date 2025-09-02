@@ -6,7 +6,6 @@ import (
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	duit_decoration "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_decorations"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_edge_insets"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_text_properties"
 )
@@ -58,9 +57,9 @@ func TestCheckTweenType(t *testing.T) {
 		// alignment
 		duit_animations.AlignmentTween("alignment", "center", "topLeft", 1, duit_animations.OnEnter, duit_animations.Forward, false, ""),
 		// edge insets
-		duit_animations.EdgeInsetsTween("paddingAll", duit_edge_insets.EdgeInsetsAll(4), duit_edge_insets.EdgeInsetsAll(8), 1, duit_animations.OnEnter, duit_animations.Forward, false, ""),
-		duit_animations.EdgeInsetsTween("paddingLTRB", duit_edge_insets.EdgeInsetsLTRB{1, 2, 3, 4}, duit_edge_insets.EdgeInsetsLTRB{4, 3, 2, 1}, 1, duit_animations.OnEnter, duit_animations.Forward, false, ""),
-		duit_animations.EdgeInsetsTween("paddingSym", duit_edge_insets.EdgeInsetsSymmentric{5, 10}, duit_edge_insets.EdgeInsetsSymmentric{10, 5}, 1, duit_animations.OnEnter, duit_animations.Forward, false, ""),
+		duit_animations.EdgeInsetsTween("paddingAll", duit_props.EdgeInsetsAll(4), duit_props.EdgeInsetsAll(8), 1, duit_animations.OnEnter, duit_animations.Forward, false, ""),
+		duit_animations.EdgeInsetsTween("paddingLTRB", duit_props.EdgeInsetsLTRB{1, 2, 3, 4}, duit_props.EdgeInsetsLTRB{4, 3, 2, 1}, 1, duit_animations.OnEnter, duit_animations.Forward, false, ""),
+		duit_animations.EdgeInsetsTween("paddingSym", duit_props.EdgeInsetsSymmentric{5, 10}, duit_props.EdgeInsetsSymmentric{10, 5}, 1, duit_animations.OnEnter, duit_animations.Forward, false, ""),
 		// constraints and size
 		duit_animations.BoxConstraintsTween("constraints", duit_flex.BoxConstraints{MinWidth: 0, MinHeight: 0}, duit_flex.BoxConstraints{MaxWidth: 100, MaxHeight: 100}, 1, duit_animations.OnEnter, duit_animations.Forward, false, ""),
 		duit_animations.SizeTween("size", duit_flex.Size{Width: 10, Height: 20}, duit_flex.Size{Width: 20, Height: 40}, 1, duit_animations.OnEnter, duit_animations.Forward, false, ""),
