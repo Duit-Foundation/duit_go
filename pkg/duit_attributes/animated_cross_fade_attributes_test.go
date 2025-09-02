@@ -6,8 +6,8 @@ import (
 	"testing"
 
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_alignment"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
@@ -93,7 +93,7 @@ func TestAnimatedCrossFadeAttributes_Validate_WithOptionalFields(t *testing.T) {
 		SecondCurve:        duit_animations.EaseOut,
 		SizeCurve:          duit_animations.Linear,
 		ExcludeBottomFocus: duit_utils.BoolValue(true),
-		Alignment:          duit_alignment.Center,
+		Alignment:          duit_props.AlignmentCenter,
 		ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
 			Duration: 300,
 			Curve:    duit_animations.Ease,
@@ -178,7 +178,7 @@ func TestAnimatedCrossFadeAttributes_MarshalJSON_WithAllFields(t *testing.T) {
 		SecondCurve:        duit_animations.EaseOut,
 		SizeCurve:          duit_animations.Linear,
 		ExcludeBottomFocus: duit_utils.BoolValue(false),
-		Alignment:          duit_alignment.TopCenter,
+		Alignment:          duit_props.AlignmentTopCenter,
 		ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
 			Duration: 400,
 			Curve:    duit_animations.BounceIn,

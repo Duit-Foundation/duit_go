@@ -3,11 +3,11 @@ package duit_attributes
 import (
 	"errors"
 
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_alignment"
 	animations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_color"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_painting"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
@@ -31,7 +31,7 @@ type ImageAttributes[TColor duit_color.Color] struct {
 	ColorBlendMode       duit_painting.BlendMode     `json:"colorBlendMode,omitempty"`
 	Color                TColor                      `json:"color,omitempty"`
 	Fit                  duit_flex.BoxFit            `json:"fit,omitempty"`
-	Alignment            duit_alignment.Alignment    `json:"alignment,omitempty"`
+	Alignment            duit_props.Alignment    `json:"alignment,omitempty"`
 	Type                 duit_painting.ImageType     `json:"type,omitempty"`
 }
 

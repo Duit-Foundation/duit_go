@@ -1,13 +1,13 @@
 package duit_attributes
 
 import (
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_alignment"
 	animations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_clip"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_color"
 	duit_decoration "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_decorations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_edge_insets"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 )
 
 type ContainerAttributes[TInsets duit_edge_insets.EdgeInsets, TColor duit_color.Color] struct {
@@ -22,8 +22,8 @@ type ContainerAttributes[TInsets duit_edge_insets.EdgeInsets, TColor duit_color.
 	ForegroundDecoration *duit_decoration.BoxDecoration[TColor] `json:"foregroundDecoration,omitempty"`
 	Padding              TInsets                                `json:"padding,omitempty"`
 	Margin               TInsets                                `json:"margin,omitempty"`
-	Alignment            duit_alignment.Alignment               `json:"alignment,omitempty"`
-	TransformAlignment   duit_alignment.Alignment               `json:"transformAlignment,omitempty"`
+	Alignment            duit_props.Alignment               `json:"alignment,omitempty"`
+	TransformAlignment   duit_props.Alignment               `json:"transformAlignment,omitempty"`
 	Constraints          *duit_flex.BoxConstraints              `json:"constraints,omitempty"`
 }
 

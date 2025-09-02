@@ -6,12 +6,12 @@ import (
 	"testing"
 
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_alignment"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_clip"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_color"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_edge_insets"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 )
 
 func TestAnimatedContainerAttributes_Validate_ValidAttributes(t *testing.T) {
@@ -118,8 +118,8 @@ func TestAnimatedContainerAttributes_Validate_WithAlignment(t *testing.T) {
 	attrs := &duit_attributes.AnimatedContainerAttributes[duit_edge_insets.EdgeInsetsAll, duit_color.ColorString]{
 		Width:              100.0,
 		Height:             200.0,
-		Alignment:          duit_alignment.Center,
-		TransformAlignment: duit_alignment.TopLeft,
+		Alignment:          duit_props.AlignmentCenter,
+		TransformAlignment: duit_props.AlignmentTopLeft,
 		ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
 			Duration: 300,
 			Curve:    duit_animations.Ease,
@@ -182,8 +182,8 @@ func TestAnimatedContainerAttributes_MarshalJSON_WithAlignment(t *testing.T) {
 	attrs := &duit_attributes.AnimatedContainerAttributes[duit_edge_insets.EdgeInsetsAll, duit_color.ColorString]{
 		Width:              100.0,
 		Height:             200.0,
-		Alignment:          duit_alignment.Center,
-		TransformAlignment: duit_alignment.TopLeft,
+		Alignment:          duit_props.AlignmentCenter,
+		TransformAlignment: duit_props.AlignmentTopLeft,
 		ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
 			Duration: 300,
 			Curve:    duit_animations.Ease,

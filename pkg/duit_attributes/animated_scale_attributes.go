@@ -3,9 +3,9 @@ package duit_attributes
 import (
 	"errors"
 
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_alignment"
 	animations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_painting"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
@@ -14,7 +14,7 @@ type AnimatedScaleAttributes struct {
 	*ThemeConsumer
 	*animations.ImplicitAnimatable
 	Scale         duit_utils.Tristate[float32] `json:"scale,omitempty"`
-	Alignmen      duit_alignment.Alignment     `json:"alignment,omitempty"`
+	Alignmen      duit_props.Alignment     `json:"alignment,omitempty"`
 	FilterQuality duit_painting.FilterQuality  `json:"filterQuality,omitempty"`
 }
 

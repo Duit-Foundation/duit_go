@@ -1,8 +1,8 @@
 package duit_decoration
 
 import (
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_alignment"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_color"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 )
 
 type LinearGradient[T duit_color.Color] struct {
@@ -10,6 +10,6 @@ type LinearGradient[T duit_color.Color] struct {
 	//Rotation angle in radians
 	RotationAngle float32                  `json:"rotationAngle,omitempty"`
 	Stops         []float32                `json:"stops,omitempty"`
-	Begin         duit_alignment.Alignment `json:"begin,omitempty"`
-	End           duit_alignment.Alignment `json:"end,omitempty"`
+	Begin         duit_props.Alignment `json:"begin,omitempty"`
+	End           duit_props.Alignment `json:"end,omitempty"`
 }

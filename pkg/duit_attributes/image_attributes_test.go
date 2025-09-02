@@ -6,10 +6,10 @@ import (
 	"testing"
 
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_alignment"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_color"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_painting"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
@@ -125,7 +125,7 @@ func TestImageAttributes_Validate_WithAllProperties(t *testing.T) {
 		ColorBlendMode:       duit_painting.SrcOver,
 		Color:                "#FF0000",
 		Fit:                  duit_flex.Contain,
-		Alignment:            duit_alignment.Center,
+		Alignment:            duit_props.AlignmentCenter,
 	}
 
 	err := attrs.Validate()

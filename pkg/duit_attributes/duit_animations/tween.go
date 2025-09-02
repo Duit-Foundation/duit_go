@@ -1,12 +1,12 @@
 package duit_animations
 
 import (
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_alignment"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_color"
 	duit_decoration "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_decorations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_edge_insets"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_text_properties"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 )
 
 type tweenBase[T any] struct {
@@ -109,8 +109,8 @@ func DecorationTween[TColor duit_color.Color](animatedPropKey string, begin, end
 	}
 }
 
-func AlignmentTween(animatedPropKey string, begin, end duit_alignment.Alignment, duration int, trigger AnimationTrigger, method AnimationMethod, reverseOnRepeat bool, curve Curves) *tweenBase[duit_alignment.Alignment] {
-	return &tweenBase[duit_alignment.Alignment]{
+func AlignmentTween(animatedPropKey string, begin, end duit_props.Alignment, duration int, trigger AnimationTrigger, method AnimationMethod, reverseOnRepeat bool, curve Curves) *tweenBase[duit_props.Alignment] {
+	return &tweenBase[duit_props.Alignment]{
 		TweenType:       "alignmentTween",
 		AnimatedPropKey: animatedPropKey,
 		Duration:        duration,

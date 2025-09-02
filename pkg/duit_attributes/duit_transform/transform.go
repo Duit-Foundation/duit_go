@@ -1,9 +1,9 @@
 package duit_transform
 
 import (
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_alignment"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_painting"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 )
 
 type TransfromType string
@@ -17,7 +17,7 @@ const (
 
 type TransformBase struct {
 	Origin            *duit_flex.Offset           `json:"origin,omitempty"`
-	Alignment         duit_alignment.Alignment    `json:"alignment,omitempty"`
+	Alignment         duit_props.Alignment    `json:"alignment,omitempty"`
 	TransformHitTests bool                        `json:"transformHitTests,omitempty"`
 	FilterQuality     duit_painting.FilterQuality `json:"filterQuality,omitempty"`
 }

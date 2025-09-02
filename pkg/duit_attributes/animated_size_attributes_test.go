@@ -4,15 +4,15 @@ import (
 	"testing"
 
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_alignment"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_clip"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 )
 
 func TestAnimatedSizeAttributes_Validate_ValidAttributes(t *testing.T) {
 	attrs := &duit_attributes.AnimatedSizeAttributes{
 		ClipBehavior: duit_clip.AntiAlias,
-		Alignment:    duit_alignment.Center,
+		Alignment:    duit_props.AlignmentCenter,
 		ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
 			Duration: 300,
 			Curve:    duit_animations.Ease,
@@ -30,7 +30,7 @@ func TestAnimatedSizeAttributes_Validate_ValidAttributes(t *testing.T) {
 func TestAnimatedSizeAttributes_Validate_NilImplicitAnimatable(t *testing.T) {
 	attrs := &duit_attributes.AnimatedSizeAttributes{
 		ClipBehavior:       duit_clip.AntiAlias,
-		Alignment:          duit_alignment.Center,
+		Alignment:          duit_props.AlignmentCenter,
 		ImplicitAnimatable: nil,
 	}
 
