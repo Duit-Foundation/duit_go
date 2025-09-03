@@ -6,7 +6,6 @@ import (
 	"testing"
 
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
-	duit_decoration "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_decorations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
@@ -37,8 +36,8 @@ func TestPhysicalModelAttributes_Validate_WithAllProperties(t *testing.T) {
 		Color:        duit_props.ColorString("#FF0000"),
 		ShadowColor:  duit_props.ColorString("#000000"),
 		ClipBehavior: duit_props.ClipAntiAlias,
-		BorderRadius: &duit_decoration.BorderRadius{},
-		Shape:        duit_decoration.Rectangle,
+		BorderRadius: &duit_props.BorderRadius{},
+		Shape:        duit_props.BoxShapeRectangle,
 	}
 
 	err := attrs.Validate()

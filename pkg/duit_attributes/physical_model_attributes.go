@@ -4,7 +4,6 @@ import (
 	"errors"
 
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
-	duit_decoration "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_decorations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
@@ -17,8 +16,8 @@ type PhysicalModelAttributes[TColor duit_props.Color] struct {
 	Color        TColor                        `json:"color,omitempty"`
 	ShadowColor  TColor                        `json:"shadowColor,omitempty"`
 	ClipBehavior duit_props.Clip                `json:"clipBehavior,omitempty"`
-	BorderRadius *duit_decoration.BorderRadius `json:"borderRadius,omitempty"`
-	Shape        duit_decoration.BoxShape      `json:"shape,omitempty"`
+	BorderRadius *duit_props.BorderRadius `json:"borderRadius,omitempty"`
+	Shape        duit_props.BoxShape      `json:"shape,omitempty"`
 }
 
 func (r *PhysicalModelAttributes[TColor]) Validate() error {

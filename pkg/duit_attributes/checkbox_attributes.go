@@ -4,7 +4,6 @@ import (
 	"errors"
 
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
-	duit_decoration "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_decorations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
@@ -18,7 +17,7 @@ type CheckboxAttributes[T duit_props.Color] struct {
 	IsError       duit_utils.Tristate[bool]               `json:"isError,omitempty"`
 	SplashRadius  float32                                 `json:"splashRadius,omitempty"`
 	SemanticLabel string                                  `json:"semanticLabel,omitempty"`
-	Side          *duit_decoration.BorderSide[T]          `json:"side,omitempty"`
+	Side          *duit_props.BorderSide[T]          `json:"side,omitempty"`
 	VisualDensity *duit_flex.VisualDensity                `json:"visualDensity,omitempty"`
 	CheckColor    T                                       `json:"checkColor,omitempty"`
 	HoverColor    T                                       `json:"hoverColor,omitempty"`

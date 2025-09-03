@@ -1,7 +1,6 @@
 package duit_animations
 
 import (
-	duit_decoration "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_decorations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
 )
@@ -92,8 +91,8 @@ func TextStyleTween[TColor duit_props.Color](animatedPropKey string, begin, end 
 	}
 }
 
-func DecorationTween[TColor duit_props.Color](animatedPropKey string, begin, end duit_decoration.BoxDecoration[TColor], duration int, trigger AnimationTrigger, method AnimationMethod, reverseOnRepeat bool, curve Curves) *tweenBase[duit_decoration.BoxDecoration[TColor]] {
-	return &tweenBase[duit_decoration.BoxDecoration[TColor]]{
+func DecorationTween[TColor duit_props.Color](animatedPropKey string, begin, end duit_props.BoxDecoration[TColor], duration int, trigger AnimationTrigger, method AnimationMethod, reverseOnRepeat bool, curve Curves) *tweenBase[duit_props.BoxDecoration[TColor]] {
+	return &tweenBase[duit_props.BoxDecoration[TColor]]{
 		TweenType:       "decorationTween",
 		AnimatedPropKey: animatedPropKey,
 		Duration:        duration,
@@ -162,8 +161,8 @@ func SizeTween(animatedPropKey string, begin, end duit_flex.Size, duration int, 
 	}
 }
 
-func BorderTween(animatedPropKey string, begin, end duit_decoration.Border, duration int, trigger AnimationTrigger, method AnimationMethod, reverseOnRepeat bool, curve Curves) *tweenBase[duit_decoration.Border] {
-	return &tweenBase[duit_decoration.Border]{
+func BorderTween(animatedPropKey string, begin, end duit_props.Border, duration int, trigger AnimationTrigger, method AnimationMethod, reverseOnRepeat bool, curve Curves) *tweenBase[duit_props.Border] {
+	return &tweenBase[duit_props.Border]{
 		TweenType:       "borderTween",
 		AnimatedPropKey: animatedPropKey,
 		Duration:        duration,

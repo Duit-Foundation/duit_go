@@ -7,7 +7,6 @@ import (
 
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
-	duit_decorations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_decorations"
 )
 
 func TestDecoratedBoxAttributes_Validate_MissingDecoration(t *testing.T) {
@@ -26,7 +25,7 @@ func TestDecoratedBoxAttributes_Validate_MissingDecoration(t *testing.T) {
 
 func TestDecoratedBoxAttributes_Validate_ValidDecoration(t *testing.T) {
 	attrs := &duit_attributes.DecoratedBoxAttributes[duit_props.ColorString]{
-		Decoration: &duit_decorations.BoxDecoration[duit_props.ColorString]{
+		Decoration: &duit_props.BoxDecoration[duit_props.ColorString]{
 			Color: "#FF0000",
 		},
 	}
@@ -39,10 +38,10 @@ func TestDecoratedBoxAttributes_Validate_ValidDecoration(t *testing.T) {
 
 func TestDecoratedBoxAttributes_Validate_WithAllDecorationFields(t *testing.T) {
 	attrs := &duit_attributes.DecoratedBoxAttributes[duit_props.ColorString]{
-		Decoration: &duit_decorations.BoxDecoration[duit_props.ColorString]{
+		Decoration: &duit_props.BoxDecoration[duit_props.ColorString]{
 			Color:        "#FF0000",
 			BorderRadius: 10.0,
-			Shape:        duit_decorations.Rectangle,
+			Shape:        duit_props.BoxShapeRectangle,
 		},
 	}
 
@@ -54,7 +53,7 @@ func TestDecoratedBoxAttributes_Validate_WithAllDecorationFields(t *testing.T) {
 
 func TestDecoratedBoxAttributes_JSON_WithDecoration(t *testing.T) {
 	attrs := &duit_attributes.DecoratedBoxAttributes[duit_props.ColorString]{
-		Decoration: &duit_decorations.BoxDecoration[duit_props.ColorString]{
+		Decoration: &duit_props.BoxDecoration[duit_props.ColorString]{
 			Color:        "#FF0000",
 			BorderRadius: 10.0,
 		},
@@ -103,7 +102,7 @@ func TestDecoratedBoxAttributes_WithRGBOColor_JSON(t *testing.T) {
 	}
 
 	attrs := &duit_attributes.DecoratedBoxAttributes[*duit_props.ColorRGBO]{
-		Decoration: &duit_decorations.BoxDecoration[*duit_props.ColorRGBO]{
+		Decoration: &duit_props.BoxDecoration[*duit_props.ColorRGBO]{
 			Color:        rgboColor,
 			BorderRadius: 5.0,
 		},
@@ -132,7 +131,7 @@ func TestDecoratedBoxAttributes_WithRGBOColor_Validate(t *testing.T) {
 	}
 
 	attrs := &duit_attributes.DecoratedBoxAttributes[*duit_props.ColorRGBO]{
-		Decoration: &duit_decorations.BoxDecoration[*duit_props.ColorRGBO]{
+		Decoration: &duit_props.BoxDecoration[*duit_props.ColorRGBO]{
 			Color: rgboColor,
 		},
 	}

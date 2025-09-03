@@ -2,14 +2,13 @@ package duit_command
 
 import (
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_action"
-	duit_decoration "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_decorations"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_core"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
-type BottomSheetCommand[TAction duit_action.Action, TColor duit_props.Color, TShape duit_decoration.ShapeBorder[TColor]] struct {
+type BottomSheetCommand[TAction duit_action.Action, TColor duit_props.Color, TShape duit_props.ShapeBorder[TColor]] struct {
 	Type                                string                              `json:"type"`
 	Action                              OverlayAction                       `json:"action"`
 	OnClose                             *TAction                            `json:"onClose,omitempty"`
@@ -29,7 +28,7 @@ type BottomSheetCommand[TAction duit_action.Action, TColor duit_props.Color, TSh
 	ClipBehavior                        duit_utils.Tristate[duit_props.Clip] `json:"clipBehavior,omitempty"`
 }
 
-type BottomSheetUIProps[TColor duit_props.Color, TShape duit_decoration.ShapeBorder[TColor]] struct {
+type BottomSheetUIProps[TColor duit_props.Color, TShape duit_props.ShapeBorder[TColor]] struct {
 	IsDismissible                       duit_utils.Tristate[bool]           `json:"isDismissible,omitempty"`
 	IsScrollControlled                  duit_utils.Tristate[bool]           `json:"isScrollControlled,omitempty"`
 	UseSafeArea                         duit_utils.Tristate[bool]           `json:"useSafeArea,omitempty"`
@@ -45,7 +44,7 @@ type BottomSheetUIProps[TColor duit_props.Color, TShape duit_decoration.ShapeBor
 	ClipBehavior                        duit_utils.Tristate[duit_props.Clip] `json:"clipBehavior,omitempty"`
 }
 
-func NewBottomSheetCommand[TAction duit_action.Action, TColor duit_props.Color, TShape duit_decoration.ShapeBorder[TColor]](
+func NewBottomSheetCommand[TAction duit_action.Action, TColor duit_props.Color, TShape duit_props.ShapeBorder[TColor]](
 	commandProps *OverlayCommandProps[TAction],
 	uiProps *BottomSheetUIProps[TColor, TShape],
 ) *BottomSheetCommand[TAction, TColor, TShape] {

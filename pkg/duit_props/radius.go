@@ -1,4 +1,4 @@
-package duit_decoration
+package duit_props
 
 import (
 	"encoding/json"
@@ -45,8 +45,6 @@ type borderRadiusHorizontal struct {
 	Left  *RadiusV2 `json:"left,omitempty"`
 	Right *RadiusV2 `json:"right,omitempty"`
 }
-
-
 
 func (r BorderRadiusV2) All(radius *RadiusV2) *BorderRadiusV2 {
 	r.data = borderRadiusAll{Radius: radius}

@@ -1,74 +1,72 @@
-package duit_decoration
+package duit_props
 
-import (
-	"encoding/json"
+import "encoding/json"
 
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
-)
-
-type ShapeBorderType string
-
-const (
-	RoundedRectangleBorderType    ShapeBorderType = "RoundedRectangleBorder"
-	CircleBorderType              ShapeBorderType = "CircleBorder"
-	StadiumBorderType             ShapeBorderType = "StadiumBorder"
-	BeveledRectangleBorderType    ShapeBorderType = "BeveledRectangleBorder"
-	ContinuousRectangleBorderType ShapeBorderType = "ContinuousRectangleBorder"
-)
-
-type RoundedRectangleBorder[TColor duit_props.Color] struct {
+// RoundedRectangleBorder represents a rounded rectangle border
+// Note: Uses any type for Color to avoid import cycles
+type RoundedRectangleBorder[TColor Color] struct {
 	Type         ShapeBorderType     `json:"type"`
 	BorderRadius *BorderRadius       `json:"borderRadius,omitempty"`
 	Side         *BorderSide[TColor] `json:"side,omitempty"`
 }
 
 func (s *RoundedRectangleBorder[TColor]) MarshalJSON() ([]byte, error) {
-	s.Type = RoundedRectangleBorderType
+	s.Type = ShapeBorderTypeRoundedRectangle
 	return json.Marshal(*s)
 }
 
-type BeveledRectangleBorder[TColor duit_props.Color] struct {
+// BeveledRectangleBorder represents a beveled rectangle border
+// Note: Uses any type for Color to avoid import cycles
+type BeveledRectangleBorder[TColor Color] struct {
 	Type         ShapeBorderType     `json:"type"`
 	BorderRadius *BorderRadius       `json:"borderRadius,omitempty"`
 	Side         *BorderSide[TColor] `json:"side,omitempty"`
 }
 
 func (s *BeveledRectangleBorder[TColor]) MarshalJSON() ([]byte, error) {
-	s.Type = BeveledRectangleBorderType
+	s.Type = ShapeBorderTypeBeveledRectangle
 	return json.Marshal(*s)
 }
 
-type ContinuousRectangleBorder[TColor duit_props.Color] struct {
+// ContinuousRectangleBorder represents a continuous rectangle border
+// Note: Uses any type for Color to avoid import cycles
+type ContinuousRectangleBorder[TColor Color] struct {
 	Type         ShapeBorderType     `json:"type"`
 	BorderRadius *BorderRadius       `json:"borderRadius,omitempty"`
 	Side         *BorderSide[TColor] `json:"side,omitempty"`
 }
 
 func (s *ContinuousRectangleBorder[TColor]) MarshalJSON() ([]byte, error) {
-	s.Type = ContinuousRectangleBorderType
+	s.Type = ShapeBorderTypeContinuousRectangle
 	return json.Marshal(*s)
 }
 
-type CircleBorder[TColor duit_props.Color] struct {
+// CircleBorder represents a circle border
+// Note: Uses any type for Color to avoid import cycles
+type CircleBorder[TColor Color] struct {
 	Type ShapeBorderType     `json:"type"`
 	Side *BorderSide[TColor] `json:"side,omitempty"`
 }
 
 func (s *CircleBorder[TColor]) MarshalJSON() ([]byte, error) {
-	s.Type = CircleBorderType
+	s.Type = ShapeBorderTypeCircle
 	return json.Marshal(*s)
 }
 
-type StadiumBorder[TColor duit_props.Color] struct {
+// StadiumBorder represents a stadium border
+// Note: Uses any type for Color to avoid import cycles
+type StadiumBorder[TColor Color] struct {
 	Type ShapeBorderType     `json:"type"`
 	Side *BorderSide[TColor] `json:"side,omitempty"`
 }
 
 func (s *StadiumBorder[TColor]) MarshalJSON() ([]byte, error) {
-	s.Type = StadiumBorderType
+	s.Type = ShapeBorderTypeStadium
 	return json.Marshal(*s)
 }
 
-type ShapeBorder[TColor duit_props.Color] interface {
+// ShapeBorder represents a shape border interface
+// Note: Uses any type for Color to avoid import cycles
+type ShapeBorder[TColor Color] interface {
 	RoundedRectangleBorder[TColor] | ContinuousRectangleBorder[TColor] | StadiumBorder[TColor] | CircleBorder[TColor] | BeveledRectangleBorder[TColor]
 }

@@ -1,7 +1,6 @@
 package duit_attributes
 
 import (
-	duit_decoration "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_decorations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
@@ -24,7 +23,7 @@ type TextFieldAttributes[TInsets duit_props.EdgeInsets, TColor duit_props.Color]
 	MaxLines           uint                                              `json:"maxLines,omitempty"`
 	MinLines           uint                                              `json:"minLines,omitempty"`
 	MaxLength          uint                                              `json:"maxLength,omitempty"`
-	Decoration         *duit_decoration.InputDecoration[TInsets, TColor] `json:"decoration,omitempty"`
+	Decoration         *duit_props.InputDecoration[TInsets, TColor] `json:"decoration,omitempty"`
 }
 
 func (r *TextFieldAttributes[TInsets, TColor]) Validate() error {

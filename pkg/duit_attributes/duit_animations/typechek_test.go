@@ -4,9 +4,8 @@ import (
 	"testing"
 
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
-	duit_decoration "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_decorations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 )
 
 var (
@@ -24,17 +23,17 @@ var (
 		Color: &duit_props.ColorRGBO{R: 30, G: 20, B: 10, O: 1},
 	}
 
-	decorationBeginString = duit_decoration.BoxDecoration[duit_props.ColorString]{
+	decorationBeginString = duit_props.BoxDecoration[duit_props.ColorString]{
 		Color: duit_props.ColorString("#123456"),
 	}
-	decorationEndString = duit_decoration.BoxDecoration[duit_props.ColorString]{
+	decorationEndString = duit_props.BoxDecoration[duit_props.ColorString]{
 		Color: duit_props.ColorString("#abcdef"),
 	}
 
-	decorationBeginRGBO = duit_decoration.BoxDecoration[*duit_props.ColorRGBO]{
+	decorationBeginRGBO = duit_props.BoxDecoration[*duit_props.ColorRGBO]{
 		Color: &duit_props.ColorRGBO{R: 1, G: 2, B: 3, O: 1},
 	}
-	decorationEndRGBO = duit_decoration.BoxDecoration[*duit_props.ColorRGBO]{
+	decorationEndRGBO = duit_props.BoxDecoration[*duit_props.ColorRGBO]{
 		Color: &duit_props.ColorRGBO{R: 3, G: 2, B: 1, O: 1},
 	}
 )
@@ -63,7 +62,7 @@ func TestCheckTweenType(t *testing.T) {
 		duit_animations.BoxConstraintsTween("constraints", duit_flex.BoxConstraints{MinWidth: 0, MinHeight: 0}, duit_flex.BoxConstraints{MaxWidth: 100, MaxHeight: 100}, 1, duit_animations.OnEnter, duit_animations.Forward, false, ""),
 		duit_animations.SizeTween("size", duit_flex.Size{Width: 10, Height: 20}, duit_flex.Size{Width: 20, Height: 40}, 1, duit_animations.OnEnter, duit_animations.Forward, false, ""),
 		// border
-		duit_animations.BorderTween("border", duit_decoration.Outline, duit_decoration.Underline, 1, duit_animations.OnEnter, duit_animations.Forward, false, ""),
+		duit_animations.BorderTween("border", duit_props.BorderOutline, duit_props.BorderUnderline, 1, duit_animations.OnEnter, duit_animations.Forward, false, ""),
 		// group
 		duit_animations.TweenGroup([]any{
 			duit_animations.Tween("opacity", 0.0, 1.0, 1, duit_animations.OnEnter, duit_animations.Forward, false, ""),

@@ -7,7 +7,6 @@ import (
 
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
-	duit_decoration "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_decorations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
@@ -184,8 +183,8 @@ func TestAnimatedPhysicalModelAttributes_Validate_WithOptionalFields(t *testing.
 	color := duit_props.ColorV2{}.FromString("#FF0000")
 	shadowColor := duit_props.ColorV2{}.FromString("#000000")
 
-	borderRadius := duit_decoration.BorderRadiusV2{}.All(
-		duit_decoration.RadiusV2{}.Circular(8.0),
+	borderRadius := duit_props.BorderRadiusV2{}.All(
+		duit_props.RadiusV2{}.Circular(8.0),
 	)
 
 	attrs := &duit_attributes.AnimatedPhysicalModelAttributes{
@@ -194,7 +193,7 @@ func TestAnimatedPhysicalModelAttributes_Validate_WithOptionalFields(t *testing.
 		ShadowColor:        shadowColor,
 		ClipBehavior:       duit_props.ClipAntiAlias,
 		BorderRadius:       borderRadius,
-		Shape:              duit_decoration.Rectangle,
+		Shape:              duit_props.BoxShapeRectangle,
 		AnimateColor:       duit_utils.BoolValue(true),
 		AnimateShadowColor: duit_utils.BoolValue(false),
 		ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
