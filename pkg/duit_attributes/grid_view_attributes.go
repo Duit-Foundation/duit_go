@@ -3,7 +3,6 @@ package duit_attributes
 import (
 	"errors"
 
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_builder"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
@@ -115,7 +114,7 @@ func (r *GridViewCountAttributes[TInsets]) Validate() error {
 type GridViewBuilderAttributes[TInsets duit_props.EdgeInsets] struct {
 	*ValueReferenceHolder
 	*ThemeConsumer
-	*duit_builder.Builder
+	*Builder
 	*DefautlGridViewAttributes[TInsets]
 	SliverGridDelegateKey     string         `json:"sliverGridDelegateKey"`
 	SliverGridDelegateOptions map[string]any `json:"sliverGridDelegateOptions,omitempty"`

@@ -6,7 +6,6 @@ import (
 	"testing"
 
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_builder"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
@@ -169,7 +168,7 @@ func TestGridViewCountAttributes_Validate_NilConstructor(t *testing.T) {
 
 func TestGridViewBuilderAttributes_Validate_ValidAttributes(t *testing.T) {
 	attrs := &duit_attributes.GridViewBuilderAttributes[duit_props.EdgeInsetsAll]{
-		Builder: &duit_builder.Builder{},
+		Builder: &duit_attributes.Builder{},
 		DefautlGridViewAttributes: &duit_attributes.DefautlGridViewAttributes[duit_props.EdgeInsetsAll]{
 			Constructor: duit_utils.TristateFrom[duit_attributes.GridConstructor](duit_attributes.GridBuilder),
 		},
@@ -198,7 +197,7 @@ func TestGridViewBuilderAttributes_Validate_MissingBuilder(t *testing.T) {
 
 func TestGridViewBuilderAttributes_Validate_NilDefautlGridViewAttributes(t *testing.T) {
 	attrs := &duit_attributes.GridViewBuilderAttributes[duit_props.EdgeInsetsAll]{
-		Builder:               &duit_builder.Builder{},
+		Builder:               &duit_attributes.Builder{},
 		SliverGridDelegateKey: "test-key",
 	}
 
@@ -210,7 +209,7 @@ func TestGridViewBuilderAttributes_Validate_NilDefautlGridViewAttributes(t *test
 
 func TestGridViewBuilderAttributes_Validate_MissingSliverGridDelegateKey(t *testing.T) {
 	attrs := &duit_attributes.GridViewBuilderAttributes[duit_props.EdgeInsetsAll]{
-		Builder: &duit_builder.Builder{},
+		Builder: &duit_attributes.Builder{},
 		DefautlGridViewAttributes: &duit_attributes.DefautlGridViewAttributes[duit_props.EdgeInsetsAll]{
 			Constructor: duit_utils.TristateFrom[duit_attributes.GridConstructor](duit_attributes.GridBuilder),
 		},
@@ -224,7 +223,7 @@ func TestGridViewBuilderAttributes_Validate_MissingSliverGridDelegateKey(t *test
 
 func TestGridViewBuilderAttributes_Validate_WrongConstructor(t *testing.T) {
 	attrs := &duit_attributes.GridViewBuilderAttributes[duit_props.EdgeInsetsAll]{
-		Builder: &duit_builder.Builder{},
+		Builder: &duit_attributes.Builder{},
 		DefautlGridViewAttributes: &duit_attributes.DefautlGridViewAttributes[duit_props.EdgeInsetsAll]{
 			Constructor: duit_utils.TristateFrom[duit_attributes.GridConstructor](duit_attributes.GridCommon),
 		},
@@ -239,7 +238,7 @@ func TestGridViewBuilderAttributes_Validate_WrongConstructor(t *testing.T) {
 
 func TestGridViewBuilderAttributes_Validate_NilConstructor(t *testing.T) {
 	attrs := &duit_attributes.GridViewBuilderAttributes[duit_props.EdgeInsetsAll]{
-		Builder:                   &duit_builder.Builder{},
+		Builder:                   &duit_attributes.Builder{},
 		DefautlGridViewAttributes: &duit_attributes.DefautlGridViewAttributes[duit_props.EdgeInsetsAll]{
 		},
 		SliverGridDelegateKey: "test-key",

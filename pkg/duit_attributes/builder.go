@@ -1,4 +1,4 @@
-package duit_builder
+package duit_attributes
 
 import "github.com/Duit-Foundation/duit_go/v4/pkg/duit_core"
 

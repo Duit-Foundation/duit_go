@@ -3,7 +3,6 @@ package duit_attributes
 import (
 	"errors"
 
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_builder"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_core"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
@@ -12,9 +11,9 @@ import (
 type ListKind uint8
 
 const (
-	Common ListKind = iota
-	Builder
-	Separated
+	ListCommon ListKind = iota
+	ListBuilder
+	ListSeparated
 )
 
 type ListViewBaseAttributes[TInsets duit_props.EdgeInsets] struct {
@@ -50,7 +49,7 @@ func (r *ListViewBaseAttributes[TInsets]) Validate() error {
 
 type ListViewBuilderAttributes[TInsets duit_props.EdgeInsets] struct {
 	*ListViewBaseAttributes[TInsets]
-	*duit_builder.Builder
+	*Builder
 }
 
 func (r *ListViewBuilderAttributes[TInsets]) Validate() error {

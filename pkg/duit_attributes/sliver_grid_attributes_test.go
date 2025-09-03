@@ -6,7 +6,6 @@ import (
 	"testing"
 
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_builder"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
@@ -270,7 +269,7 @@ func TestSliverGridBuilderAttributes_Validate_ValidAttributes(t *testing.T) {
 	attrs := &duit_attributes.SliverGridBuilderAttributes{
 		ValueReferenceHolder: nil,
 		ThemeConsumer:        &duit_attributes.ThemeConsumer{IgnoreTheme: true},
-		Builder:              &duit_builder.Builder{},
+		Builder:              &duit_attributes.Builder{},
 		DefaultSliverGridAttributes: &duit_attributes.DefaultSliverGridAttributes{
 			Constructor: duit_utils.TristateFrom[duit_attributes.SliverGridConstructor](duit_attributes.SliverGridBuilder),
 		},
@@ -287,7 +286,7 @@ func TestSliverGridBuilderAttributes_Validate_MissingDefaultSliverGridAttributes
 	attrs := &duit_attributes.SliverGridBuilderAttributes{
 		ValueReferenceHolder:  &duit_attributes.ValueReferenceHolder{},
 		ThemeConsumer:         &duit_attributes.ThemeConsumer{},
-		Builder:               &duit_builder.Builder{},
+		Builder:               &duit_attributes.Builder{},
 		SliverGridDelegateKey: "testKey",
 	}
 
@@ -301,7 +300,7 @@ func TestSliverGridBuilderAttributes_Validate_WrongConstructor(t *testing.T) {
 	attrs := &duit_attributes.SliverGridBuilderAttributes{
 		ValueReferenceHolder: nil,
 		ThemeConsumer:        &duit_attributes.ThemeConsumer{IgnoreTheme: true},
-		Builder:              &duit_builder.Builder{},
+		Builder:              &duit_attributes.Builder{},
 		DefaultSliverGridAttributes: &duit_attributes.DefaultSliverGridAttributes{
 			Constructor: duit_utils.TristateFrom[duit_attributes.SliverGridConstructor](duit_attributes.SliverGridCount),
 		},
@@ -334,7 +333,7 @@ func TestSliverGridBuilderAttributes_Validate_MissingSliverGridDelegateKey(t *te
 	attrs := &duit_attributes.SliverGridBuilderAttributes{
 		ValueReferenceHolder: nil,
 		ThemeConsumer:        &duit_attributes.ThemeConsumer{IgnoreTheme: true},
-		Builder:              &duit_builder.Builder{},
+		Builder:              &duit_attributes.Builder{},
 		DefaultSliverGridAttributes: &duit_attributes.DefaultSliverGridAttributes{
 			Constructor: duit_utils.TristateFrom[duit_attributes.SliverGridConstructor](duit_attributes.SliverGridBuilder),
 		},
