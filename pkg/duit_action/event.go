@@ -1,10 +1,9 @@
-package duit_core
+package duit_action
 
 type eventType string
 
 const (
 	update       eventType = "update"
-	updateLayout eventType = "updateLayout"
 	navigation   eventType = "navigation"
 	openUrl      eventType = "openUrl"
 	custom       eventType = "custom"
@@ -20,18 +19,13 @@ type Event struct {
 
 type updateEvent struct {
 	Event
-	Updates map[string]interface{} `json:"updates"`
-}
-
-type layoutUpdateEvent struct {
-	Event
-	Layout *DuitElementModel `json:"layout"`
+	Updates map[string]any `json:"updates"`
 }
 
 type navigationEvent struct {
 	Event
-	Path  string                 `json:"path"`
-	Extra map[string]interface{} `json:"extra,omitempty"`
+	Path  string         `json:"path"`
+	Extra map[string]any `json:"extra,omitempty"`
 }
 
 type openUrlEvent struct {
@@ -41,13 +35,13 @@ type openUrlEvent struct {
 
 type customEvent struct {
 	Event
-	Key   string                 `json:"key"`
-	Extra map[string]interface{} `json:"extra,omitempty"`
+	Key   string         `json:"key"`
+	Extra map[string]any `json:"extra,omitempty"`
 }
 
 type SequencedEvent struct {
-	Delay int         `json:"delay"`
-	Event interface{} `json:"event"`
+	Delay int `json:"delay"`
+	Event any `json:"event"`
 }
 
 type sequencedEventGroup struct {
@@ -62,8 +56,8 @@ type commonEventGroup struct {
 
 type timerEvent struct {
 	Event
-	Delay  int         `json:"delay"`
-	TEvent interface{} `json:"event"`
+	Delay  int `json:"delay"`
+	TEvent any `json:"event"`
 }
 
 type commandEvent struct {
@@ -76,7 +70,7 @@ type commandEvent struct {
 //
 // It takes a map of updates as a parameter.
 // It returns a pointer to an updateEvent.
-func UpdateEvent(updates map[string]interface{}) *updateEvent {
+func UpdateEvent(updates map[string]any) *updateEvent {
 	return &updateEvent{
 		Event: Event{
 			Type: update,
@@ -85,16 +79,7 @@ func UpdateEvent(updates map[string]interface{}) *updateEvent {
 	}
 }
 
-func LayoutUpdateEvent(payload *DuitElementModel) *layoutUpdateEvent {
-	return &layoutUpdateEvent{
-		Event: Event{
-			Type: updateLayout,
-		},
-		Layout: payload,
-	}
-}
-
-func NavigationEvent(path string, extra map[string]interface{}) *navigationEvent {
+func NavigationEvent(path string, extra map[string]any) *navigationEvent {
 	return &navigationEvent{
 		Event: Event{
 			Type: navigation,
@@ -113,7 +98,7 @@ func OpenUrlEvent(url string) *openUrlEvent {
 	}
 }
 
-func CustomEvent(key string, extra map[string]interface{}) *customEvent {
+func CustomEvent(key string, extra map[string]any) *customEvent {
 	return &customEvent{
 		Event: Event{
 			Type: custom,
@@ -132,7 +117,7 @@ func SequencedEventGroup(events []*SequencedEvent) *sequencedEventGroup {
 	}
 }
 
-func CommonEventGroup(events []interface{}) *commonEventGroup {
+func CommonEventGroup(events []any) *commonEventGroup {
 	return &commonEventGroup{
 		Event: Event{
 			Type: grouped,
@@ -141,7 +126,7 @@ func CommonEventGroup(events []interface{}) *commonEventGroup {
 	}
 }
 
-func TimerEvent(delay int, event interface{}) *timerEvent {
+func TimerEvent(delay int, event any) *timerEvent {
 	return &timerEvent{
 		Event: Event{
 			Type: timer,
