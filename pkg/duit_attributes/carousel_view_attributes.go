@@ -1,12 +1,7 @@
 package duit_attributes
 
 import (
-	animations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_color"
-	decorations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_decorations"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_edge_insets"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_material"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
@@ -17,19 +12,19 @@ import (
 // 	CarouselViewWeighted
 // )
 
-type CarouselViewAttributes[TColor duit_color.Color, TInsets duit_edge_insets.EdgeInsets, TShape decorations.ShapeBorder[TColor]] struct {
+type CarouselViewAttributes[TColor duit_props.Color, TInsets duit_props.EdgeInsets, TShape duit_props.ShapeBorder[TColor]] struct {
 	*ValueReferenceHolder
-	*animations.AnimatedPropertyOwner
+	*duit_props.AnimatedPropertyOwner
 	*ThemeConsumer
 	// Constructor      CarouselViewConstructor                     `json:"constructor"`
 	Padding          TInsets                                     `json:"padding,omitempty"`
 	BackgroundColor  TColor                                      `json:"backgroundColor,omitempty"`
 	Shape            *TShape                                     `json:"shape,omitempty"`
-	OverlayColor     duit_material.MaterialStateProperty[TColor] `json:"overlayColor,omitempty"`
+	OverlayColor     duit_props.MaterialStateProperty[TColor] `json:"overlayColor,omitempty"`
 	Elevation        float32                                     `json:"elevation,omitempty"`
 	ShrinkExtent     float32                                     `json:"shrinkExtent,omitempty"`
 	ItemExtent       float32                                     `json:"itemExtent,omitempty"`
-	ScrollDirection  duit_flex.Axis                              `json:"scrollDirection,omitempty"`
+	ScrollDirection  duit_props.Axis                              `json:"scrollDirection,omitempty"`
 	EnableSplash     duit_utils.Tristate[bool]                   `json:"enableSplash,omitempty"`
 	Reverse          duit_utils.Tristate[bool]                   `json:"reverse,omitempty"`
 	ItemSnapping     duit_utils.Tristate[bool]                   `json:"itemSnapping,omitempty"`

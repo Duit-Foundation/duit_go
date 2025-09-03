@@ -1,12 +1,12 @@
 package duit_attributes
 
-import animations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
+import "github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 
 //TODO: подумать над тем, чтобы добавить обычный BoxConstraints, чтобы было семантически корректно
 
 type ConstrainedBoxAttributes struct {
 	*ValueReferenceHolder
-	*animations.AnimatedPropertyOwner
+	*duit_props.AnimatedPropertyOwner
 	*ThemeConsumer
 	MinWidth  float32 `json:"minWidth,omitempty"`
 	MaxWidth  float32 `json:"maxWidth,omitempty"`

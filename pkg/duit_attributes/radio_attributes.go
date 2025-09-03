@@ -2,11 +2,7 @@ package duit_attributes
 
 import (
 	"errors"
-
-	animations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_color"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_material"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
@@ -14,9 +10,9 @@ type PrimitiveValue interface {
 	string | int | uint | uint8 | uint16 | uint32 | uint64 | int8 | int16 | int32 | int64 | float32 | float64 | bool
 }
 
-type RadioAttributes[TValue PrimitiveValue, TColor duit_color.Color] struct {
+type RadioAttributes[TValue PrimitiveValue, TColor duit_props.Color] struct {
 	*ValueReferenceHolder
-	*animations.AnimatedPropertyOwner
+	*duit_props.AnimatedPropertyOwner
 	*ThemeConsumer
 	Value                 duit_utils.Tristate[TValue]                 `json:"value,omitempty"`
 	Toggleable            bool                                        `json:"toggleable,omitempty"`
@@ -24,11 +20,11 @@ type RadioAttributes[TValue PrimitiveValue, TColor duit_color.Color] struct {
 	ActiveColor           TColor                                      `json:"activeColor,omitempty"`
 	FocusColor            TColor                                      `json:"focusColor,omitempty"`
 	HoverColor            TColor                                      `json:"hoverColor,omitempty"`
-	FillColor             duit_material.MaterialStateProperty[TColor] `json:"fillColor,omitempty"`
-	OverlayColor          duit_material.MaterialStateProperty[TColor] `json:"overlayColor,omitempty"`
+	FillColor             duit_props.MaterialStateProperty[TColor] `json:"fillColor,omitempty"`
+	OverlayColor          duit_props.MaterialStateProperty[TColor] `json:"overlayColor,omitempty"`
 	SplashRadius          float32                                     `json:"splashRadius,omitempty"`
-	VisualDensity         *duit_flex.VisualDensity                    `json:"visualDensity,omitempty"`
-	MaterialTapTargetSize duit_material.MaterialTapTargetSize         `json:"materialTapTargetSize,omitempty"`
+	VisualDensity         *duit_props.VisualDensity                    `json:"visualDensity,omitempty"`
+	MaterialTapTargetSize duit_props.MaterialTapTargetSize         `json:"materialTapTargetSize,omitempty"`
 }
 
 func (r *RadioAttributes[TValue, TColor]) Validate() error {

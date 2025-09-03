@@ -4,14 +4,13 @@ import (
 	"encoding/json"
 	"strings"
 	"testing"
-
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_edge_insets"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
 func TestSafeAreaAttributes_Validate_ValidAttributes(t *testing.T) {
-	attrs := &duit_attributes.SafeAreaAttributes[duit_edge_insets.EdgeInsetsLTRB]{
+	attrs := &duit_attributes.SafeAreaAttributes[duit_props.EdgeInsetsLTRB]{
 		Left:  duit_utils.BoolValue(true),
 		Top:   duit_utils.BoolValue(false),
 		Right: duit_utils.BoolValue(true),
@@ -25,9 +24,9 @@ func TestSafeAreaAttributes_Validate_ValidAttributes(t *testing.T) {
 }
 
 func TestSafeAreaAttributes_Validate_WithAllProperties(t *testing.T) {
-	minimum := duit_edge_insets.EdgeInsetsLTRB{10.0, 20.0, 30.0, 40.0}
+	minimum := duit_props.EdgeInsetsLTRB{10.0, 20.0, 30.0, 40.0}
 	
-	attrs := &duit_attributes.SafeAreaAttributes[duit_edge_insets.EdgeInsetsLTRB]{
+	attrs := &duit_attributes.SafeAreaAttributes[duit_props.EdgeInsetsLTRB]{
 		Left:                      duit_utils.BoolValue(true),
 		Top:                       duit_utils.BoolValue(true),
 		Right:                     duit_utils.BoolValue(true),
@@ -44,7 +43,7 @@ func TestSafeAreaAttributes_Validate_WithAllProperties(t *testing.T) {
 
 // Tests for Left Tristate[bool] property serialization
 func TestSafeAreaAttributes_Left_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.SafeAreaAttributes[duit_edge_insets.EdgeInsetsLTRB]{
+	attrs := &duit_attributes.SafeAreaAttributes[duit_props.EdgeInsetsLTRB]{
 		Left: duit_utils.BoolValue(true),
 	}
 
@@ -60,7 +59,7 @@ func TestSafeAreaAttributes_Left_JSON_True(t *testing.T) {
 }
 
 func TestSafeAreaAttributes_Left_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.SafeAreaAttributes[duit_edge_insets.EdgeInsetsLTRB]{
+	attrs := &duit_attributes.SafeAreaAttributes[duit_props.EdgeInsetsLTRB]{
 		Left: duit_utils.BoolValue(false),
 	}
 
@@ -76,7 +75,7 @@ func TestSafeAreaAttributes_Left_JSON_False(t *testing.T) {
 }
 
 func TestSafeAreaAttributes_Left_JSON_Nil(t *testing.T) {
-	attrs := &duit_attributes.SafeAreaAttributes[duit_edge_insets.EdgeInsetsLTRB]{
+	attrs := &duit_attributes.SafeAreaAttributes[duit_props.EdgeInsetsLTRB]{
 		Left: duit_utils.Nillable[bool](),
 	}
 
@@ -93,7 +92,7 @@ func TestSafeAreaAttributes_Left_JSON_Nil(t *testing.T) {
 
 // Tests for Top Tristate[bool] property serialization
 func TestSafeAreaAttributes_Top_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.SafeAreaAttributes[duit_edge_insets.EdgeInsetsLTRB]{
+	attrs := &duit_attributes.SafeAreaAttributes[duit_props.EdgeInsetsLTRB]{
 		Top: duit_utils.BoolValue(true),
 	}
 
@@ -109,7 +108,7 @@ func TestSafeAreaAttributes_Top_JSON_True(t *testing.T) {
 }
 
 func TestSafeAreaAttributes_Top_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.SafeAreaAttributes[duit_edge_insets.EdgeInsetsLTRB]{
+	attrs := &duit_attributes.SafeAreaAttributes[duit_props.EdgeInsetsLTRB]{
 		Top: duit_utils.BoolValue(false),
 	}
 
@@ -126,7 +125,7 @@ func TestSafeAreaAttributes_Top_JSON_False(t *testing.T) {
 
 // Tests for MaintainBottomViewPadding Tristate[bool] property serialization
 func TestSafeAreaAttributes_MaintainBottomViewPadding_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.SafeAreaAttributes[duit_edge_insets.EdgeInsetsLTRB]{
+	attrs := &duit_attributes.SafeAreaAttributes[duit_props.EdgeInsetsLTRB]{
 		MaintainBottomViewPadding: duit_utils.BoolValue(true),
 	}
 
@@ -142,7 +141,7 @@ func TestSafeAreaAttributes_MaintainBottomViewPadding_JSON_True(t *testing.T) {
 }
 
 func TestSafeAreaAttributes_MaintainBottomViewPadding_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.SafeAreaAttributes[duit_edge_insets.EdgeInsetsLTRB]{
+	attrs := &duit_attributes.SafeAreaAttributes[duit_props.EdgeInsetsLTRB]{
 		MaintainBottomViewPadding: duit_utils.BoolValue(false),
 	}
 

@@ -4,9 +4,8 @@ import (
 	"encoding/json"
 	"strings"
 	"testing"
-
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
@@ -16,9 +15,9 @@ func TestAnimatedPositionedAttributes_Validate_ValidAttributes(t *testing.T) {
 		Top:    duit_utils.Float32Value(20.0),
 		Right:  duit_utils.Float32Value(30.0),
 		Bottom: duit_utils.Float32Value(40.0),
-		ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
+		ImplicitAnimatable: &duit_props.ImplicitAnimatable{
 			Duration: 300,
-			Curve:    duit_animations.Ease,
+			Curve:    duit_props.CurveEase,
 		},
 	}
 
@@ -88,9 +87,9 @@ func TestAnimatedPositionedAttributes_Validate_DifferentPositionCombinations(t *
 
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
-			tc.attrs.ImplicitAnimatable = &duit_animations.ImplicitAnimatable{
+			tc.attrs.ImplicitAnimatable = &duit_props.ImplicitAnimatable{
 				Duration: 300,
-				Curve:    duit_animations.Ease,
+				Curve:    duit_props.CurveEase,
 			}
 			err := tc.attrs.Validate()
 			if err != nil {

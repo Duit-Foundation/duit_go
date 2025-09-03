@@ -2,7 +2,7 @@ package duit_attributes
 
 import (
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_action"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_gestures"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
@@ -28,8 +28,8 @@ type GestureDetectorAttributes[TAction duit_action.Action] struct {
 	OnPanEnd              *TAction                        `json:"onPanEnd,omitempty"`
 	OnPanCancel           *TAction                        `json:"onPanCancel,omitempty"`
 	ExcludeFromSemantics  duit_utils.Tristate[bool]       `json:"excludeFromSemantics,omitempty"`
-	DragStarnBehavior     duit_gestures.DragStartBehavior `json:"dragStartBehavior,omitempty"`
-	Behavior              duit_gestures.HitTestBehavior   `json:"behavior,omitempty"`
+	DragStarnBehavior     duit_props.DragStartBehavior `json:"dragStartBehavior,omitempty"`
+	Behavior              duit_props.HitTestBehavior   `json:"behavior,omitempty"`
 }
 
 func (r *GestureDetectorAttributes[TAction]) Validate() error {

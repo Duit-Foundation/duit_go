@@ -1,10 +1,10 @@
 package duit_attributes
 
-import animations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
+import "github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 
 type IntrinsicWidthAttributes struct {
 	*ValueReferenceHolder
-	*animations.AnimatedPropertyOwner
+	*duit_props.AnimatedPropertyOwner
 	*ThemeConsumer
 	StepWidth  float32 `json:"stepWidth,omitempty"`
 	StepHeight float32 `json:"stepHeight,omitempty"`

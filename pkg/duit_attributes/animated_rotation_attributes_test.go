@@ -4,18 +4,17 @@ import (
 	"encoding/json"
 	"strings"
 	"testing"
-
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
 func TestAnimatedRotationAttributes_Validate_ValidAttributes(t *testing.T) {
 	attrs := &duit_attributes.AnimatedRotationAttributes{
 		Turns: duit_utils.Float32Value(3.14),
-		ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
+		ImplicitAnimatable: &duit_props.ImplicitAnimatable{
 			Duration: 300,
-			Curve:    duit_animations.Ease,
+			Curve:    duit_props.CurveEase,
 		},
 	}
 
@@ -28,9 +27,9 @@ func TestAnimatedRotationAttributes_Validate_ValidAttributes(t *testing.T) {
 func TestAnimatedRotationAttributes_Validate_NilTurns(t *testing.T) {
 	attrs := &duit_attributes.AnimatedRotationAttributes{
 		Turns: nil,
-		ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
+		ImplicitAnimatable: &duit_props.ImplicitAnimatable{
 			Duration: 300,
-			Curve:    duit_animations.Ease,
+			Curve:    duit_props.CurveEase,
 		},
 	}
 
@@ -80,9 +79,9 @@ func TestAnimatedRotationAttributes_Validate_DifferentTurnsValues(t *testing.T) 
 		t.Run(tc.name, func(t *testing.T) {
 			attrs := &duit_attributes.AnimatedRotationAttributes{
 				Turns: tc.turns,
-				ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
+				ImplicitAnimatable: &duit_props.ImplicitAnimatable{
 					Duration: 300,
-					Curve:    duit_animations.Ease,
+					Curve:    duit_props.CurveEase,
 				},
 			}
 

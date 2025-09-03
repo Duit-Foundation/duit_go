@@ -2,12 +2,7 @@ package duit_attributes
 
 import (
 	"errors"
-
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_builder"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_clip"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_edge_insets"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_gestures"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
@@ -20,9 +15,9 @@ const (
 	GridExtent
 )
 
-type DefautlGridViewAttributes[TInsets duit_edge_insets.EdgeInsets] struct {
+type DefautlGridViewAttributes[TInsets duit_props.EdgeInsets] struct {
 	Constructor             duit_utils.Tristate[GridConstructor]            `json:"constructor"`
-	ScrollDirection         duit_flex.Axis                                  `json:"scrollDirection,omitempty"`
+	ScrollDirection         duit_props.Axis                                  `json:"scrollDirection,omitempty"`
 	Reverse                 duit_utils.Tristate[bool]                       `json:"reverse,omitempty"`
 	Primary                 duit_utils.Tristate[bool]                       `json:"primary,omitempty"`
 	ShrinkWrap              duit_utils.Tristate[bool]                       `json:"shrinkWrap,omitempty"`
@@ -32,14 +27,14 @@ type DefautlGridViewAttributes[TInsets duit_edge_insets.EdgeInsets] struct {
 	Padding                 TInsets                                         `json:"padding,omitempty"`
 	CacheExtent             float32                                         `json:"cacheExtent,omitempty"`
 	SemanticChildCount      int                                             `json:"semanticChildCount,omitempty"`
-	DragStartBehavior       duit_gestures.DragStartBehavior                 `json:"dragStartBehavior,omitempty"`
-	ClipBehavior            duit_clip.Clip                                  `json:"clipBehavior,omitempty"`
-	KeyboardDismissBehavior duit_gestures.ScrollViewKeyboardDismissBehavior `json:"keyboardDismissBehavior,omitempty"`
-	Physics                 duit_gestures.ScrollPhysics                     `json:"physics,omitempty"`
+	DragStartBehavior       duit_props.DragStartBehavior                 `json:"dragStartBehavior,omitempty"`
+	ClipBehavior            duit_props.Clip                                  `json:"clipBehavior,omitempty"`
+	KeyboardDismissBehavior duit_props.ScrollViewKeyboardDismissBehavior `json:"keyboardDismissBehavior,omitempty"`
+	Physics                 duit_props.ScrollPhysics                     `json:"physics,omitempty"`
 	RestorationId           string                                          `json:"restorationId,omitempty"`
 }
 
-type GridViewCommonAttributes[TInsets duit_edge_insets.EdgeInsets] struct {
+type GridViewCommonAttributes[TInsets duit_props.EdgeInsets] struct {
 	*ValueReferenceHolder
 	*ThemeConsumer
 	*DefautlGridViewAttributes[TInsets]
@@ -77,7 +72,7 @@ func (r *GridViewCommonAttributes[TInsets]) Validate() error {
 	return nil
 }
 
-type GridViewCountAttributes[TInsets duit_edge_insets.EdgeInsets] struct {
+type GridViewCountAttributes[TInsets duit_props.EdgeInsets] struct {
 	*ValueReferenceHolder
 	*ThemeConsumer
 	*DefautlGridViewAttributes[TInsets]
@@ -115,10 +110,10 @@ func (r *GridViewCountAttributes[TInsets]) Validate() error {
 	return nil
 }
 
-type GridViewBuilderAttributes[TInsets duit_edge_insets.EdgeInsets] struct {
+type GridViewBuilderAttributes[TInsets duit_props.EdgeInsets] struct {
 	*ValueReferenceHolder
 	*ThemeConsumer
-	*duit_builder.Builder
+	*Builder
 	*DefautlGridViewAttributes[TInsets]
 	SliverGridDelegateKey     string         `json:"sliverGridDelegateKey"`
 	SliverGridDelegateOptions map[string]any `json:"sliverGridDelegateOptions,omitempty"`
@@ -156,7 +151,7 @@ func (r *GridViewBuilderAttributes[TInsets]) Validate() error {
 	return nil
 }
 
-type GridViewExtentAttributes[TInsets duit_edge_insets.EdgeInsets] struct {
+type GridViewExtentAttributes[TInsets duit_props.EdgeInsets] struct {
 	*ValueReferenceHolder
 	*ThemeConsumer
 	*DefautlGridViewAttributes[TInsets]
@@ -194,6 +189,6 @@ func (r *GridViewExtentAttributes[TInsets]) Validate() error {
 	return nil
 }
 
-type GridViewAttributes[TInsets duit_edge_insets.EdgeInsets] interface {
+type GridViewAttributes[TInsets duit_props.EdgeInsets] interface {
 	GridViewCommonAttributes[TInsets] | GridViewCountAttributes[TInsets] | GridViewBuilderAttributes[TInsets] | GridViewExtentAttributes[TInsets]
 }

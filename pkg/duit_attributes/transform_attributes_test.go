@@ -5,13 +5,13 @@ import (
 	"testing"
 
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_transform"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 )
 
 func TestTransformAttributes_Validate_ValidAttributes(t *testing.T) {
-	data := duit_transform.TranslateTransfrom{}
+	data := duit_props.TranslateTransform{}
 
-	attrs := &duit_attributes.TransfromAttributes[duit_transform.TranslateTransfrom]{
+	attrs := &duit_attributes.TransfromAttributes[duit_props.TranslateTransform]{
 		Type: "translate",
 		Data: &data,
 	}
@@ -23,9 +23,9 @@ func TestTransformAttributes_Validate_ValidAttributes(t *testing.T) {
 }
 
 func TestTransformAttributes_Validate_MissingType(t *testing.T) {
-	data := duit_transform.RotateTransfrom{}
+	data := duit_props.TranslateTransform{}
 
-	attrs := &duit_attributes.TransfromAttributes[duit_transform.RotateTransfrom]{
+	attrs := &duit_attributes.TransfromAttributes[duit_props.TranslateTransform]{
 		Type: "",
 		Data: &data,
 	}
@@ -41,7 +41,7 @@ func TestTransformAttributes_Validate_MissingType(t *testing.T) {
 }
 
 func TestTransformAttributes_Validate_MissingData(t *testing.T) {
-	attrs := &duit_attributes.TransfromAttributes[duit_transform.ScaleTransfrom]{
+	attrs := &duit_attributes.TransfromAttributes[duit_props.TranslateTransform]{
 		Type: "rotate",
 		Data: nil,
 	}

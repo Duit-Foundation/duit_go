@@ -10,7 +10,7 @@ Example:
 	AnimatedRotation(
 		&duit_attributes.AnimatedRotationAttributes{
 			Turns: 3.14,
-			ImplicitAnimatable: duit_animations.ImplicitAnimatable{
+			ImplicitAnimatable: duit_props.ImplicitAnimatable{
 				Duration: 1000,
 			},
 		},

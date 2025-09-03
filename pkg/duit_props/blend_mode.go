@@ -1,0 +1,35 @@
+package duit_props
+
+type BlendMode string
+
+const (
+	BlendModeClear      BlendMode = "clear"
+	BlendModeSrc        BlendMode = "src"
+	BlendModeDst        BlendMode = "dst"
+	BlendModeSrcOver    BlendMode = "srcOver"
+	BlendModeDstOver    BlendMode = "dstOver"
+	BlendModeSrcIn      BlendMode = "srcIn"
+	BlendModeDstIn      BlendMode = "dstIn"
+	BlendModeSrcOut     BlendMode = "srcOut"
+	BlendModeDstOut     BlendMode = "dstOut"
+	BlendModeSrcATop    BlendMode = "srcATop"
+	BlendModeDstATop    BlendMode = "dstATop"
+	BlendModeXor        BlendMode = "xor"
+	BlendModePlus       BlendMode = "plus"
+	BlendModeModulate   BlendMode = "modulate"
+	BlendModeScreen     BlendMode = "screen"
+	BlendModeOverlay    BlendMode = "overlay"
+	BlendModeDarken     BlendMode = "darken"
+	BlendModeLighten    BlendMode = "lighten"
+	BlendModeColorDodge BlendMode = "colorDodge"
+	BlendModeColorBurn  BlendMode = "colorBurn"
+	BlendModeHardLight  BlendMode = "hardLight"
+	BlendModeSoftLight  BlendMode = "softLight"
+	BlendModeDifference BlendMode = "difference"
+	BlendModeExclusion  BlendMode = "exclusion"
+	BlendModeMultiply   BlendMode = "multiply"
+	BlendModeHue        BlendMode = "hue"
+	BlendModeSaturation BlendMode = "saturation"
+	BlendModeColor      BlendMode = "color"
+	BlendModeLuminosity BlendMode = "luminosity"
+)

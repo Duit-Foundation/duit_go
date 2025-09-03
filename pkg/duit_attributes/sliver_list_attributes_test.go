@@ -4,9 +4,7 @@ import (
 	"encoding/json"
 	"strings"
 	"testing"
-
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_builder"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_core"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
@@ -52,7 +50,7 @@ func TestSliverListBuilderAttributes_Validate_ValidAttributes(t *testing.T) {
 		Type: duit_utils.TristateFrom[duit_attributes.SliverListKind](duit_attributes.SliverListBuilder),
 	}
 
-	builder := &duit_builder.Builder{
+	builder := &duit_attributes.Builder{
 		ChildObjects: []*duit_core.DuitElementModel{},
 	}
 
@@ -68,7 +66,7 @@ func TestSliverListBuilderAttributes_Validate_ValidAttributes(t *testing.T) {
 }
 
 func TestSliverListBuilderAttributes_Validate_MissingSliverList(t *testing.T) {
-	builder := &duit_builder.Builder{
+	builder := &duit_attributes.Builder{
 		ChildObjects: []*duit_core.DuitElementModel{},
 	}
 
@@ -88,7 +86,7 @@ func TestSliverListBuilderAttributes_Validate_WrongType(t *testing.T) {
 		Type: duit_utils.TristateFrom[duit_attributes.SliverListKind](duit_attributes.SliverListCommon),
 	}
 
-	builder := &duit_builder.Builder{
+	builder := &duit_attributes.Builder{
 		ChildObjects: []*duit_core.DuitElementModel{},
 	}
 
@@ -125,7 +123,7 @@ func TestSliverListSeparatedAttributes_Validate_ValidAttributes(t *testing.T) {
 		Type: duit_utils.TristateFrom[duit_attributes.SliverListKind](duit_attributes.SliverListBuilder),
 	}
 
-	builder := &duit_builder.Builder{
+	builder := &duit_attributes.Builder{
 		ChildObjects: []*duit_core.DuitElementModel{},
 	}
 
@@ -166,7 +164,7 @@ func TestSliverListSeparatedAttributes_Validate_WrongType(t *testing.T) {
 		Type: duit_utils.TristateFrom[duit_attributes.SliverListKind](duit_attributes.SliverListCommon),
 	}
 
-	builder := &duit_builder.Builder{
+	builder := &duit_attributes.Builder{
 		ChildObjects: []*duit_core.DuitElementModel{},
 	}
 
@@ -193,7 +191,7 @@ func TestSliverListSeparatedAttributes_Validate_MissingSeparator(t *testing.T) {
 		Type: duit_utils.TristateFrom[duit_attributes.SliverListKind](duit_attributes.SliverListBuilder),
 	}
 
-	builder := &duit_builder.Builder{
+	builder := &duit_attributes.Builder{
 		ChildObjects: []*duit_core.DuitElementModel{},
 	}
 

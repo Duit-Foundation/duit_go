@@ -3,16 +3,15 @@ package duit_attributes_test
 import (
 	"strings"
 	"testing"
-
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_painting"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 )
 
 func TestBackdropFilterAttributes_Validate_ValidAttributes(t *testing.T) {
-	blurFilter := duit_painting.NewBlurImageFilter(5.0, 5.0, duit_painting.TileModeClamp)
-	attrs := &duit_attributes.BackdropFilterAttributes[duit_painting.BlurImageFilter]{
+	blurFilter := duit_props.NewBlurImageFilter(5.0, 5.0, duit_props.TileModeClamp)
+	attrs := &duit_attributes.BackdropFilterAttributes[duit_props.BlurImageFilter]{
 		Filter:    blurFilter,
-		BlendMode: duit_painting.SrcOver,
+		BlendMode: duit_props.BlendModeSrcOver,
 	}
 
 	err := attrs.Validate()
@@ -22,9 +21,9 @@ func TestBackdropFilterAttributes_Validate_ValidAttributes(t *testing.T) {
 }
 
 func TestBackdropFilterAttributes_Validate_MissingFilter(t *testing.T) {
-	attrs := &duit_attributes.BackdropFilterAttributes[duit_painting.BlurImageFilter]{
+	attrs := &duit_attributes.BackdropFilterAttributes[duit_props.BlurImageFilter]{
 		Filter:    nil,
-		BlendMode: duit_painting.SrcOver,
+		BlendMode: duit_props.BlendModeSrcOver,
 	}
 
 	err := attrs.Validate()
@@ -38,8 +37,8 @@ func TestBackdropFilterAttributes_Validate_MissingFilter(t *testing.T) {
 }
 
 func TestBackdropFilterAttributes_Validate_MissingBlendMode(t *testing.T) {
-	blurFilter := duit_painting.NewBlurImageFilter(5.0, 5.0, duit_painting.TileModeClamp)
-	attrs := &duit_attributes.BackdropFilterAttributes[duit_painting.BlurImageFilter]{
+	blurFilter := duit_props.NewBlurImageFilter(5.0, 5.0, duit_props.TileModeClamp)
+	attrs := &duit_attributes.BackdropFilterAttributes[duit_props.BlurImageFilter]{
 		Filter:    blurFilter,
 		BlendMode: "",
 	}
@@ -55,7 +54,7 @@ func TestBackdropFilterAttributes_Validate_MissingBlendMode(t *testing.T) {
 }
 
 func TestBackdropFilterAttributes_Validate_MissingBoth(t *testing.T) {
-	attrs := &duit_attributes.BackdropFilterAttributes[duit_painting.BlurImageFilter]{
+	attrs := &duit_attributes.BackdropFilterAttributes[duit_props.BlurImageFilter]{
 		Filter:    nil,
 		BlendMode: "",
 	}

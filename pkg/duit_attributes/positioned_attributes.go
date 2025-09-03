@@ -1,10 +1,10 @@
 package duit_attributes
 
-import animations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
+import "github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 
 type PositionedAttributes struct {
 	*ValueReferenceHolder
-	*animations.AnimatedPropertyOwner
+	*duit_props.AnimatedPropertyOwner
 	*ThemeConsumer
 	Left   float32 `json:"left,omitempty"`
 	Top    float32 `json:"top,omitempty"`

@@ -11,7 +11,7 @@ Example:
 		&duit_attributes.AnimatedPositionedAttributes{
 			Top: 0,
 			Right: 0,
-			ImplicitAnimatable: duit_animations.ImplicitAnimatable{
+			ImplicitAnimatable: duit_props.ImplicitAnimatable{
 				Duration: 1000,
 			},
 		},

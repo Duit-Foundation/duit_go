@@ -1,0 +1,51 @@
+package duit_props
+
+type Curves = string
+
+const (
+	// Standard Flutter Curves
+	CurveLinear                  Curves = "linear"
+	CurveDecelerate              Curves = "decelerate"
+	CurveFastLinearToSlowEaseIn  Curves = "fastLinearToSlowEaseIn"
+	CurveEase                    Curves = "ease"
+	CurveEaseIn                  Curves = "easeIn"
+	CurveEaseInToLinear          Curves = "easeInToLinear"
+	CurveEaseInSine              Curves = "easeInSine"
+	CurveEaseInQuad              Curves = "easeInQuad"
+	CurveEaseInCubic             Curves = "easeInCubic"
+	CurveEaseInQuart             Curves = "easeInQuart"
+	CurveEaseInQuint             Curves = "easeInQuint"
+	CurveEaseInExpo              Curves = "easeInExpo"
+	CurveEaseInCirc              Curves = "easeInCirc"
+	CurveEaseInBack              Curves = "easeInBack"
+	CurveEaseOut                 Curves = "easeOut"
+	CurveLinearToEaseOut         Curves = "linearToEaseOut"
+	CurveEaseOutSine             Curves = "easeOutSine"
+	CurveEaseOutQuad             Curves = "easeOutQuad"
+	CurveEaseOutCubic            Curves = "easeOutCubic"
+	CurveEaseOutQuart            Curves = "easeOutQuart"
+	CurveEaseOutQuint            Curves = "easeOutQuint"
+	CurveEaseOutExpo             Curves = "easeOutExpo"
+	CurveEaseOutCirc             Curves = "easeOutCirc"
+	CurveEaseOutBack             Curves = "easeOutBack"
+	CurveEaseInOut               Curves = "easeInOut"
+	CurveEaseInOutSine           Curves = "easeInOutSine"
+	CurveEaseInOutQuad           Curves = "easeInOutQuad"
+	CurveEaseInOutCubic          Curves = "easeInOutCubic"
+	CurveEaseInOutQuart          Curves = "easeInOutQuart"
+	CurveEaseInOutQuint          Curves = "easeInOutQuint"
+	CurveEaseInOutExpo           Curves = "easeInOutExpo"
+	CurveEaseInOutCirc           Curves = "easeInOutCirc"
+	CurveEaseInOutBack           Curves = "easeInOutBack"
+	CurveFastOutSlowIn           Curves = "fastOutSlowIn"
+	CurveSlowMiddle              Curves = "slowMiddle"
+	CurveBounceIn                Curves = "bounceIn"
+	CurveBounceOut               Curves = "bounceOut"
+	CurveBounceInOut             Curves = "bounceInOut"
+	CurveElasticIn               Curves = "elasticIn"
+	CurveElasticOut              Curves = "elasticOut"
+	CurveElasticInOut            Curves = "elasticInOut"
+	
+	// Material Design 3 curves (additional)
+	CurveEaseInOutCubicEmphasized Curves = "easeInOutCubicEmphasized"
+)

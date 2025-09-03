@@ -2,17 +2,14 @@ package duit_attributes
 
 import (
 	"errors"
-
-	animations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_color"
-	duit_decoration "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_decorations"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 )
 
-type DecoratedBoxAttributes[T duit_color.Color] struct {
+type DecoratedBoxAttributes[T duit_props.Color] struct {
 	*ValueReferenceHolder
-	*animations.AnimatedPropertyOwner
+	*duit_props.AnimatedPropertyOwner
 	*ThemeConsumer
-	Decoration *duit_decoration.BoxDecoration[T] `json:"decoration,omitempty"`
+	Decoration *duit_props.BoxDecoration[T] `json:"decoration,omitempty"`
 }
 
 func (r *DecoratedBoxAttributes[T]) Validate() error {

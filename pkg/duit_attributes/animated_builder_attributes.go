@@ -2,8 +2,7 @@ package duit_attributes
 
 import (
 	"errors"
-
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 )
 
 type AnimatedBuilderAttributes struct {
@@ -22,7 +21,7 @@ func (r *AnimatedBuilderAttributes) Validate() error {
 	}
 
 	for _, tween := range r.Tweens {
-		if err := duit_animations.CheckTweenType(tween); err != nil {
+		if err := duit_props.CheckTweenType(tween); err != nil {
 			return err
 		}
 	}

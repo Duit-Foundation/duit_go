@@ -4,11 +4,8 @@ import (
 	"encoding/json"
 	"strings"
 	"testing"
-
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_clip"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_gestures"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
@@ -23,18 +20,18 @@ func TestCustomScrollViewAttributes_Validate_ValidAttributes(t *testing.T) {
 
 func TestCustomScrollViewAttributes_Validate_WithAllFields(t *testing.T) {
 	attrs := &duit_attributes.CustomScrollViewAttributes{
-		Physics:                 duit_gestures.BouncingScrollPhysics,
+		Physics:                 duit_props.ScrollPhysicsBouncing,
 		Reverse:                 duit_utils.BoolValue(true),
 		Primary:                 duit_utils.BoolValue(false),
 		ShrinkWrap:              duit_utils.BoolValue(true),
-		ScrollDirection:         duit_flex.Vertical,
+		ScrollDirection:         duit_props.AxisVertical,
 		Anchor:                  0.5,
 		SemantickChildCount:     10,
-		ClipBehavior:            duit_clip.AntiAlias,
+		ClipBehavior:            duit_props.ClipAntiAlias,
 		RestorationId:           "scroll_view_1",
-		DragStarnBehavior:       duit_gestures.Start,
-		KeyboardDismissBehavior: duit_gestures.Manual,
-		HitTestBehavior:         duit_gestures.Opaque,
+		DragStarnBehavior:       duit_props.DragStartBehaviorStart,
+		KeyboardDismissBehavior: duit_props.ScrollViewKeyboardDismissBehaviorManual,
+		HitTestBehavior:         duit_props.HitTestBehaviorOpaque,
 		CacheExtent:             250.0,
 		Center:                  "center_key",
 	}

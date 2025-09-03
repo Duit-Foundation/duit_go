@@ -2,9 +2,7 @@ package duit_attributes
 
 import (
 	"errors"
-
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_builder"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_clip"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
@@ -24,7 +22,7 @@ type DefaultSliverGridAttributes struct {
 	AddSemanticIndexes     *bool                                      `json:"addSemanticIndexes,omitempty"`
 	CacheExtent            float32                                    `json:"cacheExtent,omitempty"`
 	SemanticChildCount     int                                        `json:"semanticChildCount,omitempty"`
-	ClipBehavior           duit_clip.Clip                             `json:"clipBehavior,omitempty"`
+	ClipBehavior           duit_props.Clip                             `json:"clipBehavior,omitempty"`
 }
 
 func (r *DefaultSliverGridAttributes) Validate() error {
@@ -116,7 +114,7 @@ func (r *SliverGridCountAttributes) Validate() error {
 type SliverGridBuilderAttributes struct {
 	*ValueReferenceHolder
 	*ThemeConsumer
-	*duit_builder.Builder
+	*Builder
 	*DefaultSliverGridAttributes
 	SliverGridDelegateKey     string                 `json:"sliverGridDelegateKey"`
 	SliverGridDelegateOptions map[string]interface{} `json:"sliverGridDelegateOptions,omitempty"`

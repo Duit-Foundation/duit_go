@@ -2,26 +2,21 @@ package duit_attributes_test
 
 import (
 	"testing"
-
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_clip"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_cross_axis"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_main_axis"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_text_properties"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 )
 
 func TestWrapAttributes_Validate_ValidAttributes(t *testing.T) {
 	attrs := &duit_attributes.WrapAttributes{
-		TextDirection:      duit_text_properties.Ltr,
-		VerticalDirection:  duit_flex.Down,
-		Alignment:          duit_main_axis.Start,
-		RunAlignment:       duit_main_axis.Center,
-		CrossAxisAlignment: duit_cross_axis.Start,
+		TextDirection:      duit_props.TextDirectionLtr,
+		VerticalDirection:  duit_props.VerticalDirectionDown,
+		Alignment:          duit_props.MainAxisAlignmentStart,
+		RunAlignment:       duit_props.MainAxisAlignmentCenter,
+		CrossAxisAlignment: duit_props.CrossAxisAlignmentStart,
 		Spacing:            10.0,
 		RunSpacing:         5.0,
-		ClipBehavior:       duit_clip.AntiAlias,
-		Direction:          duit_flex.Horizontal,
+		ClipBehavior:       duit_props.ClipAntiAlias,
+		Direction:          duit_props.AxisHorizontal,
 	}
 
 	err := attrs.Validate()

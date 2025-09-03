@@ -2,25 +2,23 @@ package duit_attributes
 
 import (
 	"errors"
-
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_color"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_text_properties"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 )
 
-type RichTextAttributes[T duit_color.Color] struct {
+type RichTextAttributes[T duit_props.Color] struct {
 	*ValueReferenceHolder
 	*ThemeConsumer
-	TextSpan       *duit_text_properties.TextSpan[T]   `json:"textSpan"`
-	Style          *duit_text_properties.TextStyle[T]  `json:"style,omitempty"`
-	TextAlign      duit_text_properties.TextAlign      `json:"textAlign,omitempty"`
+	TextSpan       *duit_props.TextSpan[T]   `json:"textSpan"`
+	Style          *duit_props.TextStyle[T]  `json:"style,omitempty"`
+	TextAlign      duit_props.TextAlign      `json:"textAlign,omitempty"`
 	MaxLines       int                                 `json:"maxLines,omitempty"`
 	SoftWrap       bool                                `json:"softWrap,omitempty"`
-	Overflow       duit_text_properties.TextOverflow   `json:"overflow,omitempty"`
+	Overflow       duit_props.TextOverflow   `json:"overflow,omitempty"`
 	SemanticsLabel string                              `json:"semanticsLabel,omitempty"`
 	SelectionColor T                                   `json:"selectionColor,omitempty"`
-	TextDirection  duit_text_properties.TextDirection  `json:"textDirection,omitempty"`
-	TextScaler     *duit_text_properties.TextScaler    `json:"textScaleFactor,omitempty"`
-	TextWidthBasis duit_text_properties.TextWidthBasis `json:"textWidthBasis,omitempty"`
+	TextDirection  duit_props.TextDirection  `json:"textDirection,omitempty"`
+	TextScaler     *duit_props.TextScaler    `json:"textScaleFactor,omitempty"`
+	TextWidthBasis duit_props.TextWidthBasis `json:"textWidthBasis,omitempty"`
 }
 
 func (r *RichTextAttributes[T]) Validate() error {

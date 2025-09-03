@@ -2,8 +2,6 @@ package duit_attributes
 
 import (
 	"errors"
-
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_builder"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_core"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
@@ -33,7 +31,7 @@ func (r *SliverList) Validate() error {
 
 type SliverListBuilderAttributes struct {
 	*SliverList
-	*duit_builder.Builder
+	*Builder
 }
 
 func (r *SliverListBuilderAttributes) Validate() error {

@@ -4,17 +4,14 @@ import (
 	"encoding/json"
 	"strings"
 	"testing"
-
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_action"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_color"
-	duit_decoration "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_decorations"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_material"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
 func TestInkwellAttributes_Validate_ValidAttributes(t *testing.T) {
-	attrs := &duit_attributes.InkwellAttributes[duit_color.ColorString, duit_action.RemoteAction, duit_decoration.RoundedRectangleBorder[duit_color.ColorString]]{}
+	attrs := &duit_attributes.InkwellAttributes[duit_props.ColorString, duit_action.RemoteAction, duit_props.RoundedRectangleBorder[duit_props.ColorString]]{}
 
 	err := attrs.Validate()
 	if err != nil {
@@ -28,7 +25,7 @@ func TestInkwellAttributes_Validate_WithAllFields(t *testing.T) {
 		Event:         "inkwell_tapped",
 	}
 
-	attrs := &duit_attributes.InkwellAttributes[duit_color.ColorString, duit_action.RemoteAction, duit_decoration.RoundedRectangleBorder[duit_color.ColorString]]{
+	attrs := &duit_attributes.InkwellAttributes[duit_props.ColorString, duit_action.RemoteAction, duit_props.RoundedRectangleBorder[duit_props.ColorString]]{
 		OnTap:                remoteAction,
 		OnDoubleTap:          remoteAction,
 		OnLongPress:          remoteAction,
@@ -54,11 +51,11 @@ func TestInkwellAttributes_Validate_WithAllFields(t *testing.T) {
 }
 
 func TestInkwellAttributes_Validate_WithMaterialStateProperty(t *testing.T) {
-	overlayColor := &duit_material.MaterialStateProperty[duit_color.ColorString]{
+	overlayColor := &duit_props.MaterialStateProperty[duit_props.ColorString]{
 		Hovered: "#FF0000",
 	}
 
-	attrs := &duit_attributes.InkwellAttributes[duit_color.ColorString, duit_action.RemoteAction, duit_decoration.RoundedRectangleBorder[duit_color.ColorString]]{
+	attrs := &duit_attributes.InkwellAttributes[duit_props.ColorString, duit_action.RemoteAction, duit_props.RoundedRectangleBorder[duit_props.ColorString]]{
 		OverlayColor: overlayColor,
 	}
 
@@ -69,14 +66,14 @@ func TestInkwellAttributes_Validate_WithMaterialStateProperty(t *testing.T) {
 }
 
 func TestInkwellAttributes_Validate_WithBorderRadius(t *testing.T) {
-	borderRadius := &duit_decoration.BorderRadius{
-		TopLeft:     &duit_decoration.Radius{Radius: 10.0},
-		TopRight:    &duit_decoration.Radius{Radius: 15.0},
-		BottomLeft:  &duit_decoration.Radius{Radius: 20.0},
-		BottomRight: &duit_decoration.Radius{Radius: 25.0},
+	borderRadius := &duit_props.BorderRadius{
+		TopLeft:     &duit_props.Radius{Radius: 10.0},
+		TopRight:    &duit_props.Radius{Radius: 15.0},
+		BottomLeft:  &duit_props.Radius{Radius: 20.0},
+		BottomRight: &duit_props.Radius{Radius: 25.0},
 	}
 
-	attrs := &duit_attributes.InkwellAttributes[duit_color.ColorString, duit_action.RemoteAction, duit_decoration.RoundedRectangleBorder[duit_color.ColorString]]{
+	attrs := &duit_attributes.InkwellAttributes[duit_props.ColorString, duit_action.RemoteAction, duit_props.RoundedRectangleBorder[duit_props.ColorString]]{
 		BorderRadius: borderRadius,
 	}
 
@@ -87,17 +84,17 @@ func TestInkwellAttributes_Validate_WithBorderRadius(t *testing.T) {
 }
 
 func TestInkwellAttributes_Validate_WithCustomBorder(t *testing.T) {
-	customBorder := &duit_decoration.RoundedRectangleBorder[duit_color.ColorString]{
-		Side: &duit_decoration.BorderSide[duit_color.ColorString]{
+	customBorder := &duit_props.RoundedRectangleBorder[duit_props.ColorString]{
+		Side: &duit_props.BorderSide[duit_props.ColorString]{
 			Color: "#FF0000",
 			Width: 2.0,
 		},
-		BorderRadius: &duit_decoration.BorderRadius{
-			TopLeft: &duit_decoration.Radius{Radius: 8.0},
+		BorderRadius: &duit_props.BorderRadius{
+			TopLeft: &duit_props.Radius{Radius: 8.0},
 		},
 	}
 
-	attrs := &duit_attributes.InkwellAttributes[duit_color.ColorString, duit_action.RemoteAction, duit_decoration.RoundedRectangleBorder[duit_color.ColorString]]{
+	attrs := &duit_attributes.InkwellAttributes[duit_props.ColorString, duit_action.RemoteAction, duit_props.RoundedRectangleBorder[duit_props.ColorString]]{
 		CustomBorder: customBorder,
 	}
 
@@ -109,7 +106,7 @@ func TestInkwellAttributes_Validate_WithCustomBorder(t *testing.T) {
 
 // Tests for EnableFeedback Tristate[bool] property serialization
 func TestInkwellAttributes_EnableFeedback_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.InkwellAttributes[duit_color.ColorString, duit_action.RemoteAction, duit_decoration.RoundedRectangleBorder[duit_color.ColorString]]{
+	attrs := &duit_attributes.InkwellAttributes[duit_props.ColorString, duit_action.RemoteAction, duit_props.RoundedRectangleBorder[duit_props.ColorString]]{
 		EnableFeedback: duit_utils.BoolValue(true),
 	}
 
@@ -125,7 +122,7 @@ func TestInkwellAttributes_EnableFeedback_JSON_True(t *testing.T) {
 }
 
 func TestInkwellAttributes_EnableFeedback_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.InkwellAttributes[duit_color.ColorString, duit_action.RemoteAction, duit_decoration.RoundedRectangleBorder[duit_color.ColorString]]{
+	attrs := &duit_attributes.InkwellAttributes[duit_props.ColorString, duit_action.RemoteAction, duit_props.RoundedRectangleBorder[duit_props.ColorString]]{
 		EnableFeedback: duit_utils.BoolValue(false),
 	}
 
@@ -141,7 +138,7 @@ func TestInkwellAttributes_EnableFeedback_JSON_False(t *testing.T) {
 }
 
 func TestInkwellAttributes_EnableFeedback_JSON_Nil(t *testing.T) {
-	attrs := &duit_attributes.InkwellAttributes[duit_color.ColorString, duit_action.RemoteAction, duit_decoration.RoundedRectangleBorder[duit_color.ColorString]]{
+	attrs := &duit_attributes.InkwellAttributes[duit_props.ColorString, duit_action.RemoteAction, duit_props.RoundedRectangleBorder[duit_props.ColorString]]{
 		EnableFeedback: duit_utils.Nillable[bool](),
 	}
 
@@ -158,7 +155,7 @@ func TestInkwellAttributes_EnableFeedback_JSON_Nil(t *testing.T) {
 
 // Tests for ExcludeFromSemantics Tristate[bool] property serialization
 func TestInkwellAttributes_ExcludeFromSemantics_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.InkwellAttributes[duit_color.ColorString, duit_action.RemoteAction, duit_decoration.RoundedRectangleBorder[duit_color.ColorString]]{
+	attrs := &duit_attributes.InkwellAttributes[duit_props.ColorString, duit_action.RemoteAction, duit_props.RoundedRectangleBorder[duit_props.ColorString]]{
 		ExcludeFromSemantics: duit_utils.BoolValue(true),
 	}
 
@@ -174,7 +171,7 @@ func TestInkwellAttributes_ExcludeFromSemantics_JSON_True(t *testing.T) {
 }
 
 func TestInkwellAttributes_ExcludeFromSemantics_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.InkwellAttributes[duit_color.ColorString, duit_action.RemoteAction, duit_decoration.RoundedRectangleBorder[duit_color.ColorString]]{
+	attrs := &duit_attributes.InkwellAttributes[duit_props.ColorString, duit_action.RemoteAction, duit_props.RoundedRectangleBorder[duit_props.ColorString]]{
 		ExcludeFromSemantics: duit_utils.BoolValue(false),
 	}
 
@@ -190,7 +187,7 @@ func TestInkwellAttributes_ExcludeFromSemantics_JSON_False(t *testing.T) {
 }
 
 func TestInkwellAttributes_ExcludeFromSemantics_JSON_Nil(t *testing.T) {
-	attrs := &duit_attributes.InkwellAttributes[duit_color.ColorString, duit_action.RemoteAction, duit_decoration.RoundedRectangleBorder[duit_color.ColorString]]{
+	attrs := &duit_attributes.InkwellAttributes[duit_props.ColorString, duit_action.RemoteAction, duit_props.RoundedRectangleBorder[duit_props.ColorString]]{
 		ExcludeFromSemantics: duit_utils.Nillable[bool](),
 	}
 
@@ -207,7 +204,7 @@ func TestInkwellAttributes_ExcludeFromSemantics_JSON_Nil(t *testing.T) {
 
 // Tests for Autofocus Tristate[bool] property serialization
 func TestInkwellAttributes_Autofocus_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.InkwellAttributes[duit_color.ColorString, duit_action.RemoteAction, duit_decoration.RoundedRectangleBorder[duit_color.ColorString]]{
+	attrs := &duit_attributes.InkwellAttributes[duit_props.ColorString, duit_action.RemoteAction, duit_props.RoundedRectangleBorder[duit_props.ColorString]]{
 		Autofocus: duit_utils.BoolValue(true),
 	}
 
@@ -223,7 +220,7 @@ func TestInkwellAttributes_Autofocus_JSON_True(t *testing.T) {
 }
 
 func TestInkwellAttributes_Autofocus_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.InkwellAttributes[duit_color.ColorString, duit_action.RemoteAction, duit_decoration.RoundedRectangleBorder[duit_color.ColorString]]{
+	attrs := &duit_attributes.InkwellAttributes[duit_props.ColorString, duit_action.RemoteAction, duit_props.RoundedRectangleBorder[duit_props.ColorString]]{
 		Autofocus: duit_utils.BoolValue(false),
 	}
 
@@ -239,7 +236,7 @@ func TestInkwellAttributes_Autofocus_JSON_False(t *testing.T) {
 }
 
 func TestInkwellAttributes_Autofocus_JSON_Nil(t *testing.T) {
-	attrs := &duit_attributes.InkwellAttributes[duit_color.ColorString, duit_action.RemoteAction, duit_decoration.RoundedRectangleBorder[duit_color.ColorString]]{
+	attrs := &duit_attributes.InkwellAttributes[duit_props.ColorString, duit_action.RemoteAction, duit_props.RoundedRectangleBorder[duit_props.ColorString]]{
 		Autofocus: duit_utils.Nillable[bool](),
 	}
 
@@ -256,7 +253,7 @@ func TestInkwellAttributes_Autofocus_JSON_Nil(t *testing.T) {
 
 // Tests for CanRequestFocus Tristate[bool] property serialization
 func TestInkwellAttributes_CanRequestFocus_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.InkwellAttributes[duit_color.ColorString, duit_action.RemoteAction, duit_decoration.RoundedRectangleBorder[duit_color.ColorString]]{
+	attrs := &duit_attributes.InkwellAttributes[duit_props.ColorString, duit_action.RemoteAction, duit_props.RoundedRectangleBorder[duit_props.ColorString]]{
 		CanRequestFocus: duit_utils.BoolValue(true),
 	}
 
@@ -272,7 +269,7 @@ func TestInkwellAttributes_CanRequestFocus_JSON_True(t *testing.T) {
 }
 
 func TestInkwellAttributes_CanRequestFocus_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.InkwellAttributes[duit_color.ColorString, duit_action.RemoteAction, duit_decoration.RoundedRectangleBorder[duit_color.ColorString]]{
+	attrs := &duit_attributes.InkwellAttributes[duit_props.ColorString, duit_action.RemoteAction, duit_props.RoundedRectangleBorder[duit_props.ColorString]]{
 		CanRequestFocus: duit_utils.BoolValue(false),
 	}
 
@@ -288,7 +285,7 @@ func TestInkwellAttributes_CanRequestFocus_JSON_False(t *testing.T) {
 }
 
 func TestInkwellAttributes_CanRequestFocus_JSON_Nil(t *testing.T) {
-	attrs := &duit_attributes.InkwellAttributes[duit_color.ColorString, duit_action.RemoteAction, duit_decoration.RoundedRectangleBorder[duit_color.ColorString]]{
+	attrs := &duit_attributes.InkwellAttributes[duit_props.ColorString, duit_action.RemoteAction, duit_props.RoundedRectangleBorder[duit_props.ColorString]]{
 		CanRequestFocus: duit_utils.Nillable[bool](),
 	}
 
@@ -310,7 +307,7 @@ func TestInkwellAttributes_OnTap_JSON(t *testing.T) {
 		Event:         "test_tap",
 	}
 
-	attrs := &duit_attributes.InkwellAttributes[duit_color.ColorString, duit_action.RemoteAction, duit_decoration.RoundedRectangleBorder[duit_color.ColorString]]{
+	attrs := &duit_attributes.InkwellAttributes[duit_props.ColorString, duit_action.RemoteAction, duit_props.RoundedRectangleBorder[duit_props.ColorString]]{
 		OnTap: remoteAction,
 	}
 
@@ -326,7 +323,7 @@ func TestInkwellAttributes_OnTap_JSON(t *testing.T) {
 }
 
 func TestInkwellAttributes_FocusColor_JSON(t *testing.T) {
-	attrs := &duit_attributes.InkwellAttributes[duit_color.ColorString, duit_action.RemoteAction, duit_decoration.RoundedRectangleBorder[duit_color.ColorString]]{
+	attrs := &duit_attributes.InkwellAttributes[duit_props.ColorString, duit_action.RemoteAction, duit_props.RoundedRectangleBorder[duit_props.ColorString]]{
 		FocusColor: "#FF0000",
 	}
 
@@ -342,7 +339,7 @@ func TestInkwellAttributes_FocusColor_JSON(t *testing.T) {
 }
 
 func TestInkwellAttributes_Radius_JSON(t *testing.T) {
-	attrs := &duit_attributes.InkwellAttributes[duit_color.ColorString, duit_action.RemoteAction, duit_decoration.RoundedRectangleBorder[duit_color.ColorString]]{
+	attrs := &duit_attributes.InkwellAttributes[duit_props.ColorString, duit_action.RemoteAction, duit_props.RoundedRectangleBorder[duit_props.ColorString]]{
 		Radius: 15.5,
 	}
 
@@ -358,7 +355,7 @@ func TestInkwellAttributes_Radius_JSON(t *testing.T) {
 }
 
 func TestInkwellAttributes_HoverDuration_JSON(t *testing.T) {
-	attrs := &duit_attributes.InkwellAttributes[duit_color.ColorString, duit_action.RemoteAction, duit_decoration.RoundedRectangleBorder[duit_color.ColorString]]{
+	attrs := &duit_attributes.InkwellAttributes[duit_props.ColorString, duit_action.RemoteAction, duit_props.RoundedRectangleBorder[duit_props.ColorString]]{
 		HoverDuration: 500,
 	}
 

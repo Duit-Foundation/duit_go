@@ -4,16 +4,13 @@ import (
 	"encoding/json"
 	"strings"
 	"testing"
-
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_clip"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_color"
-	duit_decoration "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_decorations"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
 func TestPhysicalModelAttributes_Validate_ValidAttributes(t *testing.T) {
-	attrs := &duit_attributes.PhysicalModelAttributes[duit_color.ColorString]{
+	attrs := &duit_attributes.PhysicalModelAttributes[duit_props.ColorString]{
 		Elevation: duit_utils.Float32Value(8.0),
 	}
 
@@ -24,7 +21,7 @@ func TestPhysicalModelAttributes_Validate_ValidAttributes(t *testing.T) {
 }
 
 func TestPhysicalModelAttributes_Validate_WithoutElevation(t *testing.T) {
-	attrs := &duit_attributes.PhysicalModelAttributes[duit_color.ColorString]{}
+	attrs := &duit_attributes.PhysicalModelAttributes[duit_props.ColorString]{}
 
 	err := attrs.Validate()
 	if err == nil {
@@ -33,13 +30,13 @@ func TestPhysicalModelAttributes_Validate_WithoutElevation(t *testing.T) {
 }
 
 func TestPhysicalModelAttributes_Validate_WithAllProperties(t *testing.T) {
-	attrs := &duit_attributes.PhysicalModelAttributes[duit_color.ColorString]{
+	attrs := &duit_attributes.PhysicalModelAttributes[duit_props.ColorString]{
 		Elevation:    duit_utils.Float32Value(16.0),
-		Color:        duit_color.ColorString("#FF0000"),
-		ShadowColor:  duit_color.ColorString("#000000"),
-		ClipBehavior: duit_clip.AntiAlias,
-		BorderRadius: &duit_decoration.BorderRadius{},
-		Shape:        duit_decoration.Rectangle,
+		Color:        duit_props.ColorString("#FF0000"),
+		ShadowColor:  duit_props.ColorString("#000000"),
+		ClipBehavior: duit_props.ClipAntiAlias,
+		BorderRadius: &duit_props.BorderRadius{},
+		Shape:        duit_props.BoxShapeRectangle,
 	}
 
 	err := attrs.Validate()
@@ -50,7 +47,7 @@ func TestPhysicalModelAttributes_Validate_WithAllProperties(t *testing.T) {
 
 // Tests for Tristate[float32] property serialization
 func TestPhysicalModelAttributes_Tristate_JSON_ValidValue(t *testing.T) {
-	attrs := &duit_attributes.PhysicalModelAttributes[duit_color.ColorString]{
+	attrs := &duit_attributes.PhysicalModelAttributes[duit_props.ColorString]{
 		Elevation: duit_utils.Float32Value(12.0),
 	}
 
@@ -66,7 +63,7 @@ func TestPhysicalModelAttributes_Tristate_JSON_ValidValue(t *testing.T) {
 }
 
 func TestPhysicalModelAttributes_Tristate_JSON_ZeroValue(t *testing.T) {
-	attrs := &duit_attributes.PhysicalModelAttributes[duit_color.ColorString]{
+	attrs := &duit_attributes.PhysicalModelAttributes[duit_props.ColorString]{
 		Elevation: duit_utils.Float32Value(0.0),
 	}
 
@@ -82,7 +79,7 @@ func TestPhysicalModelAttributes_Tristate_JSON_ZeroValue(t *testing.T) {
 }
 
 func TestPhysicalModelAttributes_Tristate_JSON_Nil(t *testing.T) {
-	attrs := &duit_attributes.PhysicalModelAttributes[duit_color.ColorString]{
+	attrs := &duit_attributes.PhysicalModelAttributes[duit_props.ColorString]{
 		Elevation: duit_utils.Nillable[float32](),
 	}
 

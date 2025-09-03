@@ -4,19 +4,17 @@ import (
 	"encoding/json"
 	"strings"
 	"testing"
-
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_alignment"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
 func TestAnimatedCrossFadeAttributes_Validate_ValidAttributes(t *testing.T) {
 	attrs := &duit_attributes.AnimatedCrossFadeAttributes{
 		CrossFadeState: 0, // showFirst
-		ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
+		ImplicitAnimatable: &duit_props.ImplicitAnimatable{
 			Duration: 300,
-			Curve:    duit_animations.Ease,
+			Curve:    duit_props.CurveEase,
 		},
 	}
 
@@ -45,9 +43,9 @@ func TestAnimatedCrossFadeAttributes_Validate_ValidCrossFadeStates(t *testing.T)
 		t.Run(tc.name, func(t *testing.T) {
 			attrs := &duit_attributes.AnimatedCrossFadeAttributes{
 				CrossFadeState: tc.state,
-				ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
+				ImplicitAnimatable: &duit_props.ImplicitAnimatable{
 					Duration: 300,
-					Curve:    duit_animations.Ease,
+					Curve:    duit_props.CurveEase,
 				},
 			}
 
@@ -66,9 +64,9 @@ func TestAnimatedCrossFadeAttributes_Validate_InvalidCrossFadeState(t *testing.T
 		t.Run("Invalid state", func(t *testing.T) {
 			attrs := &duit_attributes.AnimatedCrossFadeAttributes{
 				CrossFadeState: state,
-				ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
+				ImplicitAnimatable: &duit_props.ImplicitAnimatable{
 					Duration: 300,
-					Curve:    duit_animations.Ease,
+					Curve:    duit_props.CurveEase,
 				},
 			}
 
@@ -89,14 +87,14 @@ func TestAnimatedCrossFadeAttributes_Validate_WithOptionalFields(t *testing.T) {
 	attrs := &duit_attributes.AnimatedCrossFadeAttributes{
 		CrossFadeState:     0,
 		ReverseDuration:    200,
-		FirstCurve:         duit_animations.EaseIn,
-		SecondCurve:        duit_animations.EaseOut,
-		SizeCurve:          duit_animations.Linear,
+		FirstCurve:         duit_props.CurveEaseIn,
+		SecondCurve:        duit_props.CurveEaseOut,
+		SizeCurve:          duit_props.CurveLinear,
 		ExcludeBottomFocus: duit_utils.BoolValue(true),
-		Alignment:          duit_alignment.Center,
-		ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
+		Alignment:          duit_props.AlignmentCenter,
+		ImplicitAnimatable: &duit_props.ImplicitAnimatable{
 			Duration: 300,
-			Curve:    duit_animations.Ease,
+			Curve:    duit_props.CurveEase,
 		},
 	}
 
@@ -112,9 +110,9 @@ func TestAnimatedCrossFadeAttributes_MarshalJSON_ExcludeBottomFocus(t *testing.T
 	attrs := &duit_attributes.AnimatedCrossFadeAttributes{
 		CrossFadeState:     0,
 		ExcludeBottomFocus: duit_utils.BoolValue(true),
-		ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
+		ImplicitAnimatable: &duit_props.ImplicitAnimatable{
 			Duration: 300,
-			Curve:    duit_animations.Ease,
+			Curve:    duit_props.CurveEase,
 		},
 	}
 
@@ -133,9 +131,9 @@ func TestAnimatedCrossFadeAttributes_MarshalJSON_NilExcludeBottomFocus(t *testin
 	attrs := &duit_attributes.AnimatedCrossFadeAttributes{
 		CrossFadeState:     0,
 		ExcludeBottomFocus: nil,
-		ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
+		ImplicitAnimatable: &duit_props.ImplicitAnimatable{
 			Duration: 300,
-			Curve:    duit_animations.Ease,
+			Curve:    duit_props.CurveEase,
 		},
 	}
 
@@ -174,14 +172,14 @@ func TestAnimatedCrossFadeAttributes_MarshalJSON_WithAllFields(t *testing.T) {
 	attrs := &duit_attributes.AnimatedCrossFadeAttributes{
 		CrossFadeState:     1,
 		ReverseDuration:    200,
-		FirstCurve:         duit_animations.EaseIn,
-		SecondCurve:        duit_animations.EaseOut,
-		SizeCurve:          duit_animations.Linear,
+		FirstCurve:         duit_props.CurveEaseIn,
+		SecondCurve:        duit_props.CurveEaseOut,
+		SizeCurve:          duit_props.CurveLinear,
 		ExcludeBottomFocus: duit_utils.BoolValue(false),
-		Alignment:          duit_alignment.TopCenter,
-		ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
+		Alignment:          duit_props.AlignmentTopCenter,
+		ImplicitAnimatable: &duit_props.ImplicitAnimatable{
 			Duration: 400,
-			Curve:    duit_animations.BounceIn,
+			Curve:    duit_props.CurveBounceIn,
 		},
 	}
 

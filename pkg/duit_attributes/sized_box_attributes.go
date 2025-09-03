@@ -1,10 +1,10 @@
 package duit_attributes
 
-import animations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
+import "github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 
 type SizedBoxAttributes struct {
 	*ValueReferenceHolder
-	*animations.AnimatedPropertyOwner
+	*duit_props.AnimatedPropertyOwner
 	*ThemeConsumer
 	Width  float32 `json:"width,omitempty"`
 	Height float32 `json:"height,omitempty"`

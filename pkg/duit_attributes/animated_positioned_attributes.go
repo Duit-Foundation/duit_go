@@ -2,14 +2,13 @@ package duit_attributes
 
 import (
 	"errors"
-
-	animations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
 type AnimatedPositionedAttributes struct {
 	*ValueReferenceHolder
-	*animations.ImplicitAnimatable
+	*duit_props.ImplicitAnimatable
 	*ThemeConsumer
 	Left   duit_utils.Tristate[float32] `json:"left,omitempty"`
 	Top    duit_utils.Tristate[float32] `json:"top,omitempty"`

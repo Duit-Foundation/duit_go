@@ -9,7 +9,7 @@ import (
 Example:
 
 	SliverVisibility(
-		&duit_attributes.SliverPaddingAttributes[duit_edge_insets.EdgeInsetsAll]{
+		&duit_attributes.SliverPaddingAttributes[duit_props.EdgeInsetsAll]{
 			Visible: duit_utils.BoolPtr(true),
 		},
 		"",

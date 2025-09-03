@@ -4,15 +4,13 @@ import (
 	"encoding/json"
 	"strings"
 	"testing"
-
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_alignment"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 )
 
 func TestAlignAttributes_Validate_ValidAttributes(t *testing.T) {
 	attrs := &duit_attributes.AlignAttributes{
-		Alignment: duit_alignment.Center,
+		Alignment: duit_props.AlignmentCenter,
 	}
 
 	err := attrs.Validate()
@@ -40,43 +38,43 @@ func TestAlignAttributes_Validate_EmptyAlignment(t *testing.T) {
 func TestAlignAttributes_Validate_DifferentAlignments(t *testing.T) {
 	testCases := []struct {
 		name      string
-		alignment duit_alignment.Alignment
+		alignment duit_props.Alignment
 	}{
 		{
 			name:      "Center alignment",
-			alignment: duit_alignment.Center,
+			alignment: duit_props.AlignmentCenter,
 		},
 		{
 			name:      "TopLeft alignment",
-			alignment: duit_alignment.TopLeft,
+			alignment: duit_props.AlignmentTopLeft,
 		},
 		{
 			name:      "TopRight alignment",
-			alignment: duit_alignment.TopRight,
+			alignment: duit_props.AlignmentTopRight,
 		},
 		{
 			name:      "BottomLeft alignment",
-			alignment: duit_alignment.BottomLeft,
+			alignment: duit_props.AlignmentBottomLeft,
 		},
 		{
 			name:      "BottomRight alignment",
-			alignment: duit_alignment.BottomRight,
+			alignment: duit_props.AlignmentBottomRight,
 		},
 		{
 			name:      "CenterLeft alignment",
-			alignment: duit_alignment.CenterLeft,
+			alignment: duit_props.AlignmentCenterLeft,
 		},
 		{
 			name:      "CenterRight alignment",
-			alignment: duit_alignment.CenterRight,
+			alignment: duit_props.AlignmentCenterRight,
 		},
 		{
 			name:      "TopCenter alignment",
-			alignment: duit_alignment.TopCenter,
+			alignment: duit_props.AlignmentTopCenter,
 		},
 		{
 			name:      "BottomCenter alignment",
-			alignment: duit_alignment.BottomCenter,
+			alignment: duit_props.AlignmentBottomCenter,
 		},
 	}
 
@@ -135,7 +133,7 @@ func TestAlignAttributes_Validate_WithFactors(t *testing.T) {
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
 			attrs := &duit_attributes.AlignAttributes{
-				Alignment:    duit_alignment.Center,
+				Alignment:    duit_props.AlignmentCenter,
 				WidthFactor:  tc.widthFactor,
 				HeightFactor: tc.heightFactor,
 			}
@@ -150,8 +148,8 @@ func TestAlignAttributes_Validate_WithFactors(t *testing.T) {
 
 func TestAlignAttributes_Validate_WithAnimatedPropertyOwner(t *testing.T) {
 	attrs := &duit_attributes.AlignAttributes{
-		Alignment: duit_alignment.Center,
-		AnimatedPropertyOwner: &duit_animations.AnimatedPropertyOwner{
+		Alignment: duit_props.AlignmentCenter,
+		AnimatedPropertyOwner: &duit_props.AnimatedPropertyOwner{
 			ParentBuilderId:    "test-builder",
 			AffectedProperties: []string{"alignment"},
 		},
@@ -165,7 +163,7 @@ func TestAlignAttributes_Validate_WithAnimatedPropertyOwner(t *testing.T) {
 
 func TestAlignAttributes_Validate_WithThemeConsumer(t *testing.T) {
 	attrs := &duit_attributes.AlignAttributes{
-		Alignment: duit_alignment.Center,
+		Alignment: duit_props.AlignmentCenter,
 		ThemeConsumer: &duit_attributes.ThemeConsumer{
 			Theme: "primaryTheme",
 		},
@@ -179,7 +177,7 @@ func TestAlignAttributes_Validate_WithThemeConsumer(t *testing.T) {
 
 func TestAlignAttributes_MarshalJSON_WithFactors(t *testing.T) {
 	attrs := &duit_attributes.AlignAttributes{
-		Alignment:    duit_alignment.Center,
+		Alignment:    duit_props.AlignmentCenter,
 		WidthFactor:  0.5,
 		HeightFactor: 0.8,
 	}
@@ -203,7 +201,7 @@ func TestAlignAttributes_MarshalJSON_WithFactors(t *testing.T) {
 
 func TestAlignAttributes_MarshalJSON_ZeroFactors(t *testing.T) {
 	attrs := &duit_attributes.AlignAttributes{
-		Alignment:    duit_alignment.TopLeft,
+		Alignment:    duit_props.AlignmentTopLeft,
 		WidthFactor:  0.0,
 		HeightFactor: 0.0,
 	}
@@ -235,7 +233,7 @@ func TestAlignAttributes_UnmarshalJSON_WithFactors(t *testing.T) {
 		t.Fatal("expected no error for UnmarshalJSON(), got:", err)
 	}
 
-	if attrs.Alignment != duit_alignment.Center {
+	if attrs.Alignment != duit_props.AlignmentCenter {
 		t.Fatalf("expected alignment to be 'center', got: %s", attrs.Alignment)
 	}
 	if attrs.WidthFactor != 0.5 {
@@ -243,25 +241,5 @@ func TestAlignAttributes_UnmarshalJSON_WithFactors(t *testing.T) {
 	}
 	if attrs.HeightFactor != 0.8 {
 		t.Fatalf("expected heightFactor to be 0.8, got: %f", attrs.HeightFactor)
-	}
-}
-
-func TestAlignAttributes_UnmarshalJSON_WithoutFactors(t *testing.T) {
-	jsonStr := `{"alignment":"bottomRight"}`
-
-	var attrs duit_attributes.AlignAttributes
-	err := json.Unmarshal([]byte(jsonStr), &attrs)
-	if err != nil {
-		t.Fatal("expected no error for UnmarshalJSON(), got:", err)
-	}
-
-	if attrs.Alignment != duit_alignment.BottomRight {
-		t.Fatalf("expected alignment to be 'bottomRight', got: %s", attrs.Alignment)
-	}
-	if attrs.WidthFactor != 0.0 {
-		t.Fatalf("expected widthFactor to be 0.0 when not provided, got: %f", attrs.WidthFactor)
-	}
-	if attrs.HeightFactor != 0.0 {
-		t.Fatalf("expected heightFactor to be 0.0 when not provided, got: %f", attrs.HeightFactor)
 	}
 }

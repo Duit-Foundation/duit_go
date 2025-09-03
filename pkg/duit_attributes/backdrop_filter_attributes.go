@@ -2,17 +2,15 @@ package duit_attributes
 
 import (
 	"errors"
-
-	animations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_painting"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 )
 
-type BackdropFilterAttributes[T duit_painting.ImageFilter] struct {
+type BackdropFilterAttributes[T duit_props.ImageFilter] struct {
 	*ValueReferenceHolder
-	*animations.AnimatedPropertyOwner
+	*duit_props.AnimatedPropertyOwner
 	*ThemeConsumer
 	Filter    *T                      `json:"filter,omitempty"`
-	BlendMode duit_painting.BlendMode `json:"blendMode,omitempty"`
+	BlendMode duit_props.BlendMode `json:"blendMode,omitempty"`
 }
 
 func (r *BackdropFilterAttributes[T]) Validate() error {

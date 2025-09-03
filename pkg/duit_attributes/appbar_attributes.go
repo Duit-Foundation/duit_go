@@ -1,28 +1,23 @@
 package duit_attributes
 
 import (
-	animations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_clip"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_color"
-	decorations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_decorations"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_edge_insets"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_text_properties"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
-type AppBarAttributes[TColor duit_color.Color, TInsets duit_edge_insets.EdgeInsets, TShape decorations.ShapeBorder[TColor]] struct {
+type AppBarAttributes[TColor duit_props.Color, TInsets duit_props.EdgeInsets, TShape duit_props.ShapeBorder[TColor]] struct {
 	*ValueReferenceHolder
-	*animations.AnimatedPropertyOwner
+	*duit_props.AnimatedPropertyOwner
 	*ThemeConsumer
-	TitleTextStyle            *duit_text_properties.TextStyle[TColor] `json:"titleTextStyle,omitempty"`
-	ToolbarTextStyle          *duit_text_properties.TextStyle[TColor] `json:"toolbarTextStyle,omitempty"`
+	TitleTextStyle            *duit_props.TextStyle[TColor] `json:"titleTextStyle,omitempty"`
+	ToolbarTextStyle          *duit_props.TextStyle[TColor] `json:"toolbarTextStyle,omitempty"`
 	ShadowColor               TColor                                  `json:"shadowColor,omitempty"`
 	BackgroundColor           TColor                                  `json:"backgroundColor,omitempty"`
 	ForegroundColor           TColor                                  `json:"foregroundColor,omitempty"`
 	SurfaceTintColor          TColor                                  `json:"surfaceTintColor,omitempty"`
 	ActionsPadding            TInsets                                 `json:"actionsPadding,omitempty"`
 	Shape                     *TShape                                 `json:"shape,omitempty"`
-	ClipBehavior              duit_clip.Clip                          `json:"clipBehavior,omitempty"`
+	ClipBehavior              duit_props.Clip                          `json:"clipBehavior,omitempty"`
 	TitleSpacing              float32                                 `json:"titleSpacing,omitempty"`
 	Elevation                 float32                                 `json:"elevation,omitempty"`
 	ToolbarHeight             float32                                 `json:"toolbarHeight,omitempty"`

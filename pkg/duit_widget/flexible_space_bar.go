@@ -2,14 +2,14 @@ package duit_widget
 
 import (
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_edge_insets"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_core"
 )
 
 /*
 Example:
 	FlexibleSpaceBar(
-		&duit_attributes.FlexibleSpaceBarAttributes[duit_edge_insets.EdgeInsetsAll]{
+		&duit_attributes.FlexibleSpaceBarAttributes[duit_props.EdgeInsetsAll]{
 			CenterTitle: true,
 			ExpandedTitleScale: 1.5,
 			CollapseMode: duit_attributes.CollapseModeParallax,
@@ -19,15 +19,15 @@ Example:
 		},
 		"flexibleSpaceBarId",
 		true,
-		Text(&duit_attributes.TextAttributes[duit_color.Color]{
+		Text(&duit_attributes.TextAttributes[duit_props.Color]{
 			Data: "Flexible Title",
 		}, "title"),
-		Text(&duit_attributes.TextAttributes[duit_color.Color]{
+		Text(&duit_attributes.TextAttributes[duit_props.Color]{
 			Data: "Flexible Background",
 		}, "background"),
 	)
 */
-func FlexibleSpaceBar[TInsets duit_edge_insets.EdgeInsets](attributes *duit_attributes.FlexibleSpaceBarAttributes[TInsets], id string, controlled bool, title *duit_core.DuitElementModel, background *duit_core.DuitElementModel) *duit_core.DuitElementModel {
+func FlexibleSpaceBar[TInsets duit_props.EdgeInsets](attributes *duit_attributes.FlexibleSpaceBarAttributes[TInsets], id string, controlled bool, title *duit_core.DuitElementModel, background *duit_core.DuitElementModel) *duit_core.DuitElementModel {
 	children := []*duit_core.DuitElementModel{title, background}
 
 	checkAttributes(attributes)
