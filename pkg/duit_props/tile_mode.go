@@ -1,4 +1,4 @@
-package duit_painting
+package duit_props
 
 type TileMode string
 

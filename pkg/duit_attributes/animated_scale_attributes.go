@@ -4,7 +4,6 @@ import (
 	"errors"
 
 	animations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_painting"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
@@ -15,7 +14,7 @@ type AnimatedScaleAttributes struct {
 	*animations.ImplicitAnimatable
 	Scale         duit_utils.Tristate[float32] `json:"scale,omitempty"`
 	Alignmen      duit_props.Alignment     `json:"alignment,omitempty"`
-	FilterQuality duit_painting.FilterQuality  `json:"filterQuality,omitempty"`
+	FilterQuality duit_props.FilterQuality  `json:"filterQuality,omitempty"`
 }
 
 func (r *AnimatedScaleAttributes) Validate() error {

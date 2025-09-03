@@ -1,4 +1,4 @@
-package duit_painting
+package duit_props
 
 import (
 	"fmt"
@@ -8,7 +8,7 @@ import (
 type BufferType string
 
 const (
-	ByteBuffer BufferType = "Buffer" //same name with JS Buffer {type: 'Buffer', data: []}
+	BufferTypeByteBuffer BufferType = "Buffer" //same name with JS Buffer {type: 'Buffer', data: []}
 )
 
 type ImageBuffer struct {

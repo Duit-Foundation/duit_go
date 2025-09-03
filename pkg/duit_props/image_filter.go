@@ -1,4 +1,4 @@
-package duit_painting
+package duit_props
 
 type BlurImageFilter struct {
 	Type     uint8    `json:"type"`
@@ -9,9 +9,9 @@ type BlurImageFilter struct {
 
 func NewBlurImageFilter(sigmaX, sigmaY float32, tileMode TileMode) *BlurImageFilter {
 	m := &BlurImageFilter{
-		Type:     0,
-		SigmaX:   sigmaX,
-		SigmaY:   sigmaY,
+		Type:   0,
+		SigmaX: sigmaX,
+		SigmaY: sigmaY,
 	}
 
 	if tileMode != "" {
@@ -66,7 +66,7 @@ type DilateImageFilter struct {
 	RaduisY float32 `json:"radiusY"`
 }
 
-func NewDilateImageFilter(radiusX , radiusY float32) *DilateImageFilter {
+func NewDilateImageFilter(radiusX, radiusY float32) *DilateImageFilter {
 	return &DilateImageFilter{
 		Type:    2,
 		RadiusX: radiusX,
@@ -80,7 +80,7 @@ type ErodeImageFilter struct {
 	RaduisY float32 `json:"radiusY"`
 }
 
-func NewErodeImageFilter(radiusX , radiusY float32) *ErodeImageFilter {
+func NewErodeImageFilter(radiusX, radiusY float32) *ErodeImageFilter {
 	return &ErodeImageFilter{
 		Type:    3,
 		RadiusX: radiusX,
@@ -96,8 +96,8 @@ type MatrixImageFilter struct {
 
 func NewMatrixImageFilter(matrix [16]float64, filterQuality FilterQuality) *MatrixImageFilter {
 	m := &MatrixImageFilter{
-		Type:    4,
-		Matrix: matrix,
+		Type:          4,
+		Matrix:        matrix,
 		FilterQuality: filterQuality,
 	}
 
