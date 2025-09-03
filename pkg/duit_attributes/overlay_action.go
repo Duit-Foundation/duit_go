@@ -1,4 +1,4 @@
-package duit_command
+package duit_attributes
 
 type OverlayAction string
 

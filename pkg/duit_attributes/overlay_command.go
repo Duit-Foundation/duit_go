@@ -1,4 +1,4 @@
-package duit_command
+package duit_attributes
 
 import (
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_action"
