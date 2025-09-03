@@ -10,7 +10,7 @@ Example:
 	AnimatedPadding(
 		&duit_attributes.AnimatedPaddingAttributes[duit_props.EdgeInsetsAll]{
 			Padding: 12.0,
-			ImplicitAnimatable: duit_animations.ImplicitAnimatable{
+			ImplicitAnimatable: duit_props.ImplicitAnimatable{
 				Duration: 1000,
 			},
 		},

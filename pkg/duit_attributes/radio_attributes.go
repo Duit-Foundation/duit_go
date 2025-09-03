@@ -2,8 +2,6 @@ package duit_attributes
 
 import (
 	"errors"
-
-	animations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
@@ -14,7 +12,7 @@ type PrimitiveValue interface {
 
 type RadioAttributes[TValue PrimitiveValue, TColor duit_props.Color] struct {
 	*ValueReferenceHolder
-	*animations.AnimatedPropertyOwner
+	*duit_props.AnimatedPropertyOwner
 	*ThemeConsumer
 	Value                 duit_utils.Tristate[TValue]                 `json:"value,omitempty"`
 	Toggleable            bool                                        `json:"toggleable,omitempty"`

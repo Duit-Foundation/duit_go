@@ -4,9 +4,7 @@ import (
 	"encoding/json"
 	"strings"
 	"testing"
-
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
@@ -14,9 +12,9 @@ import (
 func TestAnimatedScaleAttributes_Validate_ValidAttributes(t *testing.T) {
 	attrs := &duit_attributes.AnimatedScaleAttributes{
 		Scale: duit_utils.Float32Value(1.0),
-		ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
+		ImplicitAnimatable: &duit_props.ImplicitAnimatable{
 			Duration: 300,
-			Curve:    duit_animations.Ease,
+			Curve:    duit_props.CurveEase,
 		},
 	}
 
@@ -61,9 +59,9 @@ func TestAnimatedScaleAttributes_Validate_ValidScaleValues(t *testing.T) {
 		t.Run(tc.name, func(t *testing.T) {
 			attrs := &duit_attributes.AnimatedScaleAttributes{
 				Scale: duit_utils.Float32Value(tc.scale),
-				ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
+				ImplicitAnimatable: &duit_props.ImplicitAnimatable{
 					Duration: 300,
-					Curve:    duit_animations.Ease,
+					Curve:    duit_props.CurveEase,
 				},
 			}
 
@@ -94,9 +92,9 @@ func TestAnimatedScaleAttributes_Validate_InvalidScaleValues(t *testing.T) {
 		t.Run(tc.name, func(t *testing.T) {
 			attrs := &duit_attributes.AnimatedScaleAttributes{
 				Scale: duit_utils.Float32Value(tc.scale),
-				ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
+				ImplicitAnimatable: &duit_props.ImplicitAnimatable{
 					Duration: 300,
-					Curve:    duit_animations.Ease,
+					Curve:    duit_props.CurveEase,
 				},
 			}
 
@@ -116,9 +114,9 @@ func TestAnimatedScaleAttributes_Validate_InvalidScaleValues(t *testing.T) {
 func TestAnimatedScaleAttributes_Validate_NilScale(t *testing.T) {
 	attrs := &duit_attributes.AnimatedScaleAttributes{
 		Scale: nil,
-		ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
+		ImplicitAnimatable: &duit_props.ImplicitAnimatable{
 			Duration: 300,
-			Curve:    duit_animations.Ease,
+			Curve:    duit_props.CurveEase,
 		},
 	}
 
@@ -138,9 +136,9 @@ func TestAnimatedScaleAttributes_Validate_WithOptionalFields(t *testing.T) {
 		Scale:         duit_utils.Float32Value(1.5),
 		Alignmen:      duit_props.AlignmentCenter,
 		FilterQuality: "high",
-		ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
+		ImplicitAnimatable: &duit_props.ImplicitAnimatable{
 			Duration: 300,
-			Curve:    duit_animations.Ease,
+			Curve:    duit_props.CurveEase,
 		},
 	}
 
@@ -155,9 +153,9 @@ func TestAnimatedScaleAttributes_Validate_WithOptionalFields(t *testing.T) {
 func TestAnimatedScaleAttributes_MarshalJSON_ScaleField(t *testing.T) {
 	attrs := &duit_attributes.AnimatedScaleAttributes{
 		Scale: duit_utils.Float32Value(2.5),
-		ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
+		ImplicitAnimatable: &duit_props.ImplicitAnimatable{
 			Duration: 300,
-			Curve:    duit_animations.Ease,
+			Curve:    duit_props.CurveEase,
 		},
 	}
 
@@ -175,9 +173,9 @@ func TestAnimatedScaleAttributes_MarshalJSON_ScaleField(t *testing.T) {
 func TestAnimatedScaleAttributes_MarshalJSON_NilScale(t *testing.T) {
 	attrs := &duit_attributes.AnimatedScaleAttributes{
 		Scale: nil,
-		ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
+		ImplicitAnimatable: &duit_props.ImplicitAnimatable{
 			Duration: 300,
-			Curve:    duit_animations.Ease,
+			Curve:    duit_props.CurveEase,
 		},
 	}
 
@@ -230,9 +228,9 @@ func TestAnimatedScaleAttributes_MarshalJSON_DifferentScaleValues(t *testing.T) 
 		t.Run(tc.name, func(t *testing.T) {
 			attrs := &duit_attributes.AnimatedScaleAttributes{
 				Scale: tc.scale,
-				ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
+				ImplicitAnimatable: &duit_props.ImplicitAnimatable{
 					Duration: 300,
-					Curve:    duit_animations.Ease,
+					Curve:    duit_props.CurveEase,
 				},
 			}
 
@@ -273,9 +271,9 @@ func TestAnimatedScaleAttributes_MarshalJSON_WithAllFields(t *testing.T) {
 		Scale:         duit_utils.Float32Value(0.8),
 		Alignmen:      duit_props.AlignmentBottomRight,
 		FilterQuality: "medium",
-		ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
+		ImplicitAnimatable: &duit_props.ImplicitAnimatable{
 			Duration: 400,
-			Curve:    duit_animations.BounceOut,
+			Curve:    duit_props.CurveBounceOut,
 		},
 	}
 

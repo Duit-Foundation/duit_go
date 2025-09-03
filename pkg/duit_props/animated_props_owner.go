@@ -1,4 +1,4 @@
-package duit_animations
+package duit_props
 
 import "errors"
 

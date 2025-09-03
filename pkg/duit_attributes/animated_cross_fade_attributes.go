@@ -2,20 +2,18 @@ package duit_attributes
 
 import (
 	"errors"
-
-	animations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
 type AnimatedCrossFadeAttributes struct {
 	*ValueReferenceHolder
-	*animations.ImplicitAnimatable
+	*duit_props.ImplicitAnimatable
 	*ThemeConsumer
 	ReverseDuration    uint                      `json:"reverseDuration,omitempty"`
-	FirstCurve         animations.Curves         `json:"firstCurve,omitempty"`
-	SecondCurve        animations.Curves         `json:"secondCurve,omitempty"`
-	SizeCurve          animations.Curves         `json:"sizeCurve,omitempty"`
+	FirstCurve         duit_props.Curves         `json:"firstCurve,omitempty"`
+	SecondCurve        duit_props.Curves         `json:"secondCurve,omitempty"`
+	SizeCurve          duit_props.Curves         `json:"sizeCurve,omitempty"`
 	ExcludeBottomFocus duit_utils.Tristate[bool] `json:"excludeBottomFocus,omitempty"`
 	Alignment          duit_props.Alignment  `json:"alignment,omitempty"`
 	// Where 0 - CrossFadeState.showFirst and 1 - CrossFadeState.showSecond

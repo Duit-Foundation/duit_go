@@ -1,13 +1,12 @@
 package duit_attributes
 
 import (
-	animations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 )
 
 type FlexAttributes struct {
 	*ValueReferenceHolder
-	*animations.AnimatedPropertyOwner
+	*duit_props.AnimatedPropertyOwner
 	*ThemeConsumer
 	MainAxisAlignment  duit_props.MainAxisAlignment   `json:"mainAxisAlignment,omitempty"`
 	MainAxisSize       duit_props.MainAxisSize        `json:"mainAxisSize,omitempty"`

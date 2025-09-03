@@ -2,14 +2,13 @@ package duit_attributes
 
 import (
 	"errors"
-
-	animations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
 type AnimatedOpacityAttributes struct {
 	*ValueReferenceHolder
-	*animations.ImplicitAnimatable
+	*duit_props.ImplicitAnimatable
 	*ThemeConsumer
 	Opacity duit_utils.Tristate[float32] `json:"opacity,omitempty"`
 }

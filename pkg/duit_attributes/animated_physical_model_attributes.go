@@ -3,14 +3,13 @@ package duit_attributes
 import (
 	"errors"
 
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
 type AnimatedPhysicalModelAttributes struct {
 	*ValueReferenceHolder
-	*duit_animations.ImplicitAnimatable
+	*duit_props.ImplicitAnimatable
 	*ThemeConsumer
 	Elevation          duit_utils.Tristate[float32]    `json:"elevation"`
 	Color              *duit_props.ColorV2             `json:"color,omitempty"`

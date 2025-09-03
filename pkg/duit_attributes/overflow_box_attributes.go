@@ -1,13 +1,12 @@
 package duit_attributes
 
 import (
-	animations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 )
 
 type OverflowBoxAttributes struct {
 	*ValueReferenceHolder
-	*animations.AnimatedPropertyOwner
+	*duit_props.AnimatedPropertyOwner
 	*ThemeConsumer
 	MinWidth  float32                  `json:"minWidth,omitempty"`
 	MaxWidth  float32                  `json:"maxWidth,omitempty"`

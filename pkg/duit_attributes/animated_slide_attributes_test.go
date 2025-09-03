@@ -3,17 +3,15 @@ package duit_attributes_test
 import (
 	"strings"
 	"testing"
-
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 )
 
 func TestAnimatedSlideAttributes_Validate_ValidAttributes(t *testing.T) {
 	attrs := &duit_attributes.AnimatedSlideAttributes{
-		ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
+		ImplicitAnimatable: &duit_props.ImplicitAnimatable{
 			Duration: 300,
-			Curve:    duit_animations.Ease,
+			Curve:    duit_props.CurveEase,
 		},
 		Offset: &duit_props.Offset{
 			Dx: 0.5,
@@ -48,9 +46,9 @@ func TestAnimatedSlideAttributes_Validate_MissingImplicitAnimatable(t *testing.T
 
 func TestAnimatedSlideAttributes_Validate_MissingOffset(t *testing.T) {
 	attrs := &duit_attributes.AnimatedSlideAttributes{
-		ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
+		ImplicitAnimatable: &duit_props.ImplicitAnimatable{
 			Duration: 300,
-			Curve:    duit_animations.Ease,
+			Curve:    duit_props.CurveEase,
 		},
 		Offset: nil,
 	}
@@ -84,9 +82,9 @@ func TestAnimatedSlideAttributes_Validate_MissingBoth(t *testing.T) {
 
 func TestAnimatedSlideAttributes_Validate_InvalidImplicitAnimatable(t *testing.T) {
 	attrs := &duit_attributes.AnimatedSlideAttributes{
-		ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
+		ImplicitAnimatable: &duit_props.ImplicitAnimatable{
 			Duration: 0, // Invalid duration
-			Curve:    duit_animations.Ease,
+			Curve:    duit_props.CurveEase,
 		},
 		Offset: &duit_props.Offset{
 			Dx: 0.5,

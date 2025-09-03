@@ -10,7 +10,7 @@ Example:
 	AnimatedAlign(
 		&duit_attributes.AnimatedAlignAttributes{
 			Alignment: duit_alignment.Center,
-			ImplicitAnimatable: duit_animations.ImplicitAnimatable{
+			ImplicitAnimatable: duit_props.ImplicitAnimatable{
 				Duration: 1000,
 			},
 		},

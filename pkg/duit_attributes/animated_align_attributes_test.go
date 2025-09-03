@@ -4,19 +4,16 @@ import (
 	"encoding/json"
 	"strings"
 	"testing"
-
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
-
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
 )
 
 func TestAnimatedAlignAttributes_Validate_ValidAttributes(t *testing.T) {
 	attrs := &duit_attributes.AnimatedAlignAttributes{
 		Alignment: duit_props.AlignmentCenter,
-		ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
+		ImplicitAnimatable: &duit_props.ImplicitAnimatable{
 			Duration: 300,
-			Curve:    duit_animations.Ease,
+			Curve:    duit_props.CurveEase,
 		},
 	}
 
@@ -29,9 +26,9 @@ func TestAnimatedAlignAttributes_Validate_ValidAttributes(t *testing.T) {
 func TestAnimatedAlignAttributes_Validate_EmptyAlignment(t *testing.T) {
 	attrs := &duit_attributes.AnimatedAlignAttributes{
 		Alignment: "",
-		ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
+		ImplicitAnimatable: &duit_props.ImplicitAnimatable{
 			Duration: 300,
-			Curve:    duit_animations.Ease,
+			Curve:    duit_props.CurveEase,
 		},
 	}
 
@@ -93,9 +90,9 @@ func TestAnimatedAlignAttributes_Validate_DifferentAlignments(t *testing.T) {
 		t.Run(tc.name, func(t *testing.T) {
 			attrs := &duit_attributes.AnimatedAlignAttributes{
 				Alignment: tc.alignment,
-				ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
+				ImplicitAnimatable: &duit_props.ImplicitAnimatable{
 					Duration: 300,
-					Curve:    duit_animations.Ease,
+					Curve:    duit_props.CurveEase,
 				},
 			}
 
@@ -112,9 +109,9 @@ func TestAnimatedAlignAttributes_Validate_WithFactors(t *testing.T) {
 		Alignment:    duit_props.AlignmentCenter,
 		WidthFactor:  0.5,
 		HeightFactor: 0.8,
-		ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
+		ImplicitAnimatable: &duit_props.ImplicitAnimatable{
 			Duration: 300,
-			Curve:    duit_animations.Ease,
+			Curve:    duit_props.CurveEase,
 		},
 	}
 
@@ -148,9 +145,9 @@ func TestAnimatedAlignAttributes_MarshalJSON_WithFactors(t *testing.T) {
 		Alignment:    duit_props.AlignmentCenter,
 		WidthFactor:  0.5,
 		HeightFactor: 0.8,
-		ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
+		ImplicitAnimatable: &duit_props.ImplicitAnimatable{
 			Duration: 300,
-			Curve:    duit_animations.Ease,
+			Curve:    duit_props.CurveEase,
 		},
 	}
 

@@ -1,7 +1,6 @@
 package duit_attributes
 
 import (
-	animations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
@@ -15,7 +14,7 @@ import (
 
 type CarouselViewAttributes[TColor duit_props.Color, TInsets duit_props.EdgeInsets, TShape duit_props.ShapeBorder[TColor]] struct {
 	*ValueReferenceHolder
-	*animations.AnimatedPropertyOwner
+	*duit_props.AnimatedPropertyOwner
 	*ThemeConsumer
 	// Constructor      CarouselViewConstructor                     `json:"constructor"`
 	Padding          TInsets                                     `json:"padding,omitempty"`

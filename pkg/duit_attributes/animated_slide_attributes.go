@@ -3,13 +3,12 @@ package duit_attributes
 import (
 	"errors"
 
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 )
 
 type AnimatedSlideAttributes struct {
 	*ValueReferenceHolder
-	*duit_animations.ImplicitAnimatable
+	*duit_props.ImplicitAnimatable
 	*ThemeConsumer
 	Offset *duit_props.Offset `json:"offset,omitempty"`
 }

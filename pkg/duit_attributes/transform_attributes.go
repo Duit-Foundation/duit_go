@@ -3,16 +3,15 @@ package duit_attributes
 import (
 	"errors"
 
-	animations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_transform"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 )
 
-type TransfromAttributes[T duit_transform.Transform] struct {
+type TransfromAttributes[T duit_props.Transform] struct {
 	*ValueReferenceHolder
-	*animations.AnimatedPropertyOwner
+	*duit_props.AnimatedPropertyOwner
 	*ThemeConsumer
-	Type duit_transform.TransfromType `json:"type"`
-	Data *T                           `json:"data"`
+	Type duit_props.TransformType `json:"type"`
+	Data *T                       `json:"data"`
 }
 
 func (r *TransfromAttributes[T]) Validate() error {

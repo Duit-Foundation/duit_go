@@ -1,14 +1,14 @@
-package duit_animations_test
+package duit_props_test
 
 import (
 	"testing"
 
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 )
 
 func TestAnimatedPropertyOwner_Validate(t *testing.T) {
 	
-	attrs := &duit_animations.AnimatedPropertyOwner{
+	attrs := &duit_props.AnimatedPropertyOwner{
 		ParentBuilderId: "parentBuilderId",
 		AffectedProperties: []string{"affectedProperties"},
 	}

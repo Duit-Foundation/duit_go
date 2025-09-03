@@ -2,14 +2,12 @@ package duit_attributes
 
 import (
 	"errors"
-
-	animations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 )
 
 type AnimatedSizeAttributes struct {
 	*ValueReferenceHolder
-	*animations.ImplicitAnimatable
+	*duit_props.ImplicitAnimatable
 	*ThemeConsumer
 	ClipBehavior    duit_props.Clip           `json:"clipBehavior,omitempty"`
 	Alignment       duit_props.Alignment `json:"alignment,omitempty"`

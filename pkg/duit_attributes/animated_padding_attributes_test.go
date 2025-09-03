@@ -2,9 +2,7 @@ package duit_attributes_test
 
 import (
 	"testing"
-
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 )
 
@@ -13,9 +11,9 @@ func TestAnimatedPaddingAttributes_Validate_ValidPadding(t *testing.T) {
 	
 	attrs := &duit_attributes.AnimatedPaddingAttributes{
 		Padding: padding,
-		ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
+		ImplicitAnimatable: &duit_props.ImplicitAnimatable{
 			Duration: 300,
-			Curve:    duit_animations.Ease,
+			Curve:    duit_props.CurveEase,
 		},
 	}
 
@@ -28,9 +26,9 @@ func TestAnimatedPaddingAttributes_Validate_ValidPadding(t *testing.T) {
 func TestAnimatedPaddingAttributes_Validate_NilPadding(t *testing.T) {
 	attrs := &duit_attributes.AnimatedPaddingAttributes{
 		Padding: nil,
-		ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
+		ImplicitAnimatable: &duit_props.ImplicitAnimatable{
 			Duration: 300,
-			Curve:    duit_animations.Ease,
+			Curve:    duit_props.CurveEase,
 		},
 	}
 
@@ -51,9 +49,9 @@ func TestAnimatedPaddingAttributes_Validate_InvalidPadding(t *testing.T) {
 	
 	attrs := &duit_attributes.AnimatedPaddingAttributes{
 		Padding: padding,
-		ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
+		ImplicitAnimatable: &duit_props.ImplicitAnimatable{
 			Duration: 300,
-			Curve:    duit_animations.Ease,
+			Curve:    duit_props.CurveEase,
 		},
 	}
 
@@ -86,9 +84,9 @@ func TestAnimatedPaddingAttributes_Validate_DifferentPaddingTypes(t *testing.T) 
 		t.Run(tc.name, func(t *testing.T) {
 			attrs := &duit_attributes.AnimatedPaddingAttributes{
 				Padding: tc.padding,
-				ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
+				ImplicitAnimatable: &duit_props.ImplicitAnimatable{
 					Duration: 300,
-					Curve:    duit_animations.Ease,
+					Curve:    duit_props.CurveEase,
 				},
 			}
 
@@ -107,9 +105,9 @@ func TestAnimatedPaddingAttributes_Validate_ValidImplicitAnimatable(t *testing.T
 	
 	attrs := &duit_attributes.AnimatedPaddingAttributes{
 		Padding: padding,
-		ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
+		ImplicitAnimatable: &duit_props.ImplicitAnimatable{
 			Duration: 300,
-			Curve:    duit_animations.Ease,
+			Curve:    duit_props.CurveEase,
 		},
 	}
 

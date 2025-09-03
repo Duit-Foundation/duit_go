@@ -4,15 +4,13 @@ import (
 	"encoding/json"
 	"strings"
 	"testing"
-
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 )
 
 func TestAnimatedBuilderAttributes_Validate_ValidAttributes(t *testing.T) {
 	tweens := []any{
-		duit_animations.Tween("opacity", 0.0, 1.0, 300, duit_animations.OnEnter, duit_animations.Forward, false, duit_animations.Ease),
+		duit_props.Tween("opacity", 0.0, 1.0, 300, duit_props.AnimationTriggerOnEnter, duit_props.AnimationMethodForward, false, duit_props.CurveEase),
 	}
 
 	attrs := &duit_attributes.AnimatedBuilderAttributes{
@@ -63,18 +61,18 @@ func TestAnimatedBuilderAttributes_Validate_ValidTweenTypes(t *testing.T) {
 	}{
 		{
 			name:  "DoubleTween",
-			tween: duit_animations.Tween("opacity", 0.0, 1.0, 300, duit_animations.OnEnter, duit_animations.Forward, false, duit_animations.Ease),
+			tween: duit_props.Tween("opacity", 0.0, 1.0, 300, duit_props.AnimationTriggerOnEnter, duit_props.AnimationMethodForward, false, duit_props.CurveEase),
 		},
 		{
 			name:  "ColorTween",
-			tween: duit_animations.ColorTween[duit_props.ColorString]("color", "#FF0000", "#00FF00", 300, duit_animations.OnEnter, duit_animations.Forward, false, duit_animations.Ease),
+			tween: duit_props.ColorTween[duit_props.ColorString]("color", "#FF0000", "#00FF00", 300, duit_props.AnimationTriggerOnEnter, duit_props.AnimationMethodForward, false, duit_props.CurveEase),
 		},
 		{
 			name: "SizeTween",
-			tween: duit_animations.SizeTween("size", 
+			tween: duit_props.SizeTween("size", 
 				duit_props.Size{Width: 100.0, Height: 100.0}, 
 				duit_props.Size{Width: 200.0, Height: 200.0}, 
-				300, duit_animations.OnEnter, duit_animations.Forward, false, duit_animations.Ease),
+				300, duit_props.AnimationTriggerOnEnter, duit_props.AnimationMethodForward, false, duit_props.CurveEase),
 		},
 	}
 
@@ -97,12 +95,12 @@ func TestAnimatedBuilderAttributes_Validate_ValidTweenTypes(t *testing.T) {
 
 func TestAnimatedBuilderAttributes_Validate_MultipleTweens(t *testing.T) {
 	tweens := []any{
-		duit_animations.Tween("opacity", 0.0, 1.0, 300, duit_animations.OnEnter, duit_animations.Forward, false, duit_animations.Ease),
-		duit_animations.ColorTween[duit_props.ColorString]("color", "#FF0000", "#00FF00", 300, duit_animations.OnEnter, duit_animations.Forward, false, duit_animations.Ease),
-		duit_animations.SizeTween("size", 
+		duit_props.Tween("opacity", 0.0, 1.0, 300, duit_props.AnimationTriggerOnEnter, duit_props.AnimationMethodForward, false, duit_props.CurveEase),
+		duit_props.ColorTween[duit_props.ColorString]("color", "#FF0000", "#00FF00", 300, duit_props.AnimationTriggerOnEnter, duit_props.AnimationMethodForward, false, duit_props.CurveEase),
+		duit_props.SizeTween("size", 
 			duit_props.Size{Width: 100.0, Height: 100.0}, 
 			duit_props.Size{Width: 200.0, Height: 200.0}, 
-			300, duit_animations.OnEnter, duit_animations.Forward, false, duit_animations.Ease),
+			300, duit_props.AnimationTriggerOnEnter, duit_props.AnimationMethodForward, false, duit_props.CurveEase),
 	}
 
 	attrs := &duit_attributes.AnimatedBuilderAttributes{
@@ -131,7 +129,7 @@ func TestAnimatedBuilderAttributes_Validate_InvalidTweenType(t *testing.T) {
 		t.Fatal("expected error for invalid tween type")
 	}
 
-	// The error message will come from duit_animations.CheckTweenType
+	// The error message will come from duit_props.CheckTweenType
 	if !strings.Contains(err.Error(), "invalid tween type") {
 		t.Fatalf("expected error to contain 'invalid tween type', got: %s", err.Error())
 	}
@@ -139,7 +137,7 @@ func TestAnimatedBuilderAttributes_Validate_InvalidTweenType(t *testing.T) {
 
 func TestAnimatedBuilderAttributes_Validate_WithoutPersistentId(t *testing.T) {
 	tweens := []any{
-		duit_animations.Tween("opacity", 0.0, 1.0, 300, duit_animations.OnEnter, duit_animations.Forward, false, duit_animations.Ease),
+		duit_props.Tween("opacity", 0.0, 1.0, 300, duit_props.AnimationTriggerOnEnter, duit_props.AnimationMethodForward, false, duit_props.CurveEase),
 	}
 
 	attrs := &duit_attributes.AnimatedBuilderAttributes{
@@ -155,7 +153,7 @@ func TestAnimatedBuilderAttributes_Validate_WithoutPersistentId(t *testing.T) {
 
 func TestAnimatedBuilderAttributes_MarshalJSON_WithPersistentId(t *testing.T) {
 	tweens := []any{
-		duit_animations.Tween("opacity", 0.0, 1.0, 300, duit_animations.OnEnter, duit_animations.Forward, false, duit_animations.Ease),
+		duit_props.Tween("opacity", 0.0, 1.0, 300, duit_props.AnimationTriggerOnEnter, duit_props.AnimationMethodForward, false, duit_props.CurveEase),
 	}
 
 	attrs := &duit_attributes.AnimatedBuilderAttributes{
@@ -176,7 +174,7 @@ func TestAnimatedBuilderAttributes_MarshalJSON_WithPersistentId(t *testing.T) {
 
 func TestAnimatedBuilderAttributes_MarshalJSON_WithoutPersistentId(t *testing.T) {
 	tweens := []any{
-		duit_animations.Tween("opacity", 0.0, 1.0, 300, duit_animations.OnEnter, duit_animations.Forward, false, duit_animations.Ease),
+		duit_props.Tween("opacity", 0.0, 1.0, 300, duit_props.AnimationTriggerOnEnter, duit_props.AnimationMethodForward, false, duit_props.CurveEase),
 	}
 
 	attrs := &duit_attributes.AnimatedBuilderAttributes{
@@ -197,7 +195,7 @@ func TestAnimatedBuilderAttributes_MarshalJSON_WithoutPersistentId(t *testing.T)
 
 func TestAnimatedBuilderAttributes_MarshalJSON_WithTweens(t *testing.T) {
 	tweens := []any{
-		duit_animations.Tween("opacity", 0.0, 1.0, 300, duit_animations.OnEnter, duit_animations.Forward, false, duit_animations.Ease),
+		duit_props.Tween("opacity", 0.0, 1.0, 300, duit_props.AnimationTriggerOnEnter, duit_props.AnimationMethodForward, false, duit_props.CurveEase),
 	}
 
 	attrs := &duit_attributes.AnimatedBuilderAttributes{

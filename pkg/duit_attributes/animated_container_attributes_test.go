@@ -4,9 +4,7 @@ import (
 	"encoding/json"
 	"strings"
 	"testing"
-
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 )
 
@@ -15,9 +13,9 @@ func TestAnimatedContainerAttributes_Validate_ValidAttributes(t *testing.T) {
 	attrs := &duit_attributes.AnimatedContainerAttributes[duit_props.EdgeInsetsAll, duit_props.ColorString]{
 		Width:  100.0,
 		Height: 200.0,
-		ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
+		ImplicitAnimatable: &duit_props.ImplicitAnimatable{
 			Duration: 300,
-			Curve:    duit_animations.Ease,
+			Curve:    duit_props.CurveEase,
 		},
 	}
 
@@ -60,9 +58,9 @@ func TestAnimatedContainerAttributes_Validate_WithDimensions(t *testing.T) {
 			attrs := &duit_attributes.AnimatedContainerAttributes[duit_props.EdgeInsetsAll, duit_props.ColorString]{
 				Width:  tc.width,
 				Height: tc.height,
-				ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
+				ImplicitAnimatable: &duit_props.ImplicitAnimatable{
 					Duration: 300,
-					Curve:    duit_animations.Ease,
+					Curve:    duit_props.CurveEase,
 				},
 			}
 
@@ -80,9 +78,9 @@ func TestAnimatedContainerAttributes_Validate_WithColorAndClip(t *testing.T) {
 		Height:       200.0,
 		Color:        "#FF0000",
 		ClipBehavior: duit_props.ClipAntiAlias,
-		ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
+		ImplicitAnimatable: &duit_props.ImplicitAnimatable{
 			Duration: 300,
-			Curve:    duit_animations.Ease,
+			Curve:    duit_props.CurveEase,
 		},
 	}
 
@@ -98,9 +96,9 @@ func TestAnimatedContainerAttributes_Validate_WithPaddingAndMargin(t *testing.T)
 		Height:  200.0,
 		Padding: 10.0,
 		Margin:  5.0,
-		ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
+		ImplicitAnimatable: &duit_props.ImplicitAnimatable{
 			Duration: 300,
-			Curve:    duit_animations.Ease,
+			Curve:    duit_props.CurveEase,
 		},
 	}
 
@@ -116,9 +114,9 @@ func TestAnimatedContainerAttributes_Validate_WithAlignment(t *testing.T) {
 		Height:             200.0,
 		Alignment:          duit_props.AlignmentCenter,
 		TransformAlignment: duit_props.AlignmentTopLeft,
-		ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
+		ImplicitAnimatable: &duit_props.ImplicitAnimatable{
 			Duration: 300,
-			Curve:    duit_animations.Ease,
+			Curve:    duit_props.CurveEase,
 		},
 	}
 
@@ -140,9 +138,9 @@ func TestAnimatedContainerAttributes_Validate_WithConstraints(t *testing.T) {
 		Width:       100.0,
 		Height:      200.0,
 		Constraints: constraints,
-		ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
+		ImplicitAnimatable: &duit_props.ImplicitAnimatable{
 			Duration: 300,
-			Curve:    duit_animations.Ease,
+			Curve:    duit_props.CurveEase,
 		},
 	}
 
@@ -180,9 +178,9 @@ func TestAnimatedContainerAttributes_MarshalJSON_WithAlignment(t *testing.T) {
 		Height:             200.0,
 		Alignment:          duit_props.AlignmentCenter,
 		TransformAlignment: duit_props.AlignmentTopLeft,
-		ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
+		ImplicitAnimatable: &duit_props.ImplicitAnimatable{
 			Duration: 300,
-			Curve:    duit_animations.Ease,
+			Curve:    duit_props.CurveEase,
 		},
 	}
 

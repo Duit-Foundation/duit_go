@@ -2,14 +2,12 @@ package duit_attributes
 
 import (
 	"errors"
-
-	animations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 )
 
 type WrapAttributes struct {
 	*ValueReferenceHolder
-	*animations.AnimatedPropertyOwner
+	*duit_props.AnimatedPropertyOwner
 	*ThemeConsumer
 	TextDirection      duit_props.TextDirection `json:"textDirection,omitempty"`
 	VerticalDirection  duit_props.VerticalDirection        `json:"verticalDirection,omitempty"`

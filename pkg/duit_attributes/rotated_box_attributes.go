@@ -2,15 +2,14 @@ package duit_attributes
 
 import (
 	"errors"
-
-	animations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
 type RotatedBoxAttributes struct {
 	*ValueReferenceHolder
 	*ThemeConsumer
-	*animations.AnimatedPropertyOwner
+	*duit_props.AnimatedPropertyOwner
 	QuarterTurns duit_utils.Tristate[int] `json:"quarterTurns,omitempty"`
 }
 

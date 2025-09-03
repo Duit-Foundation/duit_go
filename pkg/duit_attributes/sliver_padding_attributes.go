@@ -2,15 +2,13 @@ package duit_attributes
 
 import (
 	"errors"
-
-	animations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 )
 
 type SliverPaddingAttributes struct {
 	*ValueReferenceHolder
 	*ThemeConsumer
-	*animations.AnimatedPropertyOwner
+	*duit_props.AnimatedPropertyOwner
 	*SliverProps
 	Padding *duit_props.EdgeInsetsV2 `json:"padding,omitempty"`
 }

@@ -10,7 +10,7 @@ Example:
 	AnimatedSlide(
 		&duit_attributes.AnimatedSlideAttributes{
 			Offset: &duit_props.Offset{Dx: 0.5, Dy: 0.0},
-			ImplicitAnimatable: duit_animations.ImplicitAnimatable{
+			ImplicitAnimatable: duit_props.ImplicitAnimatable{
 				Duration: 1000,
 			},
 		},

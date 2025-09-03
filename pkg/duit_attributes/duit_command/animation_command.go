@@ -1,15 +1,15 @@
 package duit_command
 
-import "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
+import "github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 
 type AnimationCommand struct {
 	Type            string                           `json:"type"`
 	AnimatedPropKey string                           `json:"animatedPropKey"`
-	Method          duit_animations.AnimationMethod  `json:"method"`
-	Trigger         duit_animations.AnimationTrigger `json:"trigger"`
+	Method          duit_props.AnimationMethod  `json:"method"`
+	Trigger         duit_props.AnimationTrigger `json:"trigger"`
 }
 
-func NewAnimationCommand(animatedPropKey string, method duit_animations.AnimationMethod, trigger duit_animations.AnimationTrigger) *AnimationCommand {
+func NewAnimationCommand(animatedPropKey string, method duit_props.AnimationMethod, trigger duit_props.AnimationTrigger) *AnimationCommand {
 	return &AnimationCommand{
 		Type:            "animation",
 		AnimatedPropKey: animatedPropKey,

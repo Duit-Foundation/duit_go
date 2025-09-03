@@ -1,14 +1,13 @@
 package duit_attributes
 
 import (
-	animations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
 type SafeAreaAttributes[TInsets duit_props.EdgeInsets] struct {
 	*ValueReferenceHolder
-	*animations.AnimatedPropertyOwner
+	*duit_props.AnimatedPropertyOwner
 	*ThemeConsumer
 	Left                      duit_utils.Tristate[bool] `json:"left,omitempty"`
 	Top                       duit_utils.Tristate[bool] `json:"top,omitempty"`

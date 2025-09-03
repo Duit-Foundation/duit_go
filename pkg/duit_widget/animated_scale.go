@@ -10,7 +10,7 @@ Example:
 	AnimatedScale(
 		&duit_attributes.AnimatedScaleAttributes{
 			Scale: 2.0,
-			ImplicitAnimatable: duit_animations.ImplicitAnimatable{
+			ImplicitAnimatable: duit_props.ImplicitAnimatable{
 				Duration: 1000,
 			},
 		},

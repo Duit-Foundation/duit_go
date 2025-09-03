@@ -4,9 +4,7 @@ import (
 	"encoding/json"
 	"strings"
 	"testing"
-
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 )
 
@@ -151,7 +149,7 @@ func TestAlignAttributes_Validate_WithFactors(t *testing.T) {
 func TestAlignAttributes_Validate_WithAnimatedPropertyOwner(t *testing.T) {
 	attrs := &duit_attributes.AlignAttributes{
 		Alignment: duit_props.AlignmentCenter,
-		AnimatedPropertyOwner: &duit_animations.AnimatedPropertyOwner{
+		AnimatedPropertyOwner: &duit_props.AnimatedPropertyOwner{
 			ParentBuilderId:    "test-builder",
 			AffectedProperties: []string{"alignment"},
 		},

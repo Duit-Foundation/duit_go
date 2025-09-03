@@ -4,9 +4,7 @@ import (
 	"encoding/json"
 	"strings"
 	"testing"
-
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
@@ -19,9 +17,9 @@ func TestAnimatedPhysicalModelAttributes_Validate_ValidAttributes(t *testing.T) 
 		Elevation:   duit_utils.Float32Value(4.0),
 		Color:       color,
 		ShadowColor: shadowColor,
-		ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
+		ImplicitAnimatable: &duit_props.ImplicitAnimatable{
 			Duration: 300,
-			Curve:    duit_animations.Ease,
+			Curve:    duit_props.CurveEase,
 		},
 	}
 
@@ -67,9 +65,9 @@ func TestAnimatedPhysicalModelAttributes_Validate_ValidElevationValues(t *testin
 				Elevation:   duit_utils.Float32Value(tc.elevation),
 				Color:       color,
 				ShadowColor: shadowColor,
-				ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
+				ImplicitAnimatable: &duit_props.ImplicitAnimatable{
 					Duration: 300,
-					Curve:    duit_animations.Ease,
+					Curve:    duit_props.CurveEase,
 				},
 			}
 
@@ -89,9 +87,9 @@ func TestAnimatedPhysicalModelAttributes_Validate_InvalidElevation(t *testing.T)
 		Elevation:   duit_utils.Float32Value(-1.0), // Invalid negative elevation
 		Color:       color,
 		ShadowColor: shadowColor,
-		ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
+		ImplicitAnimatable: &duit_props.ImplicitAnimatable{
 			Duration: 300,
-			Curve:    duit_animations.Ease,
+			Curve:    duit_props.CurveEase,
 		},
 	}
 
@@ -114,9 +112,9 @@ func TestAnimatedPhysicalModelAttributes_Validate_NilElevation(t *testing.T) {
 		Elevation:   nil, // Required field
 		Color:       color,
 		ShadowColor: shadowColor,
-		ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
+		ImplicitAnimatable: &duit_props.ImplicitAnimatable{
 			Duration: 300,
-			Curve:    duit_animations.Ease,
+			Curve:    duit_props.CurveEase,
 		},
 	}
 
@@ -138,9 +136,9 @@ func TestAnimatedPhysicalModelAttributes_Validate_NilColor(t *testing.T) {
 		Elevation:   duit_utils.Float32Value(4.0),
 		Color:       nil, // Required field
 		ShadowColor: shadowColor,
-		ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
+		ImplicitAnimatable: &duit_props.ImplicitAnimatable{
 			Duration: 300,
-			Curve:    duit_animations.Ease,
+			Curve:    duit_props.CurveEase,
 		},
 	}
 
@@ -162,9 +160,9 @@ func TestAnimatedPhysicalModelAttributes_Validate_NilShadowColor(t *testing.T) {
 		Elevation:   duit_utils.Float32Value(4.0),
 		Color:       color,
 		ShadowColor: nil, // Required field
-		ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
+		ImplicitAnimatable: &duit_props.ImplicitAnimatable{
 			Duration: 300,
-			Curve:    duit_animations.Ease,
+			Curve:    duit_props.CurveEase,
 		},
 	}
 
@@ -196,9 +194,9 @@ func TestAnimatedPhysicalModelAttributes_Validate_WithOptionalFields(t *testing.
 		Shape:              duit_props.BoxShapeRectangle,
 		AnimateColor:       duit_utils.BoolValue(true),
 		AnimateShadowColor: duit_utils.BoolValue(false),
-		ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
+		ImplicitAnimatable: &duit_props.ImplicitAnimatable{
 			Duration: 300,
-			Curve:    duit_animations.Ease,
+			Curve:    duit_props.CurveEase,
 		},
 	}
 
@@ -218,9 +216,9 @@ func TestAnimatedPhysicalModelAttributes_MarshalJSON_ElevationField(t *testing.T
 		Elevation:   duit_utils.Float32Value(6.0),
 		Color:       color,
 		ShadowColor: shadowColor,
-		ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
+		ImplicitAnimatable: &duit_props.ImplicitAnimatable{
 			Duration: 300,
-			Curve:    duit_animations.Ease,
+			Curve:    duit_props.CurveEase,
 		},
 	}
 
@@ -244,9 +242,9 @@ func TestAnimatedPhysicalModelAttributes_MarshalJSON_AnimateColorField(t *testin
 		Color:        color,
 		ShadowColor:  shadowColor,
 		AnimateColor: duit_utils.BoolValue(true),
-		ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
+		ImplicitAnimatable: &duit_props.ImplicitAnimatable{
 			Duration: 300,
-			Curve:    duit_animations.Ease,
+			Curve:    duit_props.CurveEase,
 		},
 	}
 
@@ -270,9 +268,9 @@ func TestAnimatedPhysicalModelAttributes_MarshalJSON_AnimateShadowColorField(t *
 		Color:              color,
 		ShadowColor:        shadowColor,
 		AnimateShadowColor: duit_utils.BoolValue(false),
-		ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
+		ImplicitAnimatable: &duit_props.ImplicitAnimatable{
 			Duration: 300,
-			Curve:    duit_animations.Ease,
+			Curve:    duit_props.CurveEase,
 		},
 	}
 
@@ -297,9 +295,9 @@ func TestAnimatedPhysicalModelAttributes_MarshalJSON_NilTristateFields(t *testin
 		ShadowColor:        shadowColor,
 		AnimateColor:       nil,
 		AnimateShadowColor: nil,
-		ImplicitAnimatable: &duit_animations.ImplicitAnimatable{
+		ImplicitAnimatable: &duit_props.ImplicitAnimatable{
 			Duration: 300,
-			Curve:    duit_animations.Ease,
+			Curve:    duit_props.CurveEase,
 		},
 	}
 

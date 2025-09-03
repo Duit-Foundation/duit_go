@@ -3,7 +3,6 @@ package duit_attributes
 import (
 	"errors"
 	"fmt"
-
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 

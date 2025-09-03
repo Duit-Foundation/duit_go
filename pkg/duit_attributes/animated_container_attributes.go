@@ -3,13 +3,12 @@ package duit_attributes
 import (
 	"errors"
 
-	animations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 )
 
 type AnimatedContainerAttributes[TInsets duit_props.EdgeInsets, TColor duit_props.Color] struct {
 	*ValueReferenceHolder
-	*animations.ImplicitAnimatable
+	*duit_props.ImplicitAnimatable
 	*ThemeConsumer
 	Width                float32                                `json:"width,omitempty"`
 	Height               float32                                `json:"height,omitempty"`

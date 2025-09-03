@@ -12,13 +12,13 @@ Example usage:
 		&duit_attributes.AnimatedBuilderAttributes{
 			PersistentId: "1", //override it for use builder inside component layout
 			Tweens: []any{
-				duit_animations.Tween(
+				duit_props.Tween(
 					"height", //animated property name
 					0.0, //begin
 					100.0, //end
 					3000, //duratuin
-					duit_animations.OnEnter, //trigger
-					duit_animations.Forward, //method
+					duit_props.AnimationTriggerOnEnter, //trigger
+					duit_props.AnimationMethodForward, //method
 					false, //repeat
 					"", //linear curve by default
 				),

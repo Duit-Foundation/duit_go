@@ -3,7 +3,6 @@ package duit_attributes_test
 import (
 	"strings"
 	"testing"
-
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
