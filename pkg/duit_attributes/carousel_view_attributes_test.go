@@ -7,7 +7,6 @@ import (
 
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
@@ -29,7 +28,7 @@ func TestCarouselViewAttributes_Validate_WithAllProperties(t *testing.T) {
 		Elevation:        4.0,
 		ShrinkExtent:     100.0,
 		ItemExtent:       200.0,
-		ScrollDirection:  duit_flex.Horizontal,
+		ScrollDirection:  duit_props.AxisHorizontal,
 		EnableSplash:     duit_utils.BoolValue(true),
 		Reverse:          duit_utils.BoolValue(false),
 		ItemSnapping:     duit_utils.BoolValue(true),

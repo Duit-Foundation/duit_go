@@ -2,9 +2,8 @@ package duit_command
 
 import (
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_action"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_core"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
@@ -20,8 +19,8 @@ type BottomSheetCommand[TAction duit_action.Action, TColor duit_props.Color, TSh
 	EnableDrag                          duit_utils.Tristate[bool]           `json:"enableDrag,omitempty"`
 	ShowDragHandle                      duit_utils.Tristate[bool]           `json:"showDragHandle,omitempty"`
 	ScrollControlDisabledMaxHeightRatio duit_utils.Tristate[float32]        `json:"scrollControlDisabledMaxHeightRatio,omitempty"`
-	Constraints                         *duit_flex.BoxConstraints            `json:"constraints,omitempty"`
-	AnchorPoint                         *duit_flex.Offset                   `json:"anchorPoint,omitempty"`
+	Constraints                         *duit_props.BoxConstraints            `json:"constraints,omitempty"`
+	AnchorPoint                         *duit_props.Offset                   `json:"anchorPoint,omitempty"`
 	BackgroundColor                     TColor                              `json:"backgroundColor,omitempty"`
 	BarrierColor                        TColor                              `json:"barrierColor,omitempty"`
 	Shape                               *TShape                             `json:"shape,omitempty"`
@@ -36,8 +35,8 @@ type BottomSheetUIProps[TColor duit_props.Color, TShape duit_props.ShapeBorder[T
 	EnableDrag                          duit_utils.Tristate[bool]           `json:"enableDrag,omitempty"`
 	ShowDragHandle                      duit_utils.Tristate[bool]           `json:"showDragHandle,omitempty"`
 	ScrollControlDisabledMaxHeightRatio duit_utils.Tristate[float32]        `json:"scrollControlDisabledMaxHeightRatio,omitempty"`
-	Constraints                         *duit_flex.BoxConstraints            `json:"constraints,omitempty"`
-	AnchorPoint                         *duit_flex.Offset                   `json:"anchorPoint,omitempty"`
+	Constraints                         *duit_props.BoxConstraints            `json:"constraints,omitempty"`
+	AnchorPoint                         *duit_props.Offset                   `json:"anchorPoint,omitempty"`
 	BackgroundColor                     TColor        `json:"backgroundColor,omitempty"`
 	BarrierColor                        TColor         `json:"barrierColor,omitempty"`
 	Shape                               *TShape                             `json:"shape,omitempty"`

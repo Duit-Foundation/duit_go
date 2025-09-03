@@ -1,4 +1,4 @@
-package duit_flex
+package duit_props
 
 type StretchMode string
 
@@ -7,3 +7,4 @@ const (
 	StretchModeBlurBackground StretchMode = "blurBackground"
 	StretchModeFadeTitle      StretchMode = "fadeTitle"
 )
+

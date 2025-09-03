@@ -3,7 +3,6 @@ package duit_attributes
 import (
 	animations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
 )
 
 type ContainerAttributes[TInsets duit_props.EdgeInsets, TColor duit_props.Color] struct {
@@ -20,7 +19,7 @@ type ContainerAttributes[TInsets duit_props.EdgeInsets, TColor duit_props.Color]
 	Margin               TInsets                                `json:"margin,omitempty"`
 	Alignment            duit_props.Alignment               `json:"alignment,omitempty"`
 	TransformAlignment   duit_props.Alignment               `json:"transformAlignment,omitempty"`
-	Constraints          *duit_flex.BoxConstraints              `json:"constraints,omitempty"`
+	Constraints          *duit_props.BoxConstraints              `json:"constraints,omitempty"`
 }
 
 func (r *ContainerAttributes[TInsets, TColor]) Validate() error {

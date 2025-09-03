@@ -4,9 +4,8 @@ import (
 	"errors"
 
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_builder"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_core"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
@@ -26,7 +25,7 @@ type ListViewBaseAttributes[TInsets duit_props.EdgeInsets] struct {
 	AddAutomaticKeepAlives  duit_utils.Tristate[bool]                       `json:"addAutomaticKeepAlives,omitempty"`
 	AddRepaintBoundaries    duit_utils.Tristate[bool]                       `json:"addRepaintBoundaries,omitempty"`
 	AddSemanticIndexes      duit_utils.Tristate[bool]                       `json:"addSemanticIndexes,omitempty"`
-	ScrollDirection         duit_flex.Axis                                  `json:"scrollDirection,omitempty"`
+	ScrollDirection         duit_props.Axis                                  `json:"scrollDirection,omitempty"`
 	ScrollPhysics           duit_props.ScrollPhysics                     `json:"scrollPhysics,omitempty"`
 	CacheExtent             float32                                         `json:"cacheExtent,omitempty"`
 	Anchor                  float32                                         `json:"anchors,omitempty"`

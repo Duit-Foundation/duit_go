@@ -9,7 +9,7 @@ import (
 Example:
 	AnimatedSlide(
 		&duit_attributes.AnimatedSlideAttributes{
-			Offset: &duit_flex.Offset{Dx: 0.5, Dy: 0.0},
+			Offset: &duit_props.Offset{Dx: 0.5, Dy: 0.0},
 			ImplicitAnimatable: duit_animations.ImplicitAnimatable{
 				Duration: 1000,
 			},

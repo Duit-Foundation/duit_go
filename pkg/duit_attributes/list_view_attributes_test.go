@@ -7,7 +7,6 @@ import (
 
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_builder"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_core"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
@@ -45,7 +44,7 @@ func TestListViewBaseAttributes_Validate_WithAllProperties(t *testing.T) {
 		AddAutomaticKeepAlives:  duit_utils.BoolValue(false),
 		AddRepaintBoundaries:    duit_utils.BoolValue(true),
 		AddSemanticIndexes:      duit_utils.BoolValue(false),
-		ScrollDirection:         duit_flex.Vertical,
+		ScrollDirection:         duit_props.AxisVertical,
 		ScrollPhysics:           duit_props.ScrollPhysicsAlwaysScrollable,
 		CacheExtent:             100.0,
 		Anchor:                  0.5,

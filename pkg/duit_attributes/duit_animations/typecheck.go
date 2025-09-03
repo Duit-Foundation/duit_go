@@ -3,7 +3,6 @@ package duit_animations
 import (
 	"errors"
 
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 )
 
@@ -18,8 +17,8 @@ func CheckTweenType(tween any) error {
 		*tweenBase[duit_props.BoxDecoration[duit_props.ColorString]],
 		*tweenBase[duit_props.EdgeInsetsSymmentric],
 		*tweenBase[duit_props.EdgeInsetsLTRB],
-		*tweenBase[duit_flex.BoxConstraints],
-		*tweenBase[duit_flex.Size],
+		*tweenBase[duit_props.BoxConstraints],
+		*tweenBase[duit_props.Size],
 		*tweenGroup, nil:
 		return nil
 	default:

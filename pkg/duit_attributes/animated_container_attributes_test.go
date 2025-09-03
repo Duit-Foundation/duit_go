@@ -8,7 +8,6 @@ import (
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
 )
 
 func TestAnimatedContainerAttributes_Validate_ValidAttributes(t *testing.T) {
@@ -130,7 +129,7 @@ func TestAnimatedContainerAttributes_Validate_WithAlignment(t *testing.T) {
 }
 
 func TestAnimatedContainerAttributes_Validate_WithConstraints(t *testing.T) {
-	constraints := &duit_flex.BoxConstraints{
+	constraints := &duit_props.BoxConstraints{
 		MinWidth:  50.0,
 		MaxWidth:  200.0,
 		MinHeight: 100.0,

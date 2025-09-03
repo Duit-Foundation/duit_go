@@ -5,7 +5,6 @@ import (
 
 	animations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_cross_axis"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_main_axis"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 )
@@ -15,14 +14,14 @@ type WrapAttributes struct {
 	*animations.AnimatedPropertyOwner
 	*ThemeConsumer
 	TextDirection      duit_props.TextDirection `json:"textDirection,omitempty"`
-	VerticalDirection  duit_flex.VerticalDirection        `json:"verticalDirection,omitempty"`
+	VerticalDirection  duit_props.VerticalDirection        `json:"verticalDirection,omitempty"`
 	Alignment          duit_main_axis.MainAxisAlignment   `json:"alignment,omitempty"`
 	RunAlignment       duit_main_axis.MainAxisAlignment   `json:"runAlignment,omitempty"`
 	CrossAxisAlignment duit_cross_axis.CrossAxisAlignment `json:"crossAxisAlignment,omitempty"`
 	Spacing            float32                            `json:"spacing,omitempty"`
 	RunSpacing         float32                            `json:"runSpacing,omitempty"`
 	ClipBehavior       duit_props.Clip                     `json:"clipBehavior,omitempty"`
-	Direction          duit_flex.Axis                     `json:"direction,omitempty"`
+	Direction          duit_props.Axis                     `json:"direction,omitempty"`
 }
 
 func (r *WrapAttributes) Validate() error {

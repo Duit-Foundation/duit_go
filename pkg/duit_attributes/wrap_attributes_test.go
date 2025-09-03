@@ -5,7 +5,6 @@ import (
 
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_cross_axis"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_main_axis"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 )
@@ -13,14 +12,14 @@ import (
 func TestWrapAttributes_Validate_ValidAttributes(t *testing.T) {
 	attrs := &duit_attributes.WrapAttributes{
 		TextDirection:      duit_props.TextDirectionLtr,
-		VerticalDirection:  duit_flex.Down,
+		VerticalDirection:  duit_props.VerticalDirectionDown,
 		Alignment:          duit_main_axis.Start,
 		RunAlignment:       duit_main_axis.Center,
 		CrossAxisAlignment: duit_cross_axis.Start,
 		Spacing:            10.0,
 		RunSpacing:         5.0,
 		ClipBehavior:       duit_props.ClipAntiAlias,
-		Direction:          duit_flex.Horizontal,
+		Direction:          duit_props.AxisHorizontal,
 	}
 
 	err := attrs.Validate()

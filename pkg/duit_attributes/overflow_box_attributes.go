@@ -2,7 +2,6 @@ package duit_attributes
 
 import (
 	animations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 )
 
@@ -15,7 +14,7 @@ type OverflowBoxAttributes struct {
 	MinHeight float32                  `json:"minHeight,omitempty"`
 	MaxHeight float32                  `json:"maxHeight,omitempty"`
 	Alignment duit_props.Alignment `json:"alignment,omitempty"`
-	Fit       duit_flex.OverflowBoxFit `json:"fit,omitempty"`
+	Fit       duit_props.OverflowBoxFit `json:"fit,omitempty"`
 }
 
 func (r *OverflowBoxAttributes) Validate() error {

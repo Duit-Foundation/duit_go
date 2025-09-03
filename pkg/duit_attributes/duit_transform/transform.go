@@ -1,7 +1,6 @@
 package duit_transform
 
 import (
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_painting"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 )
@@ -16,7 +15,7 @@ const (
 )
 
 type TransformBase struct {
-	Origin            *duit_flex.Offset           `json:"origin,omitempty"`
+	Origin            *duit_props.Offset           `json:"origin,omitempty"`
 	Alignment         duit_props.Alignment    `json:"alignment,omitempty"`
 	TransformHitTests bool                        `json:"transformHitTests,omitempty"`
 	FilterQuality     duit_painting.FilterQuality `json:"filterQuality,omitempty"`
@@ -36,7 +35,7 @@ type RotateTransfrom struct {
 
 type TranslateTransfrom struct {
 	*TransformBase
-	Offset *duit_flex.Offset `json:"offset,omitempty"`
+	Offset *duit_props.Offset `json:"offset,omitempty"`
 }
 
 type FlipTransfrom struct {

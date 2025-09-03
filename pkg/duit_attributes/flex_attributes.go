@@ -3,7 +3,6 @@ package duit_attributes
 import (
 	animations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_cross_axis"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_main_axis"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 )
@@ -16,7 +15,7 @@ type FlexAttributes struct {
 	MainAxisSize       duit_main_axis.MainAxisSize        `json:"mainAxisSize,omitempty"`
 	CrossAxisAlignment duit_cross_axis.CrossAxisAlignment `json:"crossAxisAlignment,omitempty"`
 	TextDirection      duit_props.TextDirection `json:"textDirection,omitempty"`
-	VerticalDirection  duit_flex.VerticalDirection        `json:"verticalDirection,omitempty"`
+	VerticalDirection  duit_props.VerticalDirection        `json:"verticalDirection,omitempty"`
 	ClipBehavior       duit_props.Clip                     `json:"clipBehavior,omitempty"`
 }
 

@@ -4,7 +4,6 @@ import (
 	"testing"
 
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 )
 
@@ -15,7 +14,7 @@ func TestOverflowBoxAttributes_Validate_ValidAttributes(t *testing.T) {
 		MinHeight: 150.0,
 		MaxHeight: 250.0,
 		Alignment: duit_props.AlignmentCenter,
-		Fit:       duit_flex.Max,
+		Fit:       duit_props.OverflowBoxFitMax,
 	}
 
 	err := attrs.Validate()

@@ -5,7 +5,6 @@ import (
 
 	animations "github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_animations"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
@@ -26,7 +25,7 @@ type RadioAttributes[TValue PrimitiveValue, TColor duit_props.Color] struct {
 	FillColor             duit_props.MaterialStateProperty[TColor] `json:"fillColor,omitempty"`
 	OverlayColor          duit_props.MaterialStateProperty[TColor] `json:"overlayColor,omitempty"`
 	SplashRadius          float32                                     `json:"splashRadius,omitempty"`
-	VisualDensity         *duit_flex.VisualDensity                    `json:"visualDensity,omitempty"`
+	VisualDensity         *duit_props.VisualDensity                    `json:"visualDensity,omitempty"`
 	MaterialTapTargetSize duit_props.MaterialTapTargetSize         `json:"materialTapTargetSize,omitempty"`
 }
 

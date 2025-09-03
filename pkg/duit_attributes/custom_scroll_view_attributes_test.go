@@ -6,7 +6,6 @@ import (
 	"testing"
 
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
@@ -26,7 +25,7 @@ func TestCustomScrollViewAttributes_Validate_WithAllFields(t *testing.T) {
 		Reverse:                 duit_utils.BoolValue(true),
 		Primary:                 duit_utils.BoolValue(false),
 		ShrinkWrap:              duit_utils.BoolValue(true),
-		ScrollDirection:         duit_flex.Vertical,
+		ScrollDirection:         duit_props.AxisVertical,
 		Anchor:                  0.5,
 		SemantickChildCount:     10,
 		ClipBehavior:            duit_props.ClipAntiAlias,

@@ -5,7 +5,6 @@ import (
 
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_builder"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
@@ -20,7 +19,7 @@ const (
 
 type DefautlGridViewAttributes[TInsets duit_props.EdgeInsets] struct {
 	Constructor             duit_utils.Tristate[GridConstructor]            `json:"constructor"`
-	ScrollDirection         duit_flex.Axis                                  `json:"scrollDirection,omitempty"`
+	ScrollDirection         duit_props.Axis                                  `json:"scrollDirection,omitempty"`
 	Reverse                 duit_utils.Tristate[bool]                       `json:"reverse,omitempty"`
 	Primary                 duit_utils.Tristate[bool]                       `json:"primary,omitempty"`
 	ShrinkWrap              duit_utils.Tristate[bool]                       `json:"shrinkWrap,omitempty"`

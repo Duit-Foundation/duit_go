@@ -2,14 +2,13 @@ package duit_attributes
 
 import (
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
 type SingleChildScrollViewAttributes[TInsets duit_props.EdgeInsets] struct {
 	*ValueReferenceHolder
 	*ThemeConsumer
-	ScrollDirection         duit_flex.Axis                                  `json:"scrollDirection,omitempty"`
+	ScrollDirection         duit_props.Axis                                  `json:"scrollDirection,omitempty"`
 	Reverse                 duit_utils.Tristate[bool]                       `json:"reverse,omitempty"`
 	Primary                 duit_utils.Tristate[bool]                       `json:"primary,omitempty"`
 	Padding                 TInsets                                         `json:"padding,omitempty"`

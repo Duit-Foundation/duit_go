@@ -1,4 +1,4 @@
-package duit_flex
+package duit_props
 
 type CollapseMode string
 
@@ -7,3 +7,4 @@ const (
 	CollapseModePin      CollapseMode = "pin"
 	CollapseModeNone     CollapseMode = "none"
 )
+

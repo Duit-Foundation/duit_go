@@ -2,7 +2,6 @@ package duit_animations
 
 import (
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes/duit_flex"
 )
 
 type tweenBase[T any] struct {
@@ -133,8 +132,8 @@ func EdgeInsetsTween[TInsets duit_props.EdgeInsets](animatedPropKey string, begi
 	}
 }
 
-func BoxConstraintsTween(animatedPropKey string, begin, end duit_flex.BoxConstraints, duration int, trigger AnimationTrigger, method AnimationMethod, reverseOnRepeat bool, curve Curves) *tweenBase[duit_flex.BoxConstraints] {
-	return &tweenBase[duit_flex.BoxConstraints]{
+func BoxConstraintsTween(animatedPropKey string, begin, end duit_props.BoxConstraints, duration int, trigger AnimationTrigger, method AnimationMethod, reverseOnRepeat bool, curve Curves) *tweenBase[duit_props.BoxConstraints] {
+	return &tweenBase[duit_props.BoxConstraints]{
 		TweenType:       "boxConstraintsTween",
 		AnimatedPropKey: animatedPropKey,
 		Duration:        duration,
@@ -147,8 +146,8 @@ func BoxConstraintsTween(animatedPropKey string, begin, end duit_flex.BoxConstra
 	}
 }
 
-func SizeTween(animatedPropKey string, begin, end duit_flex.Size, duration int, trigger AnimationTrigger, method AnimationMethod, reverseOnRepeat bool, curve Curves) *tweenBase[duit_flex.Size] {
-	return &tweenBase[duit_flex.Size]{
+func SizeTween(animatedPropKey string, begin, end duit_props.Size, duration int, trigger AnimationTrigger, method AnimationMethod, reverseOnRepeat bool, curve Curves) *tweenBase[duit_props.Size] {
+	return &tweenBase[duit_props.Size]{
 		TweenType:       "sizeTween",
 		AnimatedPropKey: animatedPropKey,
 		Duration:        duration,
