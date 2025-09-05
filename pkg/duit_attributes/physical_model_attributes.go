@@ -7,19 +7,19 @@ import (
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
-type PhysicalModelAttributes[TColor duit_props.Color] struct {
+type PhysicalModelAttributes struct {
 	*ValueReferenceHolder
 	*duit_props.AnimatedPropertyOwner
 	*ThemeConsumer
-	Elevation    duit_utils.Tristate[float32]  `json:"elevation,omitempty"`
-	Color        TColor                        `json:"color,omitempty"`
-	ShadowColor  TColor                        `json:"shadowColor,omitempty"`
-	ClipBehavior duit_props.Clip                `json:"clipBehavior,omitempty"`
-	BorderRadius *duit_props.BorderRadius `json:"borderRadius,omitempty"`
-	Shape        duit_props.BoxShape      `json:"shape,omitempty"`
+	Elevation    duit_utils.Tristate[float32] `json:"elevation,omitempty"`
+	Color        *duit_props.Color            `json:"color,omitempty"`
+	ShadowColor  *duit_props.Color            `json:"shadowColor,omitempty"`
+	ClipBehavior duit_props.Clip              `json:"clipBehavior,omitempty"`
+	BorderRadius *duit_props.BorderRadius     `json:"borderRadius,omitempty"`
+	Shape        duit_props.BoxShape          `json:"shape,omitempty"`
 }
 
-func (r *PhysicalModelAttributes[TColor]) Validate() error {
+func (r *PhysicalModelAttributes) Validate() error {
 	if err := r.ValueReferenceHolder.Validate(); err != nil {
 		return err
 	}

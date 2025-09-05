@@ -3,52 +3,40 @@ package duit_props
 import (
 	"encoding/json"
 	"errors"
-	"fmt"
 )
 
-// Hex string
-type ColorString = string
+// func (color *ColorRGBO) MarshalJSON() ([]byte, error) {
+// 	if color != nil {
+// 		return []byte(fmt.Sprintf(`[%d,%d,%d,%f]`, color.R, color.G, color.B, color.O)), nil
+// 	}
 
-// Array of 4 uint8, last item of array will be assigned as opacity
-type ColorRGBO struct {
-	R uint8   `json:"r"`
-	G uint8   `json:"g"`
-	B uint8   `json:"b"`
-	O float32 `json:"o"`
-}
+// 	return []byte{}, nil
+// }
 
-func (color *ColorRGBO) MarshalJSON() ([]byte, error) {
-	if color != nil {
-		return []byte(fmt.Sprintf(`[%d,%d,%d,%f]`, color.R, color.G, color.B, color.O)), nil
-	}
+// type Color interface {
+// 	ColorString | *ColorRGBO
+// }
 
-	return []byte{}, nil
-}
-
-type Color interface {
-	ColorString | *ColorRGBO
-}
-
-type ColorV2 struct {
+type Color struct {
 	data any
 }
 
-func (c ColorV2) FromString(value string) *ColorV2 {
-	c.data = value
+func NewColorString(value string) *Color {
+	c := Color{data: value}
 	return &c
 }
 
-func (c ColorV2) FromRGBO(value ColorRGBO) *ColorV2 {
-	c.data = [4]uint8{value.R, value.G, value.B, uint8(value.O * 255)}
+func NewColorRGBO(rgb [3]uint8, opacity float32) *Color {
+	c := Color{data: [4]uint8{rgb[0], rgb[1], rgb[2], uint8(opacity * 255)}}
 	return &c
 }
 
-func (c ColorV2) FromRGBA(value [4]uint8) *ColorV2 {
-	c.data = value
+func NewColorRGBA(value [4]uint8) *Color {
+	c := Color{data: value}
 	return &c
 }
 
-func (c *ColorV2) Validate() error {
+func (c *Color) Validate() error {
 	if c == nil {
 		return nil
 	}
@@ -59,18 +47,15 @@ func (c *ColorV2) Validate() error {
 		if len(str) != 7 {
 			return errors.New("invalid color string")
 		}
-
 		if str[0] != '#' {
 			return errors.New("invalid color string. Must start with #")
 		}
-
 		return nil
 	case [4]uint8:
-		//TODO: добавть валидацию i <= 0 || i >= 255
 		return nil
 	default:
 		return errors.New("invalid color type")
 	}
 }
 
-func (r *ColorV2) MarshalJSON() ([]byte, error) { return json.Marshal(r.data) }
+func (r *Color) MarshalJSON() ([]byte, error) { return json.Marshal(r.data) }

@@ -11,8 +11,8 @@ type AnimatedAlignAttributes struct {
 	*duit_props.ImplicitAnimatable
 	*ThemeConsumer
 	Alignment    duit_props.Alignment `json:"alignment,omitempty"`
-	WidthFactor  float32                  `json:"widthFactor,omitempty"`
-	HeightFactor float32                  `json:"heightFactor,omitempty"`
+	WidthFactor  float32              `json:"widthFactor,omitempty"`
+	HeightFactor float32              `json:"heightFactor,omitempty"`
 }
 
 func (r *AnimatedAlignAttributes) Validate() error {

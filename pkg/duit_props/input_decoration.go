@@ -1,31 +1,31 @@
 package duit_props
 
-type InputDecoration[TInsets EdgeInsets, TColor Color] struct {
+type InputDecoration[TInsets EdgeInsets] struct {
 	LabelText          string               `json:"labelText,omitempty"`
-	LabelStyle         *TextStyle[TColor]   `json:"labelStyle,omitempty"`
-	FloatingLabelStyle *TextStyle[TColor]   `json:"floatingLabelStyle,omitempty"`
+	LabelStyle         *TextStyle   `json:"labelStyle,omitempty"`
+	FloatingLabelStyle *TextStyle   `json:"floatingLabelStyle,omitempty"`
 	HelperText         string               `json:"helperText,omitempty"`
-	HelperStyle        *TextStyle[TColor]   `json:"helperStyle,omitempty"`
+	HelperStyle        *TextStyle   `json:"helperStyle,omitempty"`
 	HintText           string               `json:"hintText,omitempty"`
-	HintStyle          *TextStyle[TColor]   `json:"hintStyle,omitempty"`
+	HintStyle          *TextStyle   `json:"hintStyle,omitempty"`
 	HintMaxLines       int                  `json:"hintMaxLines,omitempty"`
 	ErrorText          string               `json:"errorText,omitempty"`
-	ErrorStyle         *TextStyle[TColor]   `json:"errorStyle,omitempty"`
+	ErrorStyle         *TextStyle   `json:"errorStyle,omitempty"`
 	ErrorMaxLines      int                  `json:"errorMaxLines,omitempty"`
-	Border             *InputBorder[TColor] `json:"border,omitempty"`
-	ErrorBorder        *InputBorder[TColor] `json:"errorBorder,omitempty"`
-	Enabledborder      *InputBorder[TColor] `json:"enabledBorder,omitempty"`
-	FocusedBorder      *InputBorder[TColor] `json:"focusedBorder,omitempty"`
-	FocusedErrorBorder *InputBorder[TColor] `json:"focusedErrorBorder,omitempty"`
+	Border             *InputBorder   `json:"border,omitempty"`
+	ErrorBorder        *InputBorder   `json:"errorBorder,omitempty"`
+	Enabledborder      *InputBorder   `json:"enabledBorder,omitempty"`
+	FocusedBorder      *InputBorder   `json:"focusedBorder,omitempty"`
+	FocusedErrorBorder *InputBorder   `json:"focusedErrorBorder,omitempty"`
 	Enabled            bool                 `json:"enabled,omitempty"`
 	IsCollapsed        bool                 `json:"isCollapsed,omitempty"`
 	IsDense            bool                 `json:"isDense,omitempty"`
 	SuffixText         string               `json:"suffixText,omitempty"`
-	SuffixStyle        *TextStyle[TColor]   `json:"suffixStyle,omitempty"`
+	SuffixStyle        *TextStyle   `json:"suffixStyle,omitempty"`
 	PrefixText         string               `json:"prefixText,omitempty"`
-	PrefixStyle        *TextStyle[TColor]   `json:"prefixStyle,omitempty"`
+	PrefixStyle        *TextStyle   `json:"prefixStyle,omitempty"`
 	CounterText        string               `json:"counterText,omitempty"`
-	CounterStyle       *TextStyle[TColor]   `json:"counterStyle,omitempty"`
+	CounterStyle       *TextStyle   `json:"counterStyle,omitempty"`
 	AlignLabelWithHint bool                 `json:"alignLabelWithHint,omitempty"`
 	Filled             bool                 `json:"filled,omitempty"`
 	FillColor          string               `json:"fillColor,omitempty"`

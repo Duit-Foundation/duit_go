@@ -8,7 +8,7 @@ import (
 )
 
 func TestRoundedRectangleBorderMarshaling(t *testing.T) {
-	sb := &duit_props.RoundedRectangleBorder[duit_props.ColorString]{}
+	sb := &duit_props.RoundedRectangleBorder{}
 
 	v, err := json.Marshal(sb)
 
@@ -31,7 +31,7 @@ func TestRoundedRectangleBorderMarshaling(t *testing.T) {
 }
 
 func TestBeveledRectangleBorderMarshaling(t *testing.T) {
-	sb := &duit_props.BeveledRectangleBorder[duit_props.ColorString]{}
+	sb := &duit_props.BeveledRectangleBorder{}
 
 	v, err := json.Marshal(sb)
 
@@ -54,7 +54,7 @@ func TestBeveledRectangleBorderMarshaling(t *testing.T) {
 }
 
 func TestContinuousRectangleBorderMarshaling(t *testing.T) {
-	sb := &duit_props.ContinuousRectangleBorder[duit_props.ColorString]{}
+	sb := &duit_props.ContinuousRectangleBorder{}
 
 	v, err := json.Marshal(sb)
 
@@ -77,7 +77,7 @@ func TestContinuousRectangleBorderMarshaling(t *testing.T) {
 }
 
 func TestCircleBorderMarshaling(t *testing.T) {
-	sb := &duit_props.CircleBorder[duit_props.ColorString]{}
+	sb := &duit_props.CircleBorder{}
 
 	v, err := json.Marshal(sb)
 
@@ -100,7 +100,7 @@ func TestCircleBorderMarshaling(t *testing.T) {
 }
 
 func TestStadiumBorderMarshaling(t *testing.T) {
-	sb := &duit_props.StadiumBorder[duit_props.ColorString]{}
+	sb := &duit_props.StadiumBorder{}
 
 	v, err := json.Marshal(sb)
 

@@ -2,30 +2,31 @@ package duit_attributes
 
 import (
 	"errors"
+
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
-type SwitchAttributes[TColor duit_props.Color] struct {
+type SwitchAttributes struct {
 	*ValueReferenceHolder
 	*ThemeConsumer
-	Value                 duit_utils.Tristate[bool]                     `json:"value,omitempty"`
-	ActiveColor           TColor                                        `json:"activeColor,omitempty"`
-	FocusColor            TColor                                        `json:"focusColor,omitempty"`
-	HoverColor            TColor                                        `json:"hoverColor,omitempty"`
-	ActiveTrackColor      TColor                                        `json:"activeTrackColor,omitempty"`
-	InactiveTrackColor    TColor                                        `json:"inactiveTrackColor,omitempty"`
-	OverlayColor          *duit_props.MaterialStateProperty[TColor]  `json:"overlayColor,omitempty"`
-	TrackColor            *duit_props.MaterialStateProperty[TColor]  `json:"trackColor,omitempty"`
-	ThumbColor            *duit_props.MaterialStateProperty[TColor]  `json:"thumbColor,omitempty"`
-	TrackOutlineColor     *duit_props.MaterialStateProperty[TColor]  `json:"trackOutlineColor,omitempty"`
-	TrackOutlineWidth     *duit_props.MaterialStateProperty[float32] `json:"trackOutlineWidth,omitempty"`
-	SplashRadius          float32                                       `json:"splashRadius,omitempty"`
-	MaterialTapTargetSize duit_props.MaterialTapTargetSize           `json:"materialTapTargetSize,omitempty"`
-	Autofocus             duit_utils.Tristate[bool]                     `json:"autofocus,omitempty"`
+	Value                 duit_utils.Tristate[bool]                           `json:"value,omitempty"`
+	ActiveColor           *duit_props.Color                                   `json:"activeColor,omitempty"`
+	FocusColor            *duit_props.Color                                   `json:"focusColor,omitempty"`
+	HoverColor            *duit_props.Color                                   `json:"hoverColor,omitempty"`
+	ActiveTrackColor      *duit_props.Color                                   `json:"activeTrackColor,omitempty"`
+	InactiveTrackColor    *duit_props.Color                                   `json:"inactiveTrackColor,omitempty"`
+	OverlayColor          *duit_props.MaterialStateProperty[duit_props.Color] `json:"overlayColor,omitempty"`
+	TrackColor            *duit_props.MaterialStateProperty[duit_props.Color] `json:"trackColor,omitempty"`
+	ThumbColor            *duit_props.MaterialStateProperty[duit_props.Color] `json:"thumbColor,omitempty"`
+	TrackOutlineColor     *duit_props.MaterialStateProperty[duit_props.Color] `json:"trackOutlineColor,omitempty"`
+	TrackOutlineWidth     *duit_props.MaterialStateProperty[float32]          `json:"trackOutlineWidth,omitempty"`
+	SplashRadius          float32                                             `json:"splashRadius,omitempty"`
+	MaterialTapTargetSize duit_props.MaterialTapTargetSize                    `json:"materialTapTargetSize,omitempty"`
+	Autofocus             duit_utils.Tristate[bool]                           `json:"autofocus,omitempty"`
 }
 
-func (r *SwitchAttributes[TColor]) Validate() error {
+func (r *SwitchAttributes) Validate() error {
 	if err := r.ValueReferenceHolder.Validate(); err != nil {
 		return err
 	}

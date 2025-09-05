@@ -7,12 +7,9 @@ import (
 func CheckTweenType(tween any) error {
 	switch tween.(type) {
 	case *tweenBase[float32],
-		*tweenBase[*ColorRGBO],
-		*tweenBase[ColorString],
-		*tweenBase[TextStyle[*ColorRGBO]],
-		*tweenBase[TextStyle[ColorString]],
-		*tweenBase[BoxDecoration[*ColorRGBO]],
-		*tweenBase[BoxDecoration[ColorString]],
+		*tweenBase[*Color],
+		*tweenBase[*TextStyle],
+		*tweenBase[*BoxDecoration],
 		*tweenBase[EdgeInsetsSymmentric],
 		*tweenBase[EdgeInsetsLTRB],
 		*tweenBase[BoxConstraints],
