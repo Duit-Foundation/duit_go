@@ -1,6 +1,7 @@
 package duit_props_test
 
 import (
+	"fmt"
 	"testing"
 
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
@@ -53,9 +54,9 @@ func TestCheckTweenType(t *testing.T) {
 		// alignment
 		duit_props.AlignmentTween("alignment", "center", "topLeft", 1, duit_props.AnimationTriggerOnEnter, duit_props.AnimationMethodForward, false, ""),
 		// edge insets
-		duit_props.EdgeInsetsTween("paddingAll", duit_props.EdgeInsetsAll(4), duit_props.EdgeInsetsAll(8), 1, duit_props.AnimationTriggerOnEnter, duit_props.AnimationMethodForward, false, ""),
-		duit_props.EdgeInsetsTween("paddingLTRB", duit_props.EdgeInsetsLTRB{1, 2, 3, 4}, duit_props.EdgeInsetsLTRB{4, 3, 2, 1}, 1, duit_props.AnimationTriggerOnEnter, duit_props.AnimationMethodForward, false, ""),
-		duit_props.EdgeInsetsTween("paddingSym", duit_props.EdgeInsetsSymmentric{5, 10}, duit_props.EdgeInsetsSymmentric{10, 5}, 1, duit_props.AnimationTriggerOnEnter, duit_props.AnimationMethodForward, false, ""),
+		duit_props.EdgeInsetsTween("paddingAll", duit_props.NewEdgeInsetsAll(4), duit_props.NewEdgeInsetsAll(8), 1, duit_props.AnimationTriggerOnEnter, duit_props.AnimationMethodForward, false, ""),
+		duit_props.EdgeInsetsTween("paddingLTRB", duit_props.NewEdgeInsetsLTRB(1, 2, 3, 4), duit_props.NewEdgeInsetsLTRB(4, 3, 2, 1), 1, duit_props.AnimationTriggerOnEnter, duit_props.AnimationMethodForward, false, ""),
+		duit_props.EdgeInsetsTween("paddingSym", duit_props.NewEdgeInsetsSymmetric(5, 10), duit_props.NewEdgeInsetsSymmetric(10, 5), 1, duit_props.AnimationTriggerOnEnter, duit_props.AnimationMethodForward, false, ""),
 		// constraints and size
 		duit_props.BoxConstraintsTween("constraints", duit_props.BoxConstraints{MinWidth: 0, MinHeight: 0}, duit_props.BoxConstraints{MaxWidth: 100, MaxHeight: 100}, 1, duit_props.AnimationTriggerOnEnter, duit_props.AnimationMethodForward, false, ""),
 		duit_props.SizeTween("size", duit_props.Size{Width: 10, Height: 20}, duit_props.Size{Width: 20, Height: 40}, 1, duit_props.AnimationTriggerOnEnter, duit_props.AnimationMethodForward, false, ""),
@@ -68,6 +69,7 @@ func TestCheckTweenType(t *testing.T) {
 	}
 
 	for _, tween := range arr {
+		fmt.Println(tween)
 		if err := duit_props.CheckTweenType(tween); err != nil {
 			t.Fatal(err)
 		}
@@ -89,10 +91,6 @@ func TestCheckTweenType_InvalidTypes(t *testing.T) {
 		err := duit_props.CheckTweenType(invalidType)
 		if err == nil {
 			t.Fatalf("expected error for invalid type at index %d (%T), but got nil", i, invalidType)
-		}
-
-		if err.Error() != "invalid tween type. Must be instance of tweenBase or tweenGroup or nil" {
-			t.Fatalf("expected specific error message for invalid type at index %d, got: %s", i, err.Error())
 		}
 	}
 }

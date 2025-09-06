@@ -8,7 +8,7 @@ import (
 )
 
 func TestContainerAttributes_Validate_ValidAttributes(t *testing.T) {
-	attrs := &duit_attributes.ContainerAttributes[duit_props.EdgeInsetsAll]{
+	attrs := &duit_attributes.ContainerAttributes{
 		Width:  100.0,
 		Height: 200.0,
 		Color:  duit_props.NewColorString("#FF0000"),

@@ -11,7 +11,7 @@ import (
 )
 
 func TestCarouselViewAttributes_Validate_ValidAttributes(t *testing.T) {
-	attrs := &duit_attributes.CarouselViewAttributes[duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder]{}
+	attrs := &duit_attributes.CarouselViewAttributes[duit_props.RoundedRectangleBorder]{}
 
 	err := attrs.Validate()
 	if err != nil {
@@ -20,8 +20,8 @@ func TestCarouselViewAttributes_Validate_ValidAttributes(t *testing.T) {
 }
 
 func TestCarouselViewAttributes_Validate_WithAllProperties(t *testing.T) {
-	attrs := &duit_attributes.CarouselViewAttributes[duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder]{
-		Padding:          duit_props.EdgeInsetsAll(8.0),
+	attrs := &duit_attributes.CarouselViewAttributes[duit_props.RoundedRectangleBorder]{
+		Padding:          duit_props.NewEdgeInsetsAll(8.0),
 		BackgroundColor:  duit_props.NewColorString("#FF0000"),
 		Shape:            nil,
 		OverlayColor:     &duit_props.MaterialStateProperty[*duit_props.Color]{},
@@ -44,7 +44,7 @@ func TestCarouselViewAttributes_Validate_WithAllProperties(t *testing.T) {
 
 // Tests for EnableSplash Tristate[bool] property serialization
 func TestCarouselViewAttributes_EnableSplash_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.CarouselViewAttributes[duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder]{
+	attrs := &duit_attributes.CarouselViewAttributes[duit_props.RoundedRectangleBorder]{
 		EnableSplash: duit_utils.BoolValue(true),
 	}
 
@@ -60,7 +60,7 @@ func TestCarouselViewAttributes_EnableSplash_JSON_True(t *testing.T) {
 }
 
 func TestCarouselViewAttributes_EnableSplash_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.CarouselViewAttributes[duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder]{
+	attrs := &duit_attributes.CarouselViewAttributes[duit_props.RoundedRectangleBorder]{
 		EnableSplash: duit_utils.BoolValue(false),
 	}
 
@@ -76,7 +76,7 @@ func TestCarouselViewAttributes_EnableSplash_JSON_False(t *testing.T) {
 }
 
 func TestCarouselViewAttributes_EnableSplash_JSON_Nil(t *testing.T) {
-	attrs := &duit_attributes.CarouselViewAttributes[duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder]{
+	attrs := &duit_attributes.CarouselViewAttributes[duit_props.RoundedRectangleBorder]{
 		EnableSplash: duit_utils.Nillable[bool](),
 	}
 
@@ -93,7 +93,7 @@ func TestCarouselViewAttributes_EnableSplash_JSON_Nil(t *testing.T) {
 
 // Tests for Reverse Tristate[bool] property serialization
 func TestCarouselViewAttributes_Reverse_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.CarouselViewAttributes[duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder]{
+	attrs := &duit_attributes.CarouselViewAttributes[duit_props.RoundedRectangleBorder]{
 		Reverse: duit_utils.BoolValue(true),
 	}
 
@@ -109,7 +109,7 @@ func TestCarouselViewAttributes_Reverse_JSON_True(t *testing.T) {
 }
 
 func TestCarouselViewAttributes_Reverse_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.CarouselViewAttributes[duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder]{
+	attrs := &duit_attributes.CarouselViewAttributes[duit_props.RoundedRectangleBorder]{
 		Reverse: duit_utils.BoolValue(false),
 	}
 
@@ -125,7 +125,7 @@ func TestCarouselViewAttributes_Reverse_JSON_False(t *testing.T) {
 }
 
 func TestCarouselViewAttributes_Reverse_JSON_Nil(t *testing.T) {
-	attrs := &duit_attributes.CarouselViewAttributes[duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder]{
+	attrs := &duit_attributes.CarouselViewAttributes[duit_props.RoundedRectangleBorder]{
 		Reverse: duit_utils.Nillable[bool](),
 	}
 
@@ -142,7 +142,7 @@ func TestCarouselViewAttributes_Reverse_JSON_Nil(t *testing.T) {
 
 // Tests for ItemSnapping Tristate[bool] property serialization
 func TestCarouselViewAttributes_ItemSnapping_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.CarouselViewAttributes[duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder]{
+	attrs := &duit_attributes.CarouselViewAttributes[duit_props.RoundedRectangleBorder]{
 		ItemSnapping: duit_utils.BoolValue(true),
 	}
 
@@ -158,7 +158,7 @@ func TestCarouselViewAttributes_ItemSnapping_JSON_True(t *testing.T) {
 }
 
 func TestCarouselViewAttributes_ItemSnapping_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.CarouselViewAttributes[duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder]{
+	attrs := &duit_attributes.CarouselViewAttributes[duit_props.RoundedRectangleBorder]{
 		ItemSnapping: duit_utils.BoolValue(false),
 	}
 
@@ -174,7 +174,7 @@ func TestCarouselViewAttributes_ItemSnapping_JSON_False(t *testing.T) {
 }
 
 func TestCarouselViewAttributes_ItemSnapping_JSON_Nil(t *testing.T) {
-	attrs := &duit_attributes.CarouselViewAttributes[duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder]{
+	attrs := &duit_attributes.CarouselViewAttributes[duit_props.RoundedRectangleBorder]{
 		ItemSnapping: duit_utils.Nillable[bool](),
 	}
 
@@ -191,7 +191,7 @@ func TestCarouselViewAttributes_ItemSnapping_JSON_Nil(t *testing.T) {
 
 // Tests for ConsumeMaxWeight Tristate[bool] property serialization
 func TestCarouselViewAttributes_ConsumeMaxWeight_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.CarouselViewAttributes[duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder]{
+	attrs := &duit_attributes.CarouselViewAttributes[duit_props.RoundedRectangleBorder]{
 		ConsumeMaxWeight: duit_utils.BoolValue(true),
 	}
 
@@ -207,7 +207,7 @@ func TestCarouselViewAttributes_ConsumeMaxWeight_JSON_True(t *testing.T) {
 }
 
 func TestCarouselViewAttributes_ConsumeMaxWeight_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.CarouselViewAttributes[duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder]{
+	attrs := &duit_attributes.CarouselViewAttributes[duit_props.RoundedRectangleBorder]{
 		ConsumeMaxWeight: duit_utils.BoolValue(false),
 	}
 
@@ -223,7 +223,7 @@ func TestCarouselViewAttributes_ConsumeMaxWeight_JSON_False(t *testing.T) {
 }
 
 func TestCarouselViewAttributes_ConsumeMaxWeight_JSON_Nil(t *testing.T) {
-	attrs := &duit_attributes.CarouselViewAttributes[duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder]{
+	attrs := &duit_attributes.CarouselViewAttributes[duit_props.RoundedRectangleBorder]{
 		ConsumeMaxWeight: duit_utils.Nillable[bool](),
 	}
 

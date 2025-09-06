@@ -2,6 +2,7 @@ package duit_attributes
 
 import (
 	"errors"
+
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 )
 
@@ -9,7 +10,7 @@ type PaddingAttributes struct {
 	*ValueReferenceHolder
 	*duit_props.AnimatedPropertyOwner
 	*ThemeConsumer
-	Padding *duit_props.EdgeInsetsV2 `json:"padding,omitempty"`
+	Padding *duit_props.EdgeInsets `json:"padding,omitempty"`
 }
 
 func (r *PaddingAttributes) Validate() error {
@@ -28,6 +29,10 @@ func (r *PaddingAttributes) Validate() error {
 	if r.Padding == nil {
 		return errors.New("padding property is required")
 	} else {
-		return r.Padding.Validate()
+		if err := r.Padding.Validate(); err != nil {
+			return err
+		}
 	}
+
+	return nil
 }

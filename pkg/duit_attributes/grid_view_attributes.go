@@ -2,6 +2,7 @@ package duit_attributes
 
 import (
 	"errors"
+
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
@@ -15,34 +16,34 @@ const (
 	GridExtent
 )
 
-type DefautlGridViewAttributes[TInsets duit_props.EdgeInsets] struct {
-	Constructor             duit_utils.Tristate[GridConstructor]            `json:"constructor"`
-	ScrollDirection         duit_props.Axis                                  `json:"scrollDirection,omitempty"`
-	Reverse                 duit_utils.Tristate[bool]                       `json:"reverse,omitempty"`
-	Primary                 duit_utils.Tristate[bool]                       `json:"primary,omitempty"`
-	ShrinkWrap              duit_utils.Tristate[bool]                       `json:"shrinkWrap,omitempty"`
-	AddAutomaticKeepAlives  duit_utils.Tristate[bool]                       `json:"addAutomaticKeepAlives,omitempty"`
-	AddRepaintBoundaries    duit_utils.Tristate[bool]                       `json:"addRepaintBoundaries,omitempty"`
-	AddSemanticIndexes      duit_utils.Tristate[bool]                       `json:"addSemanticIndexes,omitempty"`
-	Padding                 TInsets                                         `json:"padding,omitempty"`
-	CacheExtent             float32                                         `json:"cacheExtent,omitempty"`
-	SemanticChildCount      int                                             `json:"semanticChildCount,omitempty"`
+type DefautlGridViewAttributes struct {
+	Constructor             duit_utils.Tristate[GridConstructor]         `json:"constructor"`
+	ScrollDirection         duit_props.Axis                              `json:"scrollDirection,omitempty"`
+	Reverse                 duit_utils.Tristate[bool]                    `json:"reverse,omitempty"`
+	Primary                 duit_utils.Tristate[bool]                    `json:"primary,omitempty"`
+	ShrinkWrap              duit_utils.Tristate[bool]                    `json:"shrinkWrap,omitempty"`
+	AddAutomaticKeepAlives  duit_utils.Tristate[bool]                    `json:"addAutomaticKeepAlives,omitempty"`
+	AddRepaintBoundaries    duit_utils.Tristate[bool]                    `json:"addRepaintBoundaries,omitempty"`
+	AddSemanticIndexes      duit_utils.Tristate[bool]                    `json:"addSemanticIndexes,omitempty"`
+	Padding                 *duit_props.EdgeInsets                       `json:"padding,omitempty"`
+	CacheExtent             float32                                      `json:"cacheExtent,omitempty"`
+	SemanticChildCount      int                                          `json:"semanticChildCount,omitempty"`
 	DragStartBehavior       duit_props.DragStartBehavior                 `json:"dragStartBehavior,omitempty"`
-	ClipBehavior            duit_props.Clip                                  `json:"clipBehavior,omitempty"`
+	ClipBehavior            duit_props.Clip                              `json:"clipBehavior,omitempty"`
 	KeyboardDismissBehavior duit_props.ScrollViewKeyboardDismissBehavior `json:"keyboardDismissBehavior,omitempty"`
 	Physics                 duit_props.ScrollPhysics                     `json:"physics,omitempty"`
-	RestorationId           string                                          `json:"restorationId,omitempty"`
+	RestorationId           string                                       `json:"restorationId,omitempty"`
 }
 
-type GridViewCommonAttributes[TInsets duit_props.EdgeInsets] struct {
+type GridViewCommonAttributes struct {
 	*ValueReferenceHolder
 	*ThemeConsumer
-	*DefautlGridViewAttributes[TInsets]
+	*DefautlGridViewAttributes
 	SliverGridDelegateKey     string         `json:"sliverGridDelegateKey"`
 	SliverGridDelegateOptions map[string]any `json:"sliverGridDelegateOptions,omitempty"`
 }
 
-func (r *GridViewCommonAttributes[TInsets]) Validate() error {
+func (r *GridViewCommonAttributes) Validate() error {
 	// Validate embedded components
 	if err := r.ThemeConsumer.Validate(); err != nil {
 		return err
@@ -72,17 +73,17 @@ func (r *GridViewCommonAttributes[TInsets]) Validate() error {
 	return nil
 }
 
-type GridViewCountAttributes[TInsets duit_props.EdgeInsets] struct {
+type GridViewCountAttributes struct {
 	*ValueReferenceHolder
 	*ThemeConsumer
-	*DefautlGridViewAttributes[TInsets]
+	*DefautlGridViewAttributes
 	CrossAxisCount   uint    `json:"crossAxisCount"`
 	MainAxisSpacing  float32 `json:"mainAxisSpacing,omitempty"`
 	CrossAxisSpacing float32 `json:"crossAxisSpacing,omitempty"`
 	ChildAspectRatio float32 `json:"childAspectRatio,omitempty"`
 }
 
-func (r *GridViewCountAttributes[TInsets]) Validate() error {
+func (r *GridViewCountAttributes) Validate() error {
 	if err := r.ThemeConsumer.Validate(); err != nil {
 		return err
 	}
@@ -110,16 +111,16 @@ func (r *GridViewCountAttributes[TInsets]) Validate() error {
 	return nil
 }
 
-type GridViewBuilderAttributes[TInsets duit_props.EdgeInsets] struct {
+type GridViewBuilderAttributes struct {
 	*ValueReferenceHolder
 	*ThemeConsumer
 	*Builder
-	*DefautlGridViewAttributes[TInsets]
+	*DefautlGridViewAttributes
 	SliverGridDelegateKey     string         `json:"sliverGridDelegateKey"`
 	SliverGridDelegateOptions map[string]any `json:"sliverGridDelegateOptions,omitempty"`
 }
 
-func (r *GridViewBuilderAttributes[TInsets]) Validate() error {
+func (r *GridViewBuilderAttributes) Validate() error {
 	if err := r.ThemeConsumer.Validate(); err != nil {
 		return err
 	}
@@ -151,17 +152,17 @@ func (r *GridViewBuilderAttributes[TInsets]) Validate() error {
 	return nil
 }
 
-type GridViewExtentAttributes[TInsets duit_props.EdgeInsets] struct {
+type GridViewExtentAttributes struct {
 	*ValueReferenceHolder
 	*ThemeConsumer
-	*DefautlGridViewAttributes[TInsets]
+	*DefautlGridViewAttributes
 	MaxCrossAxisExtent float32 `json:"maxCrossAxisExtent"`
 	MainAxisSpacing    float32 `json:"mainAxisSpacing,omitempty"`
 	CrossAxisSpacing   float32 `json:"crossAxisSpacing,omitempty"`
 	ChildAspectRatio   float32 `json:"childAspectRatio,omitempty"`
 }
 
-func (r *GridViewExtentAttributes[TInsets]) Validate() error {
+func (r *GridViewExtentAttributes) Validate() error {
 	if err := r.ThemeConsumer.Validate(); err != nil {
 		return err
 	}
@@ -189,6 +190,6 @@ func (r *GridViewExtentAttributes[TInsets]) Validate() error {
 	return nil
 }
 
-type GridViewAttributes[TInsets duit_props.EdgeInsets] interface {
-	GridViewCommonAttributes[TInsets] | GridViewCountAttributes[TInsets] | GridViewBuilderAttributes[TInsets] | GridViewExtentAttributes[TInsets]
+type GridViewAttributes interface {
+	GridViewCommonAttributes | GridViewCountAttributes | GridViewBuilderAttributes | GridViewExtentAttributes
 }

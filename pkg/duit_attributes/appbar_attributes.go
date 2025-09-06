@@ -5,7 +5,7 @@ import (
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
-type AppBarAttributes[TInsets duit_props.EdgeInsets, TShape duit_props.ShapeBorder] struct {
+type AppBarAttributes[TShape duit_props.ShapeBorder] struct {
 	*ValueReferenceHolder
 	*duit_props.AnimatedPropertyOwner
 	*ThemeConsumer
@@ -15,7 +15,7 @@ type AppBarAttributes[TInsets duit_props.EdgeInsets, TShape duit_props.ShapeBord
 	BackgroundColor           *duit_props.Color            `json:"backgroundColor,omitempty"`
 	ForegroundColor           *duit_props.Color            `json:"foregroundColor,omitempty"`
 	SurfaceTintColor          *duit_props.Color            `json:"surfaceTintColor,omitempty"`
-	ActionsPadding            TInsets                      `json:"actionsPadding,omitempty"`
+	ActionsPadding            *duit_props.EdgeInsets      `json:"actionsPadding,omitempty"`
 	Shape                     *TShape                      `json:"shape,omitempty"`
 	ClipBehavior              duit_props.Clip              `json:"clipBehavior,omitempty"`
 	TitleSpacing              float32                      `json:"titleSpacing,omitempty"`
@@ -32,7 +32,7 @@ type AppBarAttributes[TInsets duit_props.EdgeInsets, TShape duit_props.ShapeBord
 	Primary                   duit_utils.Tristate[bool]    `json:"primary,omitempty"`
 }
 
-func (r *AppBarAttributes[TInsets, TShape]) Validate() error {
+func (r *AppBarAttributes[TShape]) Validate() error {
 	if err := r.ThemeConsumer.Validate(); err != nil {
 		return err
 	}
@@ -53,6 +53,12 @@ func (r *AppBarAttributes[TInsets, TShape]) Validate() error {
 
 	if r.ToolbarOpacity != nil {
 		if err := duit_utils.RangeValidator(*r.ToolbarOpacity, 0, 1); err != nil {
+			return err
+		}
+	}
+
+	if r.ActionsPadding != nil {
+		if err := r.ActionsPadding.Validate(); err != nil {
 			return err
 		}
 	}

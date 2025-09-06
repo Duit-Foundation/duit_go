@@ -11,7 +11,7 @@ import (
 )
 
 func TestCardAttributes_Validate_ValidAttributes(t *testing.T) {
-	attrs := &duit_attributes.CardAttributes[duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder]{}
+	attrs := &duit_attributes.CardAttributes[duit_props.RoundedRectangleBorder]{}
 
 	err := attrs.Validate()
 	if err != nil {
@@ -20,13 +20,13 @@ func TestCardAttributes_Validate_ValidAttributes(t *testing.T) {
 }
 
 func TestCardAttributes_Validate_WithAllProperties(t *testing.T) {
-	attrs := &duit_attributes.CardAttributes[duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder]{
+	attrs := &duit_attributes.CardAttributes[duit_props.RoundedRectangleBorder]{
 		Color:              duit_props.NewColorString("#FF0000"),
 		ShadowColor:        duit_props.NewColorString("#000000"),
 		Elevation:          4.0,
 		BorderOnForeground: duit_utils.BoolValue(true),
 		SemanticContainer:  duit_utils.BoolValue(false),
-		Margin:             duit_props.EdgeInsetsAll(8.0),
+		Margin:             duit_props.NewEdgeInsetsAll(8.0),
 		Shape:              nil,
 	}
 
@@ -38,7 +38,7 @@ func TestCardAttributes_Validate_WithAllProperties(t *testing.T) {
 
 // Tests for BorderOnForeground Tristate[bool] property serialization
 func TestCardAttributes_BorderOnForeground_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.CardAttributes[duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder]{
+	attrs := &duit_attributes.CardAttributes[duit_props.RoundedRectangleBorder]{
 		BorderOnForeground: duit_utils.BoolValue(true),
 	}
 
@@ -54,7 +54,7 @@ func TestCardAttributes_BorderOnForeground_JSON_True(t *testing.T) {
 }
 
 func TestCardAttributes_BorderOnForeground_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.CardAttributes[duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder]{
+	attrs := &duit_attributes.CardAttributes[duit_props.RoundedRectangleBorder]{
 		BorderOnForeground: duit_utils.BoolValue(false),
 	}
 
@@ -71,7 +71,7 @@ func TestCardAttributes_BorderOnForeground_JSON_False(t *testing.T) {
 
 // Tests for SemanticContainer Tristate[bool] property serialization
 func TestCardAttributes_SemanticContainer_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.CardAttributes[duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder]{
+	attrs := &duit_attributes.CardAttributes[duit_props.RoundedRectangleBorder]{
 		SemanticContainer: duit_utils.BoolValue(true),
 	}
 
@@ -87,7 +87,7 @@ func TestCardAttributes_SemanticContainer_JSON_True(t *testing.T) {
 }
 
 func TestCardAttributes_SemanticContainer_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.CardAttributes[duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder]{
+	attrs := &duit_attributes.CardAttributes[duit_props.RoundedRectangleBorder]{
 		SemanticContainer: duit_utils.BoolValue(false),
 	}
 
@@ -103,7 +103,7 @@ func TestCardAttributes_SemanticContainer_JSON_False(t *testing.T) {
 }
 
 func TestCardAttributes_SemanticContainer_JSON_Nil(t *testing.T) {
-	attrs := &duit_attributes.CardAttributes[duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder]{
+	attrs := &duit_attributes.CardAttributes[duit_props.RoundedRectangleBorder]{
 		SemanticContainer: duit_utils.Nillable[bool](),
 	}
 

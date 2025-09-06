@@ -6,12 +6,12 @@ import (
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 )
 
-// Tests for EdgeInsetsV2.All() method
-func TestEdgeInsetsV2_All(t *testing.T) {
-	edgeInsets := duit_props.EdgeInsetsV2{}.All(10.0)
+// Tests for NewEdgeInsetsAll constructor
+func TestNewEdgeInsetsAll(t *testing.T) {
+	edgeInsets := duit_props.NewEdgeInsetsAll(10.0)
 
 	if edgeInsets == nil {
-		t.Fatal("expected non-nil EdgeInsetsV2")
+		t.Fatal("expected non-nil EdgeInsets")
 	}
 
 	err := edgeInsets.Validate()
@@ -20,8 +20,8 @@ func TestEdgeInsetsV2_All(t *testing.T) {
 	}
 }
 
-func TestEdgeInsetsV2_All_ZeroValue(t *testing.T) {
-	edgeInsets := duit_props.EdgeInsetsV2{}.All(0.0)
+func TestNewEdgeInsetsAll_ZeroValue(t *testing.T) {
+	edgeInsets := duit_props.NewEdgeInsetsAll(0.0)
 
 	err := edgeInsets.Validate()
 	if err != nil {
@@ -29,8 +29,8 @@ func TestEdgeInsetsV2_All_ZeroValue(t *testing.T) {
 	}
 }
 
-func TestEdgeInsetsV2_All_NegativeValue(t *testing.T) {
-	edgeInsets := duit_props.EdgeInsetsV2{}.All(-5.0)
+func TestNewEdgeInsetsAll_NegativeValue(t *testing.T) {
+	edgeInsets := duit_props.NewEdgeInsetsAll(-5.0)
 
 	err := edgeInsets.Validate()
 	if err == nil {
@@ -38,12 +38,12 @@ func TestEdgeInsetsV2_All_NegativeValue(t *testing.T) {
 	}
 }
 
-// Tests for EdgeInsetsV2.LTRB() method
-func TestEdgeInsetsV2_LTRB(t *testing.T) {
-	edgeInsets := duit_props.EdgeInsetsV2{}.LTRB(5.0, 10.0, 15.0, 20.0)
+// Tests for NewEdgeInsetsLTRB constructor
+func TestNewEdgeInsetsLTRB(t *testing.T) {
+	edgeInsets := duit_props.NewEdgeInsetsLTRB(5.0, 10.0, 15.0, 20.0)
 
 	if edgeInsets == nil {
-		t.Fatal("expected non-nil EdgeInsetsV2")
+		t.Fatal("expected non-nil EdgeInsets")
 	}
 
 	err := edgeInsets.Validate()
@@ -52,8 +52,8 @@ func TestEdgeInsetsV2_LTRB(t *testing.T) {
 	}
 }
 
-func TestEdgeInsetsV2_LTRB_ZeroValues(t *testing.T) {
-	edgeInsets := duit_props.EdgeInsetsV2{}.LTRB(0.0, 0.0, 0.0, 0.0)
+func TestNewEdgeInsetsLTRB_ZeroValues(t *testing.T) {
+	edgeInsets := duit_props.NewEdgeInsetsLTRB(0.0, 0.0, 0.0, 0.0)
 
 	err := edgeInsets.Validate()
 	if err != nil {
@@ -61,7 +61,7 @@ func TestEdgeInsetsV2_LTRB_ZeroValues(t *testing.T) {
 	}
 }
 
-func TestEdgeInsetsV2_LTRB_NegativeValues(t *testing.T) {
+func TestNewEdgeInsetsLTRB_NegativeValues(t *testing.T) {
 	testCases := []struct {
 		name   string
 		left   float32
@@ -78,7 +78,7 @@ func TestEdgeInsetsV2_LTRB_NegativeValues(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
-			edgeInsets := duit_props.EdgeInsetsV2{}.LTRB(tc.left, tc.top, tc.right, tc.bottom)
+			edgeInsets := duit_props.NewEdgeInsetsLTRB(tc.left, tc.top, tc.right, tc.bottom)
 
 			err := edgeInsets.Validate()
 			if err == nil {
@@ -88,12 +88,12 @@ func TestEdgeInsetsV2_LTRB_NegativeValues(t *testing.T) {
 	}
 }
 
-// Tests for EdgeInsetsV2.Symmentric() method
-func TestEdgeInsetsV2_Symmentric(t *testing.T) {
-	edgeInsets := duit_props.EdgeInsetsV2{}.Symmentric(10.0, 5.0)
+// Tests for NewEdgeInsetsSymmetric constructor
+func TestNewEdgeInsetsSymmetric(t *testing.T) {
+	edgeInsets := duit_props.NewEdgeInsetsSymmetric(10.0, 5.0)
 
 	if edgeInsets == nil {
-		t.Fatal("expected non-nil EdgeInsetsV2")
+		t.Fatal("expected non-nil EdgeInsets")
 	}
 
 	err := edgeInsets.Validate()
@@ -102,8 +102,8 @@ func TestEdgeInsetsV2_Symmentric(t *testing.T) {
 	}
 }
 
-func TestEdgeInsetsV2_Symmentric_ZeroValues(t *testing.T) {
-	edgeInsets := duit_props.EdgeInsetsV2{}.Symmentric(0.0, 0.0)
+func TestNewEdgeInsetsSymmetric_ZeroValues(t *testing.T) {
+	edgeInsets := duit_props.NewEdgeInsetsSymmetric(0.0, 0.0)
 
 	err := edgeInsets.Validate()
 	if err != nil {
@@ -111,7 +111,7 @@ func TestEdgeInsetsV2_Symmentric_ZeroValues(t *testing.T) {
 	}
 }
 
-func TestEdgeInsetsV2_Symmentric_NegativeValues(t *testing.T) {
+func TestNewEdgeInsetsSymmetric_NegativeValues(t *testing.T) {
 	testCases := []struct {
 		name       string
 		vertical   float32
@@ -124,7 +124,7 @@ func TestEdgeInsetsV2_Symmentric_NegativeValues(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
-			edgeInsets := duit_props.EdgeInsetsV2{}.Symmentric(tc.vertical, tc.horizontal)
+			edgeInsets := duit_props.NewEdgeInsetsSymmetric(tc.vertical, tc.horizontal)
 
 			err := edgeInsets.Validate()
 			if err == nil {
@@ -134,33 +134,43 @@ func TestEdgeInsetsV2_Symmentric_NegativeValues(t *testing.T) {
 	}
 }
 
-// Tests for EdgeInsetsV2.Validate() method with uninitialized data
-func TestEdgeInsetsV2_Validate_UninitializedData(t *testing.T) {
-	edgeInsets := &duit_props.EdgeInsetsV2{}
+// Tests for EdgeInsets.Validate() method with nil pointer
+func TestEdgeInsets_Validate_NilPointer(t *testing.T) {
+	var edgeInsets *duit_props.EdgeInsets = nil
 
 	err := edgeInsets.Validate()
-	if err == nil {
-		t.Fatal("expected error for uninitialized EdgeInsetsV2")
+	if err != nil {
+		t.Fatal("expected no error for nil EdgeInsets, got:", err)
 	}
 }
 
-// Tests for EdgeInsetsV2.Validate() method with different valid types
-func TestEdgeInsetsV2_Validate_AllTypes(t *testing.T) {
+// Tests for EdgeInsets.Validate() method with uninitialized data
+func TestEdgeInsets_Validate_UninitializedData(t *testing.T) {
+	edgeInsets := &duit_props.EdgeInsets{}
+
+	err := edgeInsets.Validate()
+	if err == nil {
+		t.Fatal("expected error for uninitialized EdgeInsets")
+	}
+}
+
+// Tests for EdgeInsets.Validate() method with different valid types
+func TestEdgeInsets_Validate_AllTypes(t *testing.T) {
 	testCases := []struct {
 		name       string
-		edgeInsets *duit_props.EdgeInsetsV2
+		edgeInsets *duit_props.EdgeInsets
 	}{
 		{
 			name:       "All type",
-			edgeInsets: duit_props.EdgeInsetsV2{}.All(8.0),
+			edgeInsets: duit_props.NewEdgeInsetsAll(8.0),
 		},
 		{
 			name:       "LTRB type",
-			edgeInsets: duit_props.EdgeInsetsV2{}.LTRB(1.0, 2.0, 3.0, 4.0),
+			edgeInsets: duit_props.NewEdgeInsetsLTRB(1.0, 2.0, 3.0, 4.0),
 		},
 		{
-			name:       "Symmentric type",
-			edgeInsets: duit_props.EdgeInsetsV2{}.Symmentric(6.0, 4.0),
+			name:       "Symmetric type",
+			edgeInsets: duit_props.NewEdgeInsetsSymmetric(6.0, 4.0),
 		},
 	}
 
@@ -174,9 +184,9 @@ func TestEdgeInsetsV2_Validate_AllTypes(t *testing.T) {
 	}
 }
 
-// Tests for EdgeInsetsV2.MarshalJSON() method
-func TestEdgeInsetsV2_MarshalJSON_All(t *testing.T) {
-	edgeInsets := duit_props.EdgeInsetsV2{}.All(10.0)
+// Tests for EdgeInsets.MarshalJSON() method
+func TestNewEdgeInsetsAll_MarshalJSON(t *testing.T) {
+	edgeInsets := duit_props.NewEdgeInsetsAll(10.0)
 
 	jsonData, err := edgeInsets.MarshalJSON()
 	if err != nil {
@@ -189,8 +199,8 @@ func TestEdgeInsetsV2_MarshalJSON_All(t *testing.T) {
 	}
 }
 
-func TestEdgeInsetsV2_MarshalJSON_LTRB(t *testing.T) {
-	edgeInsets := duit_props.EdgeInsetsV2{}.LTRB(1.0, 2.0, 3.0, 4.0)
+func TestNewEdgeInsetsLTRB_MarshalJSON(t *testing.T) {
+	edgeInsets := duit_props.NewEdgeInsetsLTRB(1.0, 2.0, 3.0, 4.0)
 
 	jsonData, err := edgeInsets.MarshalJSON()
 	if err != nil {
@@ -203,8 +213,8 @@ func TestEdgeInsetsV2_MarshalJSON_LTRB(t *testing.T) {
 	}
 }
 
-func TestEdgeInsetsV2_MarshalJSON_Symmentric(t *testing.T) {
-	edgeInsets := duit_props.EdgeInsetsV2{}.Symmentric(5.0, 3.0)
+func TestNewEdgeInsetsSymmetric_MarshalJSON(t *testing.T) {
+	edgeInsets := duit_props.NewEdgeInsetsSymmetric(5.0, 3.0)
 
 	jsonData, err := edgeInsets.MarshalJSON()
 	if err != nil {
@@ -217,8 +227,8 @@ func TestEdgeInsetsV2_MarshalJSON_Symmentric(t *testing.T) {
 	}
 }
 
-func TestEdgeInsetsV2_MarshalJSON_Uninitialized(t *testing.T) {
-	edgeInsets := &duit_props.EdgeInsetsV2{}
+func TestEdgeInsets_MarshalJSON_Uninitialized(t *testing.T) {
+	edgeInsets := &duit_props.EdgeInsets{}
 
 	jsonData, err := edgeInsets.MarshalJSON()
 	if err != nil {

@@ -11,7 +11,7 @@ import (
 )
 
 func TestTextFieldAttributes_Validate_ValidAttributes(t *testing.T) {
-	attrs := &duit_attributes.TextFieldAttributes[duit_props.EdgeInsetsLTRB]{
+	attrs := &duit_attributes.TextFieldAttributes{
 		Autocorrect:       duit_utils.BoolValue(true),
 		EnableSuggestions: duit_utils.BoolValue(false),
 		Expands:           duit_utils.BoolValue(true),
@@ -26,7 +26,7 @@ func TestTextFieldAttributes_Validate_ValidAttributes(t *testing.T) {
 func TestTextFieldAttributes_Validate_WithAllProperties(t *testing.T) {
 	style := &duit_props.TextStyle{}
 
-	attrs := &duit_attributes.TextFieldAttributes[duit_props.EdgeInsetsLTRB]{
+	attrs := &duit_attributes.TextFieldAttributes{
 		Style:              style,
 		TextAlign:          duit_props.TextAlignStart,
 		TextDirection:      duit_props.TextDirectionLtr,
@@ -52,7 +52,7 @@ func TestTextFieldAttributes_Validate_WithAllProperties(t *testing.T) {
 
 // Tests for Autocorrect Tristate[bool] property serialization
 func TestTextFieldAttributes_Autocorrect_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.TextFieldAttributes[duit_props.EdgeInsetsLTRB]{
+	attrs := &duit_attributes.TextFieldAttributes{
 		Autocorrect: duit_utils.BoolValue(true),
 	}
 
@@ -68,7 +68,7 @@ func TestTextFieldAttributes_Autocorrect_JSON_True(t *testing.T) {
 }
 
 func TestTextFieldAttributes_Autocorrect_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.TextFieldAttributes[duit_props.EdgeInsetsLTRB]{
+	attrs := &duit_attributes.TextFieldAttributes{
 		Autocorrect: duit_utils.BoolValue(false),
 	}
 
@@ -84,7 +84,7 @@ func TestTextFieldAttributes_Autocorrect_JSON_False(t *testing.T) {
 }
 
 func TestTextFieldAttributes_Autocorrect_JSON_Nil(t *testing.T) {
-	attrs := &duit_attributes.TextFieldAttributes[duit_props.EdgeInsetsLTRB]{
+	attrs := &duit_attributes.TextFieldAttributes{
 		Autocorrect: duit_utils.Nillable[bool](),
 	}
 
@@ -101,7 +101,7 @@ func TestTextFieldAttributes_Autocorrect_JSON_Nil(t *testing.T) {
 
 // Tests for EnableSuggestions Tristate[bool] property serialization
 func TestTextFieldAttributes_EnableSuggestions_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.TextFieldAttributes[duit_props.EdgeInsetsLTRB]{
+	attrs := &duit_attributes.TextFieldAttributes{
 		EnableSuggestions: duit_utils.BoolValue(true),
 	}
 
@@ -117,7 +117,7 @@ func TestTextFieldAttributes_EnableSuggestions_JSON_True(t *testing.T) {
 }
 
 func TestTextFieldAttributes_EnableSuggestions_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.TextFieldAttributes[duit_props.EdgeInsetsLTRB]{
+	attrs := &duit_attributes.TextFieldAttributes{
 		EnableSuggestions: duit_utils.BoolValue(false),
 	}
 
@@ -134,7 +134,7 @@ func TestTextFieldAttributes_EnableSuggestions_JSON_False(t *testing.T) {
 
 // Tests for Autofocus Tristate[bool] property serialization
 func TestTextFieldAttributes_Autofocus_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.TextFieldAttributes[duit_props.EdgeInsetsLTRB]{
+	attrs := &duit_attributes.TextFieldAttributes{
 		Autofocus: duit_utils.BoolValue(true),
 	}
 
@@ -150,7 +150,7 @@ func TestTextFieldAttributes_Autofocus_JSON_True(t *testing.T) {
 }
 
 func TestTextFieldAttributes_Autofocus_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.TextFieldAttributes[duit_props.EdgeInsetsLTRB]{
+	attrs := &duit_attributes.TextFieldAttributes{
 		Autofocus: duit_utils.BoolValue(false),
 	}
 

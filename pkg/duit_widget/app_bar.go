@@ -6,8 +6,8 @@ import (
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 )
 
-func AppBar[TInsets duit_props.EdgeInsets, TShape duit_props.ShapeBorder](
-	attributes *duit_attributes.AppBarAttributes[TInsets, TShape],
+func AppBar[TShape duit_props.ShapeBorder](
+	attributes *duit_attributes.AppBarAttributes[TShape],
 	id string,
 	controlled bool,
 	title, leading, flexibleSpace, bottom *duit_core.DuitElementModel,

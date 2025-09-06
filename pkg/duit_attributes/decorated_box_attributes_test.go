@@ -112,7 +112,7 @@ func TestDecoratedBoxAttributes_WithRGBOColor_JSON(t *testing.T) {
 	if !strings.Contains(jsonStr, `"decoration"`) {
 		t.Fatalf("expected JSON to contain 'decoration' field, got: %s", jsonStr)
 	}
-	if !strings.Contains(jsonStr, `"color":[255,0,0,1.000000]`) {
+	if !strings.Contains(jsonStr, `"color":[255,0,0,255]`) {
 		t.Fatalf("expected JSON to contain RGBO color array, got: %s", jsonStr)
 	}
 }

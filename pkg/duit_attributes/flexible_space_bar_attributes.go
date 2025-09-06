@@ -4,17 +4,18 @@ import (
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
-type FlexibleSpaceBarAttributes[TInsets duit_props.EdgeInsets] struct {
+
+type FlexibleSpaceBarAttributes struct {
 	*ValueReferenceHolder
 	*ThemeConsumer
-	TitlePadding       TInsets                     `json:"titlePadding,omitempty"`
-	CollapseMode       duit_props.CollapseMode      `json:"collapseMode,omitempty"`
-	StretchModes       []duit_props.StretchMode     `json:"stretchModes,omitempty"`
-	CenterTitle        duit_utils.Tristate[bool]   `json:"centerTitle,omitempty"`
-	ExpandedTitleScale float32                     `json:"expandedTitleScale,omitempty"`
+	TitlePadding       *duit_props.EdgeInsets    `json:"titlePadding,omitempty"`
+	CollapseMode       duit_props.CollapseMode   `json:"collapseMode,omitempty"`
+	StretchModes       []duit_props.StretchMode  `json:"stretchModes,omitempty"`
+	CenterTitle        duit_utils.Tristate[bool] `json:"centerTitle,omitempty"`
+	ExpandedTitleScale float32                   `json:"expandedTitleScale,omitempty"`
 }
 
-func (r *FlexibleSpaceBarAttributes[TInsets]) Validate() error {
+func (r *FlexibleSpaceBarAttributes) Validate() error {
 	if err := r.ThemeConsumer.Validate(); err != nil {
 		return err
 	}

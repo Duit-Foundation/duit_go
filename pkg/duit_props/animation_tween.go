@@ -114,8 +114,8 @@ func AlignmentTween(animatedPropKey string, begin, end Alignment, duration int, 
 	}
 }
 
-func EdgeInsetsTween[TInsets EdgeInsets](animatedPropKey string, begin, end TInsets, duration int, trigger AnimationTrigger, method AnimationMethod, reverseOnRepeat bool, curve Curves) *tweenBase[TInsets] {
-	return &tweenBase[TInsets]{
+func EdgeInsetsTween(animatedPropKey string, begin, end *EdgeInsets, duration int, trigger AnimationTrigger, method AnimationMethod, reverseOnRepeat bool, curve Curves) *tweenBase[*EdgeInsets] {
+	return &tweenBase[*EdgeInsets]{
 		TweenType:       "edgeInsetsTween",
 		AnimatedPropKey: animatedPropKey,
 		Duration:        duration,

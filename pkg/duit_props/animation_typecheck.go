@@ -2,6 +2,7 @@ package duit_props
 
 import (
 	"errors"
+	"fmt"
 )
 
 func CheckTweenType(tween any) error {
@@ -10,13 +11,13 @@ func CheckTweenType(tween any) error {
 		*tweenBase[*Color],
 		*tweenBase[*TextStyle],
 		*tweenBase[*BoxDecoration],
-		*tweenBase[EdgeInsetsSymmentric],
-		*tweenBase[EdgeInsetsLTRB],
+		*tweenBase[*EdgeInsets],
 		*tweenBase[BoxConstraints],
 		*tweenBase[Size],
+		*tweenBase[Alignment],
 		*tweenGroup, nil:
 		return nil
 	default:
-		return errors.New("invalid tween type. Must be instance of tweenBase or tweenGroup or nil")
+		return errors.New("invalid tween type. Must be instance of tweenBase or tweenGroup or nil. Received: " + fmt.Sprintf("%T", tween))
 	}
 }
