@@ -13,6 +13,11 @@ const (
 	ExecutionModifierDebounce ExecutionModifier = "debounce"
 )
 
+// HttpActionMetainfo represents metadata for an HTTP action.
+type HttpActionMetainfo struct {
+	Method string `json:"method"`
+}
+
 type ActionDependency struct {
 	Id     string `json:"id"`
 	Target string `json:"target"`
@@ -29,15 +34,6 @@ type ExecutionOptions struct {
 	Duration int               `json:"duration"`
 }
 
-// Event is a string field that represents the event associated with the action.
-//
-// DependsOn is a string slice field that represents the dependencies of the action.
-//
-// Meta is an interface{} field that represents optional additional metadata for the action.
-type Action interface {
-	RemoteAction | LocalAction | ScriptAction
-}
-
 type RemoteAction struct {
 	ExecutionType    uint8               `json:"executionType"`
 	Event            string              `json:"event"`
@@ -46,10 +42,52 @@ type RemoteAction struct {
 	ExecutionOptions *ExecutionOptions   `json:"options,omitempty"`
 }
 
+// NewWebSocketAction creates a WebSocket action.
+//
+// It takes in an event string and dependsOn slice of strings as parameters.
+// It returns a pointer to an Action struct.
+func NewWebSocketAction(event string, dependsOn []*ActionDependency) *RemoteAction {
+	return &RemoteAction{
+		ExecutionType: Transport,
+		Event:         event,
+		DependsOn:     dependsOn,
+	}
+}
+
+// NewHttpAction creates a new HTTP action.
+//
+// The function takes in the following parameters:
+// - event: a string representing the event of the action.
+// - dependsOn: a slice of strings representing the dependencies of the action.
+// - metainfo: a pointer to an instance of HttpActionMetainfo representing the meta information of the action.
+//
+// The function returns a pointer to an instance of Action.
+func NewHttpAction(event string, dependsOn []*ActionDependency, metainfo *HttpActionMetainfo) *RemoteAction {
+	return &RemoteAction{
+		ExecutionType: Transport,
+		Event:         event,
+		DependsOn:     dependsOn,
+		Meta:          metainfo,
+	}
+}
+
 type LocalAction struct {
 	ExecutionType    uint8             `json:"executionType"`
 	Payload          any               `json:"payload,omitempty"`
 	ExecutionOptions *ExecutionOptions `json:"options,omitempty"`
+}
+
+// NewLocalExecutedtAction creates a new local action.
+//
+// The function takes in the following parameter:
+// - payload: any type of data that will be passed to the action.
+//
+// The function returns a pointer to an instance of Action.
+func NewLocalExecutedtAction(payload any) *LocalAction {
+	return &LocalAction{
+		ExecutionType: Local,
+		Payload:       payload,
+	}
 }
 
 type ScriptAction struct {
@@ -58,4 +96,21 @@ type ScriptAction struct {
 	Event            string              `json:"event"`
 	DependsOn        []*ActionDependency `json:"dependsOn"`
 	ExecutionOptions *ExecutionOptions   `json:"options,omitempty"`
+}
+
+// NewScriptAction creates a new script-based action.
+//
+// This function takes in the following parameters:
+// - event: a string representing the event associated with the action.
+// - dependsOn: a slice of ActionDependency pointers that the action depends on.
+// - script: a pointer to ScriptData containing the script details for the action.
+//
+// It returns a pointer to an instance of ScriptAction.
+func NewScriptAction(event string, dependsOn []*ActionDependency, script *ScriptData) *ScriptAction {
+	return &ScriptAction{
+		ExecutionType: Script,
+		Event:         event,
+		DependsOn:     dependsOn,
+		Script:        script,
+	}
 }

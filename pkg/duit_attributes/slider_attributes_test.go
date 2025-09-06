@@ -5,14 +5,13 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_action"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
 func TestSliderAttributes_Validate_ValidAttributes(t *testing.T) {
-	attrs := &duit_attributes.SliderAttributes[duit_action.RemoteAction]{
+	attrs := &duit_attributes.SliderAttributes{
 		Value: duit_utils.Float32Value(50.0),
 		Min:   0.0,
 		Max:   100.0,
@@ -25,7 +24,7 @@ func TestSliderAttributes_Validate_ValidAttributes(t *testing.T) {
 }
 
 func TestSliderAttributes_Validate_MissingValue(t *testing.T) {
-	attrs := &duit_attributes.SliderAttributes[duit_action.RemoteAction]{
+	attrs := &duit_attributes.SliderAttributes{
 		Value: nil,
 		Min:   0.0,
 		Max:   100.0,
@@ -42,7 +41,7 @@ func TestSliderAttributes_Validate_MissingValue(t *testing.T) {
 }
 
 func TestSliderAttributes_Validate_WithAllProperties(t *testing.T) {
-	attrs := &duit_attributes.SliderAttributes[duit_action.RemoteAction]{
+	attrs := &duit_attributes.SliderAttributes{
 		Value:                duit_utils.Float32Value(75.0),
 		Min:                  0.0,
 		Max:                  100.0,
@@ -65,7 +64,7 @@ func TestSliderAttributes_Validate_WithAllProperties(t *testing.T) {
 
 // Tests for Value Tristate[float32] property serialization
 func TestSliderAttributes_Value_JSON_WithValue(t *testing.T) {
-	attrs := &duit_attributes.SliderAttributes[duit_action.RemoteAction]{
+	attrs := &duit_attributes.SliderAttributes{
 		Value: duit_utils.Float32Value(60.5),
 		Min:   0.0,
 		Max:   100.0,
@@ -83,7 +82,7 @@ func TestSliderAttributes_Value_JSON_WithValue(t *testing.T) {
 }
 
 func TestSliderAttributes_Value_JSON_ZeroValue(t *testing.T) {
-	attrs := &duit_attributes.SliderAttributes[duit_action.RemoteAction]{
+	attrs := &duit_attributes.SliderAttributes{
 		Value: duit_utils.Float32Value(0.0),
 		Min:   0.0,
 		Max:   100.0,
@@ -101,7 +100,7 @@ func TestSliderAttributes_Value_JSON_ZeroValue(t *testing.T) {
 }
 
 func TestSliderAttributes_Value_JSON_Nil(t *testing.T) {
-	attrs := &duit_attributes.SliderAttributes[duit_action.RemoteAction]{
+	attrs := &duit_attributes.SliderAttributes{
 		Value: duit_utils.Nillable[float32](),
 		Min:   0.0,
 		Max:   100.0,
@@ -120,7 +119,7 @@ func TestSliderAttributes_Value_JSON_Nil(t *testing.T) {
 
 // Tests for Autofocus Tristate[bool] property serialization
 func TestSliderAttributes_Autofocus_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.SliderAttributes[duit_action.RemoteAction]{
+	attrs := &duit_attributes.SliderAttributes{
 		Value:     duit_utils.Float32Value(50.0),
 		Min:       0.0,
 		Max:       100.0,
@@ -139,7 +138,7 @@ func TestSliderAttributes_Autofocus_JSON_True(t *testing.T) {
 }
 
 func TestSliderAttributes_Autofocus_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.SliderAttributes[duit_action.RemoteAction]{
+	attrs := &duit_attributes.SliderAttributes{
 		Value:     duit_utils.Float32Value(50.0),
 		Min:       0.0,
 		Max:       100.0,

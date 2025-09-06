@@ -6,16 +6,16 @@ import (
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
-type ElevatedButtonAttributes[TShape duit_props.ShapeBorder] struct {
+type ElevatedButtonAttributes struct {
 	*ValueReferenceHolder
 	*ThemeConsumer
-	Autofocus    duit_utils.Tristate[bool]       `json:"autofocus,omitempty"`
-	ClipBehavior duit_props.Clip                 `json:"clipBehavior,omitempty"`
-	Style        *duit_props.ButtonStyle[TShape] `json:"style,omitempty"`
-	OnLongPress  any                             `json:"onLongPress,omitempty"`
+	Autofocus    duit_utils.Tristate[bool] `json:"autofocus,omitempty"`
+	ClipBehavior duit_props.Clip           `json:"clipBehavior,omitempty"`
+	Style        *duit_props.ButtonStyle   `json:"style,omitempty"`
+	OnLongPress  any                       `json:"onLongPress,omitempty"`
 }
 
-func (r *ElevatedButtonAttributes[TShape]) Validate() error {
+func (r *ElevatedButtonAttributes) Validate() error {
 	if err := r.ThemeConsumer.Validate(); err != nil {
 		return err
 	}

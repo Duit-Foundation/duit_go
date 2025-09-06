@@ -5,7 +5,7 @@ import (
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
-type AppBarAttributes[TShape duit_props.ShapeBorder] struct {
+type AppBarAttributes struct {
 	*ValueReferenceHolder
 	*duit_props.AnimatedPropertyOwner
 	*ThemeConsumer
@@ -15,8 +15,8 @@ type AppBarAttributes[TShape duit_props.ShapeBorder] struct {
 	BackgroundColor           *duit_props.Color            `json:"backgroundColor,omitempty"`
 	ForegroundColor           *duit_props.Color            `json:"foregroundColor,omitempty"`
 	SurfaceTintColor          *duit_props.Color            `json:"surfaceTintColor,omitempty"`
-	ActionsPadding            *duit_props.EdgeInsets      `json:"actionsPadding,omitempty"`
-	Shape                     *TShape                      `json:"shape,omitempty"`
+	ActionsPadding            *duit_props.EdgeInsets       `json:"actionsPadding,omitempty"`
+	Shape                     *duit_props.ShapeBorder      `json:"shape,omitempty"`
 	ClipBehavior              duit_props.Clip              `json:"clipBehavior,omitempty"`
 	TitleSpacing              float32                      `json:"titleSpacing,omitempty"`
 	Elevation                 float32                      `json:"elevation,omitempty"`
@@ -32,7 +32,7 @@ type AppBarAttributes[TShape duit_props.ShapeBorder] struct {
 	Primary                   duit_utils.Tristate[bool]    `json:"primary,omitempty"`
 }
 
-func (r *AppBarAttributes[TShape]) Validate() error {
+func (r *AppBarAttributes) Validate() error {
 	if err := r.ThemeConsumer.Validate(); err != nil {
 		return err
 	}

@@ -5,7 +5,7 @@ import (
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
-type CardAttributes[TShape duit_props.ShapeBorder] struct {
+type CardAttributes struct {
 	*ValueReferenceHolder
 	*duit_props.AnimatedPropertyOwner
 	*ThemeConsumer
@@ -15,11 +15,11 @@ type CardAttributes[TShape duit_props.ShapeBorder] struct {
 	BorderOnForeground duit_utils.Tristate[bool] `json:"borderOnForeground,omitempty"`
 	SemanticContainer  duit_utils.Tristate[bool] `json:"semanticContainer,omitempty"`
 	Margin             *duit_props.EdgeInsets    `json:"margin,omitempty"`
-	Shape              *TShape                   `json:"shape,omitempty"`
+	Shape              *duit_props.ShapeBorder   `json:"shape,omitempty"`
 }
 
 // TODO: влупить валиадцию вложенных структур
-func (r *CardAttributes[TShape]) Validate() error {
+func (r *CardAttributes) Validate() error {
 	if err := r.ThemeConsumer.Validate(); err != nil {
 		return err
 	}
@@ -30,6 +30,18 @@ func (r *CardAttributes[TShape]) Validate() error {
 
 	if err := r.AnimatedPropertyOwner.Validate(); err != nil {
 		return err
+	}
+
+	if r.Shape != nil {
+		if err := r.Shape.Validate(); err != nil {
+			return err
+		}
+	}
+
+	if r.Margin != nil {
+		if err := r.Margin.Validate(); err != nil {
+			return err
+		}
 	}
 
 	return nil

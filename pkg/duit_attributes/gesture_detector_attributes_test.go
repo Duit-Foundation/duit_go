@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"strings"
 	"testing"
+
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_action"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
@@ -11,7 +12,7 @@ import (
 )
 
 func TestGestureDetectorAttributes_Validate_ValidAttributes(t *testing.T) {
-	attrs := &duit_attributes.GestureDetectorAttributes[duit_action.RemoteAction]{}
+	attrs := &duit_attributes.GestureDetectorAttributes{}
 
 	err := attrs.Validate()
 	if err != nil {
@@ -25,7 +26,7 @@ func TestGestureDetectorAttributes_Validate_WithValidActions(t *testing.T) {
 		Event:         "tap_event",
 	}
 
-	attrs := &duit_attributes.GestureDetectorAttributes[duit_action.RemoteAction]{
+	attrs := &duit_attributes.GestureDetectorAttributes{
 		OnTap:       remoteAction,
 		OnDoubleTap: remoteAction,
 		OnLongPress: remoteAction,
@@ -43,7 +44,7 @@ func TestGestureDetectorAttributes_Validate_WithAllGestureActions(t *testing.T) 
 		Event:         "gesture_event",
 	}
 
-	attrs := &duit_attributes.GestureDetectorAttributes[duit_action.RemoteAction]{
+	attrs := &duit_attributes.GestureDetectorAttributes{
 		OnTap:                 remoteAction,
 		OnTapDown:             remoteAction,
 		OnTapUp:               remoteAction,
@@ -77,7 +78,7 @@ func TestGestureDetectorAttributes_Validate_WithAllGestureActions(t *testing.T) 
 // Tests for Tristate[bool] field ExcludeFromSemantics JSON serialization
 
 func TestGestureDetectorAttributes_ExcludeFromSemantics_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.GestureDetectorAttributes[duit_action.RemoteAction]{
+	attrs := &duit_attributes.GestureDetectorAttributes{
 		ExcludeFromSemantics: duit_utils.BoolValue(true),
 	}
 
@@ -93,7 +94,7 @@ func TestGestureDetectorAttributes_ExcludeFromSemantics_JSON_True(t *testing.T) 
 }
 
 func TestGestureDetectorAttributes_ExcludeFromSemantics_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.GestureDetectorAttributes[duit_action.RemoteAction]{
+	attrs := &duit_attributes.GestureDetectorAttributes{
 		ExcludeFromSemantics: duit_utils.BoolValue(false),
 	}
 
@@ -109,7 +110,7 @@ func TestGestureDetectorAttributes_ExcludeFromSemantics_JSON_False(t *testing.T)
 }
 
 func TestGestureDetectorAttributes_ExcludeFromSemantics_JSON_Nil(t *testing.T) {
-	attrs := &duit_attributes.GestureDetectorAttributes[duit_action.RemoteAction]{
+	attrs := &duit_attributes.GestureDetectorAttributes{
 		ExcludeFromSemantics: duit_utils.Nillable[bool](),
 	}
 
@@ -132,7 +133,7 @@ func TestGestureDetectorAttributes_OnTap_JSON(t *testing.T) {
 		Event:         "tap_clicked",
 	}
 
-	attrs := &duit_attributes.GestureDetectorAttributes[duit_action.RemoteAction]{
+	attrs := &duit_attributes.GestureDetectorAttributes{
 		OnTap: remoteAction,
 	}
 
@@ -156,7 +157,7 @@ func TestGestureDetectorAttributes_OnDoubleTap_JSON(t *testing.T) {
 		Event:         "double_tap_event",
 	}
 
-	attrs := &duit_attributes.GestureDetectorAttributes[duit_action.RemoteAction]{
+	attrs := &duit_attributes.GestureDetectorAttributes{
 		OnDoubleTap: remoteAction,
 	}
 
@@ -180,7 +181,7 @@ func TestGestureDetectorAttributes_OnLongPress_JSON(t *testing.T) {
 		Event:         "long_press_event",
 	}
 
-	attrs := &duit_attributes.GestureDetectorAttributes[duit_action.RemoteAction]{
+	attrs := &duit_attributes.GestureDetectorAttributes{
 		OnLongPress: remoteAction,
 	}
 
@@ -204,7 +205,7 @@ func TestGestureDetectorAttributes_PanGestures_JSON(t *testing.T) {
 		Event:         "pan_event",
 	}
 
-	attrs := &duit_attributes.GestureDetectorAttributes[duit_action.RemoteAction]{
+	attrs := &duit_attributes.GestureDetectorAttributes{
 		OnPanStart:  remoteAction,
 		OnPanUpdate: remoteAction,
 		OnPanEnd:    remoteAction,
@@ -230,7 +231,7 @@ func TestGestureDetectorAttributes_PanGestures_JSON(t *testing.T) {
 // Tests for enum fields JSON serialization
 
 func TestGestureDetectorAttributes_DragStartBehavior_JSON(t *testing.T) {
-	attrs := &duit_attributes.GestureDetectorAttributes[duit_action.RemoteAction]{
+	attrs := &duit_attributes.GestureDetectorAttributes{
 		DragStarnBehavior: duit_props.DragStartBehaviorDown,
 	}
 
@@ -246,7 +247,7 @@ func TestGestureDetectorAttributes_DragStartBehavior_JSON(t *testing.T) {
 }
 
 func TestGestureDetectorAttributes_Behavior_JSON(t *testing.T) {
-	attrs := &duit_attributes.GestureDetectorAttributes[duit_action.RemoteAction]{
+	attrs := &duit_attributes.GestureDetectorAttributes{
 		Behavior: duit_props.HitTestBehaviorTranslucent,
 	}
 
@@ -262,7 +263,7 @@ func TestGestureDetectorAttributes_Behavior_JSON(t *testing.T) {
 }
 
 func TestGestureDetectorAttributes_NilActions_JSON(t *testing.T) {
-	attrs := &duit_attributes.GestureDetectorAttributes[duit_action.RemoteAction]{
+	attrs := &duit_attributes.GestureDetectorAttributes{
 		OnTap:       nil,
 		OnDoubleTap: nil,
 		OnLongPress: nil,
@@ -294,7 +295,7 @@ func TestGestureDetectorAttributes_WithLocalAction_JSON(t *testing.T) {
 		Payload:       map[string]interface{}{"gesture": "tap"},
 	}
 
-	attrs := &duit_attributes.GestureDetectorAttributes[duit_action.LocalAction]{
+	attrs := &duit_attributes.GestureDetectorAttributes{
 		OnTap: localAction,
 	}
 
@@ -322,7 +323,7 @@ func TestGestureDetectorAttributes_WithScriptAction_JSON(t *testing.T) {
 		},
 	}
 
-	attrs := &duit_attributes.GestureDetectorAttributes[duit_action.ScriptAction]{
+	attrs := &duit_attributes.GestureDetectorAttributes{
 		OnLongPress: scriptAction,
 	}
 
@@ -351,7 +352,7 @@ func TestGestureDetectorAttributes_ComprehensiveTest_JSON(t *testing.T) {
 		Event:         "comprehensive_event",
 	}
 
-	attrs := &duit_attributes.GestureDetectorAttributes[duit_action.RemoteAction]{
+	attrs := &duit_attributes.GestureDetectorAttributes{
 		OnTap:                 remoteAction,
 		OnTapDown:             remoteAction,
 		OnDoubleTap:           remoteAction,

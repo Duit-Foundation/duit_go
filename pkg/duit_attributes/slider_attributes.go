@@ -8,7 +8,7 @@ import (
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
-type SliderAttributes[TAction duit_action.Action] struct {
+type SliderAttributes struct {
 	*ValueReferenceHolder
 	*ThemeConsumer
 	Value                duit_utils.Tristate[float32]                         `json:"value,omitempty"`
@@ -16,9 +16,9 @@ type SliderAttributes[TAction duit_action.Action] struct {
 	Max                  float32                                              `json:"max,omitempty"`
 	Divisions            uint32                                               `json:"divisions,omitempty"`
 	SecondaryTrackValue  float32                                              `json:"secondaryTrackValue,omitempty"`
-	OnChanged            *TAction                                             `json:"onChanged,omitempty"`
-	OnChangeStart        *TAction                                             `json:"onChangeStart,omitempty"`
-	OnChangeEnd          *TAction                                             `json:"onChangeEnd,omitempty"`
+	OnChanged            any                                                  `json:"onChanged,omitempty"`
+	OnChangeStart        any                                                  `json:"onChangeStart,omitempty"`
+	OnChangeEnd          any                                                  `json:"onChangeEnd,omitempty"`
 	ActiveColor          *duit_props.Color                                    `json:"activeColor,omitempty"`
 	InactiveColor        *duit_props.Color                                    `json:"inactiveColor,omitempty"`
 	ThumbColor           *duit_props.Color                                    `json:"thumbColor,omitempty"`
@@ -29,7 +29,7 @@ type SliderAttributes[TAction duit_action.Action] struct {
 	AllowedInteraction   duit_props.SliderInteraction                         `json:"allowedInteraction,omitempty"`
 }
 
-func (r *SliderAttributes[TAction]) Validate() error {
+func (r *SliderAttributes) Validate() error {
 	if err := r.ValueReferenceHolder.Validate(); err != nil {
 		return err
 	}
@@ -44,6 +44,18 @@ func (r *SliderAttributes[TAction]) Validate() error {
 
 	if r.Min >= r.Max {
 		return errors.New("min must be less than max")
+	}
+
+	actions := []any{
+		r.OnChanged,
+		r.OnChangeStart,
+		r.OnChangeEnd,
+	}
+	
+	for _, action := range actions {
+		if err := duit_action.CheckActionType(action); err != nil {
+			return err
+		}
 	}
 
 	return nil

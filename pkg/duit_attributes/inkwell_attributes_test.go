@@ -12,7 +12,7 @@ import (
 )
 
 func TestInkwellAttributes_Validate_ValidAttributes(t *testing.T) {
-	attrs := &duit_attributes.InkwellAttributes[duit_action.RemoteAction, duit_props.RoundedRectangleBorder]{}
+	attrs := &duit_attributes.InkwellAttributes{}
 
 	err := attrs.Validate()
 	if err != nil {
@@ -26,7 +26,7 @@ func TestInkwellAttributes_Validate_WithAllFields(t *testing.T) {
 		Event:         "inkwell_tapped",
 	}
 
-	attrs := &duit_attributes.InkwellAttributes[duit_action.RemoteAction, duit_props.RoundedRectangleBorder]{
+	attrs := &duit_attributes.InkwellAttributes{
 		OnTap:                remoteAction,
 		OnDoubleTap:          remoteAction,
 		OnLongPress:          remoteAction,
@@ -56,7 +56,7 @@ func TestInkwellAttributes_Validate_WithMaterialStateProperty(t *testing.T) {
 		Hovered: *duit_props.NewColorString("#FF0000"),
 	}
 
-	attrs := &duit_attributes.InkwellAttributes[duit_action.RemoteAction, duit_props.RoundedRectangleBorder]{
+	attrs := &duit_attributes.InkwellAttributes{
 		OverlayColor: overlayColor,
 	}
 
@@ -74,7 +74,7 @@ func TestInkwellAttributes_Validate_WithBorderRadius(t *testing.T) {
 		BottomRight: &duit_props.Radius{Radius: 25.0},
 	}
 
-	attrs := &duit_attributes.InkwellAttributes[duit_action.RemoteAction, duit_props.RoundedRectangleBorder]{
+	attrs := &duit_attributes.InkwellAttributes{
 		BorderRadius: borderRadius,
 	}
 
@@ -85,17 +85,14 @@ func TestInkwellAttributes_Validate_WithBorderRadius(t *testing.T) {
 }
 
 func TestInkwellAttributes_Validate_WithCustomBorder(t *testing.T) {
-	customBorder := &duit_props.RoundedRectangleBorder{
-		Side: &duit_props.BorderSide{
-			Color: duit_props.NewColorString("#FF0000"),
-			Width: 2.0,
-		},
-		BorderRadius: &duit_props.BorderRadius{
-			TopLeft: &duit_props.Radius{Radius: 8.0},
-		},
-	}
+	customBorder := duit_props.NewRoundedRectangleBorder(&duit_props.BorderRadius{
+		TopLeft: &duit_props.Radius{Radius: 8.0},
+	}, &duit_props.BorderSide{
+		Color: duit_props.NewColorString("#FF0000"),
+		Width: 2.0,
+	})
 
-	attrs := &duit_attributes.InkwellAttributes[duit_action.RemoteAction, duit_props.RoundedRectangleBorder]{
+	attrs := &duit_attributes.InkwellAttributes{
 		CustomBorder: customBorder,
 	}
 
@@ -107,7 +104,7 @@ func TestInkwellAttributes_Validate_WithCustomBorder(t *testing.T) {
 
 // Tests for EnableFeedback Tristate[bool] property serialization
 func TestInkwellAttributes_EnableFeedback_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.InkwellAttributes[duit_action.RemoteAction, duit_props.RoundedRectangleBorder]{
+	attrs := &duit_attributes.InkwellAttributes{
 		EnableFeedback: duit_utils.BoolValue(true),
 	}
 
@@ -123,7 +120,7 @@ func TestInkwellAttributes_EnableFeedback_JSON_True(t *testing.T) {
 }
 
 func TestInkwellAttributes_EnableFeedback_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.InkwellAttributes[duit_action.RemoteAction, duit_props.RoundedRectangleBorder]{
+	attrs := &duit_attributes.InkwellAttributes{
 		EnableFeedback: duit_utils.BoolValue(false),
 	}
 
@@ -139,7 +136,7 @@ func TestInkwellAttributes_EnableFeedback_JSON_False(t *testing.T) {
 }
 
 func TestInkwellAttributes_EnableFeedback_JSON_Nil(t *testing.T) {
-	attrs := &duit_attributes.InkwellAttributes[duit_action.RemoteAction, duit_props.RoundedRectangleBorder]{
+	attrs := &duit_attributes.InkwellAttributes{
 		EnableFeedback: duit_utils.Nillable[bool](),
 	}
 
@@ -156,7 +153,7 @@ func TestInkwellAttributes_EnableFeedback_JSON_Nil(t *testing.T) {
 
 // Tests for ExcludeFromSemantics Tristate[bool] property serialization
 func TestInkwellAttributes_ExcludeFromSemantics_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.InkwellAttributes[duit_action.RemoteAction, duit_props.RoundedRectangleBorder]{
+	attrs := &duit_attributes.InkwellAttributes{
 		ExcludeFromSemantics: duit_utils.BoolValue(true),
 	}
 
@@ -172,7 +169,7 @@ func TestInkwellAttributes_ExcludeFromSemantics_JSON_True(t *testing.T) {
 }
 
 func TestInkwellAttributes_ExcludeFromSemantics_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.InkwellAttributes[duit_action.RemoteAction, duit_props.RoundedRectangleBorder]{
+	attrs := &duit_attributes.InkwellAttributes{
 		ExcludeFromSemantics: duit_utils.BoolValue(false),
 	}
 
@@ -188,7 +185,7 @@ func TestInkwellAttributes_ExcludeFromSemantics_JSON_False(t *testing.T) {
 }
 
 func TestInkwellAttributes_ExcludeFromSemantics_JSON_Nil(t *testing.T) {
-	attrs := &duit_attributes.InkwellAttributes[duit_action.RemoteAction, duit_props.RoundedRectangleBorder]{
+	attrs := &duit_attributes.InkwellAttributes{
 		ExcludeFromSemantics: duit_utils.Nillable[bool](),
 	}
 
@@ -205,7 +202,7 @@ func TestInkwellAttributes_ExcludeFromSemantics_JSON_Nil(t *testing.T) {
 
 // Tests for Autofocus Tristate[bool] property serialization
 func TestInkwellAttributes_Autofocus_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.InkwellAttributes[duit_action.RemoteAction, duit_props.RoundedRectangleBorder]{
+	attrs := &duit_attributes.InkwellAttributes{
 		Autofocus: duit_utils.BoolValue(true),
 	}
 
@@ -221,7 +218,7 @@ func TestInkwellAttributes_Autofocus_JSON_True(t *testing.T) {
 }
 
 func TestInkwellAttributes_Autofocus_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.InkwellAttributes[duit_action.RemoteAction, duit_props.RoundedRectangleBorder]{
+	attrs := &duit_attributes.InkwellAttributes{
 		Autofocus: duit_utils.BoolValue(false),
 	}
 
@@ -237,7 +234,7 @@ func TestInkwellAttributes_Autofocus_JSON_False(t *testing.T) {
 }
 
 func TestInkwellAttributes_Autofocus_JSON_Nil(t *testing.T) {
-	attrs := &duit_attributes.InkwellAttributes[duit_action.RemoteAction, duit_props.RoundedRectangleBorder]{
+	attrs := &duit_attributes.InkwellAttributes{
 		Autofocus: duit_utils.Nillable[bool](),
 	}
 
@@ -254,7 +251,7 @@ func TestInkwellAttributes_Autofocus_JSON_Nil(t *testing.T) {
 
 // Tests for CanRequestFocus Tristate[bool] property serialization
 func TestInkwellAttributes_CanRequestFocus_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.InkwellAttributes[duit_action.RemoteAction, duit_props.RoundedRectangleBorder]{
+	attrs := &duit_attributes.InkwellAttributes{
 		CanRequestFocus: duit_utils.BoolValue(true),
 	}
 
@@ -270,7 +267,7 @@ func TestInkwellAttributes_CanRequestFocus_JSON_True(t *testing.T) {
 }
 
 func TestInkwellAttributes_CanRequestFocus_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.InkwellAttributes[duit_action.RemoteAction, duit_props.RoundedRectangleBorder]{
+	attrs := &duit_attributes.InkwellAttributes{
 		CanRequestFocus: duit_utils.BoolValue(false),
 	}
 
@@ -286,7 +283,7 @@ func TestInkwellAttributes_CanRequestFocus_JSON_False(t *testing.T) {
 }
 
 func TestInkwellAttributes_CanRequestFocus_JSON_Nil(t *testing.T) {
-	attrs := &duit_attributes.InkwellAttributes[duit_action.RemoteAction, duit_props.RoundedRectangleBorder]{
+	attrs := &duit_attributes.InkwellAttributes{
 		CanRequestFocus: duit_utils.Nillable[bool](),
 	}
 
@@ -308,7 +305,7 @@ func TestInkwellAttributes_OnTap_JSON(t *testing.T) {
 		Event:         "test_tap",
 	}
 
-	attrs := &duit_attributes.InkwellAttributes[duit_action.RemoteAction, duit_props.RoundedRectangleBorder]{
+	attrs := &duit_attributes.InkwellAttributes{
 		OnTap: remoteAction,
 	}
 
@@ -324,7 +321,7 @@ func TestInkwellAttributes_OnTap_JSON(t *testing.T) {
 }
 
 func TestInkwellAttributes_FocusColor_JSON(t *testing.T) {
-	attrs := &duit_attributes.InkwellAttributes[duit_action.RemoteAction, duit_props.RoundedRectangleBorder]{
+	attrs := &duit_attributes.InkwellAttributes{
 		FocusColor: duit_props.NewColorString("#FF0000"),
 	}
 
@@ -340,7 +337,7 @@ func TestInkwellAttributes_FocusColor_JSON(t *testing.T) {
 }
 
 func TestInkwellAttributes_Radius_JSON(t *testing.T) {
-	attrs := &duit_attributes.InkwellAttributes[duit_action.RemoteAction, duit_props.RoundedRectangleBorder]{
+	attrs := &duit_attributes.InkwellAttributes{
 		Radius: 15.5,
 	}
 
@@ -356,7 +353,7 @@ func TestInkwellAttributes_Radius_JSON(t *testing.T) {
 }
 
 func TestInkwellAttributes_HoverDuration_JSON(t *testing.T) {
-	attrs := &duit_attributes.InkwellAttributes[duit_action.RemoteAction, duit_props.RoundedRectangleBorder]{
+	attrs := &duit_attributes.InkwellAttributes{
 		HoverDuration: 500,
 	}
 

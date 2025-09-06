@@ -7,10 +7,10 @@ import (
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
-type BottomSheetCommand[TAction duit_action.Action, TShape duit_props.ShapeBorder] struct {
+type BottomSheetCommand struct {
 	Type                                string                               `json:"type"`
 	Action                              OverlayAction                        `json:"action"`
-	OnClose                             *TAction                             `json:"onClose,omitempty"`
+	OnClose                             any                                  `json:"onClose,omitempty"`
 	Content                             *duit_core.DuitElementModel          `json:"content"`
 	IsDismissible                       duit_utils.Tristate[bool]            `json:"isDismissible,omitempty"`
 	IsScrollControlled                  duit_utils.Tristate[bool]            `json:"isScrollControlled,omitempty"`
@@ -23,11 +23,11 @@ type BottomSheetCommand[TAction duit_action.Action, TShape duit_props.ShapeBorde
 	AnchorPoint                         *duit_props.Offset                   `json:"anchorPoint,omitempty"`
 	BackgroundColor                     *duit_props.Color                    `json:"backgroundColor,omitempty"`
 	BarrierColor                        *duit_props.Color                    `json:"barrierColor,omitempty"`
-	Shape                               *TShape                              `json:"shape,omitempty"`
+	Shape                               *duit_props.ShapeBorder              `json:"shape,omitempty"`
 	ClipBehavior                        duit_utils.Tristate[duit_props.Clip] `json:"clipBehavior,omitempty"`
 }
 
-type BottomSheetUIProps[TShape duit_props.ShapeBorder] struct {
+type BottomSheetUIProps struct {
 	IsDismissible                       duit_utils.Tristate[bool]            `json:"isDismissible,omitempty"`
 	IsScrollControlled                  duit_utils.Tristate[bool]            `json:"isScrollControlled,omitempty"`
 	UseSafeArea                         duit_utils.Tristate[bool]            `json:"useSafeArea,omitempty"`
@@ -39,15 +39,21 @@ type BottomSheetUIProps[TShape duit_props.ShapeBorder] struct {
 	AnchorPoint                         *duit_props.Offset                   `json:"anchorPoint,omitempty"`
 	BackgroundColor                     *duit_props.Color                    `json:"backgroundColor,omitempty"`
 	BarrierColor                        *duit_props.Color                    `json:"barrierColor,omitempty"`
-	Shape                               *TShape                              `json:"shape,omitempty"`
+	Shape                               *duit_props.ShapeBorder              `json:"shape,omitempty"`
 	ClipBehavior                        duit_utils.Tristate[duit_props.Clip] `json:"clipBehavior,omitempty"`
 }
 
-func NewBottomSheetCommand[TAction duit_action.Action, TShape duit_props.ShapeBorder](
-	commandProps *OverlayCommandProps[TAction],
-	uiProps *BottomSheetUIProps[TShape],
-) *BottomSheetCommand[TAction, TShape] {
-	return &BottomSheetCommand[TAction, TShape]{
+func NewBottomSheetCommand(
+	commandProps *OverlayCommandProps,
+	uiProps *BottomSheetUIProps,
+) *BottomSheetCommand {
+	if commandProps.OnClose != nil {
+		if err := duit_action.CheckActionType(commandProps.OnClose); err != nil {
+			panic(err)
+		}
+	}
+
+	return &BottomSheetCommand{
 		Type:                                "bottomSheet",
 		Content:                             commandProps.Content,
 		Action:                              commandProps.Action,

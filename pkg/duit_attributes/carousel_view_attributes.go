@@ -12,14 +12,14 @@ import (
 // 	CarouselViewWeighted
 // )
 
-type CarouselViewAttributes[TShape duit_props.ShapeBorder] struct {
+type CarouselViewAttributes struct {
 	*ValueReferenceHolder
 	*duit_props.AnimatedPropertyOwner
 	*ThemeConsumer
 	// Constructor      CarouselViewConstructor                     `json:"constructor"`
 	Padding          *duit_props.EdgeInsets                               `json:"padding,omitempty"`
 	BackgroundColor  *duit_props.Color                                    `json:"backgroundColor,omitempty"`
-	Shape            *TShape                                              `json:"shape,omitempty"`
+	Shape            *duit_props.ShapeBorder                              `json:"shape,omitempty"`
 	OverlayColor     *duit_props.MaterialStateProperty[*duit_props.Color] `json:"overlayColor,omitempty"`
 	Elevation        float32                                              `json:"elevation,omitempty"`
 	ShrinkExtent     float32                                              `json:"shrinkExtent,omitempty"`
@@ -32,7 +32,7 @@ type CarouselViewAttributes[TShape duit_props.ShapeBorder] struct {
 	FlexWeights      []uint                                               `json:"flexWeights,omitempty"`
 }
 
-func (r *CarouselViewAttributes[TShape]) Validate() error {
+func (r *CarouselViewAttributes) Validate() error {
 	if err := r.ThemeConsumer.Validate(); err != nil {
 		return err
 	}

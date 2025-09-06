@@ -12,7 +12,7 @@ import (
 )
 
 func TestElevatedButtonAttributes_Validate_ValidAttributes(t *testing.T) {
-	attrs := &duit_attributes.ElevatedButtonAttributes[duit_props.RoundedRectangleBorder]{}
+	attrs := &duit_attributes.ElevatedButtonAttributes{}
 
 	err := attrs.Validate()
 	if err != nil {
@@ -26,11 +26,11 @@ func TestElevatedButtonAttributes_Validate_WithAllFields(t *testing.T) {
 		Event:         "button_clicked",
 	}
 
-	buttonStyle := &duit_props.ButtonStyle[duit_props.RoundedRectangleBorder]{
+	buttonStyle := &duit_props.ButtonStyle{
 		AnimationDuration: 200,
 	}
 
-	attrs := &duit_attributes.ElevatedButtonAttributes[duit_props.RoundedRectangleBorder]{
+	attrs := &duit_attributes.ElevatedButtonAttributes{
 		Autofocus:    duit_utils.BoolValue(true),
 		ClipBehavior: duit_props.ClipAntiAlias,
 		Style:        buttonStyle,
@@ -46,7 +46,7 @@ func TestElevatedButtonAttributes_Validate_WithAllFields(t *testing.T) {
 // Tests for Tristate[bool] field Autofocus JSON serialization
 
 func TestElevatedButtonAttributes_Autofocus_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.ElevatedButtonAttributes[duit_props.RoundedRectangleBorder]{
+	attrs := &duit_attributes.ElevatedButtonAttributes{
 		Autofocus: duit_utils.BoolValue(true),
 	}
 
@@ -62,7 +62,7 @@ func TestElevatedButtonAttributes_Autofocus_JSON_True(t *testing.T) {
 }
 
 func TestElevatedButtonAttributes_Autofocus_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.ElevatedButtonAttributes[duit_props.RoundedRectangleBorder]{
+	attrs := &duit_attributes.ElevatedButtonAttributes{
 		Autofocus: duit_utils.BoolValue(false),
 	}
 
@@ -78,7 +78,7 @@ func TestElevatedButtonAttributes_Autofocus_JSON_False(t *testing.T) {
 }
 
 func TestElevatedButtonAttributes_Autofocus_JSON_Nil(t *testing.T) {
-	attrs := &duit_attributes.ElevatedButtonAttributes[duit_props.RoundedRectangleBorder]{
+	attrs := &duit_attributes.ElevatedButtonAttributes{
 		Autofocus: duit_utils.Nillable[bool](),
 	}
 
@@ -96,7 +96,7 @@ func TestElevatedButtonAttributes_Autofocus_JSON_Nil(t *testing.T) {
 // Tests for other fields JSON serialization
 
 func TestElevatedButtonAttributes_ClipBehavior_JSON(t *testing.T) {
-	attrs := &duit_attributes.ElevatedButtonAttributes[duit_props.RoundedRectangleBorder]{
+	attrs := &duit_attributes.ElevatedButtonAttributes{
 		ClipBehavior: duit_props.ClipAntiAlias,
 	}
 
@@ -112,11 +112,11 @@ func TestElevatedButtonAttributes_ClipBehavior_JSON(t *testing.T) {
 }
 
 func TestElevatedButtonAttributes_Style_JSON(t *testing.T) {
-	buttonStyle := &duit_props.ButtonStyle[duit_props.RoundedRectangleBorder]{
+	buttonStyle := &duit_props.ButtonStyle{
 		AnimationDuration: 300,
 	}
 
-	attrs := &duit_attributes.ElevatedButtonAttributes[duit_props.RoundedRectangleBorder]{
+	attrs := &duit_attributes.ElevatedButtonAttributes{
 		Style: buttonStyle,
 	}
 
@@ -140,7 +140,7 @@ func TestElevatedButtonAttributes_OnLongPress_JSON(t *testing.T) {
 		Event:         "long_press_event",
 	}
 
-	attrs := &duit_attributes.ElevatedButtonAttributes[duit_props.RoundedRectangleBorder]{
+	attrs := &duit_attributes.ElevatedButtonAttributes{
 		OnLongPress: remoteAction,
 	}
 
@@ -159,7 +159,7 @@ func TestElevatedButtonAttributes_OnLongPress_JSON(t *testing.T) {
 }
 
 func TestElevatedButtonAttributes_NilFields_JSON(t *testing.T) {
-	attrs := &duit_attributes.ElevatedButtonAttributes[duit_props.RoundedRectangleBorder]{
+	attrs := &duit_attributes.ElevatedButtonAttributes{
 		Style:       nil,
 		OnLongPress: nil,
 	}
@@ -187,7 +187,7 @@ func TestElevatedButtonAttributes_WithLocalAction_JSON(t *testing.T) {
 		Payload:       map[string]interface{}{"key": "value"},
 	}
 
-	attrs := &duit_attributes.ElevatedButtonAttributes[duit_props.RoundedRectangleBorder]{
+	attrs := &duit_attributes.ElevatedButtonAttributes{
 		OnLongPress: localAction,
 	}
 
@@ -215,7 +215,7 @@ func TestElevatedButtonAttributes_WithScriptAction_JSON(t *testing.T) {
 		},
 	}
 
-	attrs := &duit_attributes.ElevatedButtonAttributes[duit_props.RoundedRectangleBorder]{
+	attrs := &duit_attributes.ElevatedButtonAttributes{
 		OnLongPress: scriptAction,
 	}
 

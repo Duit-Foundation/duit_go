@@ -3,11 +3,10 @@ package duit_widget
 import (
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_core"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 )
 
-func AppBar[TShape duit_props.ShapeBorder](
-	attributes *duit_attributes.AppBarAttributes[TShape],
+func AppBar(
+	attributes *duit_attributes.AppBarAttributes,
 	id string,
 	controlled bool,
 	title, leading, flexibleSpace, bottom *duit_core.DuitElementModel,

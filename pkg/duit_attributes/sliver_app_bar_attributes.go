@@ -5,7 +5,7 @@ import (
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
-type SliverAppBarAttributes[TShape duit_props.ShapeBorder] struct {
+type SliverAppBarAttributes struct {
 	*ValueReferenceHolder
 	*duit_props.AnimatedPropertyOwner
 	*ThemeConsumer
@@ -17,7 +17,7 @@ type SliverAppBarAttributes[TShape duit_props.ShapeBorder] struct {
 	ForegroundColor           *duit_props.Color            `json:"foregroundColor,omitempty"`
 	SurfaceTintColor          *duit_props.Color            `json:"surfaceTintColor,omitempty"`
 	ActionsPadding            *duit_props.EdgeInsets       `json:"actionsPadding,omitempty"`
-	Shape                     *TShape                      `json:"shape,omitempty"`
+	Shape                     *duit_props.ShapeBorder      `json:"shape,omitempty"`
 	ClipBehavior              duit_props.Clip              `json:"clipBehavior,omitempty"`
 	TitleSpacing              float32                      `json:"titleSpacing,omitempty"`
 	Elevation                 float32                      `json:"elevation,omitempty"`
@@ -42,7 +42,7 @@ type SliverAppBarAttributes[TShape duit_props.ShapeBorder] struct {
 	Stretch                   duit_utils.Tristate[bool]    `json:"stretch,omitempty"`
 }
 
-func (r *SliverAppBarAttributes[TShape]) Validate() error {
+func (r *SliverAppBarAttributes) Validate() error {
 	if err := r.ValueReferenceHolder.Validate(); err != nil {
 		return err
 	}

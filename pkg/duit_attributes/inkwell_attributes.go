@@ -6,19 +6,19 @@ import (
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
-type InkwellAttributes[TAction duit_action.Action, TShape duit_props.ShapeBorder] struct {
+type InkwellAttributes struct {
 	*ValueReferenceHolder
 	*ThemeConsumer
-	OnTap                *TAction                                            `json:"onTap,omitempty"`
-	OnDoubleTap          *TAction                                            `json:"onDoubleTap,omitempty"`
-	OnLongPress          *TAction                                            `json:"onLongPress,omitempty"`
-	OnTapDown            *TAction                                            `json:"onTapDown,omitempty"`
-	OnTapUp              *TAction                                            `json:"onTapUp,omitempty"`
-	OnTapCancel          *TAction                                            `json:"onTapCancel,omitempty"`
-	OnSecondaryTapDown   *TAction                                            `json:"onSecondaryTapDown,omitempty"`
-	OnSecondaryTapCancel *TAction                                            `json:"onSecondaryTapCancel,omitempty"`
-	OnSecondaryTap       *TAction                                            `json:"onSecondaryTap,omitempty"`
-	OnSecondaryTapUp     *TAction                                            `json:"onSecondaryTapUp,omitempty"`
+	OnTap                any                                                 `json:"onTap,omitempty"`
+	OnDoubleTap          any                                                 `json:"onDoubleTap,omitempty"`
+	OnLongPress          any                                                 `json:"onLongPress,omitempty"`
+	OnTapDown            any                                                 `json:"onTapDown,omitempty"`
+	OnTapUp              any                                                 `json:"onTapUp,omitempty"`
+	OnTapCancel          any                                                 `json:"onTapCancel,omitempty"`
+	OnSecondaryTapDown   any                                                 `json:"onSecondaryTapDown,omitempty"`
+	OnSecondaryTapCancel any                                                 `json:"onSecondaryTapCancel,omitempty"`
+	OnSecondaryTap       any                                                 `json:"onSecondaryTap,omitempty"`
+	OnSecondaryTapUp     any                                                 `json:"onSecondaryTapUp,omitempty"`
 	FocusColor           *duit_props.Color                                   `json:"focusColor,omitempty"`
 	HoverColor           *duit_props.Color                                   `json:"hoverColor,omitempty"`
 	HighlightColor       *duit_props.Color                                   `json:"highlightColor,omitempty"`
@@ -26,7 +26,7 @@ type InkwellAttributes[TAction duit_action.Action, TShape duit_props.ShapeBorder
 	OverlayColor         *duit_props.MaterialStateProperty[duit_props.Color] `json:"overlayColor,omitempty"`
 	Radius               float32                                             `json:"radius,omitempty"`
 	BorderRadius         *duit_props.BorderRadius                            `json:"borderRadius,omitempty"`
-	CustomBorder         *TShape                                             `json:"customBorder,omitempty"`
+	CustomBorder         *duit_props.ShapeBorder                             `json:"customBorder,omitempty"`
 	EnableFeedback       duit_utils.Tristate[bool]                           `json:"enableFeedback,omitempty"`
 	ExcludeFromSemantics duit_utils.Tristate[bool]                           `json:"excludeFromSemantics,omitempty"`
 	Autofocus            duit_utils.Tristate[bool]                           `json:"autofocus,omitempty"`
@@ -34,7 +34,7 @@ type InkwellAttributes[TAction duit_action.Action, TShape duit_props.ShapeBorder
 	HoverDuration        uint                                                `json:"hoverDuration,omitempty"`
 }
 
-func (r *InkwellAttributes[TAction, TShape]) Validate() error {
+func (r *InkwellAttributes) Validate() error {
 	if err := r.ValueReferenceHolder.Validate(); err != nil {
 		return err
 	}
@@ -42,7 +42,7 @@ func (r *InkwellAttributes[TAction, TShape]) Validate() error {
 		return err
 	}
 
-	callbacks := []*TAction{
+	callbacks := []any{
 		r.OnTap,
 		r.OnDoubleTap,
 		r.OnLongPress,
