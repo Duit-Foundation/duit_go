@@ -2,8 +2,8 @@ package duit_props
 
 // TextStyle represents text styling properties
 type TextStyle struct {
-	Color               *Color               `json:"color,omitempty"`
-	DecorationColor     *Color               `json:"decorationColor,omitempty"`
+	Color               *Color              `json:"color,omitempty"`
+	DecorationColor     *Color              `json:"decorationColor,omitempty"`
 	FontFamily          string              `json:"fontFamily,omitempty"`
 	FontWeight          FontWeight          `json:"fontWeight,omitempty"`
 	FontSize            float32             `json:"fontSize,omitempty"`

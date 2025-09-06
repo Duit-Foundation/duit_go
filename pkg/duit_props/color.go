@@ -5,18 +5,6 @@ import (
 	"errors"
 )
 
-// func (color *ColorRGBO) MarshalJSON() ([]byte, error) {
-// 	if color != nil {
-// 		return []byte(fmt.Sprintf(`[%d,%d,%d,%f]`, color.R, color.G, color.B, color.O)), nil
-// 	}
-
-// 	return []byte{}, nil
-// }
-
-// type Color interface {
-// 	ColorString | *ColorRGBO
-// }
-
 type Color struct {
 	data any
 }
