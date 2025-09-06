@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"strings"
 	"testing"
+
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_action"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
@@ -11,7 +12,7 @@ import (
 )
 
 func TestSliderAttributes_Validate_ValidAttributes(t *testing.T) {
-	attrs := &duit_attributes.SliderAttributes[duit_action.RemoteAction, duit_props.ColorString]{
+	attrs := &duit_attributes.SliderAttributes[duit_action.RemoteAction]{
 		Value: duit_utils.Float32Value(50.0),
 		Min:   0.0,
 		Max:   100.0,
@@ -24,7 +25,7 @@ func TestSliderAttributes_Validate_ValidAttributes(t *testing.T) {
 }
 
 func TestSliderAttributes_Validate_MissingValue(t *testing.T) {
-	attrs := &duit_attributes.SliderAttributes[duit_action.RemoteAction, duit_props.ColorString]{
+	attrs := &duit_attributes.SliderAttributes[duit_action.RemoteAction]{
 		Value: nil,
 		Min:   0.0,
 		Max:   100.0,
@@ -41,16 +42,16 @@ func TestSliderAttributes_Validate_MissingValue(t *testing.T) {
 }
 
 func TestSliderAttributes_Validate_WithAllProperties(t *testing.T) {
-	attrs := &duit_attributes.SliderAttributes[duit_action.RemoteAction, duit_props.ColorString]{
+	attrs := &duit_attributes.SliderAttributes[duit_action.RemoteAction]{
 		Value:                duit_utils.Float32Value(75.0),
 		Min:                  0.0,
 		Max:                  100.0,
 		Divisions:            10,
 		SecondaryTrackValue:  25.0,
-		ActiveColor:          "#FF0000",
-		InactiveColor:        "#CCCCCC",
-		ThumbColor:           "#0000FF",
-		SecondaryActiveColor: "#00FF00",
+		ActiveColor:          duit_props.NewColorString("#FF0000"),
+		InactiveColor:        duit_props.NewColorString("#CCCCCC"),
+		ThumbColor:           duit_props.NewColorString("#0000FF"),
+		SecondaryActiveColor: duit_props.NewColorString("#00FF00"),
 		Autofocus:            duit_utils.BoolValue(true),
 		Label:                "Test Slider",
 		AllowedInteraction:   "tap",
@@ -64,7 +65,7 @@ func TestSliderAttributes_Validate_WithAllProperties(t *testing.T) {
 
 // Tests for Value Tristate[float32] property serialization
 func TestSliderAttributes_Value_JSON_WithValue(t *testing.T) {
-	attrs := &duit_attributes.SliderAttributes[duit_action.RemoteAction, duit_props.ColorString]{
+	attrs := &duit_attributes.SliderAttributes[duit_action.RemoteAction]{
 		Value: duit_utils.Float32Value(60.5),
 		Min:   0.0,
 		Max:   100.0,
@@ -82,7 +83,7 @@ func TestSliderAttributes_Value_JSON_WithValue(t *testing.T) {
 }
 
 func TestSliderAttributes_Value_JSON_ZeroValue(t *testing.T) {
-	attrs := &duit_attributes.SliderAttributes[duit_action.RemoteAction, duit_props.ColorString]{
+	attrs := &duit_attributes.SliderAttributes[duit_action.RemoteAction]{
 		Value: duit_utils.Float32Value(0.0),
 		Min:   0.0,
 		Max:   100.0,
@@ -100,7 +101,7 @@ func TestSliderAttributes_Value_JSON_ZeroValue(t *testing.T) {
 }
 
 func TestSliderAttributes_Value_JSON_Nil(t *testing.T) {
-	attrs := &duit_attributes.SliderAttributes[duit_action.RemoteAction, duit_props.ColorString]{
+	attrs := &duit_attributes.SliderAttributes[duit_action.RemoteAction]{
 		Value: duit_utils.Nillable[float32](),
 		Min:   0.0,
 		Max:   100.0,
@@ -119,7 +120,7 @@ func TestSliderAttributes_Value_JSON_Nil(t *testing.T) {
 
 // Tests for Autofocus Tristate[bool] property serialization
 func TestSliderAttributes_Autofocus_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.SliderAttributes[duit_action.RemoteAction, duit_props.ColorString]{
+	attrs := &duit_attributes.SliderAttributes[duit_action.RemoteAction]{
 		Value:     duit_utils.Float32Value(50.0),
 		Min:       0.0,
 		Max:       100.0,
@@ -138,7 +139,7 @@ func TestSliderAttributes_Autofocus_JSON_True(t *testing.T) {
 }
 
 func TestSliderAttributes_Autofocus_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.SliderAttributes[duit_action.RemoteAction, duit_props.ColorString]{
+	attrs := &duit_attributes.SliderAttributes[duit_action.RemoteAction]{
 		Value:     duit_utils.Float32Value(50.0),
 		Min:       0.0,
 		Max:       100.0,

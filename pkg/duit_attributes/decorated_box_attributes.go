@@ -2,17 +2,18 @@ package duit_attributes
 
 import (
 	"errors"
+
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 )
 
-type DecoratedBoxAttributes[T duit_props.Color] struct {
+type DecoratedBoxAttributes struct {
 	*ValueReferenceHolder
 	*duit_props.AnimatedPropertyOwner
 	*ThemeConsumer
-	Decoration *duit_props.BoxDecoration[T] `json:"decoration,omitempty"`
+	Decoration *duit_props.BoxDecoration `json:"decoration,omitempty"`
 }
 
-func (r *DecoratedBoxAttributes[T]) Validate() error {
+func (r *DecoratedBoxAttributes) Validate() error {
 	if err := r.ThemeConsumer.Validate(); err != nil {
 		return err
 	}

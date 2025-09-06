@@ -2,16 +2,17 @@ package duit_attributes_test
 
 import (
 	"testing"
+
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 )
 
 func TestRichTextAttributes_Validate_ValidAttributes(t *testing.T) {
-	textSpan := &duit_props.TextSpan[duit_props.ColorString]{
+	textSpan := &duit_props.TextSpan{
 		Text: "Test text",
 	}
 
-	attrs := &duit_attributes.RichTextAttributes[duit_props.ColorString]{
+	attrs := &duit_attributes.RichTextAttributes{
 		TextSpan: textSpan,
 	}
 
@@ -22,7 +23,7 @@ func TestRichTextAttributes_Validate_ValidAttributes(t *testing.T) {
 }
 
 func TestRichTextAttributes_Validate_MissingTextSpan(t *testing.T) {
-	attrs := &duit_attributes.RichTextAttributes[duit_props.ColorString]{
+	attrs := &duit_attributes.RichTextAttributes{
 		TextSpan: nil,
 	}
 

@@ -1,17 +1,19 @@
 package duit_attributes
 
 import (
+	"errors"
+
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 )
 
-type ColoredBoxAttributes[T duit_props.Color] struct {
+type ColoredBoxAttributes struct {
 	*ValueReferenceHolder
 	*duit_props.AnimatedPropertyOwner
 	*ThemeConsumer
-	Color T `json:"color,omitempty"`
+	Color *duit_props.Color `json:"color,omitempty"`
 }
 
-func (r *ColoredBoxAttributes[T]) Validate() error {
+func (r *ColoredBoxAttributes) Validate() error {
 	if err := r.ThemeConsumer.Validate(); err != nil {
 		return err
 	}
@@ -24,7 +26,13 @@ func (r *ColoredBoxAttributes[T]) Validate() error {
 		return err
 	}
 
-	//TODO: реализовать валидацию цвета, без рефликсии дженерик тип нельзя проверить корректно
+	if r.Color == nil {
+		return errors.New("color property is required")
+	} else {
+		if err := r.Color.Validate(); err != nil {
+			return err
+		}
+	}
 
 	return nil
 }

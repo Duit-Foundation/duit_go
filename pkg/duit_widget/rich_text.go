@@ -2,10 +2,9 @@ package duit_widget
 
 import (
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_core"
 )
 
-func RichText[T duit_props.Color](attributes *duit_attributes.RichTextAttributes[T], id string, controlled bool) *duit_core.DuitElementModel {
+func RichText(attributes *duit_attributes.RichTextAttributes, id string, controlled bool) *duit_core.DuitElementModel {
 	return new(duit_core.DuitElementModel).CreateElement(duit_core.RichText, id, "", attributes, nil, controlled, 0, nil)
 }

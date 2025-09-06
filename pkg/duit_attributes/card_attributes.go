@@ -5,12 +5,12 @@ import (
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
-type CardAttributes[TColor duit_props.Color, TInsets duit_props.EdgeInsets, TShape duit_props.ShapeBorder[TColor]] struct {
+type CardAttributes[TInsets duit_props.EdgeInsets, TShape duit_props.ShapeBorder] struct {
 	*ValueReferenceHolder
 	*duit_props.AnimatedPropertyOwner
 	*ThemeConsumer
-	Color              TColor                    `json:"color,omitempty"`
-	ShadowColor        TColor                    `json:"shadowColor,omitempty"`
+	Color              *duit_props.Color                    `json:"color,omitempty"`
+	ShadowColor        *duit_props.Color                    `json:"shadowColor,omitempty"`
 	Elevation          float32                   `json:"elevation,omitempty"`
 	BorderOnForeground duit_utils.Tristate[bool] `json:"borderOnForeground,omitempty"`
 	SemanticContainer  duit_utils.Tristate[bool] `json:"semanticContainer,omitempty"`
@@ -18,7 +18,7 @@ type CardAttributes[TColor duit_props.Color, TInsets duit_props.EdgeInsets, TSha
 	Shape              *TShape                   `json:"shape,omitempty"`
 }
 //TODO: влупить валиадцию вложенных структур
-func (r *CardAttributes[TColor, TInsets, TShape]) Validate() error {
+func (r *CardAttributes[TInsets, TShape]) Validate() error {
 	if err := r.ThemeConsumer.Validate(); err != nil {
 		return err
 	}

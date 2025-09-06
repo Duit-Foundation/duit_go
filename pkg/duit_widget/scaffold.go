@@ -2,12 +2,11 @@ package duit_widget
 
 import (
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_core"
 )
 
-func Scaffold[TColor duit_props.Color](
-	attributes *duit_attributes.ScaffoldAttributes[TColor],
+func Scaffold(
+	attributes *duit_attributes.ScaffoldAttributes,
 	id string,
 	controlled bool,
 	body,
