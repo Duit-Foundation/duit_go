@@ -41,5 +41,29 @@ func (r *AnimatedContainerAttributes) Validate() error {
 		return err
 	}
 
+	if r.Color != nil {
+		if err := r.Color.Validate(); err != nil {
+			return err
+		}
+	}
+
+	if r.Padding != nil {
+		if err := r.Padding.Validate(); err != nil {
+			return err
+		}
+	}
+
+	if r.Margin != nil {
+		if err := r.Margin.Validate(); err != nil {
+			return err
+		}
+	}
+
+	if r.Constraints != nil {
+		if err := r.Constraints.Validate(); err != nil {
+			return err
+		}
+	}
+
 	return nil
 }

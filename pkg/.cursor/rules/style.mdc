@@ -1,0 +1,8 @@
+---
+description: Code style
+alwaysApply: true
+---
+
+- When declaring new structure methods, the receiver name must always be "r"
+- Documentation always must be in English
+- If a caller calls a method on an object that is potentially a nil-receiver, it must explicitly check the object for nil before the call.

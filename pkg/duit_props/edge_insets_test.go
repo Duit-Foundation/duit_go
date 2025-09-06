@@ -136,12 +136,15 @@ func TestNewEdgeInsetsSymmetric_NegativeValues(t *testing.T) {
 
 // Tests for EdgeInsets.Validate() method with nil pointer
 func TestEdgeInsets_Validate_NilPointer(t *testing.T) {
+	defer func() {
+		if r := recover(); r == nil {
+			t.Fatal("expected panic on nil receiver, but did not panic")
+		}
+	}()
+
 	var edgeInsets *duit_props.EdgeInsets = nil
 
-	err := edgeInsets.Validate()
-	if err != nil {
-		t.Fatal("expected no error for nil EdgeInsets, got:", err)
-	}
+	edgeInsets.Validate()
 }
 
 // Tests for EdgeInsets.Validate() method with uninitialized data

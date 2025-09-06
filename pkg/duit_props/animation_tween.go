@@ -128,8 +128,8 @@ func EdgeInsetsTween(animatedPropKey string, begin, end *EdgeInsets, duration in
 	}
 }
 
-func BoxConstraintsTween(animatedPropKey string, begin, end BoxConstraints, duration int, trigger AnimationTrigger, method AnimationMethod, reverseOnRepeat bool, curve Curves) *tweenBase[BoxConstraints] {
-	return &tweenBase[BoxConstraints]{
+func BoxConstraintsTween(animatedPropKey string, begin, end *BoxConstraints, duration int, trigger AnimationTrigger, method AnimationMethod, reverseOnRepeat bool, curve Curves) *tweenBase[*BoxConstraints] {
+	return &tweenBase[*BoxConstraints]{
 		TweenType:       "boxConstraintsTween",
 		AnimatedPropKey: animatedPropKey,
 		Duration:        duration,

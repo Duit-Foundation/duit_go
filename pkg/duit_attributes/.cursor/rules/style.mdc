@@ -1,6 +1,0 @@
----
-description: Code style
-alwaysApply: false
----
-
-- When declaring new structure methods, the receiver name must always be "r"
