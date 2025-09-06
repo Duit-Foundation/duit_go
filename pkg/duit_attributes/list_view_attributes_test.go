@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"strings"
 	"testing"
+
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_core"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
@@ -12,7 +13,7 @@ import (
 
 // Tests for ListViewBaseAttributes
 func TestListViewBaseAttributes_Validate_ValidAttributes(t *testing.T) {
-	attrs := &duit_attributes.ListViewBaseAttributes[duit_props.EdgeInsetsAll]{
+	attrs := &duit_attributes.ListViewBaseAttributes{
 		Type: duit_utils.TristateFrom[duit_attributes.ListKind](duit_attributes.ListCommon),
 	}
 
@@ -23,7 +24,7 @@ func TestListViewBaseAttributes_Validate_ValidAttributes(t *testing.T) {
 }
 
 func TestListViewBaseAttributes_Validate_MissingType(t *testing.T) {
-	attrs := &duit_attributes.ListViewBaseAttributes[duit_props.EdgeInsetsAll]{
+	attrs := &duit_attributes.ListViewBaseAttributes{
 		Type: nil,
 	}
 
@@ -34,7 +35,7 @@ func TestListViewBaseAttributes_Validate_MissingType(t *testing.T) {
 }
 
 func TestListViewBaseAttributes_Validate_WithAllProperties(t *testing.T) {
-	attrs := &duit_attributes.ListViewBaseAttributes[duit_props.EdgeInsetsAll]{
+	attrs := &duit_attributes.ListViewBaseAttributes{
 		Type:                    duit_utils.TristateFrom[duit_attributes.ListKind](duit_attributes.ListCommon),
 		Reverse:                 duit_utils.BoolValue(true),
 		Primary:                 duit_utils.BoolValue(false),
@@ -47,7 +48,7 @@ func TestListViewBaseAttributes_Validate_WithAllProperties(t *testing.T) {
 		CacheExtent:             100.0,
 		Anchor:                  0.5,
 		SemantickChildCount:     10,
-		Padding:                 duit_utils.TristateFrom[duit_props.EdgeInsetsAll](duit_props.EdgeInsetsAll(16.0)),
+		Padding:                 duit_utils.TristateFrom[duit_props.EdgeInsets](duit_props.NewEdgeInsetsAll(16.0)),
 		ItemExtent:              50.0,
 		ClipBehavior:            duit_props.ClipAntiAlias,
 		RestorationId:           "test_restoration",
@@ -63,15 +64,15 @@ func TestListViewBaseAttributes_Validate_WithAllProperties(t *testing.T) {
 
 // Tests for ListViewBuilderAttributes
 func TestListViewBuilderAttributes_Validate_ValidAttributes(t *testing.T) {
-	baseAttrs := &duit_attributes.ListViewBaseAttributes[duit_props.EdgeInsetsAll]{
+	baseAttrs := &duit_attributes.ListViewBaseAttributes{
 		Type: duit_utils.TristateFrom[duit_attributes.ListKind](duit_attributes.ListBuilder),
 	}
-	
+
 	builder := &duit_attributes.Builder{
 		ChildObjects: []*duit_core.DuitElementModel{},
 	}
 
-	attrs := &duit_attributes.ListViewBuilderAttributes[duit_props.EdgeInsetsAll]{
+	attrs := &duit_attributes.ListViewBuilderAttributes{
 		ListViewBaseAttributes: baseAttrs,
 		Builder:                builder,
 	}
@@ -87,7 +88,7 @@ func TestListViewBuilderAttributes_Validate_MissingBaseAttributes(t *testing.T) 
 		ChildObjects: []*duit_core.DuitElementModel{},
 	}
 
-	attrs := &duit_attributes.ListViewBuilderAttributes[duit_props.EdgeInsetsAll]{
+	attrs := &duit_attributes.ListViewBuilderAttributes{
 		ListViewBaseAttributes: nil,
 		Builder:                builder,
 	}
@@ -99,11 +100,11 @@ func TestListViewBuilderAttributes_Validate_MissingBaseAttributes(t *testing.T) 
 }
 
 func TestListViewBuilderAttributes_Validate_MissingBuilder(t *testing.T) {
-	baseAttrs := &duit_attributes.ListViewBaseAttributes[duit_props.EdgeInsetsAll]{
+	baseAttrs := &duit_attributes.ListViewBaseAttributes{
 		Type: duit_utils.TristateFrom[duit_attributes.ListKind](duit_attributes.ListBuilder),
 	}
 
-	attrs := &duit_attributes.ListViewBuilderAttributes[duit_props.EdgeInsetsAll]{
+	attrs := &duit_attributes.ListViewBuilderAttributes{
 		ListViewBaseAttributes: baseAttrs,
 		Builder:                nil,
 	}
@@ -116,22 +117,22 @@ func TestListViewBuilderAttributes_Validate_MissingBuilder(t *testing.T) {
 
 // Tests for ListViewSeparatedAttributes
 func TestListViewSeparatedAttributes_Validate_ValidAttributes(t *testing.T) {
-	baseAttrs := &duit_attributes.ListViewBaseAttributes[duit_props.EdgeInsetsAll]{
+	baseAttrs := &duit_attributes.ListViewBaseAttributes{
 		Type: duit_utils.TristateFrom[duit_attributes.ListKind](duit_attributes.ListSeparated),
 	}
-	
+
 	builder := &duit_attributes.Builder{
 		ChildObjects: []*duit_core.DuitElementModel{},
 	}
 
-	builderAttrs := &duit_attributes.ListViewBuilderAttributes[duit_props.EdgeInsetsAll]{
+	builderAttrs := &duit_attributes.ListViewBuilderAttributes{
 		ListViewBaseAttributes: baseAttrs,
 		Builder:                builder,
 	}
 
 	separator := &duit_core.DuitElementModel{}
 
-	attrs := &duit_attributes.ListViewSeparatedAttributes[duit_props.EdgeInsetsAll]{
+	attrs := &duit_attributes.ListViewSeparatedAttributes{
 		ListViewBuilderAttributes: builderAttrs,
 		Separator:                 separator,
 	}
@@ -145,7 +146,7 @@ func TestListViewSeparatedAttributes_Validate_ValidAttributes(t *testing.T) {
 func TestListViewSeparatedAttributes_Validate_MissingBuilderAttributes(t *testing.T) {
 	separator := &duit_core.DuitElementModel{}
 
-	attrs := &duit_attributes.ListViewSeparatedAttributes[duit_props.EdgeInsetsAll]{
+	attrs := &duit_attributes.ListViewSeparatedAttributes{
 		ListViewBuilderAttributes: nil,
 		Separator:                 separator,
 	}
@@ -157,20 +158,20 @@ func TestListViewSeparatedAttributes_Validate_MissingBuilderAttributes(t *testin
 }
 
 func TestListViewSeparatedAttributes_Validate_MissingSeparator(t *testing.T) {
-	baseAttrs := &duit_attributes.ListViewBaseAttributes[duit_props.EdgeInsetsAll]{
+	baseAttrs := &duit_attributes.ListViewBaseAttributes{
 		Type: duit_utils.TristateFrom[duit_attributes.ListKind](duit_attributes.ListSeparated),
 	}
-	
+
 	builder := &duit_attributes.Builder{
 		ChildObjects: []*duit_core.DuitElementModel{},
 	}
 
-	builderAttrs := &duit_attributes.ListViewBuilderAttributes[duit_props.EdgeInsetsAll]{
+	builderAttrs := &duit_attributes.ListViewBuilderAttributes{
 		ListViewBaseAttributes: baseAttrs,
 		Builder:                builder,
 	}
 
-	attrs := &duit_attributes.ListViewSeparatedAttributes[duit_props.EdgeInsetsAll]{
+	attrs := &duit_attributes.ListViewSeparatedAttributes{
 		ListViewBuilderAttributes: builderAttrs,
 		Separator:                 nil,
 	}
@@ -183,7 +184,7 @@ func TestListViewSeparatedAttributes_Validate_MissingSeparator(t *testing.T) {
 
 // Tests for Tristate[bool] properties serialization
 func TestListViewBaseAttributes_Reverse_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.ListViewBaseAttributes[duit_props.EdgeInsetsAll]{
+	attrs := &duit_attributes.ListViewBaseAttributes{
 		Type:    duit_utils.TristateFrom[duit_attributes.ListKind](duit_attributes.ListCommon),
 		Reverse: duit_utils.BoolValue(true),
 	}
@@ -200,7 +201,7 @@ func TestListViewBaseAttributes_Reverse_JSON_True(t *testing.T) {
 }
 
 func TestListViewBaseAttributes_Reverse_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.ListViewBaseAttributes[duit_props.EdgeInsetsAll]{
+	attrs := &duit_attributes.ListViewBaseAttributes{
 		Type:    duit_utils.TristateFrom[duit_attributes.ListKind](duit_attributes.ListCommon),
 		Reverse: duit_utils.BoolValue(false),
 	}
@@ -217,7 +218,7 @@ func TestListViewBaseAttributes_Reverse_JSON_False(t *testing.T) {
 }
 
 func TestListViewBaseAttributes_Reverse_JSON_Nil(t *testing.T) {
-	attrs := &duit_attributes.ListViewBaseAttributes[duit_props.EdgeInsetsAll]{
+	attrs := &duit_attributes.ListViewBaseAttributes{
 		Type:    duit_utils.TristateFrom[duit_attributes.ListKind](duit_attributes.ListCommon),
 		Reverse: duit_utils.Nillable[bool](),
 	}
@@ -234,7 +235,7 @@ func TestListViewBaseAttributes_Reverse_JSON_Nil(t *testing.T) {
 }
 
 func TestListViewBaseAttributes_Primary_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.ListViewBaseAttributes[duit_props.EdgeInsetsAll]{
+	attrs := &duit_attributes.ListViewBaseAttributes{
 		Type:    duit_utils.TristateFrom[duit_attributes.ListKind](duit_attributes.ListCommon),
 		Primary: duit_utils.BoolValue(true),
 	}
@@ -251,7 +252,7 @@ func TestListViewBaseAttributes_Primary_JSON_True(t *testing.T) {
 }
 
 func TestListViewBaseAttributes_Primary_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.ListViewBaseAttributes[duit_props.EdgeInsetsAll]{
+	attrs := &duit_attributes.ListViewBaseAttributes{
 		Type:    duit_utils.TristateFrom[duit_attributes.ListKind](duit_attributes.ListCommon),
 		Primary: duit_utils.BoolValue(false),
 	}
@@ -268,7 +269,7 @@ func TestListViewBaseAttributes_Primary_JSON_False(t *testing.T) {
 }
 
 func TestListViewBaseAttributes_Primary_JSON_Nil(t *testing.T) {
-	attrs := &duit_attributes.ListViewBaseAttributes[duit_props.EdgeInsetsAll]{
+	attrs := &duit_attributes.ListViewBaseAttributes{
 		Type:    duit_utils.TristateFrom[duit_attributes.ListKind](duit_attributes.ListCommon),
 		Primary: duit_utils.Nillable[bool](),
 	}
@@ -285,7 +286,7 @@ func TestListViewBaseAttributes_Primary_JSON_Nil(t *testing.T) {
 }
 
 func TestListViewBaseAttributes_ShrinkWrap_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.ListViewBaseAttributes[duit_props.EdgeInsetsAll]{
+	attrs := &duit_attributes.ListViewBaseAttributes{
 		Type:       duit_utils.TristateFrom[duit_attributes.ListKind](duit_attributes.ListCommon),
 		ShrinkWrap: duit_utils.BoolValue(true),
 	}
@@ -302,7 +303,7 @@ func TestListViewBaseAttributes_ShrinkWrap_JSON_True(t *testing.T) {
 }
 
 func TestListViewBaseAttributes_ShrinkWrap_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.ListViewBaseAttributes[duit_props.EdgeInsetsAll]{
+	attrs := &duit_attributes.ListViewBaseAttributes{
 		Type:       duit_utils.TristateFrom[duit_attributes.ListKind](duit_attributes.ListCommon),
 		ShrinkWrap: duit_utils.BoolValue(false),
 	}
@@ -319,7 +320,7 @@ func TestListViewBaseAttributes_ShrinkWrap_JSON_False(t *testing.T) {
 }
 
 func TestListViewBaseAttributes_ShrinkWrap_JSON_Nil(t *testing.T) {
-	attrs := &duit_attributes.ListViewBaseAttributes[duit_props.EdgeInsetsAll]{
+	attrs := &duit_attributes.ListViewBaseAttributes{
 		Type:       duit_utils.TristateFrom[duit_attributes.ListKind](duit_attributes.ListCommon),
 		ShrinkWrap: duit_utils.Nillable[bool](),
 	}
@@ -336,9 +337,9 @@ func TestListViewBaseAttributes_ShrinkWrap_JSON_Nil(t *testing.T) {
 }
 
 func TestListViewBaseAttributes_AddAutomaticKeepAlives_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.ListViewBaseAttributes[duit_props.EdgeInsetsAll]{
-		Type:                    duit_utils.TristateFrom[duit_attributes.ListKind](duit_attributes.ListCommon),
-		AddAutomaticKeepAlives:  duit_utils.BoolValue(true),
+	attrs := &duit_attributes.ListViewBaseAttributes{
+		Type:                   duit_utils.TristateFrom[duit_attributes.ListKind](duit_attributes.ListCommon),
+		AddAutomaticKeepAlives: duit_utils.BoolValue(true),
 	}
 
 	jsonData, err := json.Marshal(attrs)
@@ -353,9 +354,9 @@ func TestListViewBaseAttributes_AddAutomaticKeepAlives_JSON_True(t *testing.T) {
 }
 
 func TestListViewBaseAttributes_AddAutomaticKeepAlives_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.ListViewBaseAttributes[duit_props.EdgeInsetsAll]{
-		Type:                    duit_utils.TristateFrom[duit_attributes.ListKind](duit_attributes.ListCommon),
-		AddAutomaticKeepAlives:  duit_utils.BoolValue(false),
+	attrs := &duit_attributes.ListViewBaseAttributes{
+		Type:                   duit_utils.TristateFrom[duit_attributes.ListKind](duit_attributes.ListCommon),
+		AddAutomaticKeepAlives: duit_utils.BoolValue(false),
 	}
 
 	jsonData, err := json.Marshal(attrs)
@@ -370,9 +371,9 @@ func TestListViewBaseAttributes_AddAutomaticKeepAlives_JSON_False(t *testing.T) 
 }
 
 func TestListViewBaseAttributes_AddAutomaticKeepAlives_JSON_Nil(t *testing.T) {
-	attrs := &duit_attributes.ListViewBaseAttributes[duit_props.EdgeInsetsAll]{
-		Type:                    duit_utils.TristateFrom[duit_attributes.ListKind](duit_attributes.ListCommon),
-		AddAutomaticKeepAlives:  duit_utils.Nillable[bool](),
+	attrs := &duit_attributes.ListViewBaseAttributes{
+		Type:                   duit_utils.TristateFrom[duit_attributes.ListKind](duit_attributes.ListCommon),
+		AddAutomaticKeepAlives: duit_utils.Nillable[bool](),
 	}
 
 	jsonData, err := json.Marshal(attrs)
@@ -387,9 +388,9 @@ func TestListViewBaseAttributes_AddAutomaticKeepAlives_JSON_Nil(t *testing.T) {
 }
 
 func TestListViewBaseAttributes_AddRepaintBoundaries_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.ListViewBaseAttributes[duit_props.EdgeInsetsAll]{
-		Type:                  duit_utils.TristateFrom[duit_attributes.ListKind](duit_attributes.ListCommon),
-		AddRepaintBoundaries:  duit_utils.BoolValue(true),
+	attrs := &duit_attributes.ListViewBaseAttributes{
+		Type:                 duit_utils.TristateFrom[duit_attributes.ListKind](duit_attributes.ListCommon),
+		AddRepaintBoundaries: duit_utils.BoolValue(true),
 	}
 
 	jsonData, err := json.Marshal(attrs)
@@ -404,9 +405,9 @@ func TestListViewBaseAttributes_AddRepaintBoundaries_JSON_True(t *testing.T) {
 }
 
 func TestListViewBaseAttributes_AddRepaintBoundaries_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.ListViewBaseAttributes[duit_props.EdgeInsetsAll]{
-		Type:                  duit_utils.TristateFrom[duit_attributes.ListKind](duit_attributes.ListCommon),
-		AddRepaintBoundaries:  duit_utils.BoolValue(false),
+	attrs := &duit_attributes.ListViewBaseAttributes{
+		Type:                 duit_utils.TristateFrom[duit_attributes.ListKind](duit_attributes.ListCommon),
+		AddRepaintBoundaries: duit_utils.BoolValue(false),
 	}
 
 	jsonData, err := json.Marshal(attrs)
@@ -421,9 +422,9 @@ func TestListViewBaseAttributes_AddRepaintBoundaries_JSON_False(t *testing.T) {
 }
 
 func TestListViewBaseAttributes_AddRepaintBoundaries_JSON_Nil(t *testing.T) {
-	attrs := &duit_attributes.ListViewBaseAttributes[duit_props.EdgeInsetsAll]{
-		Type:                  duit_utils.TristateFrom[duit_attributes.ListKind](duit_attributes.ListCommon),
-		AddRepaintBoundaries:  duit_utils.Nillable[bool](),
+	attrs := &duit_attributes.ListViewBaseAttributes{
+		Type:                 duit_utils.TristateFrom[duit_attributes.ListKind](duit_attributes.ListCommon),
+		AddRepaintBoundaries: duit_utils.Nillable[bool](),
 	}
 
 	jsonData, err := json.Marshal(attrs)
@@ -438,9 +439,9 @@ func TestListViewBaseAttributes_AddRepaintBoundaries_JSON_Nil(t *testing.T) {
 }
 
 func TestListViewBaseAttributes_AddSemanticIndexes_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.ListViewBaseAttributes[duit_props.EdgeInsetsAll]{
-		Type:                  duit_utils.TristateFrom[duit_attributes.ListKind](duit_attributes.ListCommon),
-		AddSemanticIndexes:    duit_utils.BoolValue(true),
+	attrs := &duit_attributes.ListViewBaseAttributes{
+		Type:               duit_utils.TristateFrom[duit_attributes.ListKind](duit_attributes.ListCommon),
+		AddSemanticIndexes: duit_utils.BoolValue(true),
 	}
 
 	jsonData, err := json.Marshal(attrs)
@@ -455,9 +456,9 @@ func TestListViewBaseAttributes_AddSemanticIndexes_JSON_True(t *testing.T) {
 }
 
 func TestListViewBaseAttributes_AddSemanticIndexes_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.ListViewBaseAttributes[duit_props.EdgeInsetsAll]{
-		Type:                  duit_utils.TristateFrom[duit_attributes.ListKind](duit_attributes.ListCommon),
-		AddSemanticIndexes:    duit_utils.BoolValue(false),
+	attrs := &duit_attributes.ListViewBaseAttributes{
+		Type:               duit_utils.TristateFrom[duit_attributes.ListKind](duit_attributes.ListCommon),
+		AddSemanticIndexes: duit_utils.BoolValue(false),
 	}
 
 	jsonData, err := json.Marshal(attrs)
@@ -472,9 +473,9 @@ func TestListViewBaseAttributes_AddSemanticIndexes_JSON_False(t *testing.T) {
 }
 
 func TestListViewBaseAttributes_AddSemanticIndexes_JSON_Nil(t *testing.T) {
-	attrs := &duit_attributes.ListViewBaseAttributes[duit_props.EdgeInsetsAll]{
-		Type:                  duit_utils.TristateFrom[duit_attributes.ListKind](duit_attributes.ListCommon),
-		AddSemanticIndexes:    duit_utils.Nillable[bool](),
+	attrs := &duit_attributes.ListViewBaseAttributes{
+		Type:               duit_utils.TristateFrom[duit_attributes.ListKind](duit_attributes.ListCommon),
+		AddSemanticIndexes: duit_utils.Nillable[bool](),
 	}
 
 	jsonData, err := json.Marshal(attrs)
@@ -490,7 +491,7 @@ func TestListViewBaseAttributes_AddSemanticIndexes_JSON_Nil(t *testing.T) {
 
 // Tests for Tristate[ListKind] property serialization
 func TestListViewBaseAttributes_Type_JSON_Common(t *testing.T) {
-	attrs := &duit_attributes.ListViewBaseAttributes[duit_props.EdgeInsetsAll]{
+	attrs := &duit_attributes.ListViewBaseAttributes{
 		Type: duit_utils.TristateFrom[duit_attributes.ListKind](duit_attributes.ListCommon),
 	}
 
@@ -506,7 +507,7 @@ func TestListViewBaseAttributes_Type_JSON_Common(t *testing.T) {
 }
 
 func TestListViewBaseAttributes_Type_JSON_Builder(t *testing.T) {
-	attrs := &duit_attributes.ListViewBaseAttributes[duit_props.EdgeInsetsAll]{
+	attrs := &duit_attributes.ListViewBaseAttributes{
 		Type: duit_utils.TristateFrom[duit_attributes.ListKind](duit_attributes.ListBuilder),
 	}
 
@@ -522,7 +523,7 @@ func TestListViewBaseAttributes_Type_JSON_Builder(t *testing.T) {
 }
 
 func TestListViewBaseAttributes_Type_JSON_Separated(t *testing.T) {
-	attrs := &duit_attributes.ListViewBaseAttributes[duit_props.EdgeInsetsAll]{
+	attrs := &duit_attributes.ListViewBaseAttributes{
 		Type: duit_utils.TristateFrom[duit_attributes.ListKind](duit_attributes.ListSeparated),
 	}
 
@@ -538,7 +539,7 @@ func TestListViewBaseAttributes_Type_JSON_Separated(t *testing.T) {
 }
 
 func TestListViewBaseAttributes_Type_JSON_Nil(t *testing.T) {
-	attrs := &duit_attributes.ListViewBaseAttributes[duit_props.EdgeInsetsAll]{
+	attrs := &duit_attributes.ListViewBaseAttributes{
 		Type: nil,
 	}
 

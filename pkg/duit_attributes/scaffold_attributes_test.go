@@ -4,13 +4,14 @@ import (
 	"encoding/json"
 	"strings"
 	"testing"
+
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
 func TestScaffoldAttributes_Validate_ValidAttributes(t *testing.T) {
-	attrs := &duit_attributes.ScaffoldAttributes[duit_props.ColorString]{
+	attrs := &duit_attributes.ScaffoldAttributes{
 		Primary:                  duit_utils.BoolValue(true),
 		ExtendBody:               duit_utils.BoolValue(false),
 		ResizeToAvoidBottomInset: duit_utils.BoolValue(true),
@@ -23,11 +24,11 @@ func TestScaffoldAttributes_Validate_ValidAttributes(t *testing.T) {
 }
 
 func TestScaffoldAttributes_Validate_WithAllProperties(t *testing.T) {
-	attrs := &duit_attributes.ScaffoldAttributes[duit_props.ColorString]{
+	attrs := &duit_attributes.ScaffoldAttributes{
 		Primary:                      duit_utils.BoolValue(true),
 		ExtendBody:                   duit_utils.BoolValue(true),
 		ResizeToAvoidBottomInset:     duit_utils.BoolValue(true),
-		BackgroundColor:              "#FFFFFF",
+		BackgroundColor:              duit_props.NewColorString("#FFFFFF"),
 		RestorationId:                "test_restoration_id",
 		PersistentFooterAlignment:    "center",
 		FloatingActionButtonLocation: duit_props.FabLocationEndFloat,
@@ -41,7 +42,7 @@ func TestScaffoldAttributes_Validate_WithAllProperties(t *testing.T) {
 
 // Tests for Primary Tristate[bool] property serialization
 func TestScaffoldAttributes_Primary_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.ScaffoldAttributes[duit_props.ColorString]{
+	attrs := &duit_attributes.ScaffoldAttributes{
 		Primary: duit_utils.BoolValue(true),
 	}
 
@@ -57,7 +58,7 @@ func TestScaffoldAttributes_Primary_JSON_True(t *testing.T) {
 }
 
 func TestScaffoldAttributes_Primary_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.ScaffoldAttributes[duit_props.ColorString]{
+	attrs := &duit_attributes.ScaffoldAttributes{
 		Primary: duit_utils.BoolValue(false),
 	}
 
@@ -73,7 +74,7 @@ func TestScaffoldAttributes_Primary_JSON_False(t *testing.T) {
 }
 
 func TestScaffoldAttributes_Primary_JSON_Nil(t *testing.T) {
-	attrs := &duit_attributes.ScaffoldAttributes[duit_props.ColorString]{
+	attrs := &duit_attributes.ScaffoldAttributes{
 		Primary: duit_utils.Nillable[bool](),
 	}
 
@@ -90,7 +91,7 @@ func TestScaffoldAttributes_Primary_JSON_Nil(t *testing.T) {
 
 // Tests for ExtendBody Tristate[bool] property serialization
 func TestScaffoldAttributes_ExtendBody_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.ScaffoldAttributes[duit_props.ColorString]{
+	attrs := &duit_attributes.ScaffoldAttributes{
 		ExtendBody: duit_utils.BoolValue(true),
 	}
 
@@ -106,7 +107,7 @@ func TestScaffoldAttributes_ExtendBody_JSON_True(t *testing.T) {
 }
 
 func TestScaffoldAttributes_ExtendBody_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.ScaffoldAttributes[duit_props.ColorString]{
+	attrs := &duit_attributes.ScaffoldAttributes{
 		ExtendBody: duit_utils.BoolValue(false),
 	}
 
@@ -123,7 +124,7 @@ func TestScaffoldAttributes_ExtendBody_JSON_False(t *testing.T) {
 
 // Tests for ResizeToAvoidBottomInset Tristate[bool] property serialization
 func TestScaffoldAttributes_ResizeToAvoidBottomInset_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.ScaffoldAttributes[duit_props.ColorString]{
+	attrs := &duit_attributes.ScaffoldAttributes{
 		ResizeToAvoidBottomInset: duit_utils.BoolValue(true),
 	}
 
@@ -139,7 +140,7 @@ func TestScaffoldAttributes_ResizeToAvoidBottomInset_JSON_True(t *testing.T) {
 }
 
 func TestScaffoldAttributes_ResizeToAvoidBottomInset_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.ScaffoldAttributes[duit_props.ColorString]{
+	attrs := &duit_attributes.ScaffoldAttributes{
 		ResizeToAvoidBottomInset: duit_utils.BoolValue(false),
 	}
 

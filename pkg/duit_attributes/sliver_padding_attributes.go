@@ -2,6 +2,7 @@ package duit_attributes
 
 import (
 	"errors"
+
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 )
 
@@ -10,7 +11,7 @@ type SliverPaddingAttributes struct {
 	*ThemeConsumer
 	*duit_props.AnimatedPropertyOwner
 	*SliverProps
-	Padding *duit_props.EdgeInsetsV2 `json:"padding,omitempty"`
+	Padding *duit_props.EdgeInsets `json:"padding,omitempty"`
 }
 
 func (r *SliverPaddingAttributes) Validate() error {

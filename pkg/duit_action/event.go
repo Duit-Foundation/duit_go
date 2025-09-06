@@ -3,14 +3,14 @@ package duit_action
 type eventType string
 
 const (
-	update       eventType = "update"
-	navigation   eventType = "navigation"
-	openUrl      eventType = "openUrl"
-	custom       eventType = "custom"
-	sequenced    eventType = "sequenced"
-	grouped      eventType = "grouped"
-	timer        eventType = "timer"
-	command      eventType = "command"
+	update     eventType = "update"
+	navigation eventType = "navigation"
+	openUrl    eventType = "openUrl"
+	custom     eventType = "custom"
+	sequenced  eventType = "sequenced"
+	grouped    eventType = "grouped"
+	timer      eventType = "timer"
+	command    eventType = "command"
 )
 
 type Event struct {

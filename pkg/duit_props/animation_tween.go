@@ -58,8 +58,8 @@ func Tween(animatedPropKey string, begin, end float32, duration int, trigger Ani
 	}
 }
 
-func ColorTween[TColor Color](animatedPropKey string, begin, end TColor, duration int, trigger AnimationTrigger, method AnimationMethod, reverseOnRepeat bool, curve Curves) *tweenBase[TColor] {
-	return &tweenBase[TColor]{
+func ColorTween(animatedPropKey string, begin, end *Color, duration int, trigger AnimationTrigger, method AnimationMethod, reverseOnRepeat bool, curve Curves) *tweenBase[*Color] {
+	return &tweenBase[*Color]{
 		TweenType:       "colorTween",
 		AnimatedPropKey: animatedPropKey,
 		Duration:        duration,
@@ -72,8 +72,8 @@ func ColorTween[TColor Color](animatedPropKey string, begin, end TColor, duratio
 	}
 }
 
-func TextStyleTween[TColor Color](animatedPropKey string, begin, end TextStyle[TColor], duration int, trigger AnimationTrigger, method AnimationMethod, reverseOnRepeat bool, curve Curves) *tweenBase[TextStyle[TColor]] {
-	return &tweenBase[TextStyle[TColor]]{
+func TextStyleTween[TColor Color](animatedPropKey string, begin, end *TextStyle, duration int, trigger AnimationTrigger, method AnimationMethod, reverseOnRepeat bool, curve Curves) *tweenBase[*TextStyle] {
+	return &tweenBase[*TextStyle]{
 		TweenType:       "textStyleTween",
 		AnimatedPropKey: animatedPropKey,
 		Duration:        duration,
@@ -86,8 +86,8 @@ func TextStyleTween[TColor Color](animatedPropKey string, begin, end TextStyle[T
 	}
 }
 
-func DecorationTween[TColor Color](animatedPropKey string, begin, end BoxDecoration[TColor], duration int, trigger AnimationTrigger, method AnimationMethod, reverseOnRepeat bool, curve Curves) *tweenBase[BoxDecoration[TColor]] {
-	return &tweenBase[BoxDecoration[TColor]]{
+func DecorationTween(animatedPropKey string, begin, end *BoxDecoration, duration int, trigger AnimationTrigger, method AnimationMethod, reverseOnRepeat bool, curve Curves) *tweenBase[*BoxDecoration] {
+	return &tweenBase[*BoxDecoration]{
 		TweenType:       "decorationTween",
 		AnimatedPropKey: animatedPropKey,
 		Duration:        duration,
@@ -114,8 +114,8 @@ func AlignmentTween(animatedPropKey string, begin, end Alignment, duration int, 
 	}
 }
 
-func EdgeInsetsTween[TInsets EdgeInsets](animatedPropKey string, begin, end TInsets, duration int, trigger AnimationTrigger, method AnimationMethod, reverseOnRepeat bool, curve Curves) *tweenBase[TInsets] {
-	return &tweenBase[TInsets]{
+func EdgeInsetsTween(animatedPropKey string, begin, end *EdgeInsets, duration int, trigger AnimationTrigger, method AnimationMethod, reverseOnRepeat bool, curve Curves) *tweenBase[*EdgeInsets] {
+	return &tweenBase[*EdgeInsets]{
 		TweenType:       "edgeInsetsTween",
 		AnimatedPropKey: animatedPropKey,
 		Duration:        duration,

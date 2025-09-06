@@ -4,13 +4,14 @@ import (
 	"encoding/json"
 	"strings"
 	"testing"
+
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 )
 
 func TestAnimatedContainerAttributes_Validate_ValidAttributes(t *testing.T) {
 	// Use concrete types that implement the interfaces
-	attrs := &duit_attributes.AnimatedContainerAttributes[duit_props.EdgeInsetsAll, duit_props.ColorString]{
+	attrs := &duit_attributes.AnimatedContainerAttributes{
 		Width:  100.0,
 		Height: 200.0,
 		ImplicitAnimatable: &duit_props.ImplicitAnimatable{
@@ -55,7 +56,7 @@ func TestAnimatedContainerAttributes_Validate_WithDimensions(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
-			attrs := &duit_attributes.AnimatedContainerAttributes[duit_props.EdgeInsetsAll, duit_props.ColorString]{
+			attrs := &duit_attributes.AnimatedContainerAttributes{
 				Width:  tc.width,
 				Height: tc.height,
 				ImplicitAnimatable: &duit_props.ImplicitAnimatable{
@@ -73,10 +74,10 @@ func TestAnimatedContainerAttributes_Validate_WithDimensions(t *testing.T) {
 }
 
 func TestAnimatedContainerAttributes_Validate_WithColorAndClip(t *testing.T) {
-	attrs := &duit_attributes.AnimatedContainerAttributes[duit_props.EdgeInsetsAll, duit_props.ColorString]{
+	attrs := &duit_attributes.AnimatedContainerAttributes{
 		Width:        100.0,
 		Height:       200.0,
-		Color:        "#FF0000",
+		Color:        duit_props.NewColorString("#FF0000"),
 		ClipBehavior: duit_props.ClipAntiAlias,
 		ImplicitAnimatable: &duit_props.ImplicitAnimatable{
 			Duration: 300,
@@ -91,11 +92,11 @@ func TestAnimatedContainerAttributes_Validate_WithColorAndClip(t *testing.T) {
 }
 
 func TestAnimatedContainerAttributes_Validate_WithPaddingAndMargin(t *testing.T) {
-	attrs := &duit_attributes.AnimatedContainerAttributes[duit_props.EdgeInsetsAll, duit_props.ColorString]{
+	attrs := &duit_attributes.AnimatedContainerAttributes{
 		Width:   100.0,
 		Height:  200.0,
-		Padding: 10.0,
-		Margin:  5.0,
+		Padding: duit_props.NewEdgeInsetsAll(10.0),
+		Margin:  duit_props.NewEdgeInsetsAll(5.0),
 		ImplicitAnimatable: &duit_props.ImplicitAnimatable{
 			Duration: 300,
 			Curve:    duit_props.CurveEase,
@@ -109,7 +110,7 @@ func TestAnimatedContainerAttributes_Validate_WithPaddingAndMargin(t *testing.T)
 }
 
 func TestAnimatedContainerAttributes_Validate_WithAlignment(t *testing.T) {
-	attrs := &duit_attributes.AnimatedContainerAttributes[duit_props.EdgeInsetsAll, duit_props.ColorString]{
+	attrs := &duit_attributes.AnimatedContainerAttributes{
 		Width:              100.0,
 		Height:             200.0,
 		Alignment:          duit_props.AlignmentCenter,
@@ -134,7 +135,7 @@ func TestAnimatedContainerAttributes_Validate_WithConstraints(t *testing.T) {
 		MaxHeight: 300.0,
 	}
 
-	attrs := &duit_attributes.AnimatedContainerAttributes[duit_props.EdgeInsetsAll, duit_props.ColorString]{
+	attrs := &duit_attributes.AnimatedContainerAttributes{
 		Width:       100.0,
 		Height:      200.0,
 		Constraints: constraints,
@@ -153,7 +154,7 @@ func TestAnimatedContainerAttributes_Validate_WithConstraints(t *testing.T) {
 // Tests for ImplicitAnimatable embedded struct
 
 func TestAnimatedContainerAttributes_Validate_NilImplicitAnimatable(t *testing.T) {
-	attrs := &duit_attributes.AnimatedContainerAttributes[duit_props.EdgeInsetsAll, duit_props.ColorString]{
+	attrs := &duit_attributes.AnimatedContainerAttributes{
 		Width:              100.0,
 		Height:             200.0,
 		ImplicitAnimatable: nil,
@@ -170,10 +171,8 @@ func TestAnimatedContainerAttributes_Validate_NilImplicitAnimatable(t *testing.T
 	}
 }
 
-
-
 func TestAnimatedContainerAttributes_MarshalJSON_WithAlignment(t *testing.T) {
-	attrs := &duit_attributes.AnimatedContainerAttributes[duit_props.EdgeInsetsAll, duit_props.ColorString]{
+	attrs := &duit_attributes.AnimatedContainerAttributes{
 		Width:              100.0,
 		Height:             200.0,
 		Alignment:          duit_props.AlignmentCenter,

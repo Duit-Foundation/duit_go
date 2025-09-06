@@ -4,13 +4,14 @@ import (
 	"encoding/json"
 	"strings"
 	"testing"
+
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
 func TestCheckboxAttributes_Validate_ValidAttributes(t *testing.T) {
-	attrs := &duit_attributes.CheckboxAttributes[duit_props.ColorString]{
+	attrs := &duit_attributes.CheckboxAttributes{
 		Value: duit_utils.BoolValue(true),
 	}
 
@@ -21,7 +22,7 @@ func TestCheckboxAttributes_Validate_ValidAttributes(t *testing.T) {
 }
 
 func TestCheckboxAttributes_Validate_MissingValue(t *testing.T) {
-	attrs := &duit_attributes.CheckboxAttributes[duit_props.ColorString]{
+	attrs := &duit_attributes.CheckboxAttributes{
 		Value: nil,
 	}
 
@@ -36,17 +37,17 @@ func TestCheckboxAttributes_Validate_MissingValue(t *testing.T) {
 }
 
 func TestCheckboxAttributes_Validate_WithAllProperties(t *testing.T) {
-	attrs := &duit_attributes.CheckboxAttributes[duit_props.ColorString]{
+	attrs := &duit_attributes.CheckboxAttributes{
 		Value:         duit_utils.BoolValue(true),
 		Autofocus:     duit_utils.BoolValue(false),
 		Tristate:      duit_utils.BoolValue(true),
 		IsError:       duit_utils.BoolValue(false),
 		SplashRadius:  10.5,
 		SemanticLabel: "Test checkbox",
-		CheckColor:    "#00FF00",
-		HoverColor:    "#0000FF",
-		ActiveColor:   "#FF0000",
-		FocusColor:    "#FFFF00",
+		CheckColor:    duit_props.NewColorString("#00FF00"),
+		HoverColor:    duit_props.NewColorString("#0000FF"),
+		ActiveColor:   duit_props.NewColorString("#FF0000"),
+		FocusColor:    duit_props.NewColorString("#FFFF00"),
 	}
 
 	err := attrs.Validate()
@@ -57,7 +58,7 @@ func TestCheckboxAttributes_Validate_WithAllProperties(t *testing.T) {
 
 // Tests for Value Tristate[bool] property serialization
 func TestCheckboxAttributes_Value_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.CheckboxAttributes[duit_props.ColorString]{
+	attrs := &duit_attributes.CheckboxAttributes{
 		Value: duit_utils.BoolValue(true),
 	}
 
@@ -73,7 +74,7 @@ func TestCheckboxAttributes_Value_JSON_True(t *testing.T) {
 }
 
 func TestCheckboxAttributes_Value_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.CheckboxAttributes[duit_props.ColorString]{
+	attrs := &duit_attributes.CheckboxAttributes{
 		Value: duit_utils.BoolValue(false),
 	}
 
@@ -90,7 +91,7 @@ func TestCheckboxAttributes_Value_JSON_False(t *testing.T) {
 
 // Tests for Autofocus Tristate[bool] property serialization
 func TestCheckboxAttributes_Autofocus_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.CheckboxAttributes[duit_props.ColorString]{
+	attrs := &duit_attributes.CheckboxAttributes{
 		Value:     duit_utils.BoolValue(true),
 		Autofocus: duit_utils.BoolValue(true),
 	}
@@ -107,7 +108,7 @@ func TestCheckboxAttributes_Autofocus_JSON_True(t *testing.T) {
 }
 
 func TestCheckboxAttributes_Autofocus_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.CheckboxAttributes[duit_props.ColorString]{
+	attrs := &duit_attributes.CheckboxAttributes{
 		Value:     duit_utils.BoolValue(true),
 		Autofocus: duit_utils.BoolValue(false),
 	}
@@ -124,7 +125,7 @@ func TestCheckboxAttributes_Autofocus_JSON_False(t *testing.T) {
 }
 
 func TestCheckboxAttributes_Autofocus_JSON_Nil(t *testing.T) {
-	attrs := &duit_attributes.CheckboxAttributes[duit_props.ColorString]{
+	attrs := &duit_attributes.CheckboxAttributes{
 		Value:     duit_utils.BoolValue(true),
 		Autofocus: duit_utils.Nillable[bool](),
 	}
@@ -142,7 +143,7 @@ func TestCheckboxAttributes_Autofocus_JSON_Nil(t *testing.T) {
 
 // Tests for Tristate Tristate[bool] property serialization
 func TestCheckboxAttributes_Tristate_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.CheckboxAttributes[duit_props.ColorString]{
+	attrs := &duit_attributes.CheckboxAttributes{
 		Value:    duit_utils.BoolValue(true),
 		Tristate: duit_utils.BoolValue(true),
 	}
@@ -159,7 +160,7 @@ func TestCheckboxAttributes_Tristate_JSON_True(t *testing.T) {
 }
 
 func TestCheckboxAttributes_Tristate_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.CheckboxAttributes[duit_props.ColorString]{
+	attrs := &duit_attributes.CheckboxAttributes{
 		Value:    duit_utils.BoolValue(true),
 		Tristate: duit_utils.BoolValue(false),
 	}
@@ -176,7 +177,7 @@ func TestCheckboxAttributes_Tristate_JSON_False(t *testing.T) {
 }
 
 func TestCheckboxAttributes_Tristate_JSON_Nil(t *testing.T) {
-	attrs := &duit_attributes.CheckboxAttributes[duit_props.ColorString]{
+	attrs := &duit_attributes.CheckboxAttributes{
 		Value:    duit_utils.BoolValue(true),
 		Tristate: duit_utils.Nillable[bool](),
 	}
@@ -194,7 +195,7 @@ func TestCheckboxAttributes_Tristate_JSON_Nil(t *testing.T) {
 
 // Tests for IsError Tristate[bool] property serialization
 func TestCheckboxAttributes_IsError_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.CheckboxAttributes[duit_props.ColorString]{
+	attrs := &duit_attributes.CheckboxAttributes{
 		Value:   duit_utils.BoolValue(true),
 		IsError: duit_utils.BoolValue(true),
 	}
@@ -211,7 +212,7 @@ func TestCheckboxAttributes_IsError_JSON_True(t *testing.T) {
 }
 
 func TestCheckboxAttributes_IsError_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.CheckboxAttributes[duit_props.ColorString]{
+	attrs := &duit_attributes.CheckboxAttributes{
 		Value:   duit_utils.BoolValue(true),
 		IsError: duit_utils.BoolValue(false),
 	}
@@ -228,7 +229,7 @@ func TestCheckboxAttributes_IsError_JSON_False(t *testing.T) {
 }
 
 func TestCheckboxAttributes_IsError_JSON_Nil(t *testing.T) {
-	attrs := &duit_attributes.CheckboxAttributes[duit_props.ColorString]{
+	attrs := &duit_attributes.CheckboxAttributes{
 		Value:   duit_utils.BoolValue(true),
 		IsError: duit_utils.Nillable[bool](),
 	}

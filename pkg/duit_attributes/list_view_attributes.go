@@ -2,6 +2,7 @@ package duit_attributes
 
 import (
 	"errors"
+
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_core"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
@@ -15,28 +16,28 @@ const (
 	ListSeparated
 )
 
-type ListViewBaseAttributes[TInsets duit_props.EdgeInsets] struct {
-	Type                    duit_utils.Tristate[ListKind]                   `json:"type,omitempty"`
-	Reverse                 duit_utils.Tristate[bool]                       `json:"reverse,omitempty"`
-	Primary                 duit_utils.Tristate[bool]                       `json:"primary,omitempty"`
-	ShrinkWrap              duit_utils.Tristate[bool]                       `json:"shrinkWrap,omitempty"`
-	AddAutomaticKeepAlives  duit_utils.Tristate[bool]                       `json:"addAutomaticKeepAlives,omitempty"`
-	AddRepaintBoundaries    duit_utils.Tristate[bool]                       `json:"addRepaintBoundaries,omitempty"`
-	AddSemanticIndexes      duit_utils.Tristate[bool]                       `json:"addSemanticIndexes,omitempty"`
-	ScrollDirection         duit_props.Axis                                  `json:"scrollDirection,omitempty"`
+type ListViewBaseAttributes struct {
+	Type                    duit_utils.Tristate[ListKind]                `json:"type,omitempty"`
+	Reverse                 duit_utils.Tristate[bool]                    `json:"reverse,omitempty"`
+	Primary                 duit_utils.Tristate[bool]                    `json:"primary,omitempty"`
+	ShrinkWrap              duit_utils.Tristate[bool]                    `json:"shrinkWrap,omitempty"`
+	AddAutomaticKeepAlives  duit_utils.Tristate[bool]                    `json:"addAutomaticKeepAlives,omitempty"`
+	AddRepaintBoundaries    duit_utils.Tristate[bool]                    `json:"addRepaintBoundaries,omitempty"`
+	AddSemanticIndexes      duit_utils.Tristate[bool]                    `json:"addSemanticIndexes,omitempty"`
+	ScrollDirection         duit_props.Axis                              `json:"scrollDirection,omitempty"`
 	ScrollPhysics           duit_props.ScrollPhysics                     `json:"scrollPhysics,omitempty"`
-	CacheExtent             float32                                         `json:"cacheExtent,omitempty"`
-	Anchor                  float32                                         `json:"anchors,omitempty"`
-	SemantickChildCount     int                                             `json:"semanticChildCount,omitempty"`
-	Padding                 *TInsets                                        `json:"padding,omitempty"`
-	ItemExtent              float32                                         `json:"itemExtent,omitempty"`
-	ClipBehavior            duit_props.Clip                                  `json:"clipBehavior,omitempty"`
-	RestorationId           string                                          `json:"restorationId,omitempty"`
+	CacheExtent             float32                                      `json:"cacheExtent,omitempty"`
+	Anchor                  float32                                      `json:"anchors,omitempty"`
+	SemantickChildCount     int                                          `json:"semanticChildCount,omitempty"`
+	Padding                 *duit_props.EdgeInsets                       `json:"padding,omitempty"`
+	ItemExtent              float32                                      `json:"itemExtent,omitempty"`
+	ClipBehavior            duit_props.Clip                              `json:"clipBehavior,omitempty"`
+	RestorationId           string                                       `json:"restorationId,omitempty"`
 	DragStarnBehavior       duit_props.DragStartBehavior                 `json:"dragStartBehavior,omitempty"`
 	KeyboardDismissBehavior duit_props.ScrollViewKeyboardDismissBehavior `json:"keyboardDismissBehavior,omitempty"`
 }
 
-func (r *ListViewBaseAttributes[TInsets]) Validate() error {
+func (r *ListViewBaseAttributes) Validate() error {
 	if r.Type != nil {
 
 	} else {
@@ -46,12 +47,12 @@ func (r *ListViewBaseAttributes[TInsets]) Validate() error {
 	return nil
 }
 
-type ListViewBuilderAttributes[TInsets duit_props.EdgeInsets] struct {
-	*ListViewBaseAttributes[TInsets]
+type ListViewBuilderAttributes struct {
+	*ListViewBaseAttributes
 	*Builder
 }
 
-func (r *ListViewBuilderAttributes[TInsets]) Validate() error {
+func (r *ListViewBuilderAttributes) Validate() error {
 	if r.ListViewBaseAttributes != nil {
 		if err := r.ListViewBaseAttributes.Validate(); err != nil {
 			return err
@@ -68,12 +69,12 @@ func (r *ListViewBuilderAttributes[TInsets]) Validate() error {
 	return nil
 }
 
-type ListViewSeparatedAttributes[TInsets duit_props.EdgeInsets] struct {
-	*ListViewBuilderAttributes[TInsets]
+type ListViewSeparatedAttributes struct {
+	*ListViewBuilderAttributes
 	Separator *duit_core.DuitElementModel `json:"separator"`
 }
 
-func (r *ListViewSeparatedAttributes[TInsets]) Validate() error {
+func (r *ListViewSeparatedAttributes) Validate() error {
 	if r.ListViewBuilderAttributes != nil {
 		if err := r.ListViewBuilderAttributes.Validate(); err != nil {
 			return err
@@ -89,6 +90,6 @@ func (r *ListViewSeparatedAttributes[TInsets]) Validate() error {
 	return nil
 }
 
-type ListViewAttributes[TInsets duit_props.EdgeInsets] interface {
-	ListViewBaseAttributes[TInsets] | ListViewBuilderAttributes[TInsets] | ListViewSeparatedAttributes[TInsets]
+type ListViewAttributes interface {
+	ListViewBaseAttributes | ListViewBuilderAttributes | ListViewSeparatedAttributes
 }

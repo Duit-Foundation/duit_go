@@ -2,6 +2,7 @@ package duit_attributes
 
 import (
 	"errors"
+
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
@@ -31,7 +32,7 @@ func (r *AnimatedOpacityAttributes) Validate() error {
 	}
 
 	if r.Opacity != nil {
-		if err := RangeValidator(*r.Opacity, 0, 1); err != nil {
+		if err := duit_utils.RangeValidator(*r.Opacity, 0, 1); err != nil {
 			return err
 		}
 	}

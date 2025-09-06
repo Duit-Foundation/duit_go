@@ -12,8 +12,8 @@ type AnimatedPhysicalModelAttributes struct {
 	*duit_props.ImplicitAnimatable
 	*ThemeConsumer
 	Elevation          duit_utils.Tristate[float32]    `json:"elevation"`
-	Color              *duit_props.ColorV2             `json:"color,omitempty"`
-	ShadowColor        *duit_props.ColorV2             `json:"shadowColor,omitempty"`
+	Color              *duit_props.Color             `json:"color,omitempty"`
+	ShadowColor        *duit_props.Color             `json:"shadowColor,omitempty"`
 	ClipBehavior       duit_props.Clip                  `json:"clipBehavior,omitempty"`
 	BorderRadius       *duit_props.BorderRadiusV2 `json:"borderRadius,omitempty"`
 	Shape              duit_props.BoxShape        `json:"shape,omitempty"`

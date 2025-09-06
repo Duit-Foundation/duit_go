@@ -5,7 +5,7 @@ import (
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
-type SliverSafeAreaAttributes[TInsets duit_props.EdgeInsets] struct {
+type SliverSafeAreaAttributes struct {
 	*ValueReferenceHolder
 	*ThemeConsumer
 	*SliverProps
@@ -13,11 +13,11 @@ type SliverSafeAreaAttributes[TInsets duit_props.EdgeInsets] struct {
 	Top                       duit_utils.Tristate[bool] `json:"top,omitempty"`
 	Right                     duit_utils.Tristate[bool] `json:"right,omitempty"`
 	Bottom                    duit_utils.Tristate[bool] `json:"bottom,omitempty"`
-	Minimum                   TInsets                   `json:"minimum,omitempty"`
+	Minimum                   *duit_props.EdgeInsets    `json:"minimum,omitempty"`
 	MaintainBottomViewPadding duit_utils.Tristate[bool] `json:"maintainBottomViewPadding,omitempty"`
 }
 
-func (r *SliverSafeAreaAttributes[TInsets]) Validate() error {
+func (r *SliverSafeAreaAttributes) Validate() error {
 	if err := r.ValueReferenceHolder.Validate(); err != nil {
 		return err
 	}

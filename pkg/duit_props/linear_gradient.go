@@ -1,7 +1,7 @@
 package duit_props
 
-type LinearGradient[T Color] struct {
-	Colors []T `json:"colors"`
+type LinearGradient struct {
+	Colors []Color `json:"colors"`
 	//Rotation angle in radians
 	RotationAngle float32   `json:"rotationAngle,omitempty"`
 	Stops         []float32 `json:"stops,omitempty"`

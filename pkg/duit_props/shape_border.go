@@ -2,71 +2,82 @@ package duit_props
 
 import "encoding/json"
 
-// RoundedRectangleBorder represents a rounded rectangle border
-// Note: Uses any type for Color to avoid import cycles
-type RoundedRectangleBorder[TColor Color] struct {
-	Type         ShapeBorderType     `json:"type"`
-	BorderRadius *BorderRadius       `json:"borderRadius,omitempty"`
-	Side         *BorderSide[TColor] `json:"side,omitempty"`
+type ShapeBorder struct {
+	data any
 }
 
-func (s *RoundedRectangleBorder[TColor]) MarshalJSON() ([]byte, error) {
-	s.Type = ShapeBorderTypeRoundedRectangle
-	return json.Marshal(*s)
+func (r *ShapeBorder) Validate() error {
+	if r == nil {
+		return nil
+	}
+
+	return nil
 }
 
-// BeveledRectangleBorder represents a beveled rectangle border
-// Note: Uses any type for Color to avoid import cycles
-type BeveledRectangleBorder[TColor Color] struct {
-	Type         ShapeBorderType     `json:"type"`
-	BorderRadius *BorderRadius       `json:"borderRadius,omitempty"`
-	Side         *BorderSide[TColor] `json:"side,omitempty"`
+func (r *ShapeBorder) MarshalJSON() ([]byte, error) { return json.Marshal(r.data) }
+
+type roundedRectangleBorder struct {
+	Type         ShapeBorderType `json:"type"`
+	BorderRadius *BorderRadius   `json:"borderRadius,omitempty"`
+	Side         *BorderSide     `json:"side,omitempty"`
 }
 
-func (s *BeveledRectangleBorder[TColor]) MarshalJSON() ([]byte, error) {
-	s.Type = ShapeBorderTypeBeveledRectangle
-	return json.Marshal(*s)
+func NewRoundedRectangleBorder(borderRadius *BorderRadius, side *BorderSide) *ShapeBorder {
+	return &ShapeBorder{data: roundedRectangleBorder{
+		Type:         ShapeBorderTypeRoundedRectangle,
+		BorderRadius: borderRadius,
+		Side:         side,
+	}}
 }
 
-// ContinuousRectangleBorder represents a continuous rectangle border
-// Note: Uses any type for Color to avoid import cycles
-type ContinuousRectangleBorder[TColor Color] struct {
-	Type         ShapeBorderType     `json:"type"`
-	BorderRadius *BorderRadius       `json:"borderRadius,omitempty"`
-	Side         *BorderSide[TColor] `json:"side,omitempty"`
+type beveledRectangleBorder struct {
+	Type         ShapeBorderType `json:"type"`
+	BorderRadius *BorderRadius   `json:"borderRadius,omitempty"`
+	Side         *BorderSide     `json:"side,omitempty"`
 }
 
-func (s *ContinuousRectangleBorder[TColor]) MarshalJSON() ([]byte, error) {
-	s.Type = ShapeBorderTypeContinuousRectangle
-	return json.Marshal(*s)
+func NewBeveledRectangleBorder(borderRadius *BorderRadius, side *BorderSide) *ShapeBorder {
+	return &ShapeBorder{data: beveledRectangleBorder{
+		Type:         ShapeBorderTypeBeveledRectangle,
+		BorderRadius: borderRadius,
+		Side:         side,
+	}}
 }
 
-// CircleBorder represents a circle border
-// Note: Uses any type for Color to avoid import cycles
-type CircleBorder[TColor Color] struct {
-	Type ShapeBorderType     `json:"type"`
-	Side *BorderSide[TColor] `json:"side,omitempty"`
+type continuousRectangleBorder struct {
+	Type         ShapeBorderType `json:"type"`
+	BorderRadius *BorderRadius   `json:"borderRadius,omitempty"`
+	Side         *BorderSide     `json:"side,omitempty"`
 }
 
-func (s *CircleBorder[TColor]) MarshalJSON() ([]byte, error) {
-	s.Type = ShapeBorderTypeCircle
-	return json.Marshal(*s)
+func NewContinuousRectangleBorder(borderRadius *BorderRadius, side *BorderSide) *ShapeBorder {
+	return &ShapeBorder{data: continuousRectangleBorder{
+		Type:         ShapeBorderTypeContinuousRectangle,
+		BorderRadius: borderRadius,
+		Side:         side,
+	}}
 }
 
-// StadiumBorder represents a stadium border
-// Note: Uses any type for Color to avoid import cycles
-type StadiumBorder[TColor Color] struct {
-	Type ShapeBorderType     `json:"type"`
-	Side *BorderSide[TColor] `json:"side,omitempty"`
+type circleBorder struct {
+	Type ShapeBorderType `json:"type"`
+	Side *BorderSide     `json:"side,omitempty"`
 }
 
-func (s *StadiumBorder[TColor]) MarshalJSON() ([]byte, error) {
-	s.Type = ShapeBorderTypeStadium
-	return json.Marshal(*s)
+func NewCircleBorder(side *BorderSide) *ShapeBorder {
+	return &ShapeBorder{data: circleBorder{
+		Type: ShapeBorderTypeCircle,
+		Side: side,
+	}}
 }
 
-// ShapeBorder represents a shape border interface
-// Note: Uses any type for Color to avoid import cycles
-type ShapeBorder[TColor Color] interface {
-	RoundedRectangleBorder[TColor] | ContinuousRectangleBorder[TColor] | StadiumBorder[TColor] | CircleBorder[TColor] | BeveledRectangleBorder[TColor]
+type stadiumBorder struct {
+	Type ShapeBorderType `json:"type"`
+	Side *BorderSide     `json:"side,omitempty"`
+}
+
+func NewStadiumBorder(side *BorderSide) *ShapeBorder {
+	return &ShapeBorder{data: stadiumBorder{
+		Type: ShapeBorderTypeStadium,
+		Side: side,
+	}}
 }

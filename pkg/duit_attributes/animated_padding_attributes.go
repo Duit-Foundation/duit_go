@@ -2,6 +2,7 @@ package duit_attributes
 
 import (
 	"errors"
+
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 )
 
@@ -9,7 +10,7 @@ type AnimatedPaddingAttributes struct {
 	*ValueReferenceHolder
 	*duit_props.ImplicitAnimatable
 	*ThemeConsumer
-	Padding *duit_props.EdgeInsetsV2 `json:"padding,omitempty"`
+	Padding *duit_props.EdgeInsets `json:"padding,omitempty"`
 }
 
 func (r *AnimatedPaddingAttributes) Validate() error {

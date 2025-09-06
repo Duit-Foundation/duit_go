@@ -1,13 +1,12 @@
-package duit_attributes_test
+package duit_utils
 
 import (
 	"testing"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
 )
 
 // Tests for RangeValidator
 func TestRangeValidator_IntValidRange(t *testing.T) {
-	err := duit_attributes.RangeValidator(5, 0, 10)
+	err := RangeValidator(5, 0, 10)
 	if err != nil {
 		t.Fatal("expected no error for valid int range, got:", err)
 	}
@@ -15,20 +14,20 @@ func TestRangeValidator_IntValidRange(t *testing.T) {
 
 func TestRangeValidator_IntBoundaryValues(t *testing.T) {
 	// Test minimum boundary
-	err := duit_attributes.RangeValidator(0, 0, 10)
+	err := RangeValidator(0, 0, 10)
 	if err != nil {
 		t.Fatal("expected no error for minimum boundary value, got:", err)
 	}
 
 	// Test maximum boundary
-	err = duit_attributes.RangeValidator(10, 0, 10)
+	err = RangeValidator(10, 0, 10)
 	if err != nil {
 		t.Fatal("expected no error for maximum boundary value, got:", err)
 	}
 }
 
 func TestRangeValidator_IntBelowRange(t *testing.T) {
-	err := duit_attributes.RangeValidator(-1, 0, 10)
+	err := RangeValidator(-1, 0, 10)
 	if err == nil {
 		t.Fatal("expected error for value below range")
 	}
@@ -40,7 +39,7 @@ func TestRangeValidator_IntBelowRange(t *testing.T) {
 }
 
 func TestRangeValidator_IntAboveRange(t *testing.T) {
-	err := duit_attributes.RangeValidator(11, 0, 10)
+	err := RangeValidator(11, 0, 10)
 	if err == nil {
 		t.Fatal("expected error for value above range")
 	}
@@ -52,14 +51,14 @@ func TestRangeValidator_IntAboveRange(t *testing.T) {
 }
 
 func TestRangeValidator_FloatValidRange(t *testing.T) {
-	err := duit_attributes.RangeValidator(2.5, 0.0, 5.0)
+	err := RangeValidator(2.5, 0.0, 5.0)
 	if err != nil {
 		t.Fatal("expected no error for valid float range, got:", err)
 	}
 }
 
 func TestRangeValidator_FloatBelowRange(t *testing.T) {
-	err := duit_attributes.RangeValidator(-0.1, 0.0, 1.0)
+	err := RangeValidator(-0.1, 0.0, 1.0)
 	if err == nil {
 		t.Fatal("expected error for float value below range")
 	}
@@ -71,7 +70,7 @@ func TestRangeValidator_FloatBelowRange(t *testing.T) {
 }
 
 func TestRangeValidator_FloatAboveRange(t *testing.T) {
-	err := duit_attributes.RangeValidator(1.1, 0.0, 1.0)
+	err := RangeValidator(1.1, 0.0, 1.0)
 	if err == nil {
 		t.Fatal("expected error for float value above range")
 	}
@@ -87,7 +86,7 @@ func TestRangeValidator_UintValidRange(t *testing.T) {
 	var min uint = 0
 	var max uint = 10
 
-	err := duit_attributes.RangeValidator(value, min, max)
+	err := RangeValidator(value, min, max)
 	if err != nil {
 		t.Fatal("expected no error for valid uint range, got:", err)
 	}
@@ -98,21 +97,21 @@ func TestRangeValidator_Int64ValidRange(t *testing.T) {
 	var min int64 = 0
 	var max int64 = 1000
 
-	err := duit_attributes.RangeValidator(value, min, max)
+	err := RangeValidator(value, min, max)
 	if err != nil {
 		t.Fatal("expected no error for valid int64 range, got:", err)
 	}
 }
 
 func TestRangeValidator_NegativeRange(t *testing.T) {
-	err := duit_attributes.RangeValidator(-5, -10, -1)
+	err := RangeValidator(-5, -10, -1)
 	if err != nil {
 		t.Fatal("expected no error for valid negative range, got:", err)
 	}
 }
 
 func TestRangeValidator_NegativeRangeOutside(t *testing.T) {
-	err := duit_attributes.RangeValidator(0, -10, -1)
+	err := RangeValidator(0, -10, -1)
 	if err == nil {
 		t.Fatal("expected error for value outside negative range")
 	}

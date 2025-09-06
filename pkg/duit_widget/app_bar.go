@@ -2,12 +2,11 @@ package duit_widget
 
 import (
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_core"
 )
 
-func AppBar[TColor duit_props.Color, TInsets duit_props.EdgeInsets, TShape duit_props.ShapeBorder[TColor]](
-	attributes *duit_attributes.AppBarAttributes[TColor, TInsets, TShape],
+func AppBar(
+	attributes *duit_attributes.AppBarAttributes,
 	id string,
 	controlled bool,
 	title, leading, flexibleSpace, bottom *duit_core.DuitElementModel,

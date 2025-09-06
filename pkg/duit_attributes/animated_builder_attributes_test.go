@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"strings"
 	"testing"
+
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 )
@@ -65,13 +66,13 @@ func TestAnimatedBuilderAttributes_Validate_ValidTweenTypes(t *testing.T) {
 		},
 		{
 			name:  "ColorTween",
-			tween: duit_props.ColorTween[duit_props.ColorString]("color", "#FF0000", "#00FF00", 300, duit_props.AnimationTriggerOnEnter, duit_props.AnimationMethodForward, false, duit_props.CurveEase),
+			tween: duit_props.ColorTween("color", duit_props.NewColorString("#FF0000"), duit_props.NewColorString("#00FF00"), 300, duit_props.AnimationTriggerOnEnter, duit_props.AnimationMethodForward, false, duit_props.CurveEase),
 		},
 		{
 			name: "SizeTween",
-			tween: duit_props.SizeTween("size", 
-				duit_props.Size{Width: 100.0, Height: 100.0}, 
-				duit_props.Size{Width: 200.0, Height: 200.0}, 
+			tween: duit_props.SizeTween("size",
+				duit_props.Size{Width: 100.0, Height: 100.0},
+				duit_props.Size{Width: 200.0, Height: 200.0},
 				300, duit_props.AnimationTriggerOnEnter, duit_props.AnimationMethodForward, false, duit_props.CurveEase),
 		},
 	}
@@ -96,10 +97,10 @@ func TestAnimatedBuilderAttributes_Validate_ValidTweenTypes(t *testing.T) {
 func TestAnimatedBuilderAttributes_Validate_MultipleTweens(t *testing.T) {
 	tweens := []any{
 		duit_props.Tween("opacity", 0.0, 1.0, 300, duit_props.AnimationTriggerOnEnter, duit_props.AnimationMethodForward, false, duit_props.CurveEase),
-		duit_props.ColorTween[duit_props.ColorString]("color", "#FF0000", "#00FF00", 300, duit_props.AnimationTriggerOnEnter, duit_props.AnimationMethodForward, false, duit_props.CurveEase),
-		duit_props.SizeTween("size", 
-			duit_props.Size{Width: 100.0, Height: 100.0}, 
-			duit_props.Size{Width: 200.0, Height: 200.0}, 
+		duit_props.ColorTween("color", duit_props.NewColorString("#FF0000"), duit_props.NewColorString("#00FF00"), 300, duit_props.AnimationTriggerOnEnter, duit_props.AnimationMethodForward, false, duit_props.CurveEase),
+		duit_props.SizeTween("size",
+			duit_props.Size{Width: 100.0, Height: 100.0},
+			duit_props.Size{Width: 200.0, Height: 200.0},
 			300, duit_props.AnimationTriggerOnEnter, duit_props.AnimationMethodForward, false, duit_props.CurveEase),
 	}
 

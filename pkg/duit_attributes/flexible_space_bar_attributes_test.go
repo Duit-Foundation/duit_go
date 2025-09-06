@@ -4,13 +4,13 @@ import (
 	"encoding/json"
 	"strings"
 	"testing"
+
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
 func TestFlexibleSpaceBarAttributes_Validate_ValidAttributes(t *testing.T) {
-	attrs := &duit_attributes.FlexibleSpaceBarAttributes[duit_props.EdgeInsetsAll]{}
+	attrs := &duit_attributes.FlexibleSpaceBarAttributes{}
 
 	err := attrs.Validate()
 	if err != nil {
@@ -20,7 +20,7 @@ func TestFlexibleSpaceBarAttributes_Validate_ValidAttributes(t *testing.T) {
 
 // Tests for CenterTitle Tristate[bool] property serialization
 func TestFlexibleSpaceBarAttributes_CenterTitle_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.FlexibleSpaceBarAttributes[duit_props.EdgeInsetsAll]{
+	attrs := &duit_attributes.FlexibleSpaceBarAttributes{
 		CenterTitle: duit_utils.BoolValue(true),
 	}
 
@@ -36,7 +36,7 @@ func TestFlexibleSpaceBarAttributes_CenterTitle_JSON_True(t *testing.T) {
 }
 
 func TestFlexibleSpaceBarAttributes_CenterTitle_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.FlexibleSpaceBarAttributes[duit_props.EdgeInsetsAll]{
+	attrs := &duit_attributes.FlexibleSpaceBarAttributes{
 		CenterTitle: duit_utils.BoolValue(false),
 	}
 
@@ -52,7 +52,7 @@ func TestFlexibleSpaceBarAttributes_CenterTitle_JSON_False(t *testing.T) {
 }
 
 func TestFlexibleSpaceBarAttributes_CenterTitle_JSON_Nil(t *testing.T) {
-	attrs := &duit_attributes.FlexibleSpaceBarAttributes[duit_props.EdgeInsetsAll]{
+	attrs := &duit_attributes.FlexibleSpaceBarAttributes{
 		CenterTitle: duit_utils.Nillable[bool](),
 	}
 

@@ -4,13 +4,14 @@ import (
 	"encoding/json"
 	"strings"
 	"testing"
+
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
-func TestSingleChildScrollViewAttributes_Validate_ValidAttributes(t *testing.T) {
-	attrs := &duit_attributes.SingleChildScrollViewAttributes[duit_props.EdgeInsetsLTRB]{
+func TestSingleChildScrollViewAttributes_Validate_ValidAttributes(t *testing.T) {	
+	attrs := &duit_attributes.SingleChildScrollViewAttributes{
 		Reverse: duit_utils.BoolValue(true),
 		Primary: duit_utils.BoolValue(false),
 	}
@@ -22,9 +23,9 @@ func TestSingleChildScrollViewAttributes_Validate_ValidAttributes(t *testing.T) 
 }
 
 func TestSingleChildScrollViewAttributes_Validate_WithAllProperties(t *testing.T) {
-	padding := duit_props.EdgeInsetsLTRB{10.0, 20.0, 30.0, 40.0}
+	padding := duit_props.NewEdgeInsetsLTRB(10.0, 20.0, 30.0, 40.0)
 	
-	attrs := &duit_attributes.SingleChildScrollViewAttributes[duit_props.EdgeInsetsLTRB]{
+	attrs := &duit_attributes.SingleChildScrollViewAttributes{
 		ScrollDirection:         "vertical",
 		Reverse:                 duit_utils.BoolValue(true),
 		Primary:                 duit_utils.BoolValue(true),
@@ -44,7 +45,7 @@ func TestSingleChildScrollViewAttributes_Validate_WithAllProperties(t *testing.T
 
 // Tests for Reverse Tristate[bool] property serialization
 func TestSingleChildScrollViewAttributes_Reverse_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.SingleChildScrollViewAttributes[duit_props.EdgeInsetsLTRB]{
+	attrs := &duit_attributes.SingleChildScrollViewAttributes{
 		Reverse: duit_utils.BoolValue(true),
 	}
 
@@ -60,7 +61,7 @@ func TestSingleChildScrollViewAttributes_Reverse_JSON_True(t *testing.T) {
 }
 
 func TestSingleChildScrollViewAttributes_Reverse_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.SingleChildScrollViewAttributes[duit_props.EdgeInsetsLTRB]{
+	attrs := &duit_attributes.SingleChildScrollViewAttributes{
 		Reverse: duit_utils.BoolValue(false),
 	}
 
@@ -76,7 +77,7 @@ func TestSingleChildScrollViewAttributes_Reverse_JSON_False(t *testing.T) {
 }
 
 func TestSingleChildScrollViewAttributes_Reverse_JSON_Nil(t *testing.T) {
-	attrs := &duit_attributes.SingleChildScrollViewAttributes[duit_props.EdgeInsetsLTRB]{
+	attrs := &duit_attributes.SingleChildScrollViewAttributes{
 		Reverse: duit_utils.Nillable[bool](),
 	}
 
@@ -93,7 +94,7 @@ func TestSingleChildScrollViewAttributes_Reverse_JSON_Nil(t *testing.T) {
 
 // Tests for Primary Tristate[bool] property serialization
 func TestSingleChildScrollViewAttributes_Primary_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.SingleChildScrollViewAttributes[duit_props.EdgeInsetsLTRB]{
+	attrs := &duit_attributes.SingleChildScrollViewAttributes{
 		Primary: duit_utils.BoolValue(true),
 	}
 
@@ -109,7 +110,7 @@ func TestSingleChildScrollViewAttributes_Primary_JSON_True(t *testing.T) {
 }
 
 func TestSingleChildScrollViewAttributes_Primary_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.SingleChildScrollViewAttributes[duit_props.EdgeInsetsLTRB]{
+	attrs := &duit_attributes.SingleChildScrollViewAttributes{
 		Primary: duit_utils.BoolValue(false),
 	}
 

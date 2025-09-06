@@ -2,6 +2,7 @@ package duit_attributes
 
 import (
 	"errors"
+
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
@@ -29,6 +30,6 @@ func (r *OpacityAttributes) Validate() error {
 	if r.Opacity == nil {
 		return errors.New("opacity property is required")
 	} else {
-		return RangeValidator(*r.Opacity, 0.0, 1.1)
+		return duit_utils.RangeValidator(*r.Opacity, 0.0, 1.1)
 	}
 }

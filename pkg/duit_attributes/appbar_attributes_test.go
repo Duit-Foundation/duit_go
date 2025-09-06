@@ -4,13 +4,13 @@ import (
 	"encoding/json"
 	"strings"
 	"testing"
+
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
 func TestAppBarAttributes_Validate_ValidAttributes(t *testing.T) {
-	attrs := &duit_attributes.AppBarAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder[duit_props.ColorString]]{}
+	attrs := &duit_attributes.AppBarAttributes{}
 
 	err := attrs.Validate()
 	if err != nil {
@@ -19,7 +19,7 @@ func TestAppBarAttributes_Validate_ValidAttributes(t *testing.T) {
 }
 
 func TestAppBarAttributes_Validate_ValidOpacityRanges(t *testing.T) {
-	attrs := &duit_attributes.AppBarAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder[duit_props.ColorString]]{
+	attrs := &duit_attributes.AppBarAttributes{
 		BottomOpacity:  duit_utils.Float32Value(0.5),
 		ToolbarOpacity: duit_utils.Float32Value(0.8),
 	}
@@ -31,7 +31,7 @@ func TestAppBarAttributes_Validate_ValidOpacityRanges(t *testing.T) {
 }
 
 func TestAppBarAttributes_Validate_InvalidBottomOpacityLow(t *testing.T) {
-	attrs := &duit_attributes.AppBarAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder[duit_props.ColorString]]{
+	attrs := &duit_attributes.AppBarAttributes{
 		BottomOpacity: duit_utils.Float32Value(-0.1),
 	}
 
@@ -42,7 +42,7 @@ func TestAppBarAttributes_Validate_InvalidBottomOpacityLow(t *testing.T) {
 }
 
 func TestAppBarAttributes_Validate_InvalidBottomOpacityHigh(t *testing.T) {
-	attrs := &duit_attributes.AppBarAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder[duit_props.ColorString]]{
+	attrs := &duit_attributes.AppBarAttributes{
 		BottomOpacity: duit_utils.Float32Value(1.1),
 	}
 
@@ -53,7 +53,7 @@ func TestAppBarAttributes_Validate_InvalidBottomOpacityHigh(t *testing.T) {
 }
 
 func TestAppBarAttributes_Validate_InvalidToolbarOpacityLow(t *testing.T) {
-	attrs := &duit_attributes.AppBarAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder[duit_props.ColorString]]{
+	attrs := &duit_attributes.AppBarAttributes{
 		ToolbarOpacity: duit_utils.Float32Value(-0.1),
 	}
 
@@ -64,7 +64,7 @@ func TestAppBarAttributes_Validate_InvalidToolbarOpacityLow(t *testing.T) {
 }
 
 func TestAppBarAttributes_Validate_InvalidToolbarOpacityHigh(t *testing.T) {
-	attrs := &duit_attributes.AppBarAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder[duit_props.ColorString]]{
+	attrs := &duit_attributes.AppBarAttributes{
 		ToolbarOpacity: duit_utils.Float32Value(1.1),
 	}
 
@@ -76,7 +76,7 @@ func TestAppBarAttributes_Validate_InvalidToolbarOpacityHigh(t *testing.T) {
 
 // Tests for BottomOpacity Tristate[float32] property serialization
 func TestAppBarAttributes_BottomOpacity_JSON_Value(t *testing.T) {
-	attrs := &duit_attributes.AppBarAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder[duit_props.ColorString]]{
+	attrs := &duit_attributes.AppBarAttributes{
 		BottomOpacity: duit_utils.Float32Value(0.5),
 	}
 
@@ -92,7 +92,7 @@ func TestAppBarAttributes_BottomOpacity_JSON_Value(t *testing.T) {
 }
 
 func TestAppBarAttributes_BottomOpacity_JSON_Nil(t *testing.T) {
-	attrs := &duit_attributes.AppBarAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder[duit_props.ColorString]]{
+	attrs := &duit_attributes.AppBarAttributes{
 		BottomOpacity: duit_utils.Nillable[float32](),
 	}
 
@@ -109,8 +109,8 @@ func TestAppBarAttributes_BottomOpacity_JSON_Nil(t *testing.T) {
 
 func TestAppBarAttributes_BottomOpacity_Unmarshal_Value(t *testing.T) {
 	jsonStr := `{"bottomOpacity": 0.7}`
-	
-	var attrs duit_attributes.AppBarAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder[duit_props.ColorString]]
+
+	var attrs duit_attributes.AppBarAttributes
 	err := json.Unmarshal([]byte(jsonStr), &attrs)
 	if err != nil {
 		t.Fatal("expected no error for UnmarshalJSON(), got:", err)
@@ -127,8 +127,8 @@ func TestAppBarAttributes_BottomOpacity_Unmarshal_Value(t *testing.T) {
 
 func TestAppBarAttributes_BottomOpacity_Unmarshal_Omitted(t *testing.T) {
 	jsonStr := `{}`
-	
-	var attrs duit_attributes.AppBarAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder[duit_props.ColorString]]
+
+	var attrs duit_attributes.AppBarAttributes
 	err := json.Unmarshal([]byte(jsonStr), &attrs)
 	if err != nil {
 		t.Fatal("expected no error for UnmarshalJSON(), got:", err)
@@ -141,7 +141,7 @@ func TestAppBarAttributes_BottomOpacity_Unmarshal_Omitted(t *testing.T) {
 
 // Tests for ToolbarOpacity Tristate[float32] property serialization
 func TestAppBarAttributes_ToolbarOpacity_JSON_Value(t *testing.T) {
-	attrs := &duit_attributes.AppBarAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder[duit_props.ColorString]]{
+	attrs := &duit_attributes.AppBarAttributes{
 		ToolbarOpacity: duit_utils.Float32Value(0.3),
 	}
 
@@ -157,7 +157,7 @@ func TestAppBarAttributes_ToolbarOpacity_JSON_Value(t *testing.T) {
 }
 
 func TestAppBarAttributes_ToolbarOpacity_JSON_Nil(t *testing.T) {
-	attrs := &duit_attributes.AppBarAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder[duit_props.ColorString]]{
+	attrs := &duit_attributes.AppBarAttributes{
 		ToolbarOpacity: duit_utils.Nillable[float32](),
 	}
 
@@ -174,8 +174,8 @@ func TestAppBarAttributes_ToolbarOpacity_JSON_Nil(t *testing.T) {
 
 func TestAppBarAttributes_ToolbarOpacity_Unmarshal_Value(t *testing.T) {
 	jsonStr := `{"toolbarOpacity": 0.9}`
-	
-	var attrs duit_attributes.AppBarAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder[duit_props.ColorString]]
+
+	var attrs duit_attributes.AppBarAttributes
 	err := json.Unmarshal([]byte(jsonStr), &attrs)
 	if err != nil {
 		t.Fatal("expected no error for UnmarshalJSON(), got:", err)
@@ -192,8 +192,8 @@ func TestAppBarAttributes_ToolbarOpacity_Unmarshal_Value(t *testing.T) {
 
 func TestAppBarAttributes_ToolbarOpacity_Unmarshal_Omitted(t *testing.T) {
 	jsonStr := `{}`
-	
-	var attrs duit_attributes.AppBarAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder[duit_props.ColorString]]
+
+	var attrs duit_attributes.AppBarAttributes
 	err := json.Unmarshal([]byte(jsonStr), &attrs)
 	if err != nil {
 		t.Fatal("expected no error for UnmarshalJSON(), got:", err)
@@ -206,7 +206,7 @@ func TestAppBarAttributes_ToolbarOpacity_Unmarshal_Omitted(t *testing.T) {
 
 // Tests for ForceMaterialTransparency Tristate[bool] property serialization
 func TestAppBarAttributes_ForceMaterialTransparency_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.AppBarAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder[duit_props.ColorString]]{
+	attrs := &duit_attributes.AppBarAttributes{
 		ForceMaterialTransparency: duit_utils.BoolValue(true),
 	}
 
@@ -222,7 +222,7 @@ func TestAppBarAttributes_ForceMaterialTransparency_JSON_True(t *testing.T) {
 }
 
 func TestAppBarAttributes_ForceMaterialTransparency_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.AppBarAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder[duit_props.ColorString]]{
+	attrs := &duit_attributes.AppBarAttributes{
 		ForceMaterialTransparency: duit_utils.BoolValue(false),
 	}
 
@@ -238,7 +238,7 @@ func TestAppBarAttributes_ForceMaterialTransparency_JSON_False(t *testing.T) {
 }
 
 func TestAppBarAttributes_ForceMaterialTransparency_JSON_Nil(t *testing.T) {
-	attrs := &duit_attributes.AppBarAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder[duit_props.ColorString]]{
+	attrs := &duit_attributes.AppBarAttributes{
 		ForceMaterialTransparency: duit_utils.Nillable[bool](),
 	}
 
@@ -255,8 +255,8 @@ func TestAppBarAttributes_ForceMaterialTransparency_JSON_Nil(t *testing.T) {
 
 func TestAppBarAttributes_ForceMaterialTransparency_Unmarshal_True(t *testing.T) {
 	jsonStr := `{"forceMaterialTransparency": true}`
-	
-	var attrs duit_attributes.AppBarAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder[duit_props.ColorString]]
+
+	var attrs duit_attributes.AppBarAttributes
 	err := json.Unmarshal([]byte(jsonStr), &attrs)
 	if err != nil {
 		t.Fatal("expected no error for UnmarshalJSON(), got:", err)
@@ -273,8 +273,8 @@ func TestAppBarAttributes_ForceMaterialTransparency_Unmarshal_True(t *testing.T)
 
 func TestAppBarAttributes_ForceMaterialTransparency_Unmarshal_False(t *testing.T) {
 	jsonStr := `{"forceMaterialTransparency": false}`
-	
-	var attrs duit_attributes.AppBarAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder[duit_props.ColorString]]
+
+	var attrs duit_attributes.AppBarAttributes
 	err := json.Unmarshal([]byte(jsonStr), &attrs)
 	if err != nil {
 		t.Fatal("expected no error for UnmarshalJSON(), got:", err)
@@ -291,8 +291,8 @@ func TestAppBarAttributes_ForceMaterialTransparency_Unmarshal_False(t *testing.T
 
 func TestAppBarAttributes_ForceMaterialTransparency_Unmarshal_Omitted(t *testing.T) {
 	jsonStr := `{}`
-	
-	var attrs duit_attributes.AppBarAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder[duit_props.ColorString]]
+
+	var attrs duit_attributes.AppBarAttributes
 	err := json.Unmarshal([]byte(jsonStr), &attrs)
 	if err != nil {
 		t.Fatal("expected no error for UnmarshalJSON(), got:", err)
@@ -305,7 +305,7 @@ func TestAppBarAttributes_ForceMaterialTransparency_Unmarshal_Omitted(t *testing
 
 // Tests for CenterTitle Tristate[bool] property serialization
 func TestAppBarAttributes_CenterTitle_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.AppBarAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder[duit_props.ColorString]]{
+	attrs := &duit_attributes.AppBarAttributes{
 		CenterTitle: duit_utils.BoolValue(true),
 	}
 
@@ -321,7 +321,7 @@ func TestAppBarAttributes_CenterTitle_JSON_True(t *testing.T) {
 }
 
 func TestAppBarAttributes_CenterTitle_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.AppBarAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder[duit_props.ColorString]]{
+	attrs := &duit_attributes.AppBarAttributes{
 		CenterTitle: duit_utils.BoolValue(false),
 	}
 
@@ -337,7 +337,7 @@ func TestAppBarAttributes_CenterTitle_JSON_False(t *testing.T) {
 }
 
 func TestAppBarAttributes_CenterTitle_JSON_Nil(t *testing.T) {
-	attrs := &duit_attributes.AppBarAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder[duit_props.ColorString]]{
+	attrs := &duit_attributes.AppBarAttributes{
 		CenterTitle: duit_utils.Nillable[bool](),
 	}
 
@@ -354,8 +354,8 @@ func TestAppBarAttributes_CenterTitle_JSON_Nil(t *testing.T) {
 
 func TestAppBarAttributes_CenterTitle_Unmarshal_True(t *testing.T) {
 	jsonStr := `{"centerTitle": true}`
-	
-	var attrs duit_attributes.AppBarAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder[duit_props.ColorString]]
+
+	var attrs duit_attributes.AppBarAttributes
 	err := json.Unmarshal([]byte(jsonStr), &attrs)
 	if err != nil {
 		t.Fatal("expected no error for UnmarshalJSON(), got:", err)
@@ -372,8 +372,8 @@ func TestAppBarAttributes_CenterTitle_Unmarshal_True(t *testing.T) {
 
 func TestAppBarAttributes_CenterTitle_Unmarshal_False(t *testing.T) {
 	jsonStr := `{"centerTitle": false}`
-	
-	var attrs duit_attributes.AppBarAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder[duit_props.ColorString]]
+
+	var attrs duit_attributes.AppBarAttributes
 	err := json.Unmarshal([]byte(jsonStr), &attrs)
 	if err != nil {
 		t.Fatal("expected no error for UnmarshalJSON(), got:", err)
@@ -390,8 +390,8 @@ func TestAppBarAttributes_CenterTitle_Unmarshal_False(t *testing.T) {
 
 func TestAppBarAttributes_CenterTitle_Unmarshal_Omitted(t *testing.T) {
 	jsonStr := `{}`
-	
-	var attrs duit_attributes.AppBarAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder[duit_props.ColorString]]
+
+	var attrs duit_attributes.AppBarAttributes
 	err := json.Unmarshal([]byte(jsonStr), &attrs)
 	if err != nil {
 		t.Fatal("expected no error for UnmarshalJSON(), got:", err)
@@ -404,7 +404,7 @@ func TestAppBarAttributes_CenterTitle_Unmarshal_Omitted(t *testing.T) {
 
 // Tests for AutomaticallyImplyLeading Tristate[bool] property serialization
 func TestAppBarAttributes_AutomaticallyImplyLeading_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.AppBarAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder[duit_props.ColorString]]{
+	attrs := &duit_attributes.AppBarAttributes{
 		AutomaticallyImplyLeading: duit_utils.BoolValue(true),
 	}
 
@@ -420,7 +420,7 @@ func TestAppBarAttributes_AutomaticallyImplyLeading_JSON_True(t *testing.T) {
 }
 
 func TestAppBarAttributes_AutomaticallyImplyLeading_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.AppBarAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder[duit_props.ColorString]]{
+	attrs := &duit_attributes.AppBarAttributes{
 		AutomaticallyImplyLeading: duit_utils.BoolValue(false),
 	}
 
@@ -436,7 +436,7 @@ func TestAppBarAttributes_AutomaticallyImplyLeading_JSON_False(t *testing.T) {
 }
 
 func TestAppBarAttributes_AutomaticallyImplyLeading_JSON_Nil(t *testing.T) {
-	attrs := &duit_attributes.AppBarAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder[duit_props.ColorString]]{
+	attrs := &duit_attributes.AppBarAttributes{
 		AutomaticallyImplyLeading: duit_utils.Nillable[bool](),
 	}
 
@@ -453,8 +453,8 @@ func TestAppBarAttributes_AutomaticallyImplyLeading_JSON_Nil(t *testing.T) {
 
 func TestAppBarAttributes_AutomaticallyImplyLeading_Unmarshal_True(t *testing.T) {
 	jsonStr := `{"automaticallyImplyLeading": true}`
-	
-	var attrs duit_attributes.AppBarAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder[duit_props.ColorString]]
+
+	var attrs duit_attributes.AppBarAttributes
 	err := json.Unmarshal([]byte(jsonStr), &attrs)
 	if err != nil {
 		t.Fatal("expected no error for UnmarshalJSON(), got:", err)
@@ -471,8 +471,8 @@ func TestAppBarAttributes_AutomaticallyImplyLeading_Unmarshal_True(t *testing.T)
 
 func TestAppBarAttributes_AutomaticallyImplyLeading_Unmarshal_False(t *testing.T) {
 	jsonStr := `{"automaticallyImplyLeading": false}`
-	
-	var attrs duit_attributes.AppBarAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder[duit_props.ColorString]]
+
+	var attrs duit_attributes.AppBarAttributes
 	err := json.Unmarshal([]byte(jsonStr), &attrs)
 	if err != nil {
 		t.Fatal("expected no error for UnmarshalJSON(), got:", err)
@@ -489,8 +489,8 @@ func TestAppBarAttributes_AutomaticallyImplyLeading_Unmarshal_False(t *testing.T
 
 func TestAppBarAttributes_AutomaticallyImplyLeading_Unmarshal_Omitted(t *testing.T) {
 	jsonStr := `{}`
-	
-	var attrs duit_attributes.AppBarAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder[duit_props.ColorString]]
+
+	var attrs duit_attributes.AppBarAttributes
 	err := json.Unmarshal([]byte(jsonStr), &attrs)
 	if err != nil {
 		t.Fatal("expected no error for UnmarshalJSON(), got:", err)
@@ -503,7 +503,7 @@ func TestAppBarAttributes_AutomaticallyImplyLeading_Unmarshal_Omitted(t *testing
 
 // Tests for ExcludeHeaderSemantics Tristate[bool] property serialization
 func TestAppBarAttributes_ExcludeHeaderSemantics_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.AppBarAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder[duit_props.ColorString]]{
+	attrs := &duit_attributes.AppBarAttributes{
 		ExcludeHeaderSemantics: duit_utils.BoolValue(true),
 	}
 
@@ -519,7 +519,7 @@ func TestAppBarAttributes_ExcludeHeaderSemantics_JSON_True(t *testing.T) {
 }
 
 func TestAppBarAttributes_ExcludeHeaderSemantics_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.AppBarAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder[duit_props.ColorString]]{
+	attrs := &duit_attributes.AppBarAttributes{
 		ExcludeHeaderSemantics: duit_utils.BoolValue(false),
 	}
 
@@ -535,7 +535,7 @@ func TestAppBarAttributes_ExcludeHeaderSemantics_JSON_False(t *testing.T) {
 }
 
 func TestAppBarAttributes_ExcludeHeaderSemantics_JSON_Nil(t *testing.T) {
-	attrs := &duit_attributes.AppBarAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder[duit_props.ColorString]]{
+	attrs := &duit_attributes.AppBarAttributes{
 		ExcludeHeaderSemantics: duit_utils.Nillable[bool](),
 	}
 
@@ -552,8 +552,8 @@ func TestAppBarAttributes_ExcludeHeaderSemantics_JSON_Nil(t *testing.T) {
 
 func TestAppBarAttributes_ExcludeHeaderSemantics_Unmarshal_True(t *testing.T) {
 	jsonStr := `{"excludeHeaderSemantics": true}`
-	
-	var attrs duit_attributes.AppBarAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder[duit_props.ColorString]]
+
+	var attrs duit_attributes.AppBarAttributes
 	err := json.Unmarshal([]byte(jsonStr), &attrs)
 	if err != nil {
 		t.Fatal("expected no error for UnmarshalJSON(), got:", err)
@@ -570,8 +570,8 @@ func TestAppBarAttributes_ExcludeHeaderSemantics_Unmarshal_True(t *testing.T) {
 
 func TestAppBarAttributes_ExcludeHeaderSemantics_Unmarshal_False(t *testing.T) {
 	jsonStr := `{"excludeHeaderSemantics": false}`
-	
-	var attrs duit_attributes.AppBarAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder[duit_props.ColorString]]
+
+	var attrs duit_attributes.AppBarAttributes
 	err := json.Unmarshal([]byte(jsonStr), &attrs)
 	if err != nil {
 		t.Fatal("expected no error for UnmarshalJSON(), got:", err)
@@ -588,8 +588,8 @@ func TestAppBarAttributes_ExcludeHeaderSemantics_Unmarshal_False(t *testing.T) {
 
 func TestAppBarAttributes_ExcludeHeaderSemantics_Unmarshal_Omitted(t *testing.T) {
 	jsonStr := `{}`
-	
-	var attrs duit_attributes.AppBarAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder[duit_props.ColorString]]
+
+	var attrs duit_attributes.AppBarAttributes
 	err := json.Unmarshal([]byte(jsonStr), &attrs)
 	if err != nil {
 		t.Fatal("expected no error for UnmarshalJSON(), got:", err)
@@ -602,7 +602,7 @@ func TestAppBarAttributes_ExcludeHeaderSemantics_Unmarshal_Omitted(t *testing.T)
 
 // Tests for Primary Tristate[bool] property serialization
 func TestAppBarAttributes_Primary_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.AppBarAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder[duit_props.ColorString]]{
+	attrs := &duit_attributes.AppBarAttributes{
 		Primary: duit_utils.BoolValue(true),
 	}
 
@@ -618,7 +618,7 @@ func TestAppBarAttributes_Primary_JSON_True(t *testing.T) {
 }
 
 func TestAppBarAttributes_Primary_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.AppBarAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder[duit_props.ColorString]]{
+	attrs := &duit_attributes.AppBarAttributes{
 		Primary: duit_utils.BoolValue(false),
 	}
 
@@ -634,7 +634,7 @@ func TestAppBarAttributes_Primary_JSON_False(t *testing.T) {
 }
 
 func TestAppBarAttributes_Primary_JSON_Nil(t *testing.T) {
-	attrs := &duit_attributes.AppBarAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder[duit_props.ColorString]]{
+	attrs := &duit_attributes.AppBarAttributes{
 		Primary: duit_utils.Nillable[bool](),
 	}
 
@@ -651,8 +651,8 @@ func TestAppBarAttributes_Primary_JSON_Nil(t *testing.T) {
 
 func TestAppBarAttributes_Primary_Unmarshal_True(t *testing.T) {
 	jsonStr := `{"primary": true}`
-	
-	var attrs duit_attributes.AppBarAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder[duit_props.ColorString]]
+
+	var attrs duit_attributes.AppBarAttributes
 	err := json.Unmarshal([]byte(jsonStr), &attrs)
 	if err != nil {
 		t.Fatal("expected no error for UnmarshalJSON(), got:", err)
@@ -669,8 +669,8 @@ func TestAppBarAttributes_Primary_Unmarshal_True(t *testing.T) {
 
 func TestAppBarAttributes_Primary_Unmarshal_False(t *testing.T) {
 	jsonStr := `{"primary": false}`
-	
-	var attrs duit_attributes.AppBarAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder[duit_props.ColorString]]
+
+	var attrs duit_attributes.AppBarAttributes
 	err := json.Unmarshal([]byte(jsonStr), &attrs)
 	if err != nil {
 		t.Fatal("expected no error for UnmarshalJSON(), got:", err)
@@ -687,8 +687,8 @@ func TestAppBarAttributes_Primary_Unmarshal_False(t *testing.T) {
 
 func TestAppBarAttributes_Primary_Unmarshal_Omitted(t *testing.T) {
 	jsonStr := `{}`
-	
-	var attrs duit_attributes.AppBarAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder[duit_props.ColorString]]
+
+	var attrs duit_attributes.AppBarAttributes
 	err := json.Unmarshal([]byte(jsonStr), &attrs)
 	if err != nil {
 		t.Fatal("expected no error for UnmarshalJSON(), got:", err)

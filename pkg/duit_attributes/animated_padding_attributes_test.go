@@ -2,12 +2,13 @@ package duit_attributes_test
 
 import (
 	"testing"
+
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 )
 
 func TestAnimatedPaddingAttributes_Validate_ValidPadding(t *testing.T) {
-	padding := duit_props.EdgeInsetsV2{}.All(10.0)
+	padding := duit_props.NewEdgeInsetsAll(10.0)
 	
 	attrs := &duit_attributes.AnimatedPaddingAttributes{
 		Padding: padding,
@@ -45,7 +46,7 @@ func TestAnimatedPaddingAttributes_Validate_NilPadding(t *testing.T) {
 
 func TestAnimatedPaddingAttributes_Validate_InvalidPadding(t *testing.T) {
 	// Create invalid padding with negative values
-	padding := duit_props.EdgeInsetsV2{}.All(-5.0)
+	padding := duit_props.NewEdgeInsetsAll(-5.0)
 	
 	attrs := &duit_attributes.AnimatedPaddingAttributes{
 		Padding: padding,
@@ -64,19 +65,19 @@ func TestAnimatedPaddingAttributes_Validate_InvalidPadding(t *testing.T) {
 func TestAnimatedPaddingAttributes_Validate_DifferentPaddingTypes(t *testing.T) {
 	testCases := []struct {
 		name    string
-		padding *duit_props.EdgeInsetsV2
+		padding *duit_props.EdgeInsets
 	}{
 		{
 			name:    "All padding",
-			padding: duit_props.EdgeInsetsV2{}.All(8.0),
+			padding: duit_props.NewEdgeInsetsAll(8.0),
 		},
 		{
 			name:    "LTRB padding", 
-			padding: duit_props.EdgeInsetsV2{}.LTRB(5.0, 10.0, 5.0, 10.0),
+			padding: duit_props.NewEdgeInsetsLTRB(5.0, 10.0, 5.0, 10.0),
 		},
 		{
 			name:    "Symmetric padding",
-			padding: duit_props.EdgeInsetsV2{}.Symmentric(12.0, 8.0),
+			padding: duit_props.NewEdgeInsetsSymmetric(12.0, 8.0),
 		},
 	}
 
@@ -101,7 +102,7 @@ func TestAnimatedPaddingAttributes_Validate_DifferentPaddingTypes(t *testing.T) 
 // Tests for ImplicitAnimatable embedded struct
 
 func TestAnimatedPaddingAttributes_Validate_ValidImplicitAnimatable(t *testing.T) {
-	padding := duit_props.EdgeInsetsV2{}.All(10.0)
+	padding := duit_props.NewEdgeInsetsAll(10.0)
 	
 	attrs := &duit_attributes.AnimatedPaddingAttributes{
 		Padding: padding,
@@ -118,7 +119,7 @@ func TestAnimatedPaddingAttributes_Validate_ValidImplicitAnimatable(t *testing.T
 }
 
 func TestAnimatedPaddingAttributes_Validate_NilImplicitAnimatable(t *testing.T) {
-	padding := duit_props.EdgeInsetsV2{}.All(10.0)
+	padding := duit_props.NewEdgeInsetsAll(10.0)
 	
 	attrs := &duit_attributes.AnimatedPaddingAttributes{
 		Padding: padding,

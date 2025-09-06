@@ -2,35 +2,36 @@ package duit_attributes
 
 import (
 	"errors"
+
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
-type ImageAttributes[TColor duit_props.Color] struct {
+type ImageAttributes struct {
 	*ValueReferenceHolder
 	*duit_props.AnimatedPropertyOwner
 	*ThemeConsumer
-	Width                float32                     `json:"width,omitempty"`
-	Height               float32                     `json:"height,omitempty"`
-	CacheWidth           int                         `json:"cacheWidth,omitempty"`
-	CacheHeight          int                         `json:"cacheHeight,omitempty"`
-	Scale                float32                     `json:"scale,omitempty"`
-	Repeat               duit_props.ImageRepeat   `json:"repeat,omitempty"`
-	Src                  string                      `json:"src"`
-	ByteData             *duit_props.ImageBuffer  `json:"byteData"`
-	IsAntiAlias          duit_utils.Tristate[bool]   `json:"isAntiAlias,omitempty"`
-	MatchTextDirection   duit_utils.Tristate[bool]   `json:"matchTextDirection,omitempty"`
-	GaplessPlayback      duit_utils.Tristate[bool]   `json:"gaplessPlayback,omitempty"`
-	ExcludeFromSemantics duit_utils.Tristate[bool]   `json:"excludeFromSemantics,omitempty"`
-	FilterQuality        duit_props.FilterQuality `json:"filterQuality,omitempty"`
-	ColorBlendMode       duit_props.BlendMode     `json:"colorBlendMode,omitempty"`
-	Color                TColor                      `json:"color,omitempty"`
-	Fit                  duit_props.BoxFit            `json:"fit,omitempty"`
-	Alignment            duit_props.Alignment    `json:"alignment,omitempty"`
-	Type                 duit_props.ImageType     `json:"type,omitempty"`
+	Width                float32                   `json:"width,omitempty"`
+	Height               float32                   `json:"height,omitempty"`
+	CacheWidth           int                       `json:"cacheWidth,omitempty"`
+	CacheHeight          int                       `json:"cacheHeight,omitempty"`
+	Scale                float32                   `json:"scale,omitempty"`
+	Repeat               duit_props.ImageRepeat    `json:"repeat,omitempty"`
+	Src                  string                    `json:"src"`
+	ByteData             *duit_props.ImageBuffer   `json:"byteData"`
+	IsAntiAlias          duit_utils.Tristate[bool] `json:"isAntiAlias,omitempty"`
+	MatchTextDirection   duit_utils.Tristate[bool] `json:"matchTextDirection,omitempty"`
+	GaplessPlayback      duit_utils.Tristate[bool] `json:"gaplessPlayback,omitempty"`
+	ExcludeFromSemantics duit_utils.Tristate[bool] `json:"excludeFromSemantics,omitempty"`
+	FilterQuality        duit_props.FilterQuality  `json:"filterQuality,omitempty"`
+	ColorBlendMode       duit_props.BlendMode      `json:"colorBlendMode,omitempty"`
+	Color                *duit_props.Color         `json:"color,omitempty"`
+	Fit                  duit_props.BoxFit         `json:"fit,omitempty"`
+	Alignment            duit_props.Alignment      `json:"alignment,omitempty"`
+	Type                 duit_props.ImageType      `json:"type,omitempty"`
 }
 
-func (r *ImageAttributes[TColor]) Validate() error {
+func (r *ImageAttributes) Validate() error {
 	if err := r.ThemeConsumer.Validate(); err != nil {
 		return err
 	}

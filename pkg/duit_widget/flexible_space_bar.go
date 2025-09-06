@@ -2,12 +2,12 @@ package duit_widget
 
 import (
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_core"
 )
 
 /*
 Example:
+
 	FlexibleSpaceBar(
 		&duit_attributes.FlexibleSpaceBarAttributes[duit_props.EdgeInsetsAll]{
 			CenterTitle: true,
@@ -27,10 +27,10 @@ Example:
 		}, "background"),
 	)
 */
-func FlexibleSpaceBar[TInsets duit_props.EdgeInsets](attributes *duit_attributes.FlexibleSpaceBarAttributes[TInsets], id string, controlled bool, title *duit_core.DuitElementModel, background *duit_core.DuitElementModel) *duit_core.DuitElementModel {
+func FlexibleSpaceBar(attributes *duit_attributes.FlexibleSpaceBarAttributes, id string, controlled bool, title *duit_core.DuitElementModel, background *duit_core.DuitElementModel) *duit_core.DuitElementModel {
 	children := []*duit_core.DuitElementModel{title, background}
 
 	checkAttributes(attributes)
 
 	return new(duit_core.DuitElementModel).CreateElement(duit_core.FlexibleSpaceBar, id, "", attributes, nil, controlled, 2, nil, children...)
-} 
+}

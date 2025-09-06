@@ -5,20 +5,21 @@ import (
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
-type CardAttributes[TColor duit_props.Color, TInsets duit_props.EdgeInsets, TShape duit_props.ShapeBorder[TColor]] struct {
+type CardAttributes struct {
 	*ValueReferenceHolder
 	*duit_props.AnimatedPropertyOwner
 	*ThemeConsumer
-	Color              TColor                    `json:"color,omitempty"`
-	ShadowColor        TColor                    `json:"shadowColor,omitempty"`
+	Color              *duit_props.Color         `json:"color,omitempty"`
+	ShadowColor        *duit_props.Color         `json:"shadowColor,omitempty"`
 	Elevation          float32                   `json:"elevation,omitempty"`
 	BorderOnForeground duit_utils.Tristate[bool] `json:"borderOnForeground,omitempty"`
 	SemanticContainer  duit_utils.Tristate[bool] `json:"semanticContainer,omitempty"`
-	Margin             TInsets                   `json:"margin,omitempty"`
-	Shape              *TShape                   `json:"shape,omitempty"`
+	Margin             *duit_props.EdgeInsets    `json:"margin,omitempty"`
+	Shape              *duit_props.ShapeBorder   `json:"shape,omitempty"`
 }
-//TODO: влупить валиадцию вложенных структур
-func (r *CardAttributes[TColor, TInsets, TShape]) Validate() error {
+
+// TODO: влупить валиадцию вложенных структур
+func (r *CardAttributes) Validate() error {
 	if err := r.ThemeConsumer.Validate(); err != nil {
 		return err
 	}
@@ -29,6 +30,18 @@ func (r *CardAttributes[TColor, TInsets, TShape]) Validate() error {
 
 	if err := r.AnimatedPropertyOwner.Validate(); err != nil {
 		return err
+	}
+
+	if r.Shape != nil {
+		if err := r.Shape.Validate(); err != nil {
+			return err
+		}
+	}
+
+	if r.Margin != nil {
+		if err := r.Margin.Validate(); err != nil {
+			return err
+		}
 	}
 
 	return nil

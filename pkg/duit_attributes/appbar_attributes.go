@@ -5,34 +5,34 @@ import (
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
-type AppBarAttributes[TColor duit_props.Color, TInsets duit_props.EdgeInsets, TShape duit_props.ShapeBorder[TColor]] struct {
+type AppBarAttributes struct {
 	*ValueReferenceHolder
 	*duit_props.AnimatedPropertyOwner
 	*ThemeConsumer
-	TitleTextStyle            *duit_props.TextStyle[TColor] `json:"titleTextStyle,omitempty"`
-	ToolbarTextStyle          *duit_props.TextStyle[TColor] `json:"toolbarTextStyle,omitempty"`
-	ShadowColor               TColor                                  `json:"shadowColor,omitempty"`
-	BackgroundColor           TColor                                  `json:"backgroundColor,omitempty"`
-	ForegroundColor           TColor                                  `json:"foregroundColor,omitempty"`
-	SurfaceTintColor          TColor                                  `json:"surfaceTintColor,omitempty"`
-	ActionsPadding            TInsets                                 `json:"actionsPadding,omitempty"`
-	Shape                     *TShape                                 `json:"shape,omitempty"`
-	ClipBehavior              duit_props.Clip                          `json:"clipBehavior,omitempty"`
-	TitleSpacing              float32                                 `json:"titleSpacing,omitempty"`
-	Elevation                 float32                                 `json:"elevation,omitempty"`
-	ToolbarHeight             float32                                 `json:"toolbarHeight,omitempty"`
-	LeadingWidth              float32                                 `json:"leadingWidth,omitempty"`
-	ScrolledUnderElevation    float32                                 `json:"scrolledUnderElevation,omitempty"`
-	BottomOpacity             duit_utils.Tristate[float32]            `json:"bottomOpacity,omitempty"`
-	ToolbarOpacity            duit_utils.Tristate[float32]            `json:"toolbarOpacity,omitempty"`
-	ForceMaterialTransparency duit_utils.Tristate[bool]               `json:"forceMaterialTransparency,omitempty"`
-	CenterTitle               duit_utils.Tristate[bool]               `json:"centerTitle,omitempty"`
-	AutomaticallyImplyLeading duit_utils.Tristate[bool]               `json:"automaticallyImplyLeading,omitempty"`
-	ExcludeHeaderSemantics    duit_utils.Tristate[bool]               `json:"excludeHeaderSemantics,omitempty"`
-	Primary                   duit_utils.Tristate[bool]               `json:"primary,omitempty"`
+	TitleTextStyle            *duit_props.TextStyle        `json:"titleTextStyle,omitempty"`
+	ToolbarTextStyle          *duit_props.TextStyle        `json:"toolbarTextStyle,omitempty"`
+	ShadowColor               *duit_props.Color            `json:"shadowColor,omitempty"`
+	BackgroundColor           *duit_props.Color            `json:"backgroundColor,omitempty"`
+	ForegroundColor           *duit_props.Color            `json:"foregroundColor,omitempty"`
+	SurfaceTintColor          *duit_props.Color            `json:"surfaceTintColor,omitempty"`
+	ActionsPadding            *duit_props.EdgeInsets       `json:"actionsPadding,omitempty"`
+	Shape                     *duit_props.ShapeBorder      `json:"shape,omitempty"`
+	ClipBehavior              duit_props.Clip              `json:"clipBehavior,omitempty"`
+	TitleSpacing              float32                      `json:"titleSpacing,omitempty"`
+	Elevation                 float32                      `json:"elevation,omitempty"`
+	ToolbarHeight             float32                      `json:"toolbarHeight,omitempty"`
+	LeadingWidth              float32                      `json:"leadingWidth,omitempty"`
+	ScrolledUnderElevation    float32                      `json:"scrolledUnderElevation,omitempty"`
+	BottomOpacity             duit_utils.Tristate[float32] `json:"bottomOpacity,omitempty"`
+	ToolbarOpacity            duit_utils.Tristate[float32] `json:"toolbarOpacity,omitempty"`
+	ForceMaterialTransparency duit_utils.Tristate[bool]    `json:"forceMaterialTransparency,omitempty"`
+	CenterTitle               duit_utils.Tristate[bool]    `json:"centerTitle,omitempty"`
+	AutomaticallyImplyLeading duit_utils.Tristate[bool]    `json:"automaticallyImplyLeading,omitempty"`
+	ExcludeHeaderSemantics    duit_utils.Tristate[bool]    `json:"excludeHeaderSemantics,omitempty"`
+	Primary                   duit_utils.Tristate[bool]    `json:"primary,omitempty"`
 }
 
-func (r *AppBarAttributes[TColor, TInsets, TShape]) Validate() error {
+func (r *AppBarAttributes) Validate() error {
 	if err := r.ThemeConsumer.Validate(); err != nil {
 		return err
 	}
@@ -46,13 +46,19 @@ func (r *AppBarAttributes[TColor, TInsets, TShape]) Validate() error {
 	}
 
 	if r.BottomOpacity != nil {
-		if err := RangeValidator(*r.BottomOpacity, 0, 1); err != nil {
+		if err := duit_utils.RangeValidator(*r.BottomOpacity, 0, 1); err != nil {
 			return err
 		}
 	}
 
 	if r.ToolbarOpacity != nil {
-		if err := RangeValidator(*r.ToolbarOpacity, 0, 1); err != nil {
+		if err := duit_utils.RangeValidator(*r.ToolbarOpacity, 0, 1); err != nil {
+			return err
+		}
+	}
+
+	if r.ActionsPadding != nil {
+		if err := r.ActionsPadding.Validate(); err != nil {
 			return err
 		}
 	}

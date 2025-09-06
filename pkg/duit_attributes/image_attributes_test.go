@@ -4,13 +4,14 @@ import (
 	"encoding/json"
 	"strings"
 	"testing"
+
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
 func TestImageAttributes_Validate_AssetType_Valid(t *testing.T) {
-	attrs := &duit_attributes.ImageAttributes[duit_props.ColorString]{
+	attrs := &duit_attributes.ImageAttributes{
 		Type: duit_props.ImageTypeAsset,
 		Src:  "assets/image.png",
 	}
@@ -22,7 +23,7 @@ func TestImageAttributes_Validate_AssetType_Valid(t *testing.T) {
 }
 
 func TestImageAttributes_Validate_AssetType_MissingSrc(t *testing.T) {
-	attrs := &duit_attributes.ImageAttributes[duit_props.ColorString]{
+	attrs := &duit_attributes.ImageAttributes{
 		Type: duit_props.ImageTypeAsset,
 		Src:  "",
 	}
@@ -34,7 +35,7 @@ func TestImageAttributes_Validate_AssetType_MissingSrc(t *testing.T) {
 }
 
 func TestImageAttributes_Validate_NetworkType_Valid(t *testing.T) {
-	attrs := &duit_attributes.ImageAttributes[duit_props.ColorString]{
+	attrs := &duit_attributes.ImageAttributes{
 		Type: duit_props.ImageTypeNetwork,
 		Src:  "https://example.com/image.jpg",
 	}
@@ -46,7 +47,7 @@ func TestImageAttributes_Validate_NetworkType_Valid(t *testing.T) {
 }
 
 func TestImageAttributes_Validate_NetworkType_MissingSrc(t *testing.T) {
-	attrs := &duit_attributes.ImageAttributes[duit_props.ColorString]{
+	attrs := &duit_attributes.ImageAttributes{
 		Type: duit_props.ImageTypeNetwork,
 		Src:  "",
 	}
@@ -58,7 +59,7 @@ func TestImageAttributes_Validate_NetworkType_MissingSrc(t *testing.T) {
 }
 
 func TestImageAttributes_Validate_MemoryType_Valid(t *testing.T) {
-	attrs := &duit_attributes.ImageAttributes[duit_props.ColorString]{
+	attrs := &duit_attributes.ImageAttributes{
 		Type:     duit_props.ImageTypeMemory,
 		ByteData: &duit_props.ImageBuffer{},
 	}
@@ -70,7 +71,7 @@ func TestImageAttributes_Validate_MemoryType_Valid(t *testing.T) {
 }
 
 func TestImageAttributes_Validate_MemoryType_MissingByteData(t *testing.T) {
-	attrs := &duit_attributes.ImageAttributes[duit_props.ColorString]{
+	attrs := &duit_attributes.ImageAttributes{
 		Type:     duit_props.ImageTypeMemory,
 		ByteData: nil,
 	}
@@ -82,7 +83,7 @@ func TestImageAttributes_Validate_MemoryType_MissingByteData(t *testing.T) {
 }
 
 func TestImageAttributes_Validate_MissingType(t *testing.T) {
-	attrs := &duit_attributes.ImageAttributes[duit_props.ColorString]{
+	attrs := &duit_attributes.ImageAttributes{
 		Type: "",
 	}
 
@@ -93,7 +94,7 @@ func TestImageAttributes_Validate_MissingType(t *testing.T) {
 }
 
 func TestImageAttributes_Validate_InvalidType(t *testing.T) {
-	attrs := &duit_attributes.ImageAttributes[duit_props.ColorString]{
+	attrs := &duit_attributes.ImageAttributes{
 		Type: "invalid_type",
 	}
 
@@ -104,7 +105,7 @@ func TestImageAttributes_Validate_InvalidType(t *testing.T) {
 }
 
 func TestImageAttributes_Validate_WithAllProperties(t *testing.T) {
-	attrs := &duit_attributes.ImageAttributes[duit_props.ColorString]{
+	attrs := &duit_attributes.ImageAttributes{
 		Type:                 duit_props.ImageTypeAsset,
 		Src:                  "assets/image.png",
 		Width:                100.0,
@@ -119,7 +120,7 @@ func TestImageAttributes_Validate_WithAllProperties(t *testing.T) {
 		ExcludeFromSemantics: duit_utils.BoolValue(false),
 		FilterQuality:        "high",
 		ColorBlendMode:       duit_props.BlendModeSrcOver,
-		Color:                "#FF0000",
+		Color:                duit_props.NewColorString("#FF0000"),
 		Fit:                  duit_props.BoxFitContain,
 		Alignment:            duit_props.AlignmentCenter,
 	}
@@ -132,7 +133,7 @@ func TestImageAttributes_Validate_WithAllProperties(t *testing.T) {
 
 // Tests for IsAntiAlias Tristate[bool] property serialization
 func TestImageAttributes_IsAntiAlias_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.ImageAttributes[duit_props.ColorString]{
+	attrs := &duit_attributes.ImageAttributes{
 		Type:        duit_props.ImageTypeAsset,
 		Src:         "assets/image.png",
 		IsAntiAlias: duit_utils.BoolValue(true),
@@ -150,7 +151,7 @@ func TestImageAttributes_IsAntiAlias_JSON_True(t *testing.T) {
 }
 
 func TestImageAttributes_IsAntiAlias_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.ImageAttributes[duit_props.ColorString]{
+	attrs := &duit_attributes.ImageAttributes{
 		Type:        duit_props.ImageTypeAsset,
 		Src:         "assets/image.png",
 		IsAntiAlias: duit_utils.BoolValue(false),
@@ -168,7 +169,7 @@ func TestImageAttributes_IsAntiAlias_JSON_False(t *testing.T) {
 }
 
 func TestImageAttributes_IsAntiAlias_JSON_Nil(t *testing.T) {
-	attrs := &duit_attributes.ImageAttributes[duit_props.ColorString]{
+	attrs := &duit_attributes.ImageAttributes{
 		Type:        duit_props.ImageTypeAsset,
 		Src:         "assets/image.png",
 		IsAntiAlias: duit_utils.Nillable[bool](),
@@ -187,7 +188,7 @@ func TestImageAttributes_IsAntiAlias_JSON_Nil(t *testing.T) {
 
 // Tests for MatchTextDirection Tristate[bool] property serialization
 func TestImageAttributes_MatchTextDirection_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.ImageAttributes[duit_props.ColorString]{
+	attrs := &duit_attributes.ImageAttributes{
 		Type:               duit_props.ImageTypeAsset,
 		Src:                "assets/image.png",
 		MatchTextDirection: duit_utils.BoolValue(true),
@@ -205,7 +206,7 @@ func TestImageAttributes_MatchTextDirection_JSON_True(t *testing.T) {
 }
 
 func TestImageAttributes_MatchTextDirection_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.ImageAttributes[duit_props.ColorString]{
+	attrs := &duit_attributes.ImageAttributes{
 		Type:               duit_props.ImageTypeAsset,
 		Src:                "assets/image.png",
 		MatchTextDirection: duit_utils.BoolValue(false),
@@ -223,7 +224,7 @@ func TestImageAttributes_MatchTextDirection_JSON_False(t *testing.T) {
 }
 
 func TestImageAttributes_MatchTextDirection_JSON_Nil(t *testing.T) {
-	attrs := &duit_attributes.ImageAttributes[duit_props.ColorString]{
+	attrs := &duit_attributes.ImageAttributes{
 		Type:               duit_props.ImageTypeAsset,
 		Src:                "assets/image.png",
 		MatchTextDirection: duit_utils.Nillable[bool](),
@@ -242,7 +243,7 @@ func TestImageAttributes_MatchTextDirection_JSON_Nil(t *testing.T) {
 
 // Tests for GaplessPlayback Tristate[bool] property serialization
 func TestImageAttributes_GaplessPlayback_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.ImageAttributes[duit_props.ColorString]{
+	attrs := &duit_attributes.ImageAttributes{
 		Type:            duit_props.ImageTypeAsset,
 		Src:             "assets/image.png",
 		GaplessPlayback: duit_utils.BoolValue(true),
@@ -260,7 +261,7 @@ func TestImageAttributes_GaplessPlayback_JSON_True(t *testing.T) {
 }
 
 func TestImageAttributes_GaplessPlayback_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.ImageAttributes[duit_props.ColorString]{
+	attrs := &duit_attributes.ImageAttributes{
 		Type:            duit_props.ImageTypeAsset,
 		Src:             "assets/image.png",
 		GaplessPlayback: duit_utils.BoolValue(false),
@@ -278,7 +279,7 @@ func TestImageAttributes_GaplessPlayback_JSON_False(t *testing.T) {
 }
 
 func TestImageAttributes_GaplessPlayback_JSON_Nil(t *testing.T) {
-	attrs := &duit_attributes.ImageAttributes[duit_props.ColorString]{
+	attrs := &duit_attributes.ImageAttributes{
 		Type:            duit_props.ImageTypeAsset,
 		Src:             "assets/image.png",
 		GaplessPlayback: duit_utils.Nillable[bool](),
@@ -297,7 +298,7 @@ func TestImageAttributes_GaplessPlayback_JSON_Nil(t *testing.T) {
 
 // Tests for ExcludeFromSemantics Tristate[bool] property serialization
 func TestImageAttributes_ExcludeFromSemantics_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.ImageAttributes[duit_props.ColorString]{
+	attrs := &duit_attributes.ImageAttributes{
 		Type:                 duit_props.ImageTypeAsset,
 		Src:                  "assets/image.png",
 		ExcludeFromSemantics: duit_utils.BoolValue(true),
@@ -315,7 +316,7 @@ func TestImageAttributes_ExcludeFromSemantics_JSON_True(t *testing.T) {
 }
 
 func TestImageAttributes_ExcludeFromSemantics_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.ImageAttributes[duit_props.ColorString]{
+	attrs := &duit_attributes.ImageAttributes{
 		Type:                 duit_props.ImageTypeAsset,
 		Src:                  "assets/image.png",
 		ExcludeFromSemantics: duit_utils.BoolValue(false),
@@ -333,7 +334,7 @@ func TestImageAttributes_ExcludeFromSemantics_JSON_False(t *testing.T) {
 }
 
 func TestImageAttributes_ExcludeFromSemantics_JSON_Nil(t *testing.T) {
-	attrs := &duit_attributes.ImageAttributes[duit_props.ColorString]{
+	attrs := &duit_attributes.ImageAttributes{
 		Type:                 duit_props.ImageTypeAsset,
 		Src:                  "assets/image.png",
 		ExcludeFromSemantics: duit_utils.Nillable[bool](),

@@ -2,13 +2,13 @@ package duit_attributes_test
 
 import (
 	"testing"
+
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
-	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
 func TestSliverAppBarAttributes_Validate_ValidAttributes(t *testing.T) {
-	attrs := &duit_attributes.SliverAppBarAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder[duit_props.ColorString]]{
+	attrs := &duit_attributes.SliverAppBarAttributes{
 		BottomOpacity:  duit_utils.Float32Value(0.5),
 		ToolbarOpacity: duit_utils.Float32Value(0.8),
 	}
@@ -33,7 +33,7 @@ func TestSliverAppBarAttributes_Validate_ValidOpacityValues(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(tc.name+"_BottomOpacity", func(t *testing.T) {
-			attrs := &duit_attributes.SliverAppBarAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder[duit_props.ColorString]]{
+			attrs := &duit_attributes.SliverAppBarAttributes{
 				BottomOpacity: duit_utils.Float32Value(tc.opacity),
 			}
 
@@ -44,7 +44,7 @@ func TestSliverAppBarAttributes_Validate_ValidOpacityValues(t *testing.T) {
 		})
 
 		t.Run(tc.name+"_ToolbarOpacity", func(t *testing.T) {
-			attrs := &duit_attributes.SliverAppBarAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder[duit_props.ColorString]]{
+			attrs := &duit_attributes.SliverAppBarAttributes{
 				ToolbarOpacity: duit_utils.Float32Value(tc.opacity),
 			}
 
@@ -67,7 +67,7 @@ func TestSliverAppBarAttributes_Validate_InvalidOpacityValues(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(tc.name+"_BottomOpacity", func(t *testing.T) {
-			attrs := &duit_attributes.SliverAppBarAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder[duit_props.ColorString]]{
+			attrs := &duit_attributes.SliverAppBarAttributes{
 				BottomOpacity: duit_utils.Float32Value(tc.opacity),
 			}
 
@@ -78,7 +78,7 @@ func TestSliverAppBarAttributes_Validate_InvalidOpacityValues(t *testing.T) {
 		})
 
 		t.Run(tc.name+"_ToolbarOpacity", func(t *testing.T) {
-			attrs := &duit_attributes.SliverAppBarAttributes[duit_props.ColorString, duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder[duit_props.ColorString]]{
+			attrs := &duit_attributes.SliverAppBarAttributes{
 				ToolbarOpacity: duit_utils.Float32Value(tc.opacity),
 			}
 
