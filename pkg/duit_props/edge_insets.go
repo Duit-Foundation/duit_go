@@ -23,10 +23,6 @@ func NewEdgeInsetsSymmetric(vertical, horizontal float32) *EdgeInsets {
 }
 
 func (r *EdgeInsets) Validate() error {
-	if r == nil {
-		return nil
-	}
-
 	switch r.data.(type) {
 	case float32:
 		if r.data.(float32) < 0 {

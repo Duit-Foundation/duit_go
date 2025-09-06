@@ -58,7 +58,7 @@ func TestCheckTweenType(t *testing.T) {
 		duit_props.EdgeInsetsTween("paddingLTRB", duit_props.NewEdgeInsetsLTRB(1, 2, 3, 4), duit_props.NewEdgeInsetsLTRB(4, 3, 2, 1), 1, duit_props.AnimationTriggerOnEnter, duit_props.AnimationMethodForward, false, ""),
 		duit_props.EdgeInsetsTween("paddingSym", duit_props.NewEdgeInsetsSymmetric(5, 10), duit_props.NewEdgeInsetsSymmetric(10, 5), 1, duit_props.AnimationTriggerOnEnter, duit_props.AnimationMethodForward, false, ""),
 		// constraints and size
-		duit_props.BoxConstraintsTween("constraints", duit_props.BoxConstraints{MinWidth: 0, MinHeight: 0}, duit_props.BoxConstraints{MaxWidth: 100, MaxHeight: 100}, 1, duit_props.AnimationTriggerOnEnter, duit_props.AnimationMethodForward, false, ""),
+		duit_props.BoxConstraintsTween("constraints", &duit_props.BoxConstraints{MinWidth: 0, MinHeight: 0}, &duit_props.BoxConstraints{MaxWidth: 100, MaxHeight: 100}, 1, duit_props.AnimationTriggerOnEnter, duit_props.AnimationMethodForward, false, ""),
 		duit_props.SizeTween("size", duit_props.Size{Width: 10, Height: 20}, duit_props.Size{Width: 20, Height: 40}, 1, duit_props.AnimationTriggerOnEnter, duit_props.AnimationMethodForward, false, ""),
 		// border
 		duit_props.BorderTween("border", duit_props.BorderOutline, duit_props.BorderUnderline, 1, duit_props.AnimationTriggerOnEnter, duit_props.AnimationMethodForward, false, ""),

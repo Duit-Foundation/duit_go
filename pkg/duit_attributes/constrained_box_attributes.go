@@ -1,6 +1,10 @@
 package duit_attributes
 
-import "github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
+import (
+	"errors"
+
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
+)
 
 //TODO: подумать над тем, чтобы добавить обычный BoxConstraints, чтобы было семантически корректно
 
@@ -8,10 +12,7 @@ type ConstrainedBoxAttributes struct {
 	*ValueReferenceHolder
 	*duit_props.AnimatedPropertyOwner
 	*ThemeConsumer
-	MinWidth  float32 `json:"minWidth,omitempty"`
-	MaxWidth  float32 `json:"maxWidth,omitempty"`
-	MinHeight float32 `json:"minHeight,omitempty"`
-	MaxHeight float32 `json:"maxHeight,omitempty"`
+	Constraints *duit_props.BoxConstraints `json:"constraints,omitempty"`
 }
 
 func (r *ConstrainedBoxAttributes) Validate() error {
@@ -25,6 +26,14 @@ func (r *ConstrainedBoxAttributes) Validate() error {
 
 	if err := r.AnimatedPropertyOwner.Validate(); err != nil {
 		return err
+	}
+
+	if r.Constraints != nil {
+		if err := r.Constraints.Validate(); err != nil {
+			return err
+		}
+	} else {
+		return errors.New("constraints property is required")
 	}
 
 	return nil
