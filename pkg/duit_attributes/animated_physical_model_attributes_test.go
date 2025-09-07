@@ -182,8 +182,8 @@ func TestAnimatedPhysicalModelAttributes_Validate_WithOptionalFields(t *testing.
 	color := duit_props.NewColorString("#FF0000")
 	shadowColor := duit_props.NewColorString("#000000")
 
-	borderRadius := duit_props.BorderRadiusV2{}.All(
-		duit_props.RadiusV2{}.Circular(8.0),
+	borderRadius := duit_props.NewBorderRadiusAll(
+		duit_props.NewRadiusCircular(8.0),
 	)
 
 	attrs := &duit_attributes.AnimatedPhysicalModelAttributes{

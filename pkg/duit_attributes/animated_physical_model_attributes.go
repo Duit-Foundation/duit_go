@@ -11,14 +11,14 @@ type AnimatedPhysicalModelAttributes struct {
 	*ValueReferenceHolder
 	*duit_props.ImplicitAnimatable
 	*ThemeConsumer
-	Elevation          duit_utils.Tristate[float32]    `json:"elevation"`
-	Color              *duit_props.Color             `json:"color,omitempty"`
-	ShadowColor        *duit_props.Color             `json:"shadowColor,omitempty"`
-	ClipBehavior       duit_props.Clip                  `json:"clipBehavior,omitempty"`
-	BorderRadius       *duit_props.BorderRadiusV2 `json:"borderRadius,omitempty"`
-	Shape              duit_props.BoxShape        `json:"shape,omitempty"`
-	AnimateColor       duit_utils.Tristate[bool]       `json:"animateColor,omitempty"`
-	AnimateShadowColor duit_utils.Tristate[bool]       `json:"animateShadowColor,omitempty"`
+	Elevation          duit_utils.Tristate[float32] `json:"elevation"`
+	Color              *duit_props.Color            `json:"color,omitempty"`
+	ShadowColor        *duit_props.Color            `json:"shadowColor,omitempty"`
+	ClipBehavior       duit_props.Clip              `json:"clipBehavior,omitempty"`
+	BorderRadius       *duit_props.BorderRadius     `json:"borderRadius,omitempty"`
+	Shape              duit_props.BoxShape          `json:"shape,omitempty"`
+	AnimateColor       duit_utils.Tristate[bool]    `json:"animateColor,omitempty"`
+	AnimateShadowColor duit_utils.Tristate[bool]    `json:"animateShadowColor,omitempty"`
 }
 
 func (r *AnimatedPhysicalModelAttributes) Validate() error {

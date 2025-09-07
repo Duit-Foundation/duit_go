@@ -40,7 +40,7 @@ func TestDecoratedBoxAttributes_Validate_WithAllDecorationFields(t *testing.T) {
 	attrs := &duit_attributes.DecoratedBoxAttributes{
 		Decoration: &duit_props.BoxDecoration{
 			Color:        duit_props.NewColorString("#FF0000"),
-			BorderRadius: 10.0,
+			BorderRadius: duit_props.NewBorderRadiusAll(duit_props.NewRadiusCircular(10.0)),
 			Shape:        duit_props.BoxShapeRectangle,
 		},
 	}
@@ -55,8 +55,8 @@ func TestDecoratedBoxAttributes_JSON_WithDecoration(t *testing.T) {
 	attrs := &duit_attributes.DecoratedBoxAttributes{
 		Decoration: &duit_props.BoxDecoration{
 			Color:        duit_props.NewColorString("#FF0000"),
-			BorderRadius: 10.0,
-		},
+			BorderRadius: duit_props.NewBorderRadiusAll(duit_props.NewRadiusCircular(10.0)),
+		},	
 	}
 
 	jsonData, err := json.Marshal(attrs)
@@ -71,7 +71,7 @@ func TestDecoratedBoxAttributes_JSON_WithDecoration(t *testing.T) {
 	if !strings.Contains(jsonStr, `"color":"#FF0000"`) {
 		t.Fatalf("expected JSON to contain color value, got: %s", jsonStr)
 	}
-	if !strings.Contains(jsonStr, `"borderRadius":10`) {
+	if !strings.Contains(jsonStr, `"borderRadius":{"radius":10}`) {
 		t.Fatalf("expected JSON to contain borderRadius value, got: %s", jsonStr)
 	}
 }
@@ -99,7 +99,7 @@ func TestDecoratedBoxAttributes_WithRGBOColor_JSON(t *testing.T) {
 	attrs := &duit_attributes.DecoratedBoxAttributes{
 		Decoration: &duit_props.BoxDecoration{
 			Color:        rgboColor,
-			BorderRadius: 5.0,
+			BorderRadius: duit_props.NewBorderRadiusAll(duit_props.NewRadiusCircular(5.0)),
 		},
 	}
 
