@@ -67,13 +67,7 @@ func TestInkwellAttributes_Validate_WithMaterialStateProperty(t *testing.T) {
 }
 
 func TestInkwellAttributes_Validate_WithBorderRadius(t *testing.T) {
-	borderRadius := &duit_props.BorderRadius{
-		TopLeft:     &duit_props.Radius{Radius: 10.0},
-		TopRight:    &duit_props.Radius{Radius: 15.0},
-		BottomLeft:  &duit_props.Radius{Radius: 20.0},
-		BottomRight: &duit_props.Radius{Radius: 25.0},
-	}
-
+	borderRadius := &duit_props.BorderRadius{}
 	attrs := &duit_attributes.InkwellAttributes{
 		BorderRadius: borderRadius,
 	}
@@ -85,9 +79,7 @@ func TestInkwellAttributes_Validate_WithBorderRadius(t *testing.T) {
 }
 
 func TestInkwellAttributes_Validate_WithCustomBorder(t *testing.T) {
-	customBorder := duit_props.NewRoundedRectangleBorder(&duit_props.BorderRadius{
-		TopLeft: &duit_props.Radius{Radius: 8.0},
-	}, &duit_props.BorderSide{
+	customBorder := duit_props.NewRoundedRectangleBorder(&duit_props.BorderRadius{}, &duit_props.BorderSide{
 		Color: duit_props.NewColorString("#FF0000"),
 		Width: 2.0,
 	})
