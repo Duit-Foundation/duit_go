@@ -6,15 +6,15 @@ import (
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 )
 
-type TransfromAttributes[T duit_props.Transform] struct {
+type TransfromAttributes struct {
 	*ValueReferenceHolder
 	*duit_props.AnimatedPropertyOwner
 	*ThemeConsumer
 	Type duit_props.TransformType `json:"type"`
-	Data *T                       `json:"data"`
+	Data *duit_props.Transform    `json:"data"`
 }
 
-func (r *TransfromAttributes[T]) Validate() error {
+func (r *TransfromAttributes) Validate() error {
 	if err := r.ValueReferenceHolder.Validate(); err != nil {
 		return err
 	}
