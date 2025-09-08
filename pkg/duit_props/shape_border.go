@@ -59,14 +59,16 @@ func NewContinuousRectangleBorder(borderRadius *BorderRadius, side *BorderSide) 
 }
 
 type circleBorder struct {
-	Type ShapeBorderType `json:"type"`
-	Side *BorderSide     `json:"side,omitempty"`
+	Type         ShapeBorderType `json:"type"`
+	Side         *BorderSide     `json:"side,omitempty"`
+	Eccentricity float32         `json:"eccentricity,omitempty"`
 }
 
-func NewCircleBorder(side *BorderSide) *ShapeBorder {
+func NewCircleBorder(side *BorderSide, eccentricity float32) *ShapeBorder {
 	return &ShapeBorder{data: circleBorder{
-		Type: ShapeBorderTypeCircle,
-		Side: side,
+		Type:         ShapeBorderTypeCircle,
+		Side:         side,
+		Eccentricity: eccentricity,
 	}}
 }
 

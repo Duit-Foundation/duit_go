@@ -17,19 +17,19 @@ type CarouselViewAttributes struct {
 	*duit_props.AnimatedPropertyOwner
 	*ThemeConsumer
 	// Constructor      CarouselViewConstructor                     `json:"constructor"`
-	Padding          *duit_props.EdgeInsets                               `json:"padding,omitempty"`
-	BackgroundColor  *duit_props.Color                                    `json:"backgroundColor,omitempty"`
-	Shape            *duit_props.ShapeBorder                              `json:"shape,omitempty"`
-	OverlayColor     *duit_props.MaterialStateProperty[*duit_props.Color] `json:"overlayColor,omitempty"`
-	Elevation        float32                                              `json:"elevation,omitempty"`
-	ShrinkExtent     float32                                              `json:"shrinkExtent,omitempty"`
-	ItemExtent       float32                                              `json:"itemExtent,omitempty"`
-	ScrollDirection  duit_props.Axis                                      `json:"scrollDirection,omitempty"`
-	EnableSplash     duit_utils.Tristate[bool]                            `json:"enableSplash,omitempty"`
-	Reverse          duit_utils.Tristate[bool]                            `json:"reverse,omitempty"`
-	ItemSnapping     duit_utils.Tristate[bool]                            `json:"itemSnapping,omitempty"`
-	ConsumeMaxWeight duit_utils.Tristate[bool]                            `json:"consumeMaxWeight,omitempty"`
-	FlexWeights      []uint                                               `json:"flexWeights,omitempty"`
+	Padding          *duit_props.EdgeInsets       `json:"padding,omitempty"`
+	BackgroundColor  *duit_props.Color            `json:"backgroundColor,omitempty"`
+	Shape            *duit_props.ShapeBorder      `json:"shape,omitempty"`
+	OverlayColor     *duit_props.WidgetStateColor `json:"overlayColor,omitempty"`
+	Elevation        float32                      `json:"elevation,omitempty"`
+	ShrinkExtent     float32                      `json:"shrinkExtent,omitempty"`
+	ItemExtent       float32                      `json:"itemExtent,omitempty"`
+	ScrollDirection  duit_props.Axis              `json:"scrollDirection,omitempty"`
+	EnableSplash     duit_utils.Tristate[bool]    `json:"enableSplash,omitempty"`
+	Reverse          duit_utils.Tristate[bool]    `json:"reverse,omitempty"`
+	ItemSnapping     duit_utils.Tristate[bool]    `json:"itemSnapping,omitempty"`
+	ConsumeMaxWeight duit_utils.Tristate[bool]    `json:"consumeMaxWeight,omitempty"`
+	FlexWeights      []uint                       `json:"flexWeights,omitempty"`
 }
 
 func (r *CarouselViewAttributes) Validate() error {

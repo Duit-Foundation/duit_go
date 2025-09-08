@@ -142,8 +142,8 @@ func BoxConstraintsTween(animatedPropKey string, begin, end *BoxConstraints, dur
 	}
 }
 
-func SizeTween(animatedPropKey string, begin, end Size, duration int, trigger AnimationTrigger, method AnimationMethod, reverseOnRepeat bool, curve Curves) *tweenBase[Size] {
-	return &tweenBase[Size]{
+func SizeTween(animatedPropKey string, begin, end *Size, duration int, trigger AnimationTrigger, method AnimationMethod, reverseOnRepeat bool, curve Curves) *tweenBase[*Size] {
+	return &tweenBase[*Size]{
 		TweenType:       "sizeTween",
 		AnimatedPropKey: animatedPropKey,
 		Duration:        duration,

@@ -12,6 +12,11 @@ type BorderSide struct {
 	StrokeAlign float32     `json:"strokeAlign,omitempty"`
 }
 
+// NewBorderSide creates a new empty BorderSide structure with default values
+func NewBorderSide() *BorderSide {
+	return &BorderSide{}
+}
+
 // Validate checks if the BorderSide properties are valid.
 // It validates the color if it's not nil.
 func (r *BorderSide) Validate() error {

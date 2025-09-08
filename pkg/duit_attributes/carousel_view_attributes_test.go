@@ -24,7 +24,7 @@ func TestCarouselViewAttributes_Validate_WithAllProperties(t *testing.T) {
 		Padding:          duit_props.NewEdgeInsetsAll(8.0),
 		BackgroundColor:  duit_props.NewColorString("#FF0000"),
 		Shape:            nil,
-		OverlayColor:     &duit_props.MaterialStateProperty[*duit_props.Color]{},
+		OverlayColor:     &duit_props.WidgetStateProperty[*duit_props.Color]{},
 		Elevation:        4.0,
 		ShrinkExtent:     100.0,
 		ItemExtent:       200.0,

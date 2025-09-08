@@ -71,8 +71,8 @@ func TestAnimatedBuilderAttributes_Validate_ValidTweenTypes(t *testing.T) {
 		{
 			name: "SizeTween",
 			tween: duit_props.SizeTween("size",
-				duit_props.Size{Width: 100.0, Height: 100.0},
-				duit_props.Size{Width: 200.0, Height: 200.0},
+				duit_props.NewSize(100.0, 100.0),
+				duit_props.NewSize(200.0, 200.0),
 				300, duit_props.AnimationTriggerOnEnter, duit_props.AnimationMethodForward, false, duit_props.CurveEase),
 		},
 	}
@@ -99,8 +99,8 @@ func TestAnimatedBuilderAttributes_Validate_MultipleTweens(t *testing.T) {
 		duit_props.Tween("opacity", 0.0, 1.0, 300, duit_props.AnimationTriggerOnEnter, duit_props.AnimationMethodForward, false, duit_props.CurveEase),
 		duit_props.ColorTween("color", duit_props.NewColorString("#FF0000"), duit_props.NewColorString("#00FF00"), 300, duit_props.AnimationTriggerOnEnter, duit_props.AnimationMethodForward, false, duit_props.CurveEase),
 		duit_props.SizeTween("size",
-			duit_props.Size{Width: 100.0, Height: 100.0},
-			duit_props.Size{Width: 200.0, Height: 200.0},
+			duit_props.NewSize(100.0, 100.0),
+			duit_props.NewSize(200.0, 200.0),
 			300, duit_props.AnimationTriggerOnEnter, duit_props.AnimationMethodForward, false, duit_props.CurveEase),
 	}
 
