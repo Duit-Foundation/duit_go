@@ -1,29 +1,47 @@
 package duit_props
 
 import (
-	"fmt"
-	"strings"
+	"encoding/json"
 )
 
-type BufferType string
-
 const (
-	BufferTypeByteBuffer BufferType = "Buffer" //same name with JS Buffer {type: 'Buffer', data: []}
+	BufferTypeByteBuffer = "Buffer" //same name with JS Buffer {type: 'Buffer', data: []}
 )
 
 type ImageBuffer struct {
-	Type BufferType `json:"type"`
-	Data []byte     `json:"data"`
+	Type string `json:"type"`
+	Data []byte `json:"data"`
 }
 
-func (ib *ImageBuffer) MarshalJSON() ([]byte, error) { // Custom struct marshal function
-	var array string
-	if ib.Data == nil {
-		array = "null"
-	} else {
-		array = strings.Join(strings.Fields(fmt.Sprintf("%d", ib.Data)), ",")
+func NewImageBuffer(data []byte) *ImageBuffer {
+	return &ImageBuffer{
+		Type: BufferTypeByteBuffer,
+		Data: data,
 	}
-	jsonResult := fmt.Sprintf(`{"type":%q,"data":%s}`, ib.Type, array)
+}
 
-	return []byte(jsonResult), nil
+func (r *ImageBuffer) MarshalJSON() ([]byte, error) { // Custom struct marshal function
+	if r.Data == nil {
+		return json.Marshal(struct {
+			Type string `json:"type"`
+			Data any    `json:"data"`
+		}{
+			Type: r.Type,
+			Data: nil,
+		})
+	}
+
+	// Более эффективное преобразование в массив
+	dataArray := make([]int, len(r.Data))
+	for i, b := range r.Data {
+		dataArray[i] = int(b)
+	}
+
+	return json.Marshal(struct {
+		Type string `json:"type"`
+		Data []int  `json:"data"`
+	}{
+		Type: r.Type,
+		Data: dataArray,
+	})
 }
