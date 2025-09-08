@@ -12,7 +12,7 @@ type BoxDecoration struct {
 	Border              *BorderSide     `json:"border,omitempty"`
 	Gradient            *LinearGradient `json:"gradient,omitempty"`
 	BoxShadow           []BoxShadow     `json:"boxShadow,omitempty"`
-	BorderRadius        *BorderRadius `json:"borderRadius,omitempty"`
+	BorderRadius        *BorderRadius   `json:"borderRadius,omitempty"`
 	Shape               BoxShape        `json:"shape,omitempty"`
 	BackgroundBlendMode BlendMode       `json:"backgroundBlendMode,omitempty"`
 }
@@ -80,13 +80,19 @@ func (r *BoxDecoration) Validate() error {
 	}
 
 	// Validate box shadows if present
-	// for _, _ := range r.BoxShadow {
-	// 	//TODO: box shadow validation
-	// }
+	if r.BoxShadow != nil {
+		for _, v := range r.BoxShadow {
+			if err := v.Validate(); err != nil {
+				return err
+			}
+		}
+	}
 
 	// Validate gradient if present
 	if r.Gradient != nil {
-		//TODO: gradient validation
+		if err := r.Gradient.Validate(); err != nil {
+			return err
+		}
 	}
 
 	return nil

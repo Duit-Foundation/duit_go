@@ -215,10 +215,12 @@ func TestBoxDecoration_AddBoxShadow_Multiple(t *testing.T) {
 func TestBoxDecoration_SetGradient(t *testing.T) {
 	decoration := duit_props.NewBoxDecoration()
 	gradient := &duit_props.LinearGradient{
-		Colors: []duit_props.Color{
-			*duit_props.NewColorString("#ff0000"),
-			*duit_props.NewColorString("#0000ff"),
+		Colors: []*duit_props.Color{
+			duit_props.NewColorString("#ff0000"),
+			duit_props.NewColorString("#0000ff"),
 		},
+		Begin: duit_props.AlignmentTopLeft,
+		End: duit_props.AlignmentBottomRight,
 	}
 	decoration = decoration.SetGradient(gradient)
 

@@ -13,7 +13,7 @@ func CheckTweenType(tween any) error {
 		*tweenBase[*BoxDecoration],
 		*tweenBase[*EdgeInsets],
 		*tweenBase[*BoxConstraints],
-		*tweenBase[Size],
+		*tweenBase[*Size],
 		*tweenBase[Alignment],
 		*tweenGroup, nil:
 		return nil

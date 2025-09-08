@@ -52,8 +52,8 @@ func TestInkwellAttributes_Validate_WithAllFields(t *testing.T) {
 }
 
 func TestInkwellAttributes_Validate_WithMaterialStateProperty(t *testing.T) {
-	overlayColor := &duit_props.MaterialStateProperty[duit_props.Color]{
-		Hovered: *duit_props.NewColorString("#FF0000"),
+	overlayColor := &duit_props.WidgetStateProperty[*duit_props.Color]{
+		Hovered: duit_props.NewColorString("#FF0000"),
 	}
 
 	attrs := &duit_attributes.InkwellAttributes{

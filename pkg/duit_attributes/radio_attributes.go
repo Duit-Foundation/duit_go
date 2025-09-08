@@ -15,17 +15,17 @@ type RadioAttributes[TValue PrimitiveValue] struct {
 	*ValueReferenceHolder
 	*duit_props.AnimatedPropertyOwner
 	*ThemeConsumer
-	Value                 duit_utils.Tristate[TValue]                         `json:"value,omitempty"`
-	Toggleable            bool                                                `json:"toggleable,omitempty"`
-	Autofocus             bool                                                `json:"autofocus,omitempty"`
-	ActiveColor           *duit_props.Color                                   `json:"activeColor,omitempty"`
-	FocusColor            *duit_props.Color                                   `json:"focusColor,omitempty"`
-	HoverColor            *duit_props.Color                                   `json:"hoverColor,omitempty"`
-	FillColor             duit_props.MaterialStateProperty[*duit_props.Color] `json:"fillColor,omitempty"`
-	OverlayColor          duit_props.MaterialStateProperty[*duit_props.Color] `json:"overlayColor,omitempty"`
-	SplashRadius          float32                                             `json:"splashRadius,omitempty"`
-	VisualDensity         *duit_props.VisualDensity                           `json:"visualDensity,omitempty"`
-	MaterialTapTargetSize duit_props.MaterialTapTargetSize                    `json:"materialTapTargetSize,omitempty"`
+	Value                 duit_utils.Tristate[TValue]      `json:"value,omitempty"`
+	Toggleable            bool                             `json:"toggleable,omitempty"`
+	Autofocus             bool                             `json:"autofocus,omitempty"`
+	ActiveColor           *duit_props.Color                `json:"activeColor,omitempty"`
+	FocusColor            *duit_props.Color                `json:"focusColor,omitempty"`
+	HoverColor            *duit_props.Color                `json:"hoverColor,omitempty"`
+	FillColor             *duit_props.WidgetStateColor      `json:"fillColor,omitempty"`
+	OverlayColor          *duit_props.WidgetStateColor      `json:"overlayColor,omitempty"`
+	SplashRadius          float32                          `json:"splashRadius,omitempty"`
+	VisualDensity         *duit_props.VisualDensity        `json:"visualDensity,omitempty"`
+	MaterialTapTargetSize duit_props.MaterialTapTargetSize `json:"materialTapTargetSize,omitempty"`
 }
 
 func (r *RadioAttributes[TValue]) Validate() error {
