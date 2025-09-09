@@ -12,6 +12,22 @@ type ImplicitAnimatable struct {
 	OnEnd    any    `json:"onEnd,omitempty"`
 }
 
+func (r *ImplicitAnimatable) SetDuration(duration uint) *ImplicitAnimatable {
+	r.Duration = duration
+	return r
+}
+
+func (r *ImplicitAnimatable) SetCurve(curve Curves) *ImplicitAnimatable {
+	r.Curve = curve
+	return r
+}
+
+func (r *ImplicitAnimatable) SetOnEnd(onEnd any) *ImplicitAnimatable {
+	r.OnEnd = onEnd
+	return r
+}
+
+//bindgen:exclude
 func (r *ImplicitAnimatable) Validate() error {
 	if r == nil {
 		return nil

@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"strings"
 	"testing"
+
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
@@ -134,7 +135,7 @@ func TestAnimatedScaleAttributes_Validate_NilScale(t *testing.T) {
 func TestAnimatedScaleAttributes_Validate_WithOptionalFields(t *testing.T) {
 	attrs := &duit_attributes.AnimatedScaleAttributes{
 		Scale:         duit_utils.Float32Value(1.5),
-		Alignmen:      duit_props.AlignmentCenter,
+		Alignment:      duit_props.AlignmentCenter,
 		FilterQuality: "high",
 		ImplicitAnimatable: &duit_props.ImplicitAnimatable{
 			Duration: 300,
@@ -269,7 +270,7 @@ func TestAnimatedScaleAttributes_Validate_NilImplicitAnimatable(t *testing.T) {
 func TestAnimatedScaleAttributes_MarshalJSON_WithAllFields(t *testing.T) {
 	attrs := &duit_attributes.AnimatedScaleAttributes{
 		Scale:         duit_utils.Float32Value(0.8),
-		Alignmen:      duit_props.AlignmentBottomRight,
+		Alignment:      duit_props.AlignmentBottomRight,
 		FilterQuality: "medium",
 		ImplicitAnimatable: &duit_props.ImplicitAnimatable{
 			Duration: 400,

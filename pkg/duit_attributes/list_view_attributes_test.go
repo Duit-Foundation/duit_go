@@ -11,6 +11,126 @@ import (
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
+// ListViewAttributes tests
+
+func TestListViewAttributes_MarshalJSON_ListViewCommonAttributes(t *testing.T) {
+	commonAttrs := &duit_attributes.ListViewCommonAttributes{
+		ListViewBaseAttributes: &duit_attributes.ListViewBaseAttributes{
+			Type: duit_utils.TristateFrom[duit_attributes.ListKind](duit_attributes.ListCommon),
+		},
+	}
+
+	attrs := duit_attributes.NewListViewCommonAttributes(commonAttrs)
+	
+	jsonData, err := attrs.MarshalJSON()
+	if err != nil {
+		t.Fatal("expected no error for MarshalJSON(), got:", err)
+	}
+
+	jsonStr := string(jsonData)
+	if !strings.Contains(jsonStr, `"type":0`) {
+		t.Fatalf("expected JSON to contain type, got: %s", jsonStr)
+	}
+}
+
+func TestListViewAttributes_MarshalJSON_ListViewBuilderAttributes(t *testing.T) {
+	builderAttrs := &duit_attributes.ListViewBuilderAttributes{
+		ListViewBaseAttributes: &duit_attributes.ListViewBaseAttributes{
+			Type: duit_utils.TristateFrom[duit_attributes.ListKind](duit_attributes.ListBuilder),
+		},
+		Builder: &duit_attributes.Builder{
+			ChildObjects: []*duit_core.DuitElementModel{},
+		},
+	}
+
+	attrs := duit_attributes.NewListViewBuilderAttributes(builderAttrs)
+	
+	jsonData, err := attrs.MarshalJSON()
+	if err != nil {
+		t.Fatal("expected no error for MarshalJSON(), got:", err)
+	}
+
+	jsonStr := string(jsonData)
+	if !strings.Contains(jsonStr, `"type":1`) {
+		t.Fatalf("expected JSON to contain type, got: %s", jsonStr)
+	}
+}
+
+func TestListViewAttributes_MarshalJSON_ListViewSeparatedAttributes(t *testing.T) {
+	separatedAttrs := &duit_attributes.ListViewSeparatedAttributes{
+		ListViewBaseAttributes: &duit_attributes.ListViewBaseAttributes{
+			Type: duit_utils.TristateFrom[duit_attributes.ListKind](duit_attributes.ListSeparated),
+		},
+		Builder: &duit_attributes.Builder{
+			ChildObjects: []*duit_core.DuitElementModel{},
+		},
+		Separator: &duit_core.DuitElementModel{},
+	}
+
+	attrs := duit_attributes.NewListViewSeparatedAttributes(separatedAttrs)
+	
+	jsonData, err := attrs.MarshalJSON()
+	if err != nil {
+		t.Fatal("expected no error for MarshalJSON(), got:", err)
+	}
+
+	jsonStr := string(jsonData)
+	if !strings.Contains(jsonStr, `"type":2`) {
+		t.Fatalf("expected JSON to contain type, got: %s", jsonStr)
+	}
+}
+
+func TestNewListViewAttributes_WithValidTypes(t *testing.T) {
+	testCases := []struct {
+		name string
+		data any
+	}{
+		{
+			"ListViewCommonAttributes",
+			&duit_attributes.ListViewCommonAttributes{
+				ListViewBaseAttributes: &duit_attributes.ListViewBaseAttributes{
+					Type: duit_utils.TristateFrom[duit_attributes.ListKind](duit_attributes.ListCommon),
+				},
+			},
+		},
+		{
+			"ListViewBuilderAttributes",
+			&duit_attributes.ListViewBuilderAttributes{
+				ListViewBaseAttributes: &duit_attributes.ListViewBaseAttributes{
+					Type: duit_utils.TristateFrom[duit_attributes.ListKind](duit_attributes.ListBuilder),
+				},
+				Builder: &duit_attributes.Builder{},
+			},
+		},
+		{
+			"ListViewSeparatedAttributes",
+			&duit_attributes.ListViewSeparatedAttributes{
+				ListViewBaseAttributes: &duit_attributes.ListViewBaseAttributes{
+					Type: duit_utils.TristateFrom[duit_attributes.ListKind](duit_attributes.ListSeparated),
+				},
+				Builder:   &duit_attributes.Builder{},
+				Separator: &duit_core.DuitElementModel{},
+			},
+		},
+	}
+
+	for _, tc := range testCases {
+		t.Run(tc.name, func(t *testing.T) {
+			attrs := duit_attributes.NewListViewAttributes(tc.data)
+			if attrs == nil {
+				t.Fatalf("expected non-nil ListViewAttributes for %s", tc.name)
+			}
+		})
+	}
+}
+
+func TestNewListViewAttributes_WithInvalidType(t *testing.T) {
+	attrs := duit_attributes.NewListViewAttributes("invalid")
+	if attrs != nil {
+		t.Fatal("expected nil ListViewAttributes for invalid type")
+	}
+}
+
 // Tests for ListViewBaseAttributes
 func TestListViewBaseAttributes_Validate_ValidAttributes(t *testing.T) {
 	attrs := &duit_attributes.ListViewBaseAttributes{
@@ -125,16 +245,12 @@ func TestListViewSeparatedAttributes_Validate_ValidAttributes(t *testing.T) {
 		ChildObjects: []*duit_core.DuitElementModel{},
 	}
 
-	builderAttrs := &duit_attributes.ListViewBuilderAttributes{
-		ListViewBaseAttributes: baseAttrs,
-		Builder:                builder,
-	}
-
 	separator := &duit_core.DuitElementModel{}
 
 	attrs := &duit_attributes.ListViewSeparatedAttributes{
-		ListViewBuilderAttributes: builderAttrs,
-		Separator:                 separator,
+		ListViewBaseAttributes: baseAttrs,
+		Builder:                builder,
+		Separator:              separator,
 	}
 
 	err := attrs.Validate()
@@ -147,8 +263,8 @@ func TestListViewSeparatedAttributes_Validate_MissingBuilderAttributes(t *testin
 	separator := &duit_core.DuitElementModel{}
 
 	attrs := &duit_attributes.ListViewSeparatedAttributes{
-		ListViewBuilderAttributes: nil,
-		Separator:                 separator,
+		ListViewBaseAttributes: nil,
+		Separator:              separator,
 	}
 
 	err := attrs.Validate()
@@ -166,14 +282,10 @@ func TestListViewSeparatedAttributes_Validate_MissingSeparator(t *testing.T) {
 		ChildObjects: []*duit_core.DuitElementModel{},
 	}
 
-	builderAttrs := &duit_attributes.ListViewBuilderAttributes{
+	attrs := &duit_attributes.ListViewSeparatedAttributes{
 		ListViewBaseAttributes: baseAttrs,
 		Builder:                builder,
-	}
-
-	attrs := &duit_attributes.ListViewSeparatedAttributes{
-		ListViewBuilderAttributes: builderAttrs,
-		Separator:                 nil,
+		Separator:              nil,
 	}
 
 	err := attrs.Validate()

@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"strings"
 	"testing"
+
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
 )
 
@@ -18,7 +19,7 @@ func TestCenterAttributes_Validate_ValidAttributes(t *testing.T) {
 
 func TestCenterAttributes_MarshalJSON_ZeroFactors(t *testing.T) {
 	attrs := &duit_attributes.CenterAttributes{
-		WidgthFactor: 0.0,
+		WidthFactor: 0.0,
 		HeightFactor: 0.0,
 	}
 
@@ -39,7 +40,7 @@ func TestCenterAttributes_MarshalJSON_ZeroFactors(t *testing.T) {
 
 func TestCenterAttributes_MarshalJSON_OnlyWidthFactor(t *testing.T) {
 	attrs := &duit_attributes.CenterAttributes{
-		WidgthFactor: 0.75,
+		WidthFactor: 0.75,
 		HeightFactor: 0.0,
 	}
 
@@ -59,7 +60,7 @@ func TestCenterAttributes_MarshalJSON_OnlyWidthFactor(t *testing.T) {
 
 func TestCenterAttributes_MarshalJSON_OnlyHeightFactor(t *testing.T) {
 	attrs := &duit_attributes.CenterAttributes{
-		WidgthFactor: 0.0,
+		WidthFactor: 0.0,
 		HeightFactor: 0.9,
 	}
 

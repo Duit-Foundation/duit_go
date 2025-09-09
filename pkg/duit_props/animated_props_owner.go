@@ -7,6 +7,15 @@ type AnimatedPropertyOwner struct {
 	AffectedProperties []string `json:"affectedProperties,omitempty"`
 }
 
+func (r *AnimatedPropertyOwner) SetParentBuilderId(parentBuilderId string) {
+	r.ParentBuilderId = parentBuilderId
+}
+
+func (r *AnimatedPropertyOwner) SetAffectedProperties(affectedProperties []string) {
+	r.AffectedProperties = affectedProperties
+}
+
+//bindgen:exclude
 func (r *AnimatedPropertyOwner) Validate() error {
 	if r == nil {
 		return nil

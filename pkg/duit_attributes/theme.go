@@ -15,9 +15,25 @@ type ThemeConsumer struct {
 	OverrideRule ThemeOverrideRule `json:"overrideRule,omitempty"`
 }
 
+// SetTheme sets the theme property
+func (t *ThemeConsumer) SetTheme(theme string) {
+	t.Theme = theme
+}
+
+// SetIgnoreTheme sets the ignoreTheme property
+func (t *ThemeConsumer) SetIgnoreTheme(ignoreTheme bool) {
+	t.IgnoreTheme = ignoreTheme
+}
+
+// SetOverrideRule sets the overrideRule property
+func (t *ThemeConsumer) SetOverrideRule(overrideRule ThemeOverrideRule) {
+	t.OverrideRule = overrideRule
+}
+
+//bindgen:exclude
 func (t *ThemeConsumer) Validate() error {
 	if t == nil {
-		return  nil
+		return nil
 	}
 
 	if t.Theme == "" && !t.IgnoreTheme {
