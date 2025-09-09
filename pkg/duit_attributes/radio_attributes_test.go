@@ -11,8 +11,8 @@ import (
 
 // Tests for RadioAttributes
 func TestRadioAttributes_Validate_ValidAttributes(t *testing.T) {
-	attrs := &duit_attributes.RadioAttributes[string]{
-		Value: duit_utils.StringValue("option1"),
+	attrs := &duit_attributes.RadioAttributes{
+		Value: duit_utils.TristateFrom[any]("option1"),
 	}
 
 	err := attrs.Validate()
@@ -22,7 +22,7 @@ func TestRadioAttributes_Validate_ValidAttributes(t *testing.T) {
 }
 
 func TestRadioAttributes_Validate_WithoutValue(t *testing.T) {
-	attrs := &duit_attributes.RadioAttributes[string]{}
+	attrs := &duit_attributes.RadioAttributes{}
 
 	err := attrs.Validate()
 	if err == nil {
@@ -32,8 +32,8 @@ func TestRadioAttributes_Validate_WithoutValue(t *testing.T) {
 
 // Tests for Tristate[string] property serialization in RadioAttributes
 func TestRadioAttributes_Tristate_JSON_ValidValue(t *testing.T) {
-	attrs := &duit_attributes.RadioAttributes[string]{
-		Value: duit_utils.StringValue("test_option"),
+	attrs := &duit_attributes.RadioAttributes{
+		Value: duit_utils.TristateFrom[any]("test_option"),
 	}
 
 	jsonData, err := json.Marshal(attrs)
@@ -48,8 +48,8 @@ func TestRadioAttributes_Tristate_JSON_ValidValue(t *testing.T) {
 }
 
 func TestRadioAttributes_Tristate_JSON_EmptyString(t *testing.T) {
-	attrs := &duit_attributes.RadioAttributes[string]{
-		Value: duit_utils.StringValue(""),
+	attrs := &duit_attributes.RadioAttributes{
+		Value: duit_utils.TristateFrom[any](""),
 	}
 
 	jsonData, err := json.Marshal(attrs)
@@ -64,8 +64,8 @@ func TestRadioAttributes_Tristate_JSON_EmptyString(t *testing.T) {
 }
 
 func TestRadioAttributes_Tristate_JSON_Nil(t *testing.T) {
-	attrs := &duit_attributes.RadioAttributes[string]{
-		Value: duit_utils.Nillable[string](),
+	attrs := &duit_attributes.RadioAttributes{
+		Value: duit_utils.TristateFrom[any](nil),
 	}
 
 	jsonData, err := json.Marshal(attrs)
@@ -82,8 +82,8 @@ func TestRadioAttributes_Tristate_JSON_Nil(t *testing.T) {
 
 // Tests for RadioGroupContextAttributes
 func TestRadioGroupContextAttributes_Validate_ValidAttributes(t *testing.T) {
-	attrs := &duit_attributes.RadioGroupContextAttributes[string]{
-		GroupValue: duit_utils.StringValue("selected_option"),
+	attrs := &duit_attributes.RadioGroupContextAttributes{
+		GroupValue: duit_utils.TristateFrom[any]("selected_option"),
 	}
 
 	err := attrs.Validate()
@@ -93,7 +93,7 @@ func TestRadioGroupContextAttributes_Validate_ValidAttributes(t *testing.T) {
 }
 
 func TestRadioGroupContextAttributes_Validate_WithoutGroupValue(t *testing.T) {
-	attrs := &duit_attributes.RadioGroupContextAttributes[string]{}
+	attrs := &duit_attributes.RadioGroupContextAttributes{}
 
 	err := attrs.Validate()
 	if err == nil {
@@ -103,8 +103,8 @@ func TestRadioGroupContextAttributes_Validate_WithoutGroupValue(t *testing.T) {
 
 // Tests for Tristate[string] property serialization in RadioGroupContextAttributes
 func TestRadioGroupContextAttributes_Tristate_JSON_ValidValue(t *testing.T) {
-	attrs := &duit_attributes.RadioGroupContextAttributes[string]{
-		GroupValue: duit_utils.StringValue("group_selection"),
+	attrs := &duit_attributes.RadioGroupContextAttributes{
+		GroupValue: duit_utils.TristateFrom[any]("group_selection"),
 	}
 
 	jsonData, err := json.Marshal(attrs)
@@ -119,8 +119,8 @@ func TestRadioGroupContextAttributes_Tristate_JSON_ValidValue(t *testing.T) {
 }
 
 func TestRadioGroupContextAttributes_Tristate_JSON_Nil(t *testing.T) {
-	attrs := &duit_attributes.RadioGroupContextAttributes[string]{
-		GroupValue: duit_utils.Nillable[string](),
+	attrs := &duit_attributes.RadioGroupContextAttributes{
+		GroupValue: duit_utils.TristateFrom[any](nil),
 	}
 
 	jsonData, err := json.Marshal(attrs)
