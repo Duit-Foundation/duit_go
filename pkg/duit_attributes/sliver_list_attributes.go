@@ -40,6 +40,7 @@ func (r *SliverListBase) SetAddSemanticIndexes(addSemanticIndexes bool) {
 	r.AddSemanticIndexes = duit_utils.TristateFrom[bool](addSemanticIndexes)
 }
 
+//bindgen:exclude
 func (r *SliverListBase) Validate() error {
 	if r.Type == nil {
 		return errors.New("type is required")
