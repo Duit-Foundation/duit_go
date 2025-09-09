@@ -16,6 +16,8 @@ const (
 	SliverListSeparated
 )
 
+// SliverListBase defines attributes for SliverListBase widget.
+// See: https://api.flutter.dev/flutter/widgets/SliverList/SliverList.html
 type SliverListBase struct {
 	Type                   duit_utils.Tristate[SliverListKind] `json:"type"`
 	AddAutomaticKeepAlives duit_utils.Tristate[bool]           `json:"addAutomaticKeepAlives,omitempty"`
@@ -23,14 +25,17 @@ type SliverListBase struct {
 	AddSemanticIndexes     duit_utils.Tristate[bool]           `json:"addSemanticIndexes,omitempty"`
 }
 
+// SetAddAutomaticKeepAlives sets the addAutomaticKeepAlives for the sliver list base widget.
 func (r *SliverListBase) SetAddAutomaticKeepAlives(addAutomaticKeepAlives bool) {
 	r.AddAutomaticKeepAlives = duit_utils.TristateFrom[bool](addAutomaticKeepAlives)
 }
 
+// SetAddRepaintBoundaries sets the addRepaintBoundaries for the sliver list base widget.
 func (r *SliverListBase) SetAddRepaintBoundaries(addRepaintBoundaries bool) {
 	r.AddRepaintBoundaries = duit_utils.TristateFrom[bool](addRepaintBoundaries)
 }
 
+// SetAddSemanticIndexes sets the addSemanticIndexes for the sliver list base widget.
 func (r *SliverListBase) SetAddSemanticIndexes(addSemanticIndexes bool) {
 	r.AddSemanticIndexes = duit_utils.TristateFrom[bool](addSemanticIndexes)
 }
@@ -43,19 +48,25 @@ func (r *SliverListBase) Validate() error {
 	return nil
 }
 
+// SliverListCommonAttributes defines attributes for SliverListCommon widget.
+// See: https://api.flutter.dev/flutter/widgets/SliverList/SliverList.html
 type SliverListCommonAttributes struct {
-	*SliverListBase
+	*SliverListBase `gen:"wrap"`
 }
 
+// NewSliverList creates a new SliverListCommonAttributes instance.
 func NewSliverList(data *SliverListCommonAttributes) *SliverListAttributes {
 	return &SliverListAttributes{data: data}
 }
 
+// SliverListBuilderAttributes defines attributes for SliverListBuilder widget.
+// See: https://api.flutter.dev/flutter/widgets/SliverList/SliverList.builder.html
 type SliverListBuilderAttributes struct {
-	*SliverListBase
-	*Builder
+	*SliverListBase `gen:"wrap"`
+	*Builder        `gen:"wrap"`
 }
 
+// NewSliverListBuilderAttributes creates a new SliverListBuilderAttributes instance.
 func NewSliverListBuilderAttributes(data *SliverListBuilderAttributes) *SliverListAttributes {
 	return &SliverListAttributes{data: data}
 }
@@ -76,16 +87,20 @@ func (r *SliverListBuilderAttributes) Validate() error {
 	return nil
 }
 
+// SliverListSeparatedAttributes defines attributes for SliverListSeparated widget.
+// See: https://api.flutter.dev/flutter/widgets/SliverList/SliverList.separated.html
 type SliverListSeparatedAttributes struct {
-	*SliverListBase
-	*Builder
-	Separator *duit_core.DuitElementModel `json:"separator"`
+	*SliverListBase `gen:"wrap"`
+	*Builder        `gen:"wrap"`
+	Separator       *duit_core.DuitElementModel `json:"separator"`
 }
 
+// NewSliverListSeparatedAttributes creates a new SliverListSeparatedAttributes instance.
 func NewSliverListSeparatedAttributes(data *SliverListSeparatedAttributes) *SliverListAttributes {
 	return &SliverListAttributes{data: data}
 }
 
+// SetSeparator sets the separator for the sliver list separated widget.
 func (r *SliverListSeparatedAttributes) SetSeparator(separator *duit_core.DuitElementModel) *SliverListSeparatedAttributes {
 	r.Separator = separator
 	return r
@@ -107,10 +122,13 @@ func (r *SliverListSeparatedAttributes) Validate() error {
 	return nil
 }
 
+// SliverListAttributes defines attributes for SliverList widget.
+// See: https://api.flutter.dev/flutter/widgets/SliverList/SliverList.html
 type SliverListAttributes struct {
 	data any
 }
 
+// NewSliverListAttributes creates a new SliverListAttributes instance.
 func NewSliverListAttributes(data any) *SliverListAttributes {
 	switch data := data.(type) {
 	case *SliverListCommonAttributes:
