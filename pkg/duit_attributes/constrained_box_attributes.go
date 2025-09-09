@@ -6,15 +6,16 @@ import (
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 )
 
-//TODO: подумать над тем, чтобы добавить обычный BoxConstraints, чтобы было семантически корректно
-
+// ConstrainedBoxAttributes defines attributes for ConstrainedBox widget.
+// See: https://api.flutter.dev/flutter/widgets/ConstrainedBox-class.html
 type ConstrainedBoxAttributes struct {
-	*ValueReferenceHolder
-	*duit_props.AnimatedPropertyOwner
-	*ThemeConsumer
-	Constraints *duit_props.BoxConstraints `json:"constraints,omitempty"`
+	*ValueReferenceHolder             `gen:"wrap"`
+	*duit_props.AnimatedPropertyOwner `gen:"wrap"`
+	*ThemeConsumer                    `gen:"wrap"`
+	Constraints                       *duit_props.BoxConstraints `json:"constraints,omitempty"`
 }
 
+//bindgen:exclude
 func (r *ConstrainedBoxAttributes) Validate() error {
 	if err := r.ThemeConsumer.Validate(); err != nil {
 		return err
@@ -37,4 +38,15 @@ func (r *ConstrainedBoxAttributes) Validate() error {
 	}
 
 	return nil
+}
+
+// NewConstrainedBoxAttributes creates a new ConstrainedBoxAttributes instance.
+func NewConstrainedBoxAttributes() *ConstrainedBoxAttributes {
+	return &ConstrainedBoxAttributes{}
+}
+
+// SetConstraints sets the constraints for the constrained box widget.
+func (r *ConstrainedBoxAttributes) SetConstraints(constraints *duit_props.BoxConstraints) *ConstrainedBoxAttributes {
+	r.Constraints = constraints
+	return r
 }
