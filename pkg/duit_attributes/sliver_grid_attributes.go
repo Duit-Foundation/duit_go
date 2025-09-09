@@ -1,7 +1,9 @@
 package duit_attributes
 
 import (
+	"encoding/json"
 	"errors"
+
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
@@ -22,7 +24,35 @@ type DefaultSliverGridAttributes struct {
 	AddSemanticIndexes     *bool                                      `json:"addSemanticIndexes,omitempty"`
 	CacheExtent            float32                                    `json:"cacheExtent,omitempty"`
 	SemanticChildCount     int                                        `json:"semanticChildCount,omitempty"`
-	ClipBehavior           duit_props.Clip                             `json:"clipBehavior,omitempty"`
+	ClipBehavior           duit_props.Clip                            `json:"clipBehavior,omitempty"`
+}
+
+func (r *DefaultSliverGridAttributes) SetConstructor(constructor SliverGridConstructor) {
+	r.Constructor = duit_utils.TristateFrom[SliverGridConstructor](constructor)
+}
+
+func (r *DefaultSliverGridAttributes) SetAddAutomaticKeepAlives(addAutomaticKeepAlives bool) {
+	r.AddAutomaticKeepAlives = &addAutomaticKeepAlives
+}
+
+func (r *DefaultSliverGridAttributes) SetAddRepaintBoundaries(addRepaintBoundaries bool) {
+	r.AddRepaintBoundaries = &addRepaintBoundaries
+}
+
+func (r *DefaultSliverGridAttributes) SetAddSemanticIndexes(addSemanticIndexes bool) {
+	r.AddSemanticIndexes = &addSemanticIndexes
+}
+
+func (r *DefaultSliverGridAttributes) SetCacheExtent(cacheExtent float32) {
+	r.CacheExtent = cacheExtent
+}
+
+func (r *DefaultSliverGridAttributes) SetSemanticChildCount(semanticChildCount int) {
+	r.SemanticChildCount = semanticChildCount
+}
+
+func (r *DefaultSliverGridAttributes) SetClipBehavior(clipBehavior duit_props.Clip) {
+	r.ClipBehavior = clipBehavior
 }
 
 func (r *DefaultSliverGridAttributes) Validate() error {
@@ -39,6 +69,21 @@ type SliverGridCommonAttributes struct {
 	*DefaultSliverGridAttributes
 	SliverGridDelegateKey     string         `json:"sliverGridDelegateKey"`
 	SliverGridDelegateOptions map[string]any `json:"sliverGridDelegateOptions,omitempty"`
+}
+
+func NewSliverGridCommonAttributes(data *SliverGridCommonAttributes) *SliverGridAttributes {
+	data.DefaultSliverGridAttributes.Constructor = duit_utils.TristateFrom[SliverGridConstructor](SliverGridCommon)
+	return &SliverGridAttributes{data: data}
+}
+
+func (r *SliverGridCommonAttributes) SetSliverGridDelegateKey(sliverGridDelegateKey string) *SliverGridCommonAttributes {
+	r.SliverGridDelegateKey = sliverGridDelegateKey
+	return r
+}
+
+func (r *SliverGridCommonAttributes) SetSliverGridDelegateOptions(sliverGridDelegateOptions map[string]any) *SliverGridCommonAttributes {
+	r.SliverGridDelegateOptions = sliverGridDelegateOptions
+	return r
 }
 
 func (r *SliverGridCommonAttributes) Validate() error {
@@ -82,6 +127,31 @@ type SliverGridCountAttributes struct {
 	ChildAspectRatio float32 `json:"childAspectRatio,omitempty"`
 }
 
+func NewSliverGridCountAttributes(data *SliverGridCountAttributes) *SliverGridAttributes {
+	data.DefaultSliverGridAttributes.Constructor = duit_utils.TristateFrom[SliverGridConstructor](SliverGridCount)
+	return &SliverGridAttributes{data: data}
+}
+
+func (r *SliverGridCountAttributes) SetCrossAxisCount(crossAxisCount int) *SliverGridCountAttributes {
+	r.CrossAxisCount = crossAxisCount
+	return r
+}
+
+func (r *SliverGridCountAttributes) SetMainAxisSpacing(mainAxisSpacing float32) *SliverGridCountAttributes {
+	r.MainAxisSpacing = mainAxisSpacing
+	return r
+}
+
+func (r *SliverGridCountAttributes) SetCrossAxisSpacing(crossAxisSpacing float32) *SliverGridCountAttributes {
+	r.CrossAxisSpacing = crossAxisSpacing
+	return r
+}
+
+func (r *SliverGridCountAttributes) SetChildAspectRatio(childAspectRatio float32) *SliverGridCountAttributes {
+	r.ChildAspectRatio = childAspectRatio
+	return r
+}
+
 func (r *SliverGridCountAttributes) Validate() error {
 	if err := r.ThemeConsumer.Validate(); err != nil {
 		return err
@@ -118,6 +188,21 @@ type SliverGridBuilderAttributes struct {
 	*DefaultSliverGridAttributes
 	SliverGridDelegateKey     string                 `json:"sliverGridDelegateKey"`
 	SliverGridDelegateOptions map[string]interface{} `json:"sliverGridDelegateOptions,omitempty"`
+}
+
+func NewSliverGridBuilderAttributes(data *SliverGridBuilderAttributes) *SliverGridAttributes {
+	data.DefaultSliverGridAttributes.Constructor = duit_utils.TristateFrom[SliverGridConstructor](SliverGridBuilder)
+	return &SliverGridAttributes{data: data}
+}
+
+func (r *SliverGridBuilderAttributes) SetSliverGridDelegateKey(sliverGridDelegateKey string) *SliverGridBuilderAttributes {
+	r.SliverGridDelegateKey = sliverGridDelegateKey
+	return r
+}
+
+func (r *SliverGridBuilderAttributes) SetSliverGridDelegateOptions(sliverGridDelegateOptions map[string]interface{}) *SliverGridBuilderAttributes {
+	r.SliverGridDelegateOptions = sliverGridDelegateOptions
+	return r
 }
 
 func (r *SliverGridBuilderAttributes) Validate() error {
@@ -163,6 +248,31 @@ type SliverGridExtentAttributes struct {
 	ChildAspectRatio   float32 `json:"childAspectRatio,omitempty"`
 }
 
+func NewSliverGridExtentAttributes(data *SliverGridExtentAttributes) *SliverGridAttributes {
+	data.DefaultSliverGridAttributes.Constructor = duit_utils.TristateFrom[SliverGridConstructor](SliverGridExtent)
+	return &SliverGridAttributes{data: data}
+}
+
+func (r *SliverGridExtentAttributes) SetMaxCrossAxisExtent(maxCrossAxisExtent float32) *SliverGridExtentAttributes {
+	r.MaxCrossAxisExtent = maxCrossAxisExtent
+	return r
+}
+
+func (r *SliverGridExtentAttributes) SetMainAxisSpacing(mainAxisSpacing float32) *SliverGridExtentAttributes {
+	r.MainAxisSpacing = mainAxisSpacing
+	return r
+}
+
+func (r *SliverGridExtentAttributes) SetCrossAxisSpacing(crossAxisSpacing float32) *SliverGridExtentAttributes {
+	r.CrossAxisSpacing = crossAxisSpacing
+	return r
+}
+
+func (r *SliverGridExtentAttributes) SetChildAspectRatio(childAspectRatio float32) *SliverGridExtentAttributes {
+	r.ChildAspectRatio = childAspectRatio
+	return r
+}
+
 func (r *SliverGridExtentAttributes) Validate() error {
 	if err := r.ThemeConsumer.Validate(); err != nil {
 		return err
@@ -191,6 +301,39 @@ func (r *SliverGridExtentAttributes) Validate() error {
 	return nil
 }
 
-type SliverGridAttributes interface {
-	SliverGridCommonAttributes | SliverGridCountAttributes | SliverGridBuilderAttributes | SliverGridExtentAttributes
+type SliverGridAttributes struct {
+	data any
+}
+
+func NewSliverGridAttributes(data any) *SliverGridAttributes {
+	switch data := data.(type) {
+	case *SliverGridCommonAttributes:
+		return NewSliverGridCommonAttributes(data)
+	case *SliverGridCountAttributes:
+		return NewSliverGridCountAttributes(data)
+	case *SliverGridBuilderAttributes:
+		return NewSliverGridBuilderAttributes(data)
+	case *SliverGridExtentAttributes:
+		return NewSliverGridExtentAttributes(data)
+	}
+
+	return nil
+}
+
+func (r *SliverGridAttributes) Validate() error {
+	switch data := r.data.(type) {
+	case *SliverGridCommonAttributes:
+		return data.Validate()
+	case *SliverGridCountAttributes:
+		return data.Validate()
+	case *SliverGridBuilderAttributes:
+		return data.Validate()
+	case *SliverGridExtentAttributes:
+		return data.Validate()
+	}
+	return nil
+}
+
+func (r *SliverGridAttributes) MarshalJSON() ([]byte, error) {
+	return json.Marshal(r.data)
 }

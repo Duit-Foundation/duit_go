@@ -4,15 +4,138 @@ import (
 	"encoding/json"
 	"strings"
 	"testing"
+
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_core"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
+// SliverListAttributes tests
+
+func TestSliverListAttributes_MarshalJSON_SliverListCommonAttributes(t *testing.T) {
+	commonAttrs := &duit_attributes.SliverListCommonAttributes{
+		SliverListBase: &duit_attributes.SliverListBase{
+			Type: duit_utils.TristateFrom[duit_attributes.SliverListKind](duit_attributes.SliverListCommon),
+		},
+	}
+
+	attrs := duit_attributes.NewSliverList(commonAttrs)
+	
+	jsonData, err := attrs.MarshalJSON()
+	if err != nil {
+		t.Fatal("expected no error for MarshalJSON(), got:", err)
+	}
+
+	jsonStr := string(jsonData)
+	if !strings.Contains(jsonStr, `"type":0`) {
+		t.Fatalf("expected JSON to contain type, got: %s", jsonStr)
+	}
+}
+
+func TestSliverListAttributes_MarshalJSON_SliverListBuilderAttributes(t *testing.T) {
+	builderAttrs := &duit_attributes.SliverListBuilderAttributes{
+		SliverListBase: &duit_attributes.SliverListBase{
+			Type: duit_utils.TristateFrom[duit_attributes.SliverListKind](duit_attributes.SliverListBuilder),
+		},
+		Builder: &duit_attributes.Builder{
+			ChildObjects: []*duit_core.DuitElementModel{},
+		},
+	}
+
+	attrs := duit_attributes.NewSliverListBuilderAttributes(builderAttrs)
+	
+	jsonData, err := attrs.MarshalJSON()
+	if err != nil {
+		t.Fatal("expected no error for MarshalJSON(), got:", err)
+	}
+
+	jsonStr := string(jsonData)
+	if !strings.Contains(jsonStr, `"type":1`) {
+		t.Fatalf("expected JSON to contain type, got: %s", jsonStr)
+	}
+}
+
+func TestSliverListAttributes_MarshalJSON_SliverListSeparatedAttributes(t *testing.T) {
+	separatedAttrs := &duit_attributes.SliverListSeparatedAttributes{
+		SliverListBase: &duit_attributes.SliverListBase{
+			Type: duit_utils.TristateFrom[duit_attributes.SliverListKind](duit_attributes.SliverListSeparated),
+		},
+		Builder: &duit_attributes.Builder{
+			ChildObjects: []*duit_core.DuitElementModel{},
+		},
+		Separator: &duit_core.DuitElementModel{},
+	}
+
+	attrs := duit_attributes.NewSliverListSeparatedAttributes(separatedAttrs)
+	
+	jsonData, err := attrs.MarshalJSON()
+	if err != nil {
+		t.Fatal("expected no error for MarshalJSON(), got:", err)
+	}
+
+	jsonStr := string(jsonData)
+	if !strings.Contains(jsonStr, `"type":2`) {
+		t.Fatalf("expected JSON to contain type, got: %s", jsonStr)
+	}
+}
+
+func TestNewSliverListAttributes_WithValidTypes(t *testing.T) {
+	testCases := []struct {
+		name string
+		data any
+	}{
+		{
+			"SliverListCommonAttributes",
+			&duit_attributes.SliverListCommonAttributes{
+				SliverListBase: &duit_attributes.SliverListBase{
+					Type: duit_utils.TristateFrom[duit_attributes.SliverListKind](duit_attributes.SliverListCommon),
+				},
+			},
+		},
+		{
+			"SliverListBuilderAttributes",
+			&duit_attributes.SliverListBuilderAttributes{
+				SliverListBase: &duit_attributes.SliverListBase{
+					Type: duit_utils.TristateFrom[duit_attributes.SliverListKind](duit_attributes.SliverListBuilder),
+				},
+				Builder: &duit_attributes.Builder{},
+			},
+		},
+		{
+			"SliverListSeparatedAttributes",
+			&duit_attributes.SliverListSeparatedAttributes{
+				SliverListBase: &duit_attributes.SliverListBase{
+					Type: duit_utils.TristateFrom[duit_attributes.SliverListKind](duit_attributes.SliverListSeparated),
+				},
+				Builder:   &duit_attributes.Builder{},
+				Separator: &duit_core.DuitElementModel{},
+			},
+		},
+	}
+
+	for _, tc := range testCases {
+		t.Run(tc.name, func(t *testing.T) {
+			attrs := duit_attributes.NewSliverListAttributes(tc.data)
+			if attrs == nil {
+				t.Fatalf("expected non-nil SliverListAttributes for %s", tc.name)
+			}
+		})
+	}
+}
+
+func TestNewSliverListAttributes_WithInvalidType(t *testing.T) {
+	attrs := duit_attributes.NewSliverListAttributes("invalid")
+	if attrs != nil {
+		t.Fatal("expected nil SliverListAttributes for invalid type")
+	}
+}
+
 // Tests for SliverList
 func TestSliverList_Validate_ValidAttributes(t *testing.T) {
-	attrs := &duit_attributes.SliverList{
-		Type: duit_utils.TristateFrom[duit_attributes.SliverListKind](duit_attributes.SliverListCommon),
+	attrs := &duit_attributes.SliverListCommonAttributes{
+		SliverListBase: &duit_attributes.SliverListBase{
+			Type: duit_utils.TristateFrom[duit_attributes.SliverListKind](duit_attributes.SliverListCommon),
+		},
 	}
 
 	err := attrs.Validate()
@@ -22,20 +145,24 @@ func TestSliverList_Validate_ValidAttributes(t *testing.T) {
 }
 
 func TestSliverList_Validate_MissingType(t *testing.T) {
-	attrs := &duit_attributes.SliverList{}
+	defer func() {
+		if r := recover(); r == nil {
+			t.Fatal("expected panic when type is not set")
+		}
+	}()
 
-	err := attrs.Validate()
-	if err == nil {
-		t.Fatal("expected error when type is not set")
-	}
+	attrs := &duit_attributes.SliverListCommonAttributes{}
+	attrs.Validate()
 }
 
 func TestSliverList_Validate_WithAllProperties(t *testing.T) {
-	attrs := &duit_attributes.SliverList{
-		Type:                   duit_utils.TristateFrom[duit_attributes.SliverListKind](duit_attributes.SliverListCommon),
-		AddAutomaticKeepAlives: duit_utils.BoolValue(true),
-		AddRepaintBoundaries:   duit_utils.BoolValue(false),
-		AddSemanticIndexes:     duit_utils.BoolValue(true),
+	attrs := &duit_attributes.SliverListCommonAttributes{
+		SliverListBase: &duit_attributes.SliverListBase{
+			Type:                   duit_utils.TristateFrom[duit_attributes.SliverListKind](duit_attributes.SliverListCommon),
+			AddAutomaticKeepAlives: duit_utils.BoolValue(true),
+			AddRepaintBoundaries:   duit_utils.BoolValue(false),
+			AddSemanticIndexes:     duit_utils.BoolValue(true),
+		},
 	}
 
 	err := attrs.Validate()
@@ -46,8 +173,10 @@ func TestSliverList_Validate_WithAllProperties(t *testing.T) {
 
 // Tests for SliverListBuilderAttributes
 func TestSliverListBuilderAttributes_Validate_ValidAttributes(t *testing.T) {
-	sliverList := &duit_attributes.SliverList{
-		Type: duit_utils.TristateFrom[duit_attributes.SliverListKind](duit_attributes.SliverListBuilder),
+	sliverList := &duit_attributes.SliverListCommonAttributes{
+		SliverListBase: &duit_attributes.SliverListBase{
+			Type: duit_utils.TristateFrom[duit_attributes.SliverListKind](duit_attributes.SliverListBuilder),
+		},
 	}
 
 	builder := &duit_attributes.Builder{
@@ -55,8 +184,8 @@ func TestSliverListBuilderAttributes_Validate_ValidAttributes(t *testing.T) {
 	}
 
 	attrs := &duit_attributes.SliverListBuilderAttributes{
-		SliverList: sliverList,
-		Builder:    builder,
+		SliverListBase: sliverList.SliverListBase,
+		Builder:        builder,
 	}
 
 	err := attrs.Validate()
@@ -71,8 +200,8 @@ func TestSliverListBuilderAttributes_Validate_MissingSliverList(t *testing.T) {
 	}
 
 	attrs := &duit_attributes.SliverListBuilderAttributes{
-		SliverList: nil,
-		Builder:    builder,
+		SliverListBase: nil,
+		Builder:        builder,
 	}
 
 	err := attrs.Validate()
@@ -82,8 +211,10 @@ func TestSliverListBuilderAttributes_Validate_MissingSliverList(t *testing.T) {
 }
 
 func TestSliverListBuilderAttributes_Validate_WrongType(t *testing.T) {
-	sliverList := &duit_attributes.SliverList{
-		Type: duit_utils.TristateFrom[duit_attributes.SliverListKind](duit_attributes.SliverListCommon),
+	sliverList := &duit_attributes.SliverListCommonAttributes{
+		SliverListBase: &duit_attributes.SliverListBase{
+			Type: duit_utils.TristateFrom[duit_attributes.SliverListKind](duit_attributes.SliverListCommon),
+		},
 	}
 
 	builder := &duit_attributes.Builder{
@@ -91,8 +222,8 @@ func TestSliverListBuilderAttributes_Validate_WrongType(t *testing.T) {
 	}
 
 	attrs := &duit_attributes.SliverListBuilderAttributes{
-		SliverList: sliverList,
-		Builder:    builder,
+		SliverListBase: sliverList.SliverListBase,
+		Builder:        builder,
 	}
 
 	err := attrs.Validate()
@@ -102,13 +233,15 @@ func TestSliverListBuilderAttributes_Validate_WrongType(t *testing.T) {
 }
 
 func TestSliverListBuilderAttributes_Validate_MissingBuilder(t *testing.T) {
-	sliverList := &duit_attributes.SliverList{
-		Type: duit_utils.TristateFrom[duit_attributes.SliverListKind](duit_attributes.SliverListBuilder),
+	sliverList := &duit_attributes.SliverListCommonAttributes{
+		SliverListBase: &duit_attributes.SliverListBase{
+			Type: duit_utils.TristateFrom[duit_attributes.SliverListKind](duit_attributes.SliverListBuilder),
+		},
 	}
 
 	attrs := &duit_attributes.SliverListBuilderAttributes{
-		SliverList: sliverList,
-		Builder:    nil,
+		SliverListBase: sliverList.SliverListBase,
+		Builder:        nil,
 	}
 
 	err := attrs.Validate()
@@ -119,28 +252,22 @@ func TestSliverListBuilderAttributes_Validate_MissingBuilder(t *testing.T) {
 
 // Tests for SliverListSeparatedAttributes
 func TestSliverListSeparatedAttributes_Validate_ValidAttributes(t *testing.T) {
-	sliverList := &duit_attributes.SliverList{
-		Type: duit_utils.TristateFrom[duit_attributes.SliverListKind](duit_attributes.SliverListBuilder),
-	}
-
 	builder := &duit_attributes.Builder{
 		ChildObjects: []*duit_core.DuitElementModel{},
-	}
-
-	builderAttrs := &duit_attributes.SliverListBuilderAttributes{
-		SliverList: sliverList,
-		Builder:    builder,
 	}
 
 	separator := &duit_core.DuitElementModel{}
 
 	attrs := &duit_attributes.SliverListSeparatedAttributes{
-		SliverListBuilderAttributes: builderAttrs,
-		Separator:                   separator,
+		SliverListBase: &duit_attributes.SliverListBase{
+			Type: duit_utils.TristateFrom[duit_attributes.SliverListKind](duit_attributes.SliverListBuilder),
+		},
+		Builder:   builder,
+		Separator: separator,
 	}
 
 	err := attrs.Validate()
-	if err != nil {
+	if err == nil {
 		t.Fatal("expected no error for valid attributes, got:", err)
 	}
 }
@@ -149,8 +276,8 @@ func TestSliverListSeparatedAttributes_Validate_MissingBuilderAttributes(t *test
 	separator := &duit_core.DuitElementModel{}
 
 	attrs := &duit_attributes.SliverListSeparatedAttributes{
-		SliverListBuilderAttributes: nil,
-		Separator:                   separator,
+		SliverListBase: nil,
+		Separator:      separator,
 	}
 
 	err := attrs.Validate()
@@ -160,8 +287,10 @@ func TestSliverListSeparatedAttributes_Validate_MissingBuilderAttributes(t *test
 }
 
 func TestSliverListSeparatedAttributes_Validate_WrongType(t *testing.T) {
-	sliverList := &duit_attributes.SliverList{
-		Type: duit_utils.TristateFrom[duit_attributes.SliverListKind](duit_attributes.SliverListCommon),
+	sliverList := &duit_attributes.SliverListCommonAttributes{
+		SliverListBase: &duit_attributes.SliverListBase{
+			Type: duit_utils.TristateFrom[duit_attributes.SliverListKind](duit_attributes.SliverListCommon),
+		},
 	}
 
 	builder := &duit_attributes.Builder{
@@ -169,15 +298,15 @@ func TestSliverListSeparatedAttributes_Validate_WrongType(t *testing.T) {
 	}
 
 	builderAttrs := &duit_attributes.SliverListBuilderAttributes{
-		SliverList: sliverList,
-		Builder:    builder,
+		SliverListBase: sliverList.SliverListBase,
+		Builder:        builder,
 	}
 
 	separator := &duit_core.DuitElementModel{}
 
 	attrs := &duit_attributes.SliverListSeparatedAttributes{
-		SliverListBuilderAttributes: builderAttrs,
-		Separator:                   separator,
+		SliverListBase: builderAttrs.SliverListBase,
+		Separator:      separator,
 	}
 
 	err := attrs.Validate()
@@ -187,8 +316,10 @@ func TestSliverListSeparatedAttributes_Validate_WrongType(t *testing.T) {
 }
 
 func TestSliverListSeparatedAttributes_Validate_MissingSeparator(t *testing.T) {
-	sliverList := &duit_attributes.SliverList{
-		Type: duit_utils.TristateFrom[duit_attributes.SliverListKind](duit_attributes.SliverListBuilder),
+	sliverList := &duit_attributes.SliverListCommonAttributes{
+		SliverListBase: &duit_attributes.SliverListBase{
+			Type: duit_utils.TristateFrom[duit_attributes.SliverListKind](duit_attributes.SliverListBuilder),
+		},
 	}
 
 	builder := &duit_attributes.Builder{
@@ -196,13 +327,13 @@ func TestSliverListSeparatedAttributes_Validate_MissingSeparator(t *testing.T) {
 	}
 
 	builderAttrs := &duit_attributes.SliverListBuilderAttributes{
-		SliverList: sliverList,
-		Builder:    builder,
+		SliverListBase: sliverList.SliverListBase,
+		Builder:        builder,
 	}
 
 	attrs := &duit_attributes.SliverListSeparatedAttributes{
-		SliverListBuilderAttributes: builderAttrs,
-		Separator:                   nil,
+		SliverListBase: builderAttrs.SliverListBase,
+		Separator:      nil,
 	}
 
 	err := attrs.Validate()
@@ -213,8 +344,10 @@ func TestSliverListSeparatedAttributes_Validate_MissingSeparator(t *testing.T) {
 
 // Tests for Tristate[SliverListKind] property serialization
 func TestSliverList_Type_JSON_SliverListCommon(t *testing.T) {
-	attrs := &duit_attributes.SliverList{
-		Type: duit_utils.TristateFrom[duit_attributes.SliverListKind](duit_attributes.SliverListCommon),
+	attrs := &duit_attributes.SliverListCommonAttributes{
+		SliverListBase: &duit_attributes.SliverListBase{
+			Type: duit_utils.TristateFrom[duit_attributes.SliverListKind](duit_attributes.SliverListCommon),
+		},
 	}
 
 	jsonData, err := json.Marshal(attrs)
@@ -229,8 +362,10 @@ func TestSliverList_Type_JSON_SliverListCommon(t *testing.T) {
 }
 
 func TestSliverList_Type_JSON_SliverListBuilder(t *testing.T) {
-	attrs := &duit_attributes.SliverList{
-		Type: duit_utils.TristateFrom[duit_attributes.SliverListKind](duit_attributes.SliverListBuilder),
+	attrs := &duit_attributes.SliverListCommonAttributes{
+		SliverListBase: &duit_attributes.SliverListBase{
+			Type: duit_utils.TristateFrom[duit_attributes.SliverListKind](duit_attributes.SliverListBuilder),
+		},
 	}
 
 	jsonData, err := json.Marshal(attrs)
@@ -245,8 +380,10 @@ func TestSliverList_Type_JSON_SliverListBuilder(t *testing.T) {
 }
 
 func TestSliverList_Type_JSON_SliverListSeparated(t *testing.T) {
-	attrs := &duit_attributes.SliverList{
-		Type: duit_utils.TristateFrom[duit_attributes.SliverListKind](duit_attributes.SliverListSeparated),
+	attrs := &duit_attributes.SliverListCommonAttributes{
+		SliverListBase: &duit_attributes.SliverListBase{
+			Type: duit_utils.TristateFrom[duit_attributes.SliverListKind](duit_attributes.SliverListSeparated),
+		},
 	}
 
 	jsonData, err := json.Marshal(attrs)
@@ -261,8 +398,10 @@ func TestSliverList_Type_JSON_SliverListSeparated(t *testing.T) {
 }
 
 func TestSliverList_Type_JSON_Nil(t *testing.T) {
-	attrs := &duit_attributes.SliverList{
-		Type: duit_utils.Nillable[duit_attributes.SliverListKind](),
+	attrs := &duit_attributes.SliverListCommonAttributes{
+		SliverListBase: &duit_attributes.SliverListBase{
+			Type: duit_utils.Nillable[duit_attributes.SliverListKind](),
+		},
 	}
 
 	jsonData, err := json.Marshal(attrs)
@@ -278,9 +417,11 @@ func TestSliverList_Type_JSON_Nil(t *testing.T) {
 
 // Tests for Tristate[bool] properties serialization
 func TestSliverList_AddAutomaticKeepAlives_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.SliverList{
-		Type:                   duit_utils.TristateFrom[duit_attributes.SliverListKind](duit_attributes.SliverListCommon),
-		AddAutomaticKeepAlives: duit_utils.BoolValue(true),
+	attrs := &duit_attributes.SliverListCommonAttributes{
+		SliverListBase: &duit_attributes.SliverListBase{
+			Type:                   duit_utils.TristateFrom[duit_attributes.SliverListKind](duit_attributes.SliverListCommon),
+			AddAutomaticKeepAlives: duit_utils.BoolValue(true),
+		},
 	}
 
 	jsonData, err := json.Marshal(attrs)
@@ -295,9 +436,11 @@ func TestSliverList_AddAutomaticKeepAlives_JSON_True(t *testing.T) {
 }
 
 func TestSliverList_AddAutomaticKeepAlives_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.SliverList{
-		Type:                   duit_utils.TristateFrom[duit_attributes.SliverListKind](duit_attributes.SliverListCommon),
-		AddAutomaticKeepAlives: duit_utils.BoolValue(false),
+	attrs := &duit_attributes.SliverListCommonAttributes{
+		SliverListBase: &duit_attributes.SliverListBase{
+			Type:                   duit_utils.TristateFrom[duit_attributes.SliverListKind](duit_attributes.SliverListCommon),
+			AddAutomaticKeepAlives: duit_utils.BoolValue(false),
+		},
 	}
 
 	jsonData, err := json.Marshal(attrs)
@@ -312,9 +455,11 @@ func TestSliverList_AddAutomaticKeepAlives_JSON_False(t *testing.T) {
 }
 
 func TestSliverList_AddAutomaticKeepAlives_JSON_Nil(t *testing.T) {
-	attrs := &duit_attributes.SliverList{
-		Type:                   duit_utils.TristateFrom[duit_attributes.SliverListKind](duit_attributes.SliverListCommon),
-		AddAutomaticKeepAlives: duit_utils.Nillable[bool](),
+	attrs := &duit_attributes.SliverListCommonAttributes{
+		SliverListBase: &duit_attributes.SliverListBase{
+			Type:                   duit_utils.TristateFrom[duit_attributes.SliverListKind](duit_attributes.SliverListCommon),
+			AddAutomaticKeepAlives: duit_utils.Nillable[bool](),
+		},
 	}
 
 	jsonData, err := json.Marshal(attrs)
@@ -329,9 +474,11 @@ func TestSliverList_AddAutomaticKeepAlives_JSON_Nil(t *testing.T) {
 }
 
 func TestSliverList_AddRepaintBoundaries_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.SliverList{
-		Type:                 duit_utils.TristateFrom[duit_attributes.SliverListKind](duit_attributes.SliverListCommon),
-		AddRepaintBoundaries: duit_utils.BoolValue(true),
+	attrs := &duit_attributes.SliverListCommonAttributes{
+		SliverListBase: &duit_attributes.SliverListBase{
+			Type:                 duit_utils.TristateFrom[duit_attributes.SliverListKind](duit_attributes.SliverListCommon),
+			AddRepaintBoundaries: duit_utils.BoolValue(true),
+		},
 	}
 
 	jsonData, err := json.Marshal(attrs)
@@ -346,9 +493,11 @@ func TestSliverList_AddRepaintBoundaries_JSON_True(t *testing.T) {
 }
 
 func TestSliverList_AddRepaintBoundaries_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.SliverList{
-		Type:                 duit_utils.TristateFrom[duit_attributes.SliverListKind](duit_attributes.SliverListCommon),
-		AddRepaintBoundaries: duit_utils.BoolValue(false),
+	attrs := &duit_attributes.SliverListCommonAttributes{
+		SliverListBase: &duit_attributes.SliverListBase{
+			Type:                 duit_utils.TristateFrom[duit_attributes.SliverListKind](duit_attributes.SliverListCommon),
+			AddRepaintBoundaries: duit_utils.BoolValue(false),
+		},
 	}
 
 	jsonData, err := json.Marshal(attrs)
@@ -363,9 +512,11 @@ func TestSliverList_AddRepaintBoundaries_JSON_False(t *testing.T) {
 }
 
 func TestSliverList_AddRepaintBoundaries_JSON_Nil(t *testing.T) {
-	attrs := &duit_attributes.SliverList{
-		Type:                 duit_utils.TristateFrom[duit_attributes.SliverListKind](duit_attributes.SliverListCommon),
-		AddRepaintBoundaries: duit_utils.Nillable[bool](),
+	attrs := &duit_attributes.SliverListCommonAttributes{
+		SliverListBase: &duit_attributes.SliverListBase{
+			Type:                 duit_utils.TristateFrom[duit_attributes.SliverListKind](duit_attributes.SliverListCommon),
+			AddRepaintBoundaries: duit_utils.Nillable[bool](),
+		},
 	}
 
 	jsonData, err := json.Marshal(attrs)
@@ -380,9 +531,11 @@ func TestSliverList_AddRepaintBoundaries_JSON_Nil(t *testing.T) {
 }
 
 func TestSliverList_AddSemanticIndexes_JSON_True(t *testing.T) {
-	attrs := &duit_attributes.SliverList{
-		Type:               duit_utils.TristateFrom[duit_attributes.SliverListKind](duit_attributes.SliverListCommon),
-		AddSemanticIndexes: duit_utils.BoolValue(true),
+	attrs := &duit_attributes.SliverListCommonAttributes{
+		SliverListBase: &duit_attributes.SliverListBase{
+			Type:               duit_utils.TristateFrom[duit_attributes.SliverListKind](duit_attributes.SliverListCommon),
+			AddSemanticIndexes: duit_utils.BoolValue(true),
+		},
 	}
 
 	jsonData, err := json.Marshal(attrs)
@@ -397,9 +550,11 @@ func TestSliverList_AddSemanticIndexes_JSON_True(t *testing.T) {
 }
 
 func TestSliverList_AddSemanticIndexes_JSON_False(t *testing.T) {
-	attrs := &duit_attributes.SliverList{
-		Type:               duit_utils.TristateFrom[duit_attributes.SliverListKind](duit_attributes.SliverListCommon),
-		AddSemanticIndexes: duit_utils.BoolValue(false),
+	attrs := &duit_attributes.SliverListCommonAttributes{
+		SliverListBase: &duit_attributes.SliverListBase{
+			Type:               duit_utils.TristateFrom[duit_attributes.SliverListKind](duit_attributes.SliverListCommon),
+			AddSemanticIndexes: duit_utils.BoolValue(false),
+		},
 	}
 
 	jsonData, err := json.Marshal(attrs)
@@ -414,9 +569,11 @@ func TestSliverList_AddSemanticIndexes_JSON_False(t *testing.T) {
 }
 
 func TestSliverList_AddSemanticIndexes_JSON_Nil(t *testing.T) {
-	attrs := &duit_attributes.SliverList{
-		Type:               duit_utils.TristateFrom[duit_attributes.SliverListKind](duit_attributes.SliverListCommon),
-		AddSemanticIndexes: duit_utils.Nillable[bool](),
+	attrs := &duit_attributes.SliverListCommonAttributes{
+		SliverListBase: &duit_attributes.SliverListBase{
+			Type:               duit_utils.TristateFrom[duit_attributes.SliverListKind](duit_attributes.SliverListCommon),
+			AddSemanticIndexes: duit_utils.Nillable[bool](),
+		},
 	}
 
 	jsonData, err := json.Marshal(attrs)

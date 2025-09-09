@@ -4,9 +4,180 @@ import (
 	"encoding/json"
 	"strings"
 	"testing"
+
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
+
+// SliverGridAttributes tests
+
+func TestSliverGridAttributes_MarshalJSON_SliverGridCommonAttributes(t *testing.T) {
+	commonAttrs := &duit_attributes.SliverGridCommonAttributes{
+		ValueReferenceHolder: nil,
+		ThemeConsumer:        &duit_attributes.ThemeConsumer{IgnoreTheme: true},
+		DefaultSliverGridAttributes: &duit_attributes.DefaultSliverGridAttributes{
+			Constructor: duit_utils.TristateFrom[duit_attributes.SliverGridConstructor](duit_attributes.SliverGridCommon),
+		},
+		SliverGridDelegateKey: "testKey",
+	}
+
+	attrs := duit_attributes.NewSliverGridCommonAttributes(commonAttrs)
+	
+	jsonData, err := attrs.MarshalJSON()
+	if err != nil {
+		t.Fatal("expected no error for MarshalJSON(), got:", err)
+	}
+
+	jsonStr := string(jsonData)
+	if !strings.Contains(jsonStr, `"constructor":0`) {
+		t.Fatalf("expected JSON to contain constructor, got: %s", jsonStr)
+	}
+}
+
+func TestSliverGridAttributes_MarshalJSON_SliverGridCountAttributes(t *testing.T) {
+	countAttrs := &duit_attributes.SliverGridCountAttributes{
+		ValueReferenceHolder: nil,
+		ThemeConsumer:        &duit_attributes.ThemeConsumer{IgnoreTheme: true},
+		DefaultSliverGridAttributes: &duit_attributes.DefaultSliverGridAttributes{
+			Constructor: duit_utils.TristateFrom[duit_attributes.SliverGridConstructor](duit_attributes.SliverGridCount),
+		},
+		CrossAxisCount: 2,
+	}
+
+	attrs := duit_attributes.NewSliverGridCountAttributes(countAttrs)
+	
+	jsonData, err := attrs.MarshalJSON()
+	if err != nil {
+		t.Fatal("expected no error for MarshalJSON(), got:", err)
+	}
+
+	jsonStr := string(jsonData)
+	if !strings.Contains(jsonStr, `"constructor":1`) {
+		t.Fatalf("expected JSON to contain constructor, got: %s", jsonStr)
+	}
+	if !strings.Contains(jsonStr, `"crossAxisCount":2`) {
+		t.Fatalf("expected JSON to contain crossAxisCount, got: %s", jsonStr)
+	}
+}
+
+func TestSliverGridAttributes_MarshalJSON_SliverGridBuilderAttributes(t *testing.T) {
+	builderAttrs := &duit_attributes.SliverGridBuilderAttributes{
+		ValueReferenceHolder: nil,
+		ThemeConsumer:        &duit_attributes.ThemeConsumer{IgnoreTheme: true},
+		Builder:              &duit_attributes.Builder{},
+		DefaultSliverGridAttributes: &duit_attributes.DefaultSliverGridAttributes{
+			Constructor: duit_utils.TristateFrom[duit_attributes.SliverGridConstructor](duit_attributes.SliverGridBuilder),
+		},
+		SliverGridDelegateKey: "testKey",
+	}
+
+	attrs := duit_attributes.NewSliverGridBuilderAttributes(builderAttrs)
+	
+	jsonData, err := attrs.MarshalJSON()
+	if err != nil {
+		t.Fatal("expected no error for MarshalJSON(), got:", err)
+	}
+
+	jsonStr := string(jsonData)
+	if !strings.Contains(jsonStr, `"constructor":2`) {
+		t.Fatalf("expected JSON to contain constructor, got: %s", jsonStr)
+	}
+}
+
+func TestSliverGridAttributes_MarshalJSON_SliverGridExtentAttributes(t *testing.T) {
+	extentAttrs := &duit_attributes.SliverGridExtentAttributes{
+		ValueReferenceHolder: nil,
+		ThemeConsumer:        &duit_attributes.ThemeConsumer{IgnoreTheme: true},
+		DefaultSliverGridAttributes: &duit_attributes.DefaultSliverGridAttributes{
+			Constructor: duit_utils.TristateFrom[duit_attributes.SliverGridConstructor](duit_attributes.SliverGridExtent),
+		},
+		MaxCrossAxisExtent: 150.0,
+	}
+
+	attrs := duit_attributes.NewSliverGridExtentAttributes(extentAttrs)
+	
+	jsonData, err := attrs.MarshalJSON()
+	if err != nil {
+		t.Fatal("expected no error for MarshalJSON(), got:", err)
+	}
+
+	jsonStr := string(jsonData)
+	if !strings.Contains(jsonStr, `"constructor":3`) {
+		t.Fatalf("expected JSON to contain constructor, got: %s", jsonStr)
+	}
+	if !strings.Contains(jsonStr, `"maxCrossAxisExtent":150`) {
+		t.Fatalf("expected JSON to contain maxCrossAxisExtent, got: %s", jsonStr)
+	}
+}
+
+func TestNewSliverGridAttributes_WithValidTypes(t *testing.T) {
+	testCases := []struct {
+		name string
+		data any
+	}{
+		{
+			"SliverGridCommonAttributes",
+			&duit_attributes.SliverGridCommonAttributes{
+				ValueReferenceHolder: nil,
+				ThemeConsumer:        &duit_attributes.ThemeConsumer{IgnoreTheme: true},
+				DefaultSliverGridAttributes: &duit_attributes.DefaultSliverGridAttributes{
+					Constructor: duit_utils.TristateFrom[duit_attributes.SliverGridConstructor](duit_attributes.SliverGridCommon),
+				},
+				SliverGridDelegateKey: "test",
+			},
+		},
+		{
+			"SliverGridCountAttributes",
+			&duit_attributes.SliverGridCountAttributes{
+				ValueReferenceHolder: nil,
+				ThemeConsumer:        &duit_attributes.ThemeConsumer{IgnoreTheme: true},
+				DefaultSliverGridAttributes: &duit_attributes.DefaultSliverGridAttributes{
+					Constructor: duit_utils.TristateFrom[duit_attributes.SliverGridConstructor](duit_attributes.SliverGridCount),
+				},
+				CrossAxisCount: 2,
+			},
+		},
+		{
+			"SliverGridBuilderAttributes",
+			&duit_attributes.SliverGridBuilderAttributes{
+				ValueReferenceHolder: nil,
+				ThemeConsumer:        &duit_attributes.ThemeConsumer{IgnoreTheme: true},
+				Builder:              &duit_attributes.Builder{},
+				DefaultSliverGridAttributes: &duit_attributes.DefaultSliverGridAttributes{
+					Constructor: duit_utils.TristateFrom[duit_attributes.SliverGridConstructor](duit_attributes.SliverGridBuilder),
+				},
+				SliverGridDelegateKey: "test",
+			},
+		},
+		{
+			"SliverGridExtentAttributes",
+			&duit_attributes.SliverGridExtentAttributes{
+				ValueReferenceHolder: nil,
+				ThemeConsumer:        &duit_attributes.ThemeConsumer{IgnoreTheme: true},
+				DefaultSliverGridAttributes: &duit_attributes.DefaultSliverGridAttributes{
+					Constructor: duit_utils.TristateFrom[duit_attributes.SliverGridConstructor](duit_attributes.SliverGridExtent),
+				},
+				MaxCrossAxisExtent: 150.0,
+			},
+		},
+	}
+
+	for _, tc := range testCases {
+		t.Run(tc.name, func(t *testing.T) {
+			attrs := duit_attributes.NewSliverGridAttributes(tc.data)
+			if attrs == nil {
+				t.Fatalf("expected non-nil SliverGridAttributes for %s", tc.name)
+			}
+		})
+	}
+}
+
+func TestNewSliverGridAttributes_WithInvalidType(t *testing.T) {
+	attrs := duit_attributes.NewSliverGridAttributes("invalid")
+	if attrs != nil {
+		t.Fatal("expected nil SliverGridAttributes for invalid type")
+	}
+}
 
 // Tests for DefaultSliverGridAttributes
 func TestDefaultSliverGridAttributes_Validate_ValidAttributes(t *testing.T) {

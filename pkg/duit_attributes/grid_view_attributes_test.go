@@ -9,6 +9,160 @@ import (
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
+// GridViewAttributes tests
+
+func TestGridViewAttributes_MarshalJSON_GridViewCommonAttributes(t *testing.T) {
+	commonAttrs := &duit_attributes.GridViewCommonAttributes{
+		DefautlGridViewAttributes: &duit_attributes.DefautlGridViewAttributes{
+			Constructor: duit_utils.TristateFrom[duit_attributes.GridConstructor](duit_attributes.GridCommon),
+		},
+		SliverGridDelegateKey: "test-key",
+	}
+
+	attrs := duit_attributes.NewGridViewCommonAttributes(commonAttrs)
+	
+	jsonData, err := attrs.MarshalJSON()
+	if err != nil {
+		t.Fatal("expected no error for MarshalJSON(), got:", err)
+	}
+
+	jsonStr := string(jsonData)
+	if !strings.Contains(jsonStr, `"constructor":0`) {
+		t.Fatalf("expected JSON to contain constructor, got: %s", jsonStr)
+	}
+}
+
+func TestGridViewAttributes_MarshalJSON_GridViewCountAttributes(t *testing.T) {
+	countAttrs := &duit_attributes.GridViewCountAttributes{
+		DefautlGridViewAttributes: &duit_attributes.DefautlGridViewAttributes{
+			Constructor: duit_utils.TristateFrom[duit_attributes.GridConstructor](duit_attributes.GridCount),
+		},
+		CrossAxisCount: 2,
+	}
+
+	attrs := duit_attributes.NewGridViewCountAttributes(countAttrs)
+	
+	jsonData, err := attrs.MarshalJSON()
+	if err != nil {
+		t.Fatal("expected no error for MarshalJSON(), got:", err)
+	}
+
+	jsonStr := string(jsonData)
+	if !strings.Contains(jsonStr, `"constructor":1`) {
+		t.Fatalf("expected JSON to contain constructor, got: %s", jsonStr)
+	}
+	if !strings.Contains(jsonStr, `"crossAxisCount":2`) {
+		t.Fatalf("expected JSON to contain crossAxisCount, got: %s", jsonStr)
+	}
+}
+
+func TestGridViewAttributes_MarshalJSON_GridViewBuilderAttributes(t *testing.T) {
+	builderAttrs := &duit_attributes.GridViewBuilderAttributes{
+		Builder: &duit_attributes.Builder{},
+		DefautlGridViewAttributes: &duit_attributes.DefautlGridViewAttributes{
+			Constructor: duit_utils.TristateFrom[duit_attributes.GridConstructor](duit_attributes.GridBuilder),
+		},
+		SliverGridDelegateKey: "test-key",
+	}
+
+	attrs := duit_attributes.NewGridViewBuilderAttributes(builderAttrs)
+	
+	jsonData, err := attrs.MarshalJSON()
+	if err != nil {
+		t.Fatal("expected no error for MarshalJSON(), got:", err)
+	}
+
+	jsonStr := string(jsonData)
+	if !strings.Contains(jsonStr, `"constructor":2`) {
+		t.Fatalf("expected JSON to contain constructor, got: %s", jsonStr)
+	}
+}
+
+func TestGridViewAttributes_MarshalJSON_GridViewExtentAttributes(t *testing.T) {
+	extentAttrs := &duit_attributes.GridViewExtentAttributes{
+		DefautlGridViewAttributes: &duit_attributes.DefautlGridViewAttributes{
+			Constructor: duit_utils.TristateFrom[duit_attributes.GridConstructor](duit_attributes.GridExtent),
+		},
+		MaxCrossAxisExtent: 100.0,
+	}
+
+	attrs := duit_attributes.NewGridViewExtentAttributes(extentAttrs)
+	
+	jsonData, err := attrs.MarshalJSON()
+	if err != nil {
+		t.Fatal("expected no error for MarshalJSON(), got:", err)
+	}
+
+	jsonStr := string(jsonData)
+	if !strings.Contains(jsonStr, `"constructor":3`) {
+		t.Fatalf("expected JSON to contain constructor, got: %s", jsonStr)
+	}
+	if !strings.Contains(jsonStr, `"maxCrossAxisExtent":100`) {
+		t.Fatalf("expected JSON to contain maxCrossAxisExtent, got: %s", jsonStr)
+	}
+}
+
+func TestNewGridViewAttributes_WithValidTypes(t *testing.T) {
+	testCases := []struct {
+		name string
+		data any
+	}{
+		{
+			"GridViewCommonAttributes",
+			&duit_attributes.GridViewCommonAttributes{
+				DefautlGridViewAttributes: &duit_attributes.DefautlGridViewAttributes{
+					Constructor: duit_utils.TristateFrom[duit_attributes.GridConstructor](duit_attributes.GridCommon),
+				},
+				SliverGridDelegateKey: "test",
+			},
+		},
+		{
+			"GridViewCountAttributes",
+			&duit_attributes.GridViewCountAttributes{
+				DefautlGridViewAttributes: &duit_attributes.DefautlGridViewAttributes{
+					Constructor: duit_utils.TristateFrom[duit_attributes.GridConstructor](duit_attributes.GridCount),
+				},
+				CrossAxisCount: 2,
+			},
+		},
+		{
+			"GridViewBuilderAttributes",
+			&duit_attributes.GridViewBuilderAttributes{
+				Builder: &duit_attributes.Builder{},
+				DefautlGridViewAttributes: &duit_attributes.DefautlGridViewAttributes{
+					Constructor: duit_utils.TristateFrom[duit_attributes.GridConstructor](duit_attributes.GridBuilder),
+				},
+				SliverGridDelegateKey: "test",
+			},
+		},
+		{
+			"GridViewExtentAttributes",
+			&duit_attributes.GridViewExtentAttributes{
+				DefautlGridViewAttributes: &duit_attributes.DefautlGridViewAttributes{
+					Constructor: duit_utils.TristateFrom[duit_attributes.GridConstructor](duit_attributes.GridExtent),
+				},
+				MaxCrossAxisExtent: 100.0,
+			},
+		},
+	}
+
+	for _, tc := range testCases {
+		t.Run(tc.name, func(t *testing.T) {
+			attrs := duit_attributes.NewGridViewAttributes(tc.data)
+			if attrs == nil {
+				t.Fatalf("expected non-nil GridViewAttributes for %s", tc.name)
+			}
+		})
+	}
+}
+
+func TestNewGridViewAttributes_WithInvalidType(t *testing.T) {
+	attrs := duit_attributes.NewGridViewAttributes("invalid")
+	if attrs != nil {
+		t.Fatal("expected nil GridViewAttributes for invalid type")
+	}
+}
+
 // GridViewCommonAttributes tests
 
 func TestGridViewCommonAttributes_Validate_ValidAttributes(t *testing.T) {

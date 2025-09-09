@@ -1,6 +1,7 @@
 package duit_attributes
 
 import (
+	"encoding/json"
 	"errors"
 
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
@@ -35,12 +36,91 @@ type DefautlGridViewAttributes struct {
 	RestorationId           string                                       `json:"restorationId,omitempty"`
 }
 
+func (r *DefautlGridViewAttributes) SetConstructor(constructor GridConstructor) {
+	r.Constructor = duit_utils.TristateFrom[GridConstructor](constructor)
+}
+
+func (r *DefautlGridViewAttributes) SetScrollDirection(scrollDirection duit_props.Axis) {
+	r.ScrollDirection = scrollDirection
+}
+
+func (r *DefautlGridViewAttributes) SetReverse(reverse bool) {
+	r.Reverse = duit_utils.TristateFrom[bool](reverse)
+}
+
+func (r *DefautlGridViewAttributes) SetPrimary(primary bool) {
+	r.Primary = duit_utils.TristateFrom[bool](primary)
+}
+
+func (r *DefautlGridViewAttributes) SetShrinkWrap(shrinkWrap bool) {
+	r.ShrinkWrap = duit_utils.TristateFrom[bool](shrinkWrap)
+}
+
+func (r *DefautlGridViewAttributes) SetAddAutomaticKeepAlives(addAutomaticKeepAlives bool) {
+	r.AddAutomaticKeepAlives = duit_utils.TristateFrom[bool](addAutomaticKeepAlives)
+}
+
+func (r *DefautlGridViewAttributes) SetAddRepaintBoundaries(addRepaintBoundaries bool) {
+	r.AddRepaintBoundaries = duit_utils.TristateFrom[bool](addRepaintBoundaries)
+}
+
+func (r *DefautlGridViewAttributes) SetAddSemanticIndexes(addSemanticIndexes bool) {
+	r.AddSemanticIndexes = duit_utils.TristateFrom[bool](addSemanticIndexes)
+}
+
+func (r *DefautlGridViewAttributes) SetPadding(padding *duit_props.EdgeInsets) {
+	r.Padding = padding
+}
+
+func (r *DefautlGridViewAttributes) SetCacheExtent(cacheExtent float32) {
+	r.CacheExtent = cacheExtent
+}
+
+func (r *DefautlGridViewAttributes) SetSemanticChildCount(semanticChildCount int) {
+	r.SemanticChildCount = semanticChildCount
+}
+
+func (r *DefautlGridViewAttributes) SetDragStartBehavior(dragStartBehavior duit_props.DragStartBehavior) {
+	r.DragStartBehavior = dragStartBehavior
+}
+
+func (r *DefautlGridViewAttributes) SetClipBehavior(clipBehavior duit_props.Clip) {
+	r.ClipBehavior = clipBehavior
+}
+
+func (r *DefautlGridViewAttributes) SetKeyboardDismissBehavior(keyboardDismissBehavior duit_props.ScrollViewKeyboardDismissBehavior) {
+	r.KeyboardDismissBehavior = keyboardDismissBehavior
+}
+
+func (r *DefautlGridViewAttributes) SetRestorationId(restorationId string) {
+	r.RestorationId = restorationId
+}
+
+func (r *DefautlGridViewAttributes) SetPhysics(physics duit_props.ScrollPhysics) {
+	r.Physics = physics
+}
+
 type GridViewCommonAttributes struct {
 	*ValueReferenceHolder
 	*ThemeConsumer
 	*DefautlGridViewAttributes
 	SliverGridDelegateKey     string         `json:"sliverGridDelegateKey"`
 	SliverGridDelegateOptions map[string]any `json:"sliverGridDelegateOptions,omitempty"`
+}
+
+func NewGridViewCommonAttributes(data *GridViewCommonAttributes) *GridViewAttributes {
+	data.DefautlGridViewAttributes.Constructor = duit_utils.TristateFrom[GridConstructor](GridCommon)
+	return &GridViewAttributes{data: data}
+}
+
+func (r *GridViewCommonAttributes) SetSliverGridDelegateKey(sliverGridDelegateKey string) *GridViewCommonAttributes {
+	r.SliverGridDelegateKey = sliverGridDelegateKey
+	return r
+}
+
+func (r *GridViewCommonAttributes) SetSliverGridDelegateOptions(sliverGridDelegateOptions map[string]any) *GridViewCommonAttributes {
+	r.SliverGridDelegateOptions = sliverGridDelegateOptions
+	return r
 }
 
 func (r *GridViewCommonAttributes) Validate() error {
@@ -83,6 +163,31 @@ type GridViewCountAttributes struct {
 	ChildAspectRatio float32 `json:"childAspectRatio,omitempty"`
 }
 
+func NewGridViewCountAttributes(data *GridViewCountAttributes) *GridViewAttributes {
+	data.DefautlGridViewAttributes.Constructor = duit_utils.TristateFrom[GridConstructor](GridCount)
+	return &GridViewAttributes{data: data}
+}
+
+func (r *GridViewCountAttributes) SetCrossAxisCount(crossAxisCount uint) *GridViewCountAttributes {
+	r.CrossAxisCount = crossAxisCount
+	return r
+}
+
+func (r *GridViewCountAttributes) SetMainAxisSpacing(mainAxisSpacing float32) *GridViewCountAttributes {
+	r.MainAxisSpacing = mainAxisSpacing
+	return r
+}
+
+func (r *GridViewCountAttributes) SetCrossAxisSpacing(crossAxisSpacing float32) *GridViewCountAttributes {
+	r.CrossAxisSpacing = crossAxisSpacing
+	return r
+}
+
+func (r *GridViewCountAttributes) SetChildAspectRatio(childAspectRatio float32) *GridViewCountAttributes {
+	r.ChildAspectRatio = childAspectRatio
+	return r
+}
+
 func (r *GridViewCountAttributes) Validate() error {
 	if err := r.ThemeConsumer.Validate(); err != nil {
 		return err
@@ -119,6 +224,22 @@ type GridViewBuilderAttributes struct {
 	SliverGridDelegateKey     string         `json:"sliverGridDelegateKey"`
 	SliverGridDelegateOptions map[string]any `json:"sliverGridDelegateOptions,omitempty"`
 }
+
+func NewGridViewBuilderAttributes(data *GridViewBuilderAttributes) *GridViewAttributes {
+	data.DefautlGridViewAttributes.Constructor = duit_utils.TristateFrom[GridConstructor](GridBuilder)
+	return &GridViewAttributes{data: data}
+}
+
+func (r *GridViewBuilderAttributes) SetSliverGridDelegateKey(sliverGridDelegateKey string) *GridViewBuilderAttributes {
+	r.SliverGridDelegateKey = sliverGridDelegateKey
+	return r
+}
+
+func (r *GridViewBuilderAttributes) SetSliverGridDelegateOptions(sliverGridDelegateOptions map[string]any) *GridViewBuilderAttributes {
+	r.SliverGridDelegateOptions = sliverGridDelegateOptions
+	return r
+}
+
 
 func (r *GridViewBuilderAttributes) Validate() error {
 	if err := r.ThemeConsumer.Validate(); err != nil {
@@ -162,6 +283,31 @@ type GridViewExtentAttributes struct {
 	ChildAspectRatio   float32 `json:"childAspectRatio,omitempty"`
 }
 
+func NewGridViewExtentAttributes(data *GridViewExtentAttributes) *GridViewAttributes {
+	data.DefautlGridViewAttributes.Constructor = duit_utils.TristateFrom[GridConstructor](GridExtent)
+	return &GridViewAttributes{data: data}
+}
+
+func (r *GridViewExtentAttributes) SetMaxCrossAxisExtent(maxCrossAxisExtent float32) *GridViewExtentAttributes {
+	r.MaxCrossAxisExtent = maxCrossAxisExtent
+	return r
+}
+
+func (r *GridViewExtentAttributes) SetMainAxisSpacing(mainAxisSpacing float32) *GridViewExtentAttributes {
+	r.MainAxisSpacing = mainAxisSpacing
+	return r
+}
+
+func (r *GridViewExtentAttributes) SetCrossAxisSpacing(crossAxisSpacing float32) *GridViewExtentAttributes {
+	r.CrossAxisSpacing = crossAxisSpacing
+	return r
+}
+
+func (r *GridViewExtentAttributes) SetChildAspectRatio(childAspectRatio float32) *GridViewExtentAttributes {
+	r.ChildAspectRatio = childAspectRatio
+	return r
+}
+
 func (r *GridViewExtentAttributes) Validate() error {
 	if err := r.ThemeConsumer.Validate(); err != nil {
 		return err
@@ -190,6 +336,39 @@ func (r *GridViewExtentAttributes) Validate() error {
 	return nil
 }
 
-type GridViewAttributes interface {
-	GridViewCommonAttributes | GridViewCountAttributes | GridViewBuilderAttributes | GridViewExtentAttributes
+type GridViewAttributes struct {
+	data any
+}
+
+func NewGridViewAttributes(data any) *GridViewAttributes {
+	switch data := data.(type) {
+	case *GridViewCommonAttributes:
+		return NewGridViewCommonAttributes(data)
+	case *GridViewCountAttributes:
+		return NewGridViewCountAttributes(data)
+	case *GridViewBuilderAttributes:
+		return NewGridViewBuilderAttributes(data)
+	case *GridViewExtentAttributes:
+		return NewGridViewExtentAttributes(data)
+	}
+
+	return nil
+}
+
+func (r *GridViewAttributes) Validate() error {
+	switch data := r.data.(type) {
+	case *GridViewCommonAttributes:
+		return data.Validate()
+	case *GridViewCountAttributes:
+		return data.Validate()
+	case *GridViewBuilderAttributes:
+		return data.Validate()
+	case *GridViewExtentAttributes:
+		return data.Validate()
+	}
+	return nil
+}
+
+func (r *GridViewAttributes) MarshalJSON() ([]byte, error) {
+	return json.Marshal(r.data)
 }
