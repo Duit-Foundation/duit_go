@@ -6,5 +6,6 @@ import (
 )
 
 func IntrinsicWidth(attributes *duit_attributes.IntrinsicWidthAttributes, id string, child *duit_core.DuitElementModel) *duit_core.DuitElementModel {
+	checkAttributes(attributes)
 	return new(duit_core.DuitElementModel).CreateElement(duit_core.IntrinsicWidth, id, "", attributes, nil, false, 1, nil, child)
 }

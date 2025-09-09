@@ -6,9 +6,11 @@ import (
 )
 
 func RadioGroupContext[TValue duit_attributes.PrimitiveValue](attributes *duit_attributes.RadioGroupContextAttributes[TValue], id string, action any, child *duit_core.DuitElementModel) *duit_core.DuitElementModel {
+	checkAttributes(attributes)
 	return new(duit_core.DuitElementModel).CreateElement(duit_core.RadioGroupContext, id, "", attributes, action, true, 1, nil, child)
 }
 
 func Radio[TValue duit_attributes.PrimitiveValue](attributes *duit_attributes.RadioAttributes[TValue], id string, controlled bool) *duit_core.DuitElementModel {
+	checkAttributes(attributes)
 	return new(duit_core.DuitElementModel).CreateElement(duit_core.Radio, id, "", attributes, nil, controlled, 0, nil)
 }

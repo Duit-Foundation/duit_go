@@ -6,5 +6,6 @@ import (
 )
 
 func Switch(attributes *duit_attributes.SwitchAttributes, id string, action any) *duit_core.DuitElementModel {
+	checkAttributes(attributes)
 	return new(duit_core.DuitElementModel).CreateElement(duit_core.Switch, id, "", attributes, action, true, 0, nil)
 }

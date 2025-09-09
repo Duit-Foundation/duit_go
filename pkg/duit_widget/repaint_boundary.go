@@ -5,6 +5,7 @@ import (
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_core"
 )
 
-func RepaintBoundaryd(attributes *duit_attributes.RepaintBoundaryAttributes, id string, controlled bool, child *duit_core.DuitElementModel) *duit_core.DuitElementModel {
+func RepaintBoundary(attributes *duit_attributes.RepaintBoundaryAttributes, id string, controlled bool, child *duit_core.DuitElementModel) *duit_core.DuitElementModel {
+	checkAttributes(attributes)
 	return new(duit_core.DuitElementModel).CreateElement(duit_core.RepaintBoundary, id, "", attributes, nil, controlled, 1, nil, child)
 }

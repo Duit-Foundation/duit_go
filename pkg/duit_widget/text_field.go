@@ -6,5 +6,6 @@ import (
 )
 
 func TextField(attributes *duit_attributes.TextFieldAttributes, id string, action any) *duit_core.DuitElementModel {
+	checkAttributes(attributes)
 	return new(duit_core.DuitElementModel).CreateElement(duit_core.TextField, id, "", attributes, action, true, 0, nil)
 }

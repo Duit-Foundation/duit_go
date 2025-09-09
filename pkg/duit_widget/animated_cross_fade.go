@@ -6,8 +6,11 @@ import (
 )
 
 func AnimatedCrossFade(attributes *duit_attributes.AnimatedCrossFadeAttributes, id string, children []*duit_core.DuitElementModel) *duit_core.DuitElementModel {
+	checkAttributes(attributes)
+
 	if len(children) != 2 {
 		panic("AnimatedCrossFade must have 2 children")
 	}
+	
 	return new(duit_core.DuitElementModel).CreateElement(duit_core.AnimatedCrossFade, id, "", attributes, nil, true, 2, nil, children...)
 }

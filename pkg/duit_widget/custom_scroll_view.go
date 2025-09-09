@@ -6,5 +6,6 @@ import (
 )
 
 func CustomScrollView(attributes *duit_attributes.CustomScrollViewAttributes, id string, controlled bool, slivers []*duit_core.DuitElementModel) *duit_core.DuitElementModel {
+	checkAttributes(attributes)
 	return new(duit_core.DuitElementModel).CreateElement(duit_core.CustomScrollView, id, "", attributes, nil, controlled, 2, nil, slivers...)
 }

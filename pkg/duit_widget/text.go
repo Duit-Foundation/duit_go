@@ -6,5 +6,6 @@ import (
 )
 
 func Text(attributes *duit_attributes.TextAttributes, id string, controlled bool) *duit_core.DuitElementModel {
+	checkAttributes(attributes)
 	return new(duit_core.DuitElementModel).CreateElement(duit_core.Text, id, "", attributes, nil, controlled, 0, nil)
 }

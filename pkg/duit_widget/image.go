@@ -6,5 +6,6 @@ import (
 )
 
 func Image(attributes *duit_attributes.ImageAttributes, id string, controlled bool) *duit_core.DuitElementModel {
+	checkAttributes(attributes)
 	return new(duit_core.DuitElementModel).CreateElement(duit_core.Image, id, "", attributes, nil, controlled, 0, nil)
 }

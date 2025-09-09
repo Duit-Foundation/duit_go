@@ -6,5 +6,6 @@ import (
 )
 
 func FittedBox(attributes *duit_attributes.FittedBoxAttributes, id string, controlled bool, child *duit_core.DuitElementModel) *duit_core.DuitElementModel {
+	checkAttributes(attributes)
 	return new(duit_core.DuitElementModel).CreateElement(duit_core.FittedBox, id, "", attributes, nil, controlled, 1, nil, child)
 }

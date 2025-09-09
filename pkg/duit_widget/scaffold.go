@@ -28,13 +28,7 @@ func Scaffold(
 		children = append(children, persistentFooterButtons...)
 	}
 
-	if attributes == nil {
-		panic("attributes must not be nil")
-	}
-
-	if err := attributes.Validate(); err != nil {
-		panic(err)
-	}
+	checkAttributes(attributes)
 
 	return new(duit_core.DuitElementModel).CreateElement(duit_core.Scaffold, id, "", attributes, nil, controlled, 2, nil, children...)
 }

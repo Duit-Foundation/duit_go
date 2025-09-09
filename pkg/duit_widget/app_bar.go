@@ -12,6 +12,7 @@ func AppBar(
 	title, leading, flexibleSpace, bottom *duit_core.DuitElementModel,
 	actions []*duit_core.DuitElementModel,
 ) *duit_core.DuitElementModel {
+	checkAttributes(attributes)
 	children := []*duit_core.DuitElementModel{title, leading, flexibleSpace, bottom}
 
 	if len(actions) > 0 {
