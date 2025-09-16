@@ -13,7 +13,7 @@ type BoxDecoration struct {
 	Gradient            *LinearGradient `json:"gradient,omitempty"`
 	BoxShadow           []BoxShadow     `json:"boxShadow,omitempty"`
 	BorderRadius        *BorderRadius   `json:"borderRadius,omitempty"`
-	Shape               BoxShape        `json:"shape,omitempty"`
+	Shape               BoxShape        `json:"boxShape,omitempty"`
 	BackgroundBlendMode BlendMode       `json:"backgroundBlendMode,omitempty"`
 }
 

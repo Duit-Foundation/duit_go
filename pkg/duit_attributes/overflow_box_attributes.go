@@ -15,7 +15,7 @@ type OverflowBoxAttributes struct {
 	MinHeight                         float32                   `json:"minHeight,omitempty"`
 	MaxHeight                         float32                   `json:"maxHeight,omitempty"`
 	Alignment                         duit_props.Alignment      `json:"alignment,omitempty"`
-	Fit                               duit_props.OverflowBoxFit `json:"fit,omitempty"`
+	Fit                               duit_props.OverflowBoxFit `json:"overflowBoxFit,omitempty"`
 }
 
 //bindgen:exclude

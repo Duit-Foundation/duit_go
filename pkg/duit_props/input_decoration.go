@@ -19,7 +19,7 @@ type InputDecoration struct {
 	ErrorText          string                    `json:"errorText,omitempty"`
 	ErrorStyle         *TextStyle                `json:"errorStyle,omitempty"`
 	ErrorMaxLines      int                       `json:"errorMaxLines,omitempty"`
-	Border             *InputBorder              `json:"border,omitempty"`
+	Border             *InputBorder              `json:"inputBorder,omitempty"`
 	ErrorBorder        *InputBorder              `json:"errorBorder,omitempty"`
 	Enabledborder      *InputBorder              `json:"enabledBorder,omitempty"`
 	FocusedBorder      *InputBorder              `json:"focusedBorder,omitempty"`

@@ -14,9 +14,9 @@ type WrapAttributes struct {
 	*ThemeConsumer                    `gen:"wrap"`
 	TextDirection                     duit_props.TextDirection      `json:"textDirection,omitempty"`
 	VerticalDirection                 duit_props.VerticalDirection  `json:"verticalDirection,omitempty"`
-	Alignment                         duit_props.MainAxisAlignment  `json:"alignment,omitempty"`
+	Alignment                         duit_props.MainAxisAlignment  `json:"wrapAlignment,omitempty"`
 	RunAlignment                      duit_props.MainAxisAlignment  `json:"runAlignment,omitempty"`
-	CrossAxisAlignment                duit_props.CrossAxisAlignment `json:"crossAxisAlignment,omitempty"`
+	CrossAxisAlignment                duit_props.CrossAxisAlignment `json:"wrapCrossAlignment,omitempty"`
 	Spacing                           float32                       `json:"spacing,omitempty"`
 	RunSpacing                        float32                       `json:"runSpacing,omitempty"`
 	ClipBehavior                      duit_props.Clip               `json:"clipBehavior,omitempty"`

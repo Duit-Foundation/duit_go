@@ -10,10 +10,10 @@ type StackAttributes struct {
 	*ValueReferenceHolder             `gen:"wrap"`
 	*duit_props.AnimatedPropertyOwner `gen:"wrap"`
 	*ThemeConsumer                    `gen:"wrap"`
-	TextDirection                     duit_props.TextDirection `json:"textDirection,omitempty"`
-	ClipBehavior                      duit_props.Clip          `json:"clipBehavior,omitempty"`
-	Alignment                         duit_props.Alignment     `json:"alignment,omitempty"`
-	Fit                               duit_props.StackFit      `json:"fit,omitempty"`
+	TextDirection                     duit_props.TextDirection        `json:"textDirection,omitempty"`
+	ClipBehavior                      duit_props.Clip                 `json:"clipBehavior,omitempty"`
+	Alignment                         duit_props.AlignmentDirectional `json:"alignmentDirectional,omitempty"`
+	Fit                               duit_props.StackFit             `json:"stackFit,omitempty"`
 }
 
 // NewStackAttributes creates a new instance of StackAttributes.
@@ -34,7 +34,7 @@ func (r *StackAttributes) SetClipBehavior(clipBehavior duit_props.Clip) *StackAt
 }
 
 // SetAlignment sets the alignment property and returns the StackAttributes instance for method chaining.
-func (r *StackAttributes) SetAlignment(alignment duit_props.Alignment) *StackAttributes {
+func (r *StackAttributes) SetAlignment(alignment duit_props.AlignmentDirectional) *StackAttributes {
 	r.Alignment = alignment
 	return r
 }

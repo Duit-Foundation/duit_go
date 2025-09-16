@@ -18,7 +18,7 @@ type PhysicalModelAttributes struct {
 	ShadowColor                       *duit_props.Color            `json:"shadowColor,omitempty"`
 	ClipBehavior                      duit_props.Clip              `json:"clipBehavior,omitempty"`
 	BorderRadius                      *duit_props.BorderRadius     `json:"borderRadius,omitempty"`
-	Shape                             duit_props.BoxShape          `json:"shape,omitempty"`
+	Shape                             duit_props.BoxShape          `json:"boxShape,omitempty"`
 }
 
 //bindgen:exclude

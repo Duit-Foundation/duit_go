@@ -25,7 +25,7 @@ type TextFieldAttributes struct {
 	MaxLines              uint                        `json:"maxLines,omitempty"`
 	MinLines              uint                        `json:"minLines,omitempty"`
 	MaxLength             uint                        `json:"maxLength,omitempty"`
-	Decoration            *duit_props.InputDecoration `json:"decoration,omitempty"`
+	Decoration            *duit_props.InputDecoration `json:"inputDecoration,omitempty"`
 }
 
 // NewTextFieldAttributes creates a new instance of TextFieldAttributes.
