@@ -1,13 +1,11 @@
 package duit_widget
 
 import (
-	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes"
-	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_color"
-	duit_decoration "github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_decorations"
-	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_edge_insets"
-	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_core"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_core"
 )
 
-func Card[TColor duit_color.Color, TInsets duit_edge_insets.EdgeInsets, TShape duit_decoration.ShapeBorder[TColor]] (attributes *duit_attributes.CardAttributes[TColor, TInsets, TShape], id string, controlled bool, child *duit_core.DuitElementModel) *duit_core.DuitElementModel {
+func Card(attributes *duit_attributes.CardAttributes, id string, controlled bool, child *duit_core.DuitElementModel) *duit_core.DuitElementModel {
+	checkAttributes(attributes)
 	return new(duit_core.DuitElementModel).CreateElement(duit_core.Card, id, "", attributes, nil, controlled, 1, nil, child)
 }

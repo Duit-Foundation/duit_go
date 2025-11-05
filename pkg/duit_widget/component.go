@@ -1,7 +1,7 @@
 package duit_widget
 
 import (
-	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_core"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_core"
 )
 
 func componentUiElement(data interface{}, tag string, id string) *duit_core.DuitElementModel {

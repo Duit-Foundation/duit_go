@@ -1,7 +1,7 @@
 package duit_core
 
 type ComponentDescription struct {
-	Tag        string                      `json:"tag"`
+	Tag        string            `json:"tag"`
 	LayoutRoot *DuitElementModel `json:"layoutRoot"`
 }
 

@@ -1,25 +1,50 @@
 package duit_attributes
 
 import (
-	"encoding/json"
 	"errors"
 
-	animations "github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_animations"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
+// SliverAnimatedOpacityAttributes represents attributes for SliverAnimatedOpacity widget.
+// https://api.flutter.dev/flutter/widgets/SliverAnimatedOpacity-class.html
 type SliverAnimatedpacityAttributes struct {
-	ValueReferenceHolder
-	ThemeConsumer
-	animations.ImplicitAnimatable
-	SliverProps
-	Opacity float32 `json:"opacity,omitempty"`
+	*ValueReferenceHolder          `gen:"wrap"`
+	*ThemeConsumer                 `gen:"wrap"`
+	*duit_props.ImplicitAnimatable `gen:"wrap"`
+	*SliverProps                   `gen:"wrap"`
+	Opacity                        duit_utils.Tristate[float32] `json:"opacity,omitempty"`
 }
 
-func (attributes *SliverAnimatedpacityAttributes) MarshalJSON() ([]byte, error) {
+// NewSliverAnimatedOpacityAttributes creates a new instance of SliverAnimatedOpacityAttributes.
+func NewSliverAnimatedOpacityAttributes() *SliverAnimatedpacityAttributes {
+	return &SliverAnimatedpacityAttributes{}
+}
 
-	if attributes.Opacity >= 0 && attributes.Opacity <= 1 {
-		return json.Marshal(*attributes)
+// SetOpacity sets the opacity property and returns the SliverAnimatedOpacityAttributes instance for method chaining.
+func (r *SliverAnimatedpacityAttributes) SetOpacity(opacity float32) *SliverAnimatedpacityAttributes {
+	r.Opacity = duit_utils.Float32Value(opacity)
+	return r
+}
+
+//bindgen:exclude
+func (r *SliverAnimatedpacityAttributes) Validate() error {
+	if err := r.ValueReferenceHolder.Validate(); err != nil {
+		return err
 	}
 
-	return nil, errors.New("opacity must be between 0 and 1")
+	if err := r.ThemeConsumer.Validate(); err != nil {
+		return err
+	}
+
+	if err := r.ImplicitAnimatable.Validate(); err != nil {
+		return err
+	}
+
+	if r.Opacity == nil {
+		return errors.New("opacity property is required")
+	} else {
+		return duit_utils.RangeValidator(*r.Opacity, 0, 1)
+	}
 }

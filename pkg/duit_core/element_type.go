@@ -85,4 +85,5 @@ const (
 	AnimatedCrossFade      DuitElementType = "AnimatedCrossFade"
 	PhysicalModel          DuitElementType = "PhysicalModel"
 	AnimatedPhysicalModel  DuitElementType = "AnimatedPhysicalModel"
+	Fragment               DuitElementType = "Fragment"
 )

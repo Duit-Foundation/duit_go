@@ -1,0 +1,34 @@
+package duit_attributes_test
+
+import (
+	"testing"
+
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
+)
+
+func TestRichTextAttributes_Validate_ValidAttributes(t *testing.T) {
+	textSpan := &duit_props.TextSpan{
+		Text: "Test text",
+	}
+
+	attrs := &duit_attributes.RichTextAttributes{
+		TextSpan: textSpan,
+	}
+
+	err := attrs.Validate()
+	if err != nil {
+		t.Fatal("expected no error for valid attributes, got:", err)
+	}
+}
+
+func TestRichTextAttributes_Validate_MissingTextSpan(t *testing.T) {
+	attrs := &duit_attributes.RichTextAttributes{
+		TextSpan: nil,
+	}
+
+	err := attrs.Validate()
+	if err == nil {
+		t.Fatal("expected error for missing textSpan")
+	}
+}

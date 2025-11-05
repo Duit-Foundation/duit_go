@@ -1,8 +1,8 @@
 package duit_widget
 
 import (
-	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes"
-	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_core"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_core"
 )
 
 /*
@@ -12,13 +12,13 @@ Example usage:
 		&duit_attributes.AnimatedBuilderAttributes{
 			PersistentId: "1", //override it for use builder inside component layout
 			Tweens: []any{
-				duit_animations.Tween(
+				duit_props.Tween(
 					"height", //animated property name
 					0.0, //begin
 					100.0, //end
 					3000, //duratuin
-					duit_animations.OnEnter, //trigger
-					duit_animations.Forward, //method
+					duit_props.AnimationTriggerOnEnter, //trigger
+					duit_props.AnimationMethodForward, //method
 					false, //repeat
 					"", //linear curve by default
 				),
@@ -29,5 +29,6 @@ Example usage:
 	)
 */
 func AnimatedBuilder(attributes *duit_attributes.AnimatedBuilderAttributes, id string, child *duit_core.DuitElementModel) *duit_core.DuitElementModel {
+	checkAttributes(attributes)
 	return new(duit_core.DuitElementModel).CreateElement(duit_core.AnimatedBuilder, id, "", attributes, nil, true, 1, nil, child)
 }

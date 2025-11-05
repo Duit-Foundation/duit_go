@@ -1,28 +1,42 @@
 package duit_widget
 
 import (
-	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes"
-	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_color"
-	duit_decoration "github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_decorations"
-	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_attributes/duit_edge_insets"
-	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_core"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_core"
 )
 
 /*
 Example:
+
 	SliverAppBar(
-		&duit_attributes.SliverAppBarAttributes[duit_color.Color, duit_edge_insets.EdgeInsetsAll, duit_decoration.RoundedRectangleBorder]{
-			Title: Text(&duit_attributes.TextAttributes[duit_color.Color]{
-				Data: "Sliver App Bar",
-			}, "title"),
+		&duit_attributes.SliverAppBarAttributes[duit_props.Color, duit_props.EdgeInsetsAll, duit_props.RoundedRectangleBorder]{
 			Floating: true,
 			Pinned: true,
 			ExpandedHeight: 200.0,
 		},
 		"sliverAppBarId",
 		true,
+		Text(&duit_attributes.TextAttributes[duit_props.Color]{
+				Data: "Sliver App Bar",
+			}, "title"),
+		nil, //leading
+		nil, //flexibleSpace
+		nil, //bottom
+		[]*duit_core.DuitElementModel{
+			Text(&duit_attributes.TextAttributes[duit_props.Color]{
+				Data: "Action 1",
+			}, "action1"),
+		},
 	)
 */
-func SliverAppBar[TColor duit_color.Color, TInsets duit_edge_insets.EdgeInsets, TShape duit_decoration.ShapeBorder[TColor]](attributes *duit_attributes.SliverAppBarAttributes[TColor, TInsets, TShape], id string, controlled bool) *duit_core.DuitElementModel {
-	return new(duit_core.DuitElementModel).CreateElement(duit_core.SliverAppBar, id, "", attributes, nil, controlled, 0, nil)
-} 
+func SliverAppBar(attributes *duit_attributes.SliverAppBarAttributes, id string, controlled bool, title, leading, flexibleSpace, bottom *duit_core.DuitElementModel, actions []*duit_core.DuitElementModel) *duit_core.DuitElementModel {
+	children := []*duit_core.DuitElementModel{title, leading, flexibleSpace, bottom}
+
+	if len(actions) > 0 {
+		children = append(children, actions...)
+	}
+
+	checkAttributes(attributes)
+
+	return new(duit_core.DuitElementModel).CreateElement(duit_core.SliverAppBar, id, "", attributes, nil, controlled, 2, nil, children...)
+}

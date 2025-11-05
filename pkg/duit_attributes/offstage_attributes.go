@@ -1,23 +1,38 @@
 package duit_attributes
 
 import (
-	"encoding/json"
-	
-	"github.com/Duit-Foundation/duit_go/v3/pkg/duit_utils"
+	"errors"
+
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
+// OffstageAttributes defines attributes for Offstage widget.
+// See: https://api.flutter.dev/flutter/widgets/Offstage-class.html
 type OffstageAttributes struct {
-	ValueReferenceHolder
-
-	Offstage	*bool	`json:"offstage,omitempty"`
+	*ValueReferenceHolder `gen:"wrap"`
+	Offstage              duit_utils.Tristate[bool] `json:"offstage,omitempty"`
 }
 
-func (attributes *OffstageAttributes) MarshalJSON() ([]byte, error) {
-
-	if attributes.Offstage == nil {
-		var bPtr = duit_utils.BoolPtr(true)
-		attributes.Offstage = bPtr
+//bindgen:exclude
+func (r *OffstageAttributes) Validate() error {
+	if err := r.ValueReferenceHolder.Validate(); err != nil {
+		return err
 	}
 
-	return json.Marshal(*attributes)
+	if r.Offstage == nil {
+		return errors.New("offstage property is required")
+	}
+
+	return nil
+}
+
+// NewOffstageAttributes creates a new OffstageAttributes instance.
+func NewOffstageAttributes() *OffstageAttributes {
+	return &OffstageAttributes{}
+}
+
+// SetOffstage sets the offstage for the offstage widget.
+func (r *OffstageAttributes) SetOffstage(offstage duit_utils.Tristate[bool]) *OffstageAttributes {
+	r.Offstage = offstage
+	return r
 }

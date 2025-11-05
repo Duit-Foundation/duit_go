@@ -1,0 +1,119 @@
+package duit_attributes_test
+
+import (
+	"encoding/json"
+	"strings"
+	"testing"
+
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_attributes"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_props"
+	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
+)
+
+func TestCardAttributes_Validate_ValidAttributes(t *testing.T) {
+	attrs := &duit_attributes.CardAttributes{}
+
+	err := attrs.Validate()
+	if err != nil {
+		t.Fatal("expected no error for valid attributes, got:", err)
+	}
+}
+
+func TestCardAttributes_Validate_WithAllProperties(t *testing.T) {
+	attrs := &duit_attributes.CardAttributes{
+		Color:              duit_props.NewColorString("#FF0000"),
+		ShadowColor:        duit_props.NewColorString("#000000"),
+		Elevation:          4.0,
+		BorderOnForeground: duit_utils.BoolValue(true),
+		SemanticContainer:  duit_utils.BoolValue(false),
+		Margin:             duit_props.NewEdgeInsetsAll(8.0),
+		Shape:              nil,
+	}
+
+	err := attrs.Validate()
+	if err != nil {
+		t.Fatal("expected no error for valid attributes with all properties, got:", err)
+	}
+}
+
+// Tests for BorderOnForeground Tristate[bool] property serialization
+func TestCardAttributes_BorderOnForeground_JSON_True(t *testing.T) {
+	attrs := &duit_attributes.CardAttributes{
+		BorderOnForeground: duit_utils.BoolValue(true),
+	}
+
+	jsonData, err := json.Marshal(attrs)
+	if err != nil {
+		t.Fatal("expected no error for MarshalJSON(), got:", err)
+	}
+
+	jsonStr := string(jsonData)
+	if !strings.Contains(jsonStr, `"borderOnForeground":true`) {
+		t.Fatalf("expected JSON to contain '\"borderOnForeground\":true', got: %s", jsonStr)
+	}
+}
+
+func TestCardAttributes_BorderOnForeground_JSON_False(t *testing.T) {
+	attrs := &duit_attributes.CardAttributes{
+		BorderOnForeground: duit_utils.BoolValue(false),
+	}
+
+	jsonData, err := json.Marshal(attrs)
+	if err != nil {
+		t.Fatal("expected no error for MarshalJSON(), got:", err)
+	}
+
+	jsonStr := string(jsonData)
+	if !strings.Contains(jsonStr, `"borderOnForeground":false`) {
+		t.Fatalf("expected JSON to contain '\"borderOnForeground\":false', got: %s", jsonStr)
+	}
+}
+
+// Tests for SemanticContainer Tristate[bool] property serialization
+func TestCardAttributes_SemanticContainer_JSON_True(t *testing.T) {
+	attrs := &duit_attributes.CardAttributes{
+		SemanticContainer: duit_utils.BoolValue(true),
+	}
+
+	jsonData, err := json.Marshal(attrs)
+	if err != nil {
+		t.Fatal("expected no error for MarshalJSON(), got:", err)
+	}
+
+	jsonStr := string(jsonData)
+	if !strings.Contains(jsonStr, `"semanticContainer":true`) {
+		t.Fatalf("expected JSON to contain '\"semanticContainer\":true', got: %s", jsonStr)
+	}
+}
+
+func TestCardAttributes_SemanticContainer_JSON_False(t *testing.T) {
+	attrs := &duit_attributes.CardAttributes{
+		SemanticContainer: duit_utils.BoolValue(false),
+	}
+
+	jsonData, err := json.Marshal(attrs)
+	if err != nil {
+		t.Fatal("expected no error for MarshalJSON(), got:", err)
+	}
+
+	jsonStr := string(jsonData)
+	if !strings.Contains(jsonStr, `"semanticContainer":false`) {
+		t.Fatalf("expected JSON to contain '\"semanticContainer\":false', got: %s", jsonStr)
+	}
+}
+
+func TestCardAttributes_SemanticContainer_JSON_Nil(t *testing.T) {
+	attrs := &duit_attributes.CardAttributes{
+		SemanticContainer: duit_utils.Nillable[bool](),
+	}
+
+	jsonData, err := json.Marshal(attrs)
+	if err != nil {
+		t.Fatal("expected no error for MarshalJSON(), got:", err)
+	}
+
+	jsonStr := string(jsonData)
+	if strings.Contains(jsonStr, `"semanticContainer"`) {
+		t.Fatalf("expected JSON to not contain 'semanticContainer' field when nil, got: %s", jsonStr)
+	}
+}
