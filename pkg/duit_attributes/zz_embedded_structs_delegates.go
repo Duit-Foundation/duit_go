@@ -360,6 +360,48 @@ func (r *AnimatedPositionedAttributes) SetRefs(refs []ValueRef) *AnimatedPositio
 	return r
 }
 
+// --- Wrappers for AnimatedPositionedDirectionalAttributes ---
+
+func (r *AnimatedPositionedDirectionalAttributes) SetIgnoreTheme(ignoreTheme bool) *AnimatedPositionedDirectionalAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetIgnoreTheme(ignoreTheme)
+	return r
+}
+
+func (r *AnimatedPositionedDirectionalAttributes) SetOverrideRule(overrideRule ThemeOverrideRule) *AnimatedPositionedDirectionalAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetOverrideRule(overrideRule)
+	return r
+}
+
+func (r *AnimatedPositionedDirectionalAttributes) SetTheme(theme string) *AnimatedPositionedDirectionalAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetTheme(theme)
+	return r
+}
+
+func (r *AnimatedPositionedDirectionalAttributes) AddRef(ref ValueRef) *AnimatedPositionedDirectionalAttributes {
+	if r.ValueReferenceHolder == nil {
+		r.ValueReferenceHolder = &ValueReferenceHolder{}
+	}
+	r.ValueReferenceHolder.AddRef(ref)
+	return r
+}
+
+func (r *AnimatedPositionedDirectionalAttributes) SetRefs(refs []ValueRef) *AnimatedPositionedDirectionalAttributes {
+	if r.ValueReferenceHolder == nil {
+		r.ValueReferenceHolder = &ValueReferenceHolder{}
+	}
+	r.ValueReferenceHolder.SetRefs(refs)
+	return r
+}
+
 // --- Wrappers for AnimatedRotationAttributes ---
 
 func (r *AnimatedRotationAttributes) SetIgnoreTheme(ignoreTheme bool) *AnimatedRotationAttributes {
