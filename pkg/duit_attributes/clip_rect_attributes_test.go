@@ -72,8 +72,8 @@ func TestClipRectAttributes_ClipBehavior_JSON_EmptyValue(t *testing.T) {
 
 	jsonStr := string(jsonData)
 	// With omitempty tag, empty string should be omitted
-	if strings.Contains(jsonStr, `"color"`) {
-		t.Fatalf("expected JSON to not contain 'color' field when empty, got: %s", jsonStr)
+	if strings.Contains(jsonStr, `"clipBehavior"`) {
+		t.Fatalf("expected JSON to not contain 'clipBehavior' field when empty, got: %s", jsonStr)
 	}
 }
 

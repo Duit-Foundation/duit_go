@@ -7,7 +7,7 @@ import (
 type ClipRectAttributes struct {
 	*ValueReferenceHolder `gen:"wrap"`
 	*ThemeConsumer        `gen:"wrap"`
-	ClipBehavior          duit_props.Clip `json:"color,omitempty"`
+	ClipBehavior          duit_props.Clip `json:"clipBehavior,omitempty"`
 }
 
 //bindgen:exclude
@@ -25,7 +25,7 @@ func (r *ClipRectAttributes) Validate() error {
 
 // NewClipRectAttributes creates a new instance of ClipRectAttributes.
 func NewClipRectAttributes() *ClipRectAttributes {
-	return  &ClipRectAttributes{}
+	return &ClipRectAttributes{}
 }
 
 // SetClipBehavior sets the clipping behavior for the ClipRect widget.
