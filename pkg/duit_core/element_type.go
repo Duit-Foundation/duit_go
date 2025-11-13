@@ -87,4 +87,5 @@ const (
 	AnimatedPhysicalModel         DuitElementType = "AnimatedPhysicalModel"
 	Fragment                      DuitElementType = "Fragment"
 	AnimatedPositionedDirectional DuitElementType = "AnimatedPositionedDirectional"
+	ClipRect                      DuitElementType = "ClipRect"
 )
