@@ -88,4 +88,5 @@ const (
 	Fragment                      DuitElementType = "Fragment"
 	AnimatedPositionedDirectional DuitElementType = "AnimatedPositionedDirectional"
 	ClipRect                      DuitElementType = "ClipRect"
+	ClipOval                      DuitElementType = "ClipOval"
 )

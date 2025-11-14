@@ -848,6 +848,48 @@ func (r *CheckboxAttributes) SetRefs(refs []ValueRef) *CheckboxAttributes {
 	return r
 }
 
+// --- Wrappers for ClipOvalAttributes ---
+
+func (r *ClipOvalAttributes) SetIgnoreTheme(ignoreTheme bool) *ClipOvalAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetIgnoreTheme(ignoreTheme)
+	return r
+}
+
+func (r *ClipOvalAttributes) SetOverrideRule(overrideRule ThemeOverrideRule) *ClipOvalAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetOverrideRule(overrideRule)
+	return r
+}
+
+func (r *ClipOvalAttributes) SetTheme(theme string) *ClipOvalAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetTheme(theme)
+	return r
+}
+
+func (r *ClipOvalAttributes) AddRef(ref ValueRef) *ClipOvalAttributes {
+	if r.ValueReferenceHolder == nil {
+		r.ValueReferenceHolder = &ValueReferenceHolder{}
+	}
+	r.ValueReferenceHolder.AddRef(ref)
+	return r
+}
+
+func (r *ClipOvalAttributes) SetRefs(refs []ValueRef) *ClipOvalAttributes {
+	if r.ValueReferenceHolder == nil {
+		r.ValueReferenceHolder = &ValueReferenceHolder{}
+	}
+	r.ValueReferenceHolder.SetRefs(refs)
+	return r
+}
+
 // --- Wrappers for ClipRectAttributes ---
 
 func (r *ClipRectAttributes) SetIgnoreTheme(ignoreTheme bool) *ClipRectAttributes {
