@@ -4,60 +4,66 @@ package duit_utils
 //
 // Tristate is used in the project in two main contexts:
 //
-// 1. JSON Serialization with omitempty for bool fields:
-//    Solves the problem where Go's omitempty excludes false values from JSON.
-//    With Tristate[bool]:
-//    - nil: field is omitted from JSON
-//    - &false: field appears in JSON as "field":false
-//    - &true: field appears in JSON as "field":true
+//  1. JSON Serialization with omitempty for bool fields:
+//     Solves the problem where Go's omitempty excludes false values from JSON.
+//     With Tristate[bool]:
+//     - nil: field is omitted from JSON
+//     - &false: field appears in JSON as "field":false
+//     - &true: field appears in JSON as "field":true
 //
-//    Example:
-//        type Widget struct {
-//            Enabled Tristate[bool] `json:"enabled,omitempty"`
-//        }
+//     Example:
+//     type Widget struct {
+//     Enabled Tristate[bool] `json:"enabled,omitempty"`
+//     }
 //
-// 2. Validation of required fields:
-//    Allows distinguishing between "field not provided" and "field has default value".
-//    Used in Validate() methods to check if required fields were explicitly set:
+//  2. Validation of required fields:
+//     Allows distinguishing between "field not provided" and "field has default value".
+//     Used in Validate() methods to check if required fields were explicitly set:
 //
-//    Example:
-//        func (w *Widget) Validate() error {
-//            if w.Value == nil {
-//                return errors.New("value property is required")
-//            }
-//            return nil
-//        }
+//     Example:
+//     func (w *Widget) Validate() error {
+//     if w.Value == nil {
+//     return errors.New("value property is required")
+//     }
+//     return nil
+//     }
 type Tristate[T any] *T
+
+type TBool = Tristate[bool]
+type TString = Tristate[string]
+type TUint8 = Tristate[uint8]
 
 // TristateFrom converts an input value of any type to a Tristate of type T.
 // The function handles different types of input data and returns appropriate
 // Tristate representations:
 //
-// - If value is nil, returns nil Tristate
-// - If value is a pointer to T (*T), returns this pointer as is
-// - If value is a value of type T, creates a pointer to this value
-//   and returns it as Tristate
-// - If value doesn't match any of the above cases,
-//   returns nil Tristate
+//   - If value is nil, returns nil Tristate
+//   - If value is a pointer to T (*T), returns this pointer as is
+//   - If value is a value of type T, creates a pointer to this value
+//     and returns it as Tristate
+//   - If value doesn't match any of the above cases,
+//     returns nil Tristate
 //
 // Parameters:
-//   value - input value of any type for conversion
+//
+//	value - input value of any type for conversion
 //
 // Returns:
-//   Tristate[T] - pointer to value of type T or nil
+//
+//	Tristate[T] - pointer to value of type T or nil
 func TristateFrom[T any](value any) Tristate[T] {
 	if value == nil {
 		return nil
 	}
-	
+
 	if ptr, ok := value.(*T); ok {
 		return Tristate[T](ptr)
 	}
-	
+
 	if val, ok := value.(T); ok {
 		return Tristate[T](&val)
 	}
-	
+
 	return nil
 }
 
