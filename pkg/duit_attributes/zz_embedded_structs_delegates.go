@@ -2430,6 +2430,306 @@ func (r *PaddingAttributes) SetRefs(refs []ValueRef) *PaddingAttributes {
 	return r
 }
 
+// --- Wrappers for PageViewBuilderAttributes ---
+
+func (r *PageViewBuilderAttributes) AddChildObject(childObject *duit_core.DuitElementModel) *PageViewBuilderAttributes {
+	if r.Builder == nil {
+		r.Builder = &Builder{}
+	}
+	r.Builder.AddChildObject(childObject)
+	return r
+}
+
+func (r *PageViewBuilderAttributes) SetChildObjects(childObjects []*duit_core.DuitElementModel) *PageViewBuilderAttributes {
+	if r.Builder == nil {
+		r.Builder = &Builder{}
+	}
+	r.Builder.SetChildObjects(childObjects)
+	return r
+}
+
+func (r *PageViewBuilderAttributes) SetScrollEndReachedThreshold(scrollEndReachedThreshold float32) *PageViewBuilderAttributes {
+	if r.Builder == nil {
+		r.Builder = &Builder{}
+	}
+	r.Builder.SetScrollEndReachedThreshold(scrollEndReachedThreshold)
+	return r
+}
+
+func (r *PageViewBuilderAttributes) SetAllowImplicitScrolling(value bool) *PageViewBuilderAttributes {
+	if r.DefaultPageViewAttributes == nil {
+		r.DefaultPageViewAttributes = &DefaultPageViewAttributes{}
+	}
+	r.DefaultPageViewAttributes.SetAllowImplicitScrolling(value)
+	return r
+}
+
+func (r *PageViewBuilderAttributes) SetClipBehavior(value duit_props.Clip) *PageViewBuilderAttributes {
+	if r.DefaultPageViewAttributes == nil {
+		r.DefaultPageViewAttributes = &DefaultPageViewAttributes{}
+	}
+	r.DefaultPageViewAttributes.SetClipBehavior(value)
+	return r
+}
+
+func (r *PageViewBuilderAttributes) SetDragStartBehavior(value duit_props.DragStartBehavior) *PageViewBuilderAttributes {
+	if r.DefaultPageViewAttributes == nil {
+		r.DefaultPageViewAttributes = &DefaultPageViewAttributes{}
+	}
+	r.DefaultPageViewAttributes.SetDragStartBehavior(value)
+	return r
+}
+
+func (r *PageViewBuilderAttributes) SetHitTestBehavior(value duit_props.HitTestBehavior) *PageViewBuilderAttributes {
+	if r.DefaultPageViewAttributes == nil {
+		r.DefaultPageViewAttributes = &DefaultPageViewAttributes{}
+	}
+	r.DefaultPageViewAttributes.SetHitTestBehavior(value)
+	return r
+}
+
+func (r *PageViewBuilderAttributes) SetKeyboardDismissBehavior(value duit_props.ScrollViewKeyboardDismissBehavior) *PageViewBuilderAttributes {
+	if r.DefaultPageViewAttributes == nil {
+		r.DefaultPageViewAttributes = &DefaultPageViewAttributes{}
+	}
+	r.DefaultPageViewAttributes.SetKeyboardDismissBehavior(value)
+	return r
+}
+
+func (r *PageViewBuilderAttributes) SetPadsEnd(value bool) *PageViewBuilderAttributes {
+	if r.DefaultPageViewAttributes == nil {
+		r.DefaultPageViewAttributes = &DefaultPageViewAttributes{}
+	}
+	r.DefaultPageViewAttributes.SetPadsEnd(value)
+	return r
+}
+
+func (r *PageViewBuilderAttributes) SetPageSnapping(value bool) *PageViewBuilderAttributes {
+	if r.DefaultPageViewAttributes == nil {
+		r.DefaultPageViewAttributes = &DefaultPageViewAttributes{}
+	}
+	r.DefaultPageViewAttributes.SetPageSnapping(value)
+	return r
+}
+
+func (r *PageViewBuilderAttributes) SetPhysics(value duit_props.ScrollPhysics) *PageViewBuilderAttributes {
+	if r.DefaultPageViewAttributes == nil {
+		r.DefaultPageViewAttributes = &DefaultPageViewAttributes{}
+	}
+	r.DefaultPageViewAttributes.SetPhysics(value)
+	return r
+}
+
+func (r *PageViewBuilderAttributes) SetPrimary(value bool) *PageViewBuilderAttributes {
+	if r.DefaultPageViewAttributes == nil {
+		r.DefaultPageViewAttributes = &DefaultPageViewAttributes{}
+	}
+	r.DefaultPageViewAttributes.SetPrimary(value)
+	return r
+}
+
+func (r *PageViewBuilderAttributes) SetRestorationId(value string) *PageViewBuilderAttributes {
+	if r.DefaultPageViewAttributes == nil {
+		r.DefaultPageViewAttributes = &DefaultPageViewAttributes{}
+	}
+	r.DefaultPageViewAttributes.SetRestorationId(value)
+	return r
+}
+
+func (r *PageViewBuilderAttributes) SetReverse(value bool) *PageViewBuilderAttributes {
+	if r.DefaultPageViewAttributes == nil {
+		r.DefaultPageViewAttributes = &DefaultPageViewAttributes{}
+	}
+	r.DefaultPageViewAttributes.SetReverse(value)
+	return r
+}
+
+func (r *PageViewBuilderAttributes) SetScrollDirection(value duit_props.Axis) *PageViewBuilderAttributes {
+	if r.DefaultPageViewAttributes == nil {
+		r.DefaultPageViewAttributes = &DefaultPageViewAttributes{}
+	}
+	r.DefaultPageViewAttributes.SetScrollDirection(value)
+	return r
+}
+
+func (r *PageViewBuilderAttributes) SetIgnoreTheme(ignoreTheme bool) *PageViewBuilderAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetIgnoreTheme(ignoreTheme)
+	return r
+}
+
+func (r *PageViewBuilderAttributes) SetOverrideRule(overrideRule ThemeOverrideRule) *PageViewBuilderAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetOverrideRule(overrideRule)
+	return r
+}
+
+func (r *PageViewBuilderAttributes) SetTheme(theme string) *PageViewBuilderAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetTheme(theme)
+	return r
+}
+
+func (r *PageViewBuilderAttributes) AddRef(ref ValueRef) *PageViewBuilderAttributes {
+	if r.ValueReferenceHolder == nil {
+		r.ValueReferenceHolder = &ValueReferenceHolder{}
+	}
+	r.ValueReferenceHolder.AddRef(ref)
+	return r
+}
+
+func (r *PageViewBuilderAttributes) SetRefs(refs []ValueRef) *PageViewBuilderAttributes {
+	if r.ValueReferenceHolder == nil {
+		r.ValueReferenceHolder = &ValueReferenceHolder{}
+	}
+	r.ValueReferenceHolder.SetRefs(refs)
+	return r
+}
+
+// --- Wrappers for PageViewCommonAttributes ---
+
+func (r *PageViewCommonAttributes) SetAllowImplicitScrolling(value bool) *PageViewCommonAttributes {
+	if r.DefaultPageViewAttributes == nil {
+		r.DefaultPageViewAttributes = &DefaultPageViewAttributes{}
+	}
+	r.DefaultPageViewAttributes.SetAllowImplicitScrolling(value)
+	return r
+}
+
+func (r *PageViewCommonAttributes) SetClipBehavior(value duit_props.Clip) *PageViewCommonAttributes {
+	if r.DefaultPageViewAttributes == nil {
+		r.DefaultPageViewAttributes = &DefaultPageViewAttributes{}
+	}
+	r.DefaultPageViewAttributes.SetClipBehavior(value)
+	return r
+}
+
+func (r *PageViewCommonAttributes) SetDragStartBehavior(value duit_props.DragStartBehavior) *PageViewCommonAttributes {
+	if r.DefaultPageViewAttributes == nil {
+		r.DefaultPageViewAttributes = &DefaultPageViewAttributes{}
+	}
+	r.DefaultPageViewAttributes.SetDragStartBehavior(value)
+	return r
+}
+
+func (r *PageViewCommonAttributes) SetHitTestBehavior(value duit_props.HitTestBehavior) *PageViewCommonAttributes {
+	if r.DefaultPageViewAttributes == nil {
+		r.DefaultPageViewAttributes = &DefaultPageViewAttributes{}
+	}
+	r.DefaultPageViewAttributes.SetHitTestBehavior(value)
+	return r
+}
+
+func (r *PageViewCommonAttributes) SetKeyboardDismissBehavior(value duit_props.ScrollViewKeyboardDismissBehavior) *PageViewCommonAttributes {
+	if r.DefaultPageViewAttributes == nil {
+		r.DefaultPageViewAttributes = &DefaultPageViewAttributes{}
+	}
+	r.DefaultPageViewAttributes.SetKeyboardDismissBehavior(value)
+	return r
+}
+
+func (r *PageViewCommonAttributes) SetPadsEnd(value bool) *PageViewCommonAttributes {
+	if r.DefaultPageViewAttributes == nil {
+		r.DefaultPageViewAttributes = &DefaultPageViewAttributes{}
+	}
+	r.DefaultPageViewAttributes.SetPadsEnd(value)
+	return r
+}
+
+func (r *PageViewCommonAttributes) SetPageSnapping(value bool) *PageViewCommonAttributes {
+	if r.DefaultPageViewAttributes == nil {
+		r.DefaultPageViewAttributes = &DefaultPageViewAttributes{}
+	}
+	r.DefaultPageViewAttributes.SetPageSnapping(value)
+	return r
+}
+
+func (r *PageViewCommonAttributes) SetPhysics(value duit_props.ScrollPhysics) *PageViewCommonAttributes {
+	if r.DefaultPageViewAttributes == nil {
+		r.DefaultPageViewAttributes = &DefaultPageViewAttributes{}
+	}
+	r.DefaultPageViewAttributes.SetPhysics(value)
+	return r
+}
+
+func (r *PageViewCommonAttributes) SetPrimary(value bool) *PageViewCommonAttributes {
+	if r.DefaultPageViewAttributes == nil {
+		r.DefaultPageViewAttributes = &DefaultPageViewAttributes{}
+	}
+	r.DefaultPageViewAttributes.SetPrimary(value)
+	return r
+}
+
+func (r *PageViewCommonAttributes) SetRestorationId(value string) *PageViewCommonAttributes {
+	if r.DefaultPageViewAttributes == nil {
+		r.DefaultPageViewAttributes = &DefaultPageViewAttributes{}
+	}
+	r.DefaultPageViewAttributes.SetRestorationId(value)
+	return r
+}
+
+func (r *PageViewCommonAttributes) SetReverse(value bool) *PageViewCommonAttributes {
+	if r.DefaultPageViewAttributes == nil {
+		r.DefaultPageViewAttributes = &DefaultPageViewAttributes{}
+	}
+	r.DefaultPageViewAttributes.SetReverse(value)
+	return r
+}
+
+func (r *PageViewCommonAttributes) SetScrollDirection(value duit_props.Axis) *PageViewCommonAttributes {
+	if r.DefaultPageViewAttributes == nil {
+		r.DefaultPageViewAttributes = &DefaultPageViewAttributes{}
+	}
+	r.DefaultPageViewAttributes.SetScrollDirection(value)
+	return r
+}
+
+func (r *PageViewCommonAttributes) SetIgnoreTheme(ignoreTheme bool) *PageViewCommonAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetIgnoreTheme(ignoreTheme)
+	return r
+}
+
+func (r *PageViewCommonAttributes) SetOverrideRule(overrideRule ThemeOverrideRule) *PageViewCommonAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetOverrideRule(overrideRule)
+	return r
+}
+
+func (r *PageViewCommonAttributes) SetTheme(theme string) *PageViewCommonAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetTheme(theme)
+	return r
+}
+
+func (r *PageViewCommonAttributes) AddRef(ref ValueRef) *PageViewCommonAttributes {
+	if r.ValueReferenceHolder == nil {
+		r.ValueReferenceHolder = &ValueReferenceHolder{}
+	}
+	r.ValueReferenceHolder.AddRef(ref)
+	return r
+}
+
+func (r *PageViewCommonAttributes) SetRefs(refs []ValueRef) *PageViewCommonAttributes {
+	if r.ValueReferenceHolder == nil {
+		r.ValueReferenceHolder = &ValueReferenceHolder{}
+	}
+	r.ValueReferenceHolder.SetRefs(refs)
+	return r
+}
+
 // --- Wrappers for PhysicalModelAttributes ---
 
 func (r *PhysicalModelAttributes) SetIgnoreTheme(ignoreTheme bool) *PhysicalModelAttributes {

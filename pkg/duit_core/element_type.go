@@ -89,4 +89,5 @@ const (
 	AnimatedPositionedDirectional DuitElementType = "AnimatedPositionedDirectional"
 	ClipRect                      DuitElementType = "ClipRect"
 	ClipOval                      DuitElementType = "ClipOval"
+	PageView                      DuitElementType = "PageView"
 )
