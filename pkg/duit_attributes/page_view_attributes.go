@@ -124,7 +124,7 @@ func (t *DefautlPageViewAttributes) Validate() error {
 	return nil
 }
 
-// PhysicalModelAttributes defines attributes for PhysicalModel widget.
+// PageViewCommonAttributes defines attributes for PageView widget.
 // See: https://api.flutter.dev/flutter/widgets/PageView/PageView.html
 type PageViewCommonAttributes struct {
 	*ValueReferenceHolder      `gen:"wrap"`
@@ -162,7 +162,7 @@ func (r *PageViewCommonAttributes) Validate() error {
 	return nil
 }
 
-// PhysicalModelAttributes defines attributes for PhysicalModel widget.
+// PageViewBuilderAttributes defines attributes for PageView.builder widget.
 // See: https://api.flutter.dev/flutter/widgets/PageView/PageView.builder.html
 type PageViewBuilderAttributes struct {
 	*ValueReferenceHolder      `gen:"wrap"`
@@ -201,7 +201,7 @@ func (r *PageViewBuilderAttributes) Validate() error {
 	return nil
 }
 
-// ListViewAttributes defines attributes for ListView widget.
+// PageViewAttributes defines attributes for Page widget.
 // See: https://api.flutter.dev/flutter/widgets/PageView-class.html
 type PageViewAttributes struct {
 	data any
