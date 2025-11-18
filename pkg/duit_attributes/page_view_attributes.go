@@ -15,7 +15,7 @@ const (
 	PageViewBuilder
 )
 
-type DefautlPageViewAttributes struct {
+type DefaultPageViewAttributes struct {
 	Constructor             duit_utils.Tristate[PageViewConstructor]     `json:"constructor"`
 	ScrollDirection         duit_props.Axis                              `json:"scrollDirection,omitempty"`
 	Reverse                 duit_utils.TBool                             `json:"reverse,omitempty"`
@@ -34,85 +34,85 @@ type DefautlPageViewAttributes struct {
 // SetConstructor assigns the PageView constructor variant.
 //
 //bindgen:exclude
-func (r *DefautlPageViewAttributes) SetConstructor(value PageViewConstructor) *DefautlPageViewAttributes {
+func (r *DefaultPageViewAttributes) SetConstructor(value PageViewConstructor) *DefaultPageViewAttributes {
 	r.Constructor = duit_utils.TristateFrom[PageViewConstructor](value)
 	return r
 }
 
 // SetScrollDirection defines the axis used for page scrolling.
-func (r *DefautlPageViewAttributes) SetScrollDirection(value duit_props.Axis) *DefautlPageViewAttributes {
+func (r *DefaultPageViewAttributes) SetScrollDirection(value duit_props.Axis) *DefaultPageViewAttributes {
 	r.ScrollDirection = value
 	return r
 }
 
 // SetReverse toggles reverse scroll direction behavior.
-func (r *DefautlPageViewAttributes) SetReverse(value bool) *DefautlPageViewAttributes {
+func (r *DefaultPageViewAttributes) SetReverse(value bool) *DefaultPageViewAttributes {
 	r.Reverse = duit_utils.BoolValue(value)
 	return r
 }
 
 // SetPrimary marks the scroll controller as primary.
-func (r *DefautlPageViewAttributes) SetPrimary(value bool) *DefautlPageViewAttributes {
+func (r *DefaultPageViewAttributes) SetPrimary(value bool) *DefaultPageViewAttributes {
 	r.Primary = duit_utils.BoolValue(value)
 	return r
 }
 
 // SetPageSnapping enables or disables page snapping.
-func (r *DefautlPageViewAttributes) SetPageSnapping(value bool) *DefautlPageViewAttributes {
+func (r *DefaultPageViewAttributes) SetPageSnapping(value bool) *DefaultPageViewAttributes {
 	r.PageSnapping = duit_utils.BoolValue(value)
 	return r
 }
 
 // SetDragStartBehavior sets the drag start behavior.
-func (r *DefautlPageViewAttributes) SetDragStartBehavior(value duit_props.DragStartBehavior) *DefautlPageViewAttributes {
+func (r *DefaultPageViewAttributes) SetDragStartBehavior(value duit_props.DragStartBehavior) *DefaultPageViewAttributes {
 	r.DragStartBehavior = value
 	return r
 }
 
 // SetAllowImplicitScrolling toggles implicit scrolling support.
-func (r *DefautlPageViewAttributes) SetAllowImplicitScrolling(value bool) *DefautlPageViewAttributes {
+func (r *DefaultPageViewAttributes) SetAllowImplicitScrolling(value bool) *DefaultPageViewAttributes {
 	r.AllowImplicitScrolling = duit_utils.BoolValue(value)
 	return r
 }
 
 // SetClipBehavior configures the clipping behavior.
-func (r *DefautlPageViewAttributes) SetClipBehavior(value duit_props.Clip) *DefautlPageViewAttributes {
+func (r *DefaultPageViewAttributes) SetClipBehavior(value duit_props.Clip) *DefaultPageViewAttributes {
 	r.ClipBehavior = value
 	return r
 }
 
 // SetKeyboardDismissBehavior defines when the keyboard dismisses.
-func (r *DefautlPageViewAttributes) SetKeyboardDismissBehavior(value duit_props.ScrollViewKeyboardDismissBehavior) *DefautlPageViewAttributes {
+func (r *DefaultPageViewAttributes) SetKeyboardDismissBehavior(value duit_props.ScrollViewKeyboardDismissBehavior) *DefaultPageViewAttributes {
 	r.KeyboardDismissBehavior = value
 	return r
 }
 
 // SetPhysics assigns the scroll physics.
-func (r *DefautlPageViewAttributes) SetPhysics(value duit_props.ScrollPhysics) *DefautlPageViewAttributes {
+func (r *DefaultPageViewAttributes) SetPhysics(value duit_props.ScrollPhysics) *DefaultPageViewAttributes {
 	r.Physics = value
 	return r
 }
 
 // SetRestorationId sets the state restoration identifier.
-func (r *DefautlPageViewAttributes) SetRestorationId(value string) *DefautlPageViewAttributes {
+func (r *DefaultPageViewAttributes) SetRestorationId(value string) *DefaultPageViewAttributes {
 	r.RestorationId = value
 	return r
 }
 
 // SetHitTestBehavior configures the hit test interaction behavior.
-func (r *DefautlPageViewAttributes) SetHitTestBehavior(value duit_props.HitTestBehavior) *DefautlPageViewAttributes {
+func (r *DefaultPageViewAttributes) SetHitTestBehavior(value duit_props.HitTestBehavior) *DefaultPageViewAttributes {
 	r.HitTestBehavior = value
 	return r
 }
 
 // SetPadsEnd toggles end padding behavior.
-func (r *DefautlPageViewAttributes) SetPadsEnd(value bool) *DefautlPageViewAttributes {
+func (r *DefaultPageViewAttributes) SetPadsEnd(value bool) *DefaultPageViewAttributes {
 	r.PadsEnd = duit_utils.BoolValue(value)
 	return r
 }
 
 //bindgen:exclude
-func (t *DefautlPageViewAttributes) Validate() error {
+func (t *DefaultPageViewAttributes) Validate() error {
 	if t == nil {
 		return nil
 	}
@@ -129,14 +129,14 @@ func (t *DefautlPageViewAttributes) Validate() error {
 type PageViewCommonAttributes struct {
 	*ValueReferenceHolder      `gen:"wrap"`
 	*ThemeConsumer             `gen:"wrap"`
-	*DefautlPageViewAttributes `gen:"wrap"`
+	*DefaultPageViewAttributes `gen:"wrap"`
 }
 
 func NewPageViewCommonAttributes() *PageViewCommonAttributes {
 	attr := &PageViewCommonAttributes{}
-	dAttrs := &DefautlPageViewAttributes{}
+	dAttrs := &DefaultPageViewAttributes{}
 	dAttrs.SetConstructor(PageViewCommon)
-	attr.DefautlPageViewAttributes = dAttrs
+	attr.DefaultPageViewAttributes = dAttrs
 	return attr
 }
 
@@ -155,7 +155,7 @@ func (r *PageViewCommonAttributes) Validate() error {
 		return err
 	}
 
-	if err := r.DefautlPageViewAttributes.Validate(); err != nil {
+	if err := r.DefaultPageViewAttributes.Validate(); err != nil {
 		return err
 	}
 
@@ -167,15 +167,15 @@ func (r *PageViewCommonAttributes) Validate() error {
 type PageViewBuilderAttributes struct {
 	*ValueReferenceHolder      `gen:"wrap"`
 	*ThemeConsumer             `gen:"wrap"`
-	*DefautlPageViewAttributes `gen:"wrap"`
+	*DefaultPageViewAttributes `gen:"wrap"`
 	*Builder                   `gen:"wrap"`
 }
 
 func NewPageViewBuilderAttributes() *PageViewBuilderAttributes {
 	attr := &PageViewBuilderAttributes{}
-	dAttrs := &DefautlPageViewAttributes{}
+	dAttrs := &DefaultPageViewAttributes{}
 	dAttrs.SetConstructor(PageViewBuilder)
-	attr.DefautlPageViewAttributes = dAttrs
+	attr.DefaultPageViewAttributes = dAttrs
 	return attr
 }
 
@@ -194,7 +194,7 @@ func (r *PageViewBuilderAttributes) Validate() error {
 		return err
 	}
 
-	if err := r.DefautlPageViewAttributes.Validate(); err != nil {
+	if err := r.DefaultPageViewAttributes.Validate(); err != nil {
 		return err
 	}
 
