@@ -90,4 +90,5 @@ const (
 	ClipRect                      DuitElementType = "ClipRect"
 	ClipOval                      DuitElementType = "ClipOval"
 	PageView                      DuitElementType = "PageView"
+	Badge                         DuitElementType = "Badge"
 )

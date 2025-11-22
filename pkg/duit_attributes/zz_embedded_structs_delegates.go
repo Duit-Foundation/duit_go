@@ -4399,3 +4399,45 @@ func (r *WrapAttributes) SetRefs(refs []ValueRef) *WrapAttributes {
 	r.ValueReferenceHolder.SetRefs(refs)
 	return r
 }
+
+// --- Wrappers for BadgeAttributes ---
+
+func (r *BadgeAttributes) SetIgnoreTheme(ignoreTheme bool) *BadgeAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetIgnoreTheme(ignoreTheme)
+	return r
+}
+
+func (r *BadgeAttributes) SetOverrideRule(overrideRule ThemeOverrideRule) *BadgeAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetOverrideRule(overrideRule)
+	return r
+}
+
+func (r *BadgeAttributes) SetTheme(theme string) *BadgeAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetTheme(theme)
+	return r
+}
+
+func (r *BadgeAttributes) AddRef(ref ValueRef) *BadgeAttributes {
+	if r.ValueReferenceHolder == nil {
+		r.ValueReferenceHolder = &ValueReferenceHolder{}
+	}
+	r.ValueReferenceHolder.AddRef(ref)
+	return r
+}
+
+func (r *BadgeAttributes) SetRefs(refs []ValueRef) *BadgeAttributes {
+	if r.ValueReferenceHolder == nil {
+		r.ValueReferenceHolder = &ValueReferenceHolder{}
+	}
+	r.ValueReferenceHolder.SetRefs(refs)
+	return r
+}
