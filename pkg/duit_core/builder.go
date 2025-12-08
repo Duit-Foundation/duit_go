@@ -100,8 +100,6 @@ func (builder *UiBuilder) AddWidgets(widgets ...*DuitElementModel) {
 func (builder *UiBuilder) AddWidget(tag string, widget *DuitElementModel) *UiBuilder {
 	if builder.multiviewWidgets == nil {
 		builder.multiviewWidgets = map[string]*DuitElementModel{}
-		builder.multiviewWidgets[tag] = widget
-		return  builder
 	}
 	builder.multiviewWidgets[tag] = widget
 	return  builder
