@@ -6,9 +6,10 @@ import (
 )
 
 type UiBuilder struct {
-	root    *DuitElementModel
-	widgets []*DuitElementModel
-	embedded []*ComponentDescription
+	root             *DuitElementModel
+	widgets          []*DuitElementModel // Deprecated
+	embedded         []*ComponentDescription
+	multiviewWidgets map[string]*DuitElementModel
 }
 
 // Build generates a JSON representation of the UiBuilder.
@@ -16,7 +17,7 @@ type UiBuilder struct {
 // It returns a byte slice and an error.
 func (builder *UiBuilder) Build() ([]byte, error) {
 	content := map[string]interface{}{
-		"root": builder.root,
+		"root":     builder.root,
 		"embedded": builder.embedded,
 	}
 
@@ -30,12 +31,12 @@ func (builder *UiBuilder) Build() ([]byte, error) {
 }
 
 func (builder *UiBuilder) BuildMultiview() ([]byte, error) {
-	if len(builder.widgets) == 0 {
+	if len(builder.multiviewWidgets) == 0 {
 		return nil, errors.New("no widgets provided")
 	}
- 
+
 	content := map[string]interface{}{
-		"widgets": builder.widgets,
+		"widgets": builder.multiviewWidgets,
 		"embedded": builder.embedded,
 	}
 
@@ -52,8 +53,12 @@ func (builder *UiBuilder) BuildMultiview() ([]byte, error) {
 //
 // It returns a byte slice and an error.
 func (builder *UiBuilder) BuildUnwrapped() ([]byte, error) {
-	if (builder.embedded != nil) {
+	if builder.embedded != nil {
 		return nil, errors.New("embedded components not supported")
+	}
+
+	if builder.multiviewWidgets != nil {
+		return nil, errors.New("multiview widgets not supported")
 	}
 
 	json, err := json.Marshal(builder.root)
@@ -85,8 +90,21 @@ func (builder *UiBuilder) RootFrom(rootElement *DuitElementModel) *DuitElementMo
 	return builder.root
 }
 
+// Deprecated: AddWidgets is broken, use AddWidget instead
 func (builder *UiBuilder) AddWidgets(widgets ...*DuitElementModel) {
 	builder.widgets = append(builder.widgets, widgets...)
+}
+
+// AddWidget adds a single widget to the UiBuilder.
+// The widget is appended to the list of widgets managed by the builder.
+func (builder *UiBuilder) AddWidget(tag string, widget *DuitElementModel) *UiBuilder {
+	if builder.multiviewWidgets == nil {
+		builder.multiviewWidgets = map[string]*DuitElementModel{}
+		builder.multiviewWidgets[tag] = widget
+		return  builder
+	}
+	builder.multiviewWidgets[tag] = widget
+	return  builder
 }
 
 // AddComponents adds components to the UiBuilder.
