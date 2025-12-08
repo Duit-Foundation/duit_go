@@ -56,51 +56,6 @@ func TestBuildWithoutWrapper(t *testing.T) {
 	}
 }
 
-func TestBuildMultiView(t *testing.T) {
-	view := DuitView{}
-	builder := view.Builder()
-
-	_, err := builder.BuildMultiview()
-
-	if err == nil {
-		t.Fatal("expected error")
-	}
-
-	v1 := &DuitElementModel{
-		ElementType: Text,
-		Attributes:  nil,
-		Controlled:  false,
-		Id:          "v1",
-	}
-
-	v2 := &DuitElementModel{
-		ElementType: Text,
-		Attributes:  nil,
-		Controlled:  false,
-		Id:          "v2",
-	}
-
-	builder.AddWidgets(v1, v2)
-
-	j, err := builder.BuildMultiview()
-
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	val := map[string]interface{}{}
-
-	err = json.Unmarshal(j, &val)
-
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if len(val["widgets"].([]interface{})) != 2 {
-		t.Fatal("expected 2 widgets")
-	}
-}
-
 func TestEmbeddedComponents(t *testing.T) {
 	view := DuitView{}
 	builder := view.Builder()
@@ -133,6 +88,63 @@ func TestEmbeddedComponents(t *testing.T) {
 
 	if val["embedded"] == nil {
 		t.Fatal(errors.New("embedded component is nil"))
+	}
+
+	_, err = builder.BuildUnwrapped()
+
+	if err == nil {
+		t.Fatal(errors.New("expected error"))
+	}
+}
+
+func TestBuildMultiView(t *testing.T) {
+	view := DuitView{}
+	builder := view.Builder()
+
+	v1 := &DuitElementModel{
+		ElementType: Text,
+		Attributes:  nil,
+		Controlled:  false,
+		Id:          "v1",
+	}
+
+	v2 := &DuitElementModel{
+		ElementType: Text,
+		Attributes:  nil,
+		Controlled:  false,
+		Id:          "v2",
+	}
+
+	builder.
+		AddWidget("tag1", v1).
+		AddWidget("tag2", v2)
+
+	layout, err := builder.BuildMultiview()
+
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	val := map[string]interface{}{}
+
+	err = json.Unmarshal(layout, &val)
+
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if val["widgets"] == nil {
+		t.Fatal(errors.New("widgets map is nil"))
+	} else {
+		data := val["widgets"].(map[string]interface{})
+
+		if data["tag1"] == nil {
+			t.Fatal(errors.New("widgets with tag tag1 is nil"))
+		}
+
+		if data["tag228"] != nil {
+			t.Fatal(errors.New("widget with tag tag228 is not nil"))
+		}
 	}
 
 	_, err = builder.BuildUnwrapped()
