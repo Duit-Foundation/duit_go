@@ -10,6 +10,7 @@ import (
 type TextFieldAttributes struct {
 	*ValueReferenceHolder `gen:"wrap"`
 	*ThemeConsumer        `gen:"wrap"`
+	*FocusCapability      `gen:"wrap"`
 	Style                 *duit_props.TextStyle       `json:"style,omitempty"`
 	TextAlign             duit_props.TextAlign        `json:"textAlign,omitempty"`
 	TextDirection         duit_props.TextDirection    `json:"textDirection,omitempty"`
@@ -26,6 +27,7 @@ type TextFieldAttributes struct {
 	MinLines              uint                        `json:"minLines,omitempty"`
 	MaxLength             uint                        `json:"maxLength,omitempty"`
 	Decoration            *duit_props.InputDecoration `json:"inputDecoration,omitempty"`
+	FocusNode             *duit_props.FocusNode       `json:"focusNode,omitempty"`
 }
 
 // NewTextFieldAttributes creates a new instance of TextFieldAttributes.

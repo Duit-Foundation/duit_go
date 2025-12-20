@@ -4441,3 +4441,50 @@ func (r *BadgeAttributes) SetRefs(refs []ValueRef) *BadgeAttributes {
 	r.ValueReferenceHolder.SetRefs(refs)
 	return r
 }
+func (r *CheckboxAttributes) SetFocusNode(node *duit_props.FocusNode) *CheckboxAttributes {
+	if r.FocusCapability == nil {
+		r.FocusCapability = &FocusCapability{}
+	}
+	r.FocusCapability.SetFocusNode(node)
+	return r
+}
+
+func (r *ElevatedButtonAttributes) SetFocusNode(node *duit_props.FocusNode) *ElevatedButtonAttributes {
+	if r.FocusCapability == nil {
+		r.FocusCapability = &FocusCapability{}
+	}
+	r.FocusCapability.SetFocusNode(node)
+	return r
+}
+
+func (r *InkwellAttributes) SetFocusNode(node *duit_props.FocusNode) *InkwellAttributes {
+	if r.FocusCapability == nil {
+		r.FocusCapability = &FocusCapability{}
+	}
+	r.FocusCapability.SetFocusNode(node)
+	return r
+}
+
+func (r *RadioAttributes) SetFocusNode(node *duit_props.FocusNode) *RadioAttributes {
+	if r.FocusCapability == nil {
+		r.FocusCapability = &FocusCapability{}
+	}
+	r.FocusCapability.SetFocusNode(node)
+	return r
+}
+
+func (r *SwitchAttributes) SetFocusNode(node *duit_props.FocusNode) *SwitchAttributes {
+	if r.FocusCapability == nil {
+		r.FocusCapability = &FocusCapability{}
+	}
+	r.FocusCapability.SetFocusNode(node)
+	return r
+}
+
+func (r *TextFieldAttributes) SetFocusNode(node *duit_props.FocusNode) *TextFieldAttributes {
+	if r.FocusCapability == nil {
+		r.FocusCapability = &FocusCapability{}
+	}
+	r.FocusCapability.SetFocusNode(node)
+	return r
+}

@@ -10,22 +10,23 @@ import (
 // SwitchAttributes represents attributes for Switch widget.
 // https://api.flutter.dev/flutter/material/Switch-class.html
 type SwitchAttributes struct {
-	*ValueReferenceHolder     `gen:"wrap"`
-	*ThemeConsumer            `gen:"wrap"`
-	Value                     duit_utils.Tristate[bool]        `json:"value,omitempty"`
-	ActiveColor               *duit_props.Color                `json:"activeColor,omitempty"`
-	FocusColor                *duit_props.Color                `json:"focusColor,omitempty"`
-	HoverColor                *duit_props.Color                `json:"hoverColor,omitempty"`
-	ActiveTrackColor          *duit_props.Color                `json:"activeTrackColor,omitempty"`
-	InactiveTrackColor        *duit_props.Color                `json:"inactiveTrackColor,omitempty"`
-	OverlayColor              *duit_props.WidgetStateColor     `json:"overlayColor,omitempty"`
-	TrackColor                *duit_props.WidgetStateColor     `json:"trackColor,omitempty"`
-	ThumbColor                *duit_props.WidgetStateColor     `json:"thumbColor,omitempty"`
-	TrackOutlineColor         *duit_props.WidgetStateColor     `json:"trackOutlineColor,omitempty"`
-	TrackOutlineWidth         *duit_props.WidgetStateFloat32   `json:"trackOutlineWidth,omitempty"`
-	SplashRadius              float32                          `json:"splashRadius,omitempty"`
-	MaterialTapTargetSize     duit_props.MaterialTapTargetSize `json:"materialTapTargetSize,omitempty"`
-	Autofocus                 duit_utils.Tristate[bool]        `json:"autofocus,omitempty"`
+	*ValueReferenceHolder `gen:"wrap"`
+	*ThemeConsumer        `gen:"wrap"`
+	*FocusCapability      `gen:"wrap"`
+	Value                 duit_utils.Tristate[bool]        `json:"value,omitempty"`
+	ActiveColor           *duit_props.Color                `json:"activeColor,omitempty"`
+	FocusColor            *duit_props.Color                `json:"focusColor,omitempty"`
+	HoverColor            *duit_props.Color                `json:"hoverColor,omitempty"`
+	ActiveTrackColor      *duit_props.Color                `json:"activeTrackColor,omitempty"`
+	InactiveTrackColor    *duit_props.Color                `json:"inactiveTrackColor,omitempty"`
+	OverlayColor          *duit_props.WidgetStateColor     `json:"overlayColor,omitempty"`
+	TrackColor            *duit_props.WidgetStateColor     `json:"trackColor,omitempty"`
+	ThumbColor            *duit_props.WidgetStateColor     `json:"thumbColor,omitempty"`
+	TrackOutlineColor     *duit_props.WidgetStateColor     `json:"trackOutlineColor,omitempty"`
+	TrackOutlineWidth     *duit_props.WidgetStateFloat32   `json:"trackOutlineWidth,omitempty"`
+	SplashRadius          float32                          `json:"splashRadius,omitempty"`
+	MaterialTapTargetSize duit_props.MaterialTapTargetSize `json:"materialTapTargetSize,omitempty"`
+	Autofocus             duit_utils.Tristate[bool]        `json:"autofocus,omitempty"`
 }
 
 // NewSwitchAttributes creates a new instance of SwitchAttributes.
