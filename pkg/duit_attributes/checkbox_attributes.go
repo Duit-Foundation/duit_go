@@ -12,6 +12,7 @@ import (
 type CheckboxAttributes struct {
 	*ValueReferenceHolder `gen:"wrap"`
 	*ThemeConsumer        `gen:"wrap"`
+	*FocusCapability                  `gen:"wrap"`
 	Value                 duit_utils.Tristate[bool]    `json:"value"`
 	Autofocus             duit_utils.Tristate[bool]    `json:"autofocus,omitempty"`
 	Tristate              duit_utils.Tristate[bool]    `json:"tristate,omitempty"`

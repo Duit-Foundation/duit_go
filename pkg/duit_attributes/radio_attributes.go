@@ -13,6 +13,7 @@ type RadioAttributes struct {
 	*ValueReferenceHolder             `gen:"wrap"`
 	*duit_props.AnimatedPropertyOwner `gen:"wrap"`
 	*ThemeConsumer                    `gen:"wrap"`
+	*FocusCapability                  `gen:"wrap"`
 	Value                             duit_utils.Tristate[any]         `json:"value,omitempty"`
 	Toggleable                        bool                             `json:"toggleable,omitempty"`
 	Autofocus                         bool                             `json:"autofocus,omitempty"`

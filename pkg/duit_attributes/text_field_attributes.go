@@ -10,6 +10,7 @@ import (
 type TextFieldAttributes struct {
 	*ValueReferenceHolder `gen:"wrap"`
 	*ThemeConsumer        `gen:"wrap"`
+	*FocusCapability      `gen:"wrap"`
 	Style                 *duit_props.TextStyle       `json:"style,omitempty"`
 	TextAlign             duit_props.TextAlign        `json:"textAlign,omitempty"`
 	TextDirection         duit_props.TextDirection    `json:"textDirection,omitempty"`

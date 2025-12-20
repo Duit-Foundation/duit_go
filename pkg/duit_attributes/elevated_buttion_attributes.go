@@ -11,6 +11,7 @@ import (
 type ElevatedButtonAttributes struct {
 	*ValueReferenceHolder `gen:"wrap"`
 	*ThemeConsumer        `gen:"wrap"`
+	*FocusCapability      `gen:"wrap"`
 	Autofocus             duit_utils.Tristate[bool] `json:"autofocus,omitempty"`
 	ClipBehavior          duit_props.Clip           `json:"clipBehavior,omitempty"`
 	Style                 *duit_props.ButtonStyle   `json:"style,omitempty"`
