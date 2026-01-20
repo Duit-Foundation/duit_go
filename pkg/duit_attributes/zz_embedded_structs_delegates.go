@@ -4488,3 +4488,339 @@ func (r *TextFieldAttributes) SetFocusNode(node *duit_props.FocusNode) *TextFiel
 	r.FocusCapability.SetFocusNode(node)
 	return r
 }
+
+// --- Wrappers for AspectRatioAttributes ---
+
+func (r *AspectRatioAttributes) SetIgnoreTheme(ignoreTheme bool) *AspectRatioAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetIgnoreTheme(ignoreTheme)
+	return r
+}
+
+func (r *AspectRatioAttributes) SetOverrideRule(overrideRule ThemeOverrideRule) *AspectRatioAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetOverrideRule(overrideRule)
+	return r
+}
+
+func (r *AspectRatioAttributes) SetTheme(theme string) *AspectRatioAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetTheme(theme)
+	return r
+}
+
+func (r *AspectRatioAttributes) AddRef(ref ValueRef) *AspectRatioAttributes {
+	if r.ValueReferenceHolder == nil {
+		r.ValueReferenceHolder = &ValueReferenceHolder{}
+	}
+	r.ValueReferenceHolder.AddRef(ref)
+	return r
+}
+
+func (r *AspectRatioAttributes) SetRefs(refs []ValueRef) *AspectRatioAttributes {
+	if r.ValueReferenceHolder == nil {
+		r.ValueReferenceHolder = &ValueReferenceHolder{}
+	}
+	r.ValueReferenceHolder.SetRefs(refs)
+	return r
+}
+
+// --- Wrappers for BaselineAttributes ---
+
+func (r *BaselineAttributes) SetIgnoreTheme(ignoreTheme bool) *BaselineAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetIgnoreTheme(ignoreTheme)
+	return r
+}
+
+func (r *BaselineAttributes) SetOverrideRule(overrideRule ThemeOverrideRule) *BaselineAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetOverrideRule(overrideRule)
+	return r
+}
+
+func (r *BaselineAttributes) SetTheme(theme string) *BaselineAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetTheme(theme)
+	return r
+}
+
+func (r *BaselineAttributes) AddRef(ref ValueRef) *BaselineAttributes {
+	if r.ValueReferenceHolder == nil {
+		r.ValueReferenceHolder = &ValueReferenceHolder{}
+	}
+	r.ValueReferenceHolder.AddRef(ref)
+	return r
+}
+
+func (r *BaselineAttributes) SetRefs(refs []ValueRef) *BaselineAttributes {
+	if r.ValueReferenceHolder == nil {
+		r.ValueReferenceHolder = &ValueReferenceHolder{}
+	}
+	r.ValueReferenceHolder.SetRefs(refs)
+	return r
+}
+
+// --- Wrappers for FractionallySizedBoxAttributes ---
+
+func (r *FractionallySizedBoxAttributes) SetIgnoreTheme(ignoreTheme bool) *FractionallySizedBoxAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetIgnoreTheme(ignoreTheme)
+	return r
+}
+
+func (r *FractionallySizedBoxAttributes) SetOverrideRule(overrideRule ThemeOverrideRule) *FractionallySizedBoxAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetOverrideRule(overrideRule)
+	return r
+}
+
+func (r *FractionallySizedBoxAttributes) SetTheme(theme string) *FractionallySizedBoxAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetTheme(theme)
+	return r
+}
+
+func (r *FractionallySizedBoxAttributes) AddRef(ref ValueRef) *FractionallySizedBoxAttributes {
+	if r.ValueReferenceHolder == nil {
+		r.ValueReferenceHolder = &ValueReferenceHolder{}
+	}
+	r.ValueReferenceHolder.AddRef(ref)
+	return r
+}
+
+func (r *FractionallySizedBoxAttributes) SetRefs(refs []ValueRef) *FractionallySizedBoxAttributes {
+	if r.ValueReferenceHolder == nil {
+		r.ValueReferenceHolder = &ValueReferenceHolder{}
+	}
+	r.ValueReferenceHolder.SetRefs(refs)
+	return r
+}
+
+// --- Wrappers for LimitedBoxAttributes ---
+
+func (r *LimitedBoxAttributes) SetIgnoreTheme(ignoreTheme bool) *LimitedBoxAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetIgnoreTheme(ignoreTheme)
+	return r
+}
+
+func (r *LimitedBoxAttributes) SetOverrideRule(overrideRule ThemeOverrideRule) *LimitedBoxAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetOverrideRule(overrideRule)
+	return r
+}
+
+func (r *LimitedBoxAttributes) SetTheme(theme string) *LimitedBoxAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetTheme(theme)
+	return r
+}
+
+func (r *LimitedBoxAttributes) AddRef(ref ValueRef) *LimitedBoxAttributes {
+	if r.ValueReferenceHolder == nil {
+		r.ValueReferenceHolder = &ValueReferenceHolder{}
+	}
+	r.ValueReferenceHolder.AddRef(ref)
+	return r
+}
+
+func (r *LimitedBoxAttributes) SetRefs(refs []ValueRef) *LimitedBoxAttributes {
+	if r.ValueReferenceHolder == nil {
+		r.ValueReferenceHolder = &ValueReferenceHolder{}
+	}
+	r.ValueReferenceHolder.SetRefs(refs)
+	return r
+}
+
+// --- Wrappers for SemanticsAttributes ---
+
+func (r *SemanticsAttributes) SetIgnoreTheme(ignoreTheme bool) *SemanticsAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetIgnoreTheme(ignoreTheme)
+	return r
+}
+
+func (r *SemanticsAttributes) SetOverrideRule(overrideRule ThemeOverrideRule) *SemanticsAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetOverrideRule(overrideRule)
+	return r
+}
+
+func (r *SemanticsAttributes) SetTheme(theme string) *SemanticsAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetTheme(theme)
+	return r
+}
+
+func (r *SemanticsAttributes) AddRef(ref ValueRef) *SemanticsAttributes {
+	if r.ValueReferenceHolder == nil {
+		r.ValueReferenceHolder = &ValueReferenceHolder{}
+	}
+	r.ValueReferenceHolder.AddRef(ref)
+	return r
+}
+
+func (r *SemanticsAttributes) SetRefs(refs []ValueRef) *SemanticsAttributes {
+	if r.ValueReferenceHolder == nil {
+		r.ValueReferenceHolder = &ValueReferenceHolder{}
+	}
+	r.ValueReferenceHolder.SetRefs(refs)
+	return r
+}
+
+// --- Wrappers for SizedOverflowBoxAttributes ---
+
+func (r *SizedOverflowBoxAttributes) SetIgnoreTheme(ignoreTheme bool) *SizedOverflowBoxAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetIgnoreTheme(ignoreTheme)
+	return r
+}
+
+func (r *SizedOverflowBoxAttributes) SetOverrideRule(overrideRule ThemeOverrideRule) *SizedOverflowBoxAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetOverrideRule(overrideRule)
+	return r
+}
+
+func (r *SizedOverflowBoxAttributes) SetTheme(theme string) *SizedOverflowBoxAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetTheme(theme)
+	return r
+}
+
+func (r *SizedOverflowBoxAttributes) AddRef(ref ValueRef) *SizedOverflowBoxAttributes {
+	if r.ValueReferenceHolder == nil {
+		r.ValueReferenceHolder = &ValueReferenceHolder{}
+	}
+	r.ValueReferenceHolder.AddRef(ref)
+	return r
+}
+
+func (r *SizedOverflowBoxAttributes) SetRefs(refs []ValueRef) *SizedOverflowBoxAttributes {
+	if r.ValueReferenceHolder == nil {
+		r.ValueReferenceHolder = &ValueReferenceHolder{}
+	}
+	r.ValueReferenceHolder.SetRefs(refs)
+	return r
+}
+
+// --- Wrappers for UnconstrainedBoxAttributes ---
+
+func (r *UnconstrainedBoxAttributes) SetIgnoreTheme(ignoreTheme bool) *UnconstrainedBoxAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetIgnoreTheme(ignoreTheme)
+	return r
+}
+
+func (r *UnconstrainedBoxAttributes) SetOverrideRule(overrideRule ThemeOverrideRule) *UnconstrainedBoxAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetOverrideRule(overrideRule)
+	return r
+}
+
+func (r *UnconstrainedBoxAttributes) SetTheme(theme string) *UnconstrainedBoxAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetTheme(theme)
+	return r
+}
+
+func (r *UnconstrainedBoxAttributes) AddRef(ref ValueRef) *UnconstrainedBoxAttributes {
+	if r.ValueReferenceHolder == nil {
+		r.ValueReferenceHolder = &ValueReferenceHolder{}
+	}
+	r.ValueReferenceHolder.AddRef(ref)
+	return r
+}
+
+func (r *UnconstrainedBoxAttributes) SetRefs(refs []ValueRef) *UnconstrainedBoxAttributes {
+	if r.ValueReferenceHolder == nil {
+		r.ValueReferenceHolder = &ValueReferenceHolder{}
+	}
+	r.ValueReferenceHolder.SetRefs(refs)
+	return r
+}
+
+// --- Wrappers for FractionalTranslationAttributes ---
+
+func (r *FractionalTranslationAttributes) SetIgnoreTheme(ignoreTheme bool) *FractionalTranslationAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetIgnoreTheme(ignoreTheme)
+	return r
+}
+
+func (r *FractionalTranslationAttributes) SetOverrideRule(overrideRule ThemeOverrideRule) *FractionalTranslationAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetOverrideRule(overrideRule)
+	return r
+}
+
+func (r *FractionalTranslationAttributes) SetTheme(theme string) *FractionalTranslationAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetTheme(theme)
+	return r
+}
+
+func (r *FractionalTranslationAttributes) AddRef(ref ValueRef) *FractionalTranslationAttributes {
+	if r.ValueReferenceHolder == nil {
+		r.ValueReferenceHolder = &ValueReferenceHolder{}
+	}
+	r.ValueReferenceHolder.AddRef(ref)
+	return r
+}
+
+func (r *FractionalTranslationAttributes) SetRefs(refs []ValueRef) *FractionalTranslationAttributes {
+	if r.ValueReferenceHolder == nil {
+		r.ValueReferenceHolder = &ValueReferenceHolder{}
+	}
+	r.ValueReferenceHolder.SetRefs(refs)
+	return r
+}
