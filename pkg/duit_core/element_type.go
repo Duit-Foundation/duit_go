@@ -91,4 +91,12 @@ const (
 	ClipOval                      DuitElementType = "ClipOval"
 	PageView                      DuitElementType = "PageView"
 	Badge                         DuitElementType = "Badge"
+	AspectRatio                   DuitElementType = "AspectRatio"
+	Baseline                      DuitElementType = "Baseline"
+	FractionallySizedBox          DuitElementType = "FractionallySizedBox"
+	Semantics                     DuitElementType = "Semantics"
+	LimitedBox                    DuitElementType = "LimitedBox"
+	SizedOverflowBox              DuitElementType = "SizedOverflowBox"
+	UnconstrainedBox              DuitElementType = "UnconstrainedBox"
+	FractionalTranslation         DuitElementType = "FractionalTranslation"
 )
