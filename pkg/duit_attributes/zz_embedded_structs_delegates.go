@@ -4824,3 +4824,21 @@ func (r *FractionalTranslationAttributes) SetRefs(refs []ValueRef) *FractionalTr
 	r.ValueReferenceHolder.SetRefs(refs)
 	return r
 }
+
+// --- Wrappers for ExcludeSemanticsAttributes ---
+
+func (r *ExcludeSemanticsAttributes) AddRef(ref ValueRef) *ExcludeSemanticsAttributes {
+	if r.ValueReferenceHolder == nil {
+		r.ValueReferenceHolder = &ValueReferenceHolder{}
+	}
+	r.ValueReferenceHolder.AddRef(ref)
+	return r
+}
+
+func (r *ExcludeSemanticsAttributes) SetRefs(refs []ValueRef) *ExcludeSemanticsAttributes {
+	if r.ValueReferenceHolder == nil {
+		r.ValueReferenceHolder = &ValueReferenceHolder{}
+	}
+	r.ValueReferenceHolder.SetRefs(refs)
+	return r
+}
