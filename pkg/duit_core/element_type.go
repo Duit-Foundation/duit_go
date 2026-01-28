@@ -99,4 +99,6 @@ const (
 	SizedOverflowBox              DuitElementType = "SizedOverflowBox"
 	UnconstrainedBox              DuitElementType = "UnconstrainedBox"
 	FractionalTranslation         DuitElementType = "FractionalTranslation"
+	ExcludeSemantics              DuitElementType = "ExcludeSemantics"
+	MergeSemantics                DuitElementType = "MergeSemantics"
 )
