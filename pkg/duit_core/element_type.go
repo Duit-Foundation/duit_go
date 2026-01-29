@@ -17,6 +17,7 @@ const (
 	ElevatedButton                DuitElementType = "ElevatedButton"
 	Expanded                      DuitElementType = "Expanded"
 	OutlinedButton                DuitElementType = "OutlinedButton"
+	FilledButton                  DuitElementType = "FilledButton"
 	Padding                       DuitElementType = "Padding"
 	Positioned                    DuitElementType = "Positioned"
 	DecoratedBox                  DuitElementType = "DecoratedBox"

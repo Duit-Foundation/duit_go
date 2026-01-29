@@ -4884,3 +4884,103 @@ func (r *VisibilityAttributes) SetRefs(refs []ValueRef) *VisibilityAttributes {
 	r.ValueReferenceHolder.SetRefs(refs)
 	return r
 }
+
+// --- Wrappers for FilledButtonAttributes ---
+
+func (r *FilledButtonAttributes) SetFocusNode(node *duit_props.FocusNode) *FilledButtonAttributes {
+	if r.FocusCapability == nil {
+		r.FocusCapability = &FocusCapability{}
+	}
+	r.FocusCapability.SetFocusNode(node)
+	return r
+}
+
+func (r *FilledButtonAttributes) SetIgnoreTheme(ignoreTheme bool) *FilledButtonAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetIgnoreTheme(ignoreTheme)
+	return r
+}
+
+func (r *FilledButtonAttributes) SetOverrideRule(overrideRule ThemeOverrideRule) *FilledButtonAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetOverrideRule(overrideRule)
+	return r
+}
+
+func (r *FilledButtonAttributes) SetTheme(theme string) *FilledButtonAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetTheme(theme)
+	return r
+}
+
+func (r *FilledButtonAttributes) AddRef(ref ValueRef) *FilledButtonAttributes {
+	if r.ValueReferenceHolder == nil {
+		r.ValueReferenceHolder = &ValueReferenceHolder{}
+	}
+	r.ValueReferenceHolder.AddRef(ref)
+	return r
+}
+
+func (r *FilledButtonAttributes) SetRefs(refs []ValueRef) *FilledButtonAttributes {
+	if r.ValueReferenceHolder == nil {
+		r.ValueReferenceHolder = &ValueReferenceHolder{}
+	}
+	r.ValueReferenceHolder.SetRefs(refs)
+	return r
+}
+
+// --- Wrappers for OutlinedButtonAttributes ---
+
+func (r *OutlinedButtonAttributes) SetFocusNode(node *duit_props.FocusNode) *OutlinedButtonAttributes {
+	if r.FocusCapability == nil {
+		r.FocusCapability = &FocusCapability{}
+	}
+	r.FocusCapability.SetFocusNode(node)
+	return r
+}
+
+func (r *OutlinedButtonAttributes) SetIgnoreTheme(ignoreTheme bool) *OutlinedButtonAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetIgnoreTheme(ignoreTheme)
+	return r
+}
+
+func (r *OutlinedButtonAttributes) SetOverrideRule(overrideRule ThemeOverrideRule) *OutlinedButtonAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetOverrideRule(overrideRule)
+	return r
+}
+
+func (r *OutlinedButtonAttributes) SetTheme(theme string) *OutlinedButtonAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetTheme(theme)
+	return r
+}
+
+func (r *OutlinedButtonAttributes) AddRef(ref ValueRef) *OutlinedButtonAttributes {
+	if r.ValueReferenceHolder == nil {
+		r.ValueReferenceHolder = &ValueReferenceHolder{}
+	}
+	r.ValueReferenceHolder.AddRef(ref)
+	return r
+}
+
+func (r *OutlinedButtonAttributes) SetRefs(refs []ValueRef) *OutlinedButtonAttributes {
+	if r.ValueReferenceHolder == nil {
+		r.ValueReferenceHolder = &ValueReferenceHolder{}
+	}
+	r.ValueReferenceHolder.SetRefs(refs)
+	return r
+}
