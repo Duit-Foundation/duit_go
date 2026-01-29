@@ -6,9 +6,9 @@ import (
 	"github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
 )
 
-// ElevatedButtonAttributes defines attributes for ElevatedButton widget.
-// See: https://api.flutter.dev/flutter/material/ElevatedButton-class.html
-type ElevatedButtonAttributes struct {
+// OutlinedButtonAttributes defines attributes for OutlinedButton widget.
+// See: https://api.flutter.dev/flutter/material/OutlinedButton-class.html
+type OutlinedButtonAttributes struct {
 	*ValueReferenceHolder `gen:"wrap"`
 	*ThemeConsumer        `gen:"wrap"`
 	*FocusCapability      `gen:"wrap"`
@@ -21,7 +21,7 @@ type ElevatedButtonAttributes struct {
 }
 
 //bindgen:exclude
-func (r *ElevatedButtonAttributes) Validate() error {
+func (r *OutlinedButtonAttributes) Validate() error {
 	if err := r.ThemeConsumer.Validate(); err != nil {
 		return err
 	}
@@ -51,43 +51,43 @@ func (r *ElevatedButtonAttributes) Validate() error {
 	return nil
 }
 
-// NewElevatedButtonAttributes creates a new ElevatedButtonAttributes instance.
-func NewElevatedButtonAttributes() *ElevatedButtonAttributes {
-	return &ElevatedButtonAttributes{}
+// NewOutlinedButtonAttributes creates a new OutlinedButtonAttributes instance.
+func NewOutlinedButtonAttributes() *OutlinedButtonAttributes {
+	return &OutlinedButtonAttributes{}
 }
 
-// SetAutofocus sets the autofocus for the elevated button widget.
-func (r *ElevatedButtonAttributes) SetAutofocus(autofocus duit_utils.Tristate[bool]) *ElevatedButtonAttributes {
+// SetAutofocus sets the autofocus for the outlined button widget.
+func (r *OutlinedButtonAttributes) SetAutofocus(autofocus duit_utils.Tristate[bool]) *OutlinedButtonAttributes {
 	r.Autofocus = autofocus
 	return r
 }
 
-// SetClipBehavior sets the clip behavior for the elevated button widget.
-func (r *ElevatedButtonAttributes) SetClipBehavior(clipBehavior duit_props.Clip) *ElevatedButtonAttributes {
+// SetClipBehavior sets the clip behavior for the outlined button widget.
+func (r *OutlinedButtonAttributes) SetClipBehavior(clipBehavior duit_props.Clip) *OutlinedButtonAttributes {
 	r.ClipBehavior = clipBehavior
 	return r
 }
 
-// SetStyle sets the style for the elevated button widget.
-func (r *ElevatedButtonAttributes) SetStyle(style *duit_props.ButtonStyle) *ElevatedButtonAttributes {
+// SetStyle sets the style for the outlined button widget.
+func (r *OutlinedButtonAttributes) SetStyle(style *duit_props.ButtonStyle) *OutlinedButtonAttributes {
 	r.Style = style
 	return r
 }
 
-// SetOnLongPress sets the on long press for the elevated button widget.
-func (r *ElevatedButtonAttributes) SetOnLongPress(onLongPress any) *ElevatedButtonAttributes {
+// SetOnLongPress sets the on long press for the outlined button widget.
+func (r *OutlinedButtonAttributes) SetOnLongPress(onLongPress any) *OutlinedButtonAttributes {
 	r.OnLongPress = onLongPress
 	return r
 }
 
-// SetOnHover sets the on hover for the elevated button widget.
-func (r *ElevatedButtonAttributes) SetOnHover(onHover any) *ElevatedButtonAttributes {
+// SetOnHover sets the on hover for the outlined button widget.
+func (r *OutlinedButtonAttributes) SetOnHover(onHover any) *OutlinedButtonAttributes {
 	r.OnHover = onHover
 	return r
 }
 
-// SetOnFocusChange sets the on focus change for the elevated button widget.
-func (r *ElevatedButtonAttributes) SetOnFocusChange(onFocusChange any) *ElevatedButtonAttributes {
+// SetOnFocusChange sets the on focus change for the outlined button widget.
+func (r *OutlinedButtonAttributes) SetOnFocusChange(onFocusChange any) *OutlinedButtonAttributes {
 	r.OnFocusChange = onFocusChange
 	return r
 }
