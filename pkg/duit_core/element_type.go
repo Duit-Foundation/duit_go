@@ -82,6 +82,7 @@ const (
 	SliverPadding                 DuitElementType = "SliverPadding"
 	AbsorbPointer                 DuitElementType = "AbsorbPointer"
 	Offstage                      DuitElementType = "Offstage"
+	Visibility                    DuitElementType = "Visibility"
 	AnimatedCrossFade             DuitElementType = "AnimatedCrossFade"
 	PhysicalModel                 DuitElementType = "PhysicalModel"
 	AnimatedPhysicalModel         DuitElementType = "AnimatedPhysicalModel"

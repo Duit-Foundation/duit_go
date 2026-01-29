@@ -4842,3 +4842,45 @@ func (r *ExcludeSemanticsAttributes) SetRefs(refs []ValueRef) *ExcludeSemanticsA
 	r.ValueReferenceHolder.SetRefs(refs)
 	return r
 }
+
+// --- Wrappers for VisibilityAttributes ---
+
+func (r *VisibilityAttributes) SetIgnoreTheme(ignoreTheme bool) *VisibilityAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetIgnoreTheme(ignoreTheme)
+	return r
+}
+
+func (r *VisibilityAttributes) SetOverrideRule(overrideRule ThemeOverrideRule) *VisibilityAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetOverrideRule(overrideRule)
+	return r
+}
+
+func (r *VisibilityAttributes) SetTheme(theme string) *VisibilityAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetTheme(theme)
+	return r
+}
+
+func (r *VisibilityAttributes) AddRef(ref ValueRef) *VisibilityAttributes {
+	if r.ValueReferenceHolder == nil {
+		r.ValueReferenceHolder = &ValueReferenceHolder{}
+	}
+	r.ValueReferenceHolder.AddRef(ref)
+	return r
+}
+
+func (r *VisibilityAttributes) SetRefs(refs []ValueRef) *VisibilityAttributes {
+	if r.ValueReferenceHolder == nil {
+		r.ValueReferenceHolder = &ValueReferenceHolder{}
+	}
+	r.ValueReferenceHolder.SetRefs(refs)
+	return r
+}
