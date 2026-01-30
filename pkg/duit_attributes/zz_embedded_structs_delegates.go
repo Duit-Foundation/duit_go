@@ -4984,3 +4984,53 @@ func (r *OutlinedButtonAttributes) SetRefs(refs []ValueRef) *OutlinedButtonAttri
 	r.ValueReferenceHolder.SetRefs(refs)
 	return r
 }
+
+// --- Wrappers for TextButtonAttributes ---
+
+func (r *TextButtonAttributes) SetFocusNode(node *duit_props.FocusNode) *TextButtonAttributes {
+	if r.FocusCapability == nil {
+		r.FocusCapability = &FocusCapability{}
+	}
+	r.FocusCapability.SetFocusNode(node)
+	return r
+}
+
+func (r *TextButtonAttributes) SetIgnoreTheme(ignoreTheme bool) *TextButtonAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetIgnoreTheme(ignoreTheme)
+	return r
+}
+
+func (r *TextButtonAttributes) SetOverrideRule(overrideRule ThemeOverrideRule) *TextButtonAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetOverrideRule(overrideRule)
+	return r
+}
+
+func (r *TextButtonAttributes) SetTheme(theme string) *TextButtonAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetTheme(theme)
+	return r
+}
+
+func (r *TextButtonAttributes) AddRef(ref ValueRef) *TextButtonAttributes {
+	if r.ValueReferenceHolder == nil {
+		r.ValueReferenceHolder = &ValueReferenceHolder{}
+	}
+	r.ValueReferenceHolder.AddRef(ref)
+	return r
+}
+
+func (r *TextButtonAttributes) SetRefs(refs []ValueRef) *TextButtonAttributes {
+	if r.ValueReferenceHolder == nil {
+		r.ValueReferenceHolder = &ValueReferenceHolder{}
+	}
+	r.ValueReferenceHolder.SetRefs(refs)
+	return r
+}
