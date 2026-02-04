@@ -16,6 +16,7 @@ const (
 	Center                        DuitElementType = "Center"
 	ElevatedButton                DuitElementType = "ElevatedButton"
 	Expanded                      DuitElementType = "Expanded"
+	Flexible                      DuitElementType = "Flexible"
 	OutlinedButton                DuitElementType = "OutlinedButton"
 	FilledButton                  DuitElementType = "FilledButton"
 	TextButton                    DuitElementType = "TextButton"
