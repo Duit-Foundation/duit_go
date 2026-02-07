@@ -106,4 +106,5 @@ const (
 	FractionalTranslation         DuitElementType = "FractionalTranslation"
 	ExcludeSemantics              DuitElementType = "ExcludeSemantics"
 	MergeSemantics                DuitElementType = "MergeSemantics"
+	InteractiveViewer             DuitElementType = "InteractiveViewer"
 )
