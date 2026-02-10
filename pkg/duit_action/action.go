@@ -1,5 +1,7 @@
 package duit_action
 
+import "github.com/Duit-Foundation/duit_go/v4/pkg/duit_utils"
+
 const (
 	Transport = iota
 	Local
@@ -40,6 +42,30 @@ type RemoteAction struct {
 	DependsOn        []*ActionDependency `json:"dependsOn"`
 	Meta             any                 `json:"meta,omitempty"`
 	ExecutionOptions *ExecutionOptions   `json:"options,omitempty"`
+	SuppressionTTL   uint                `json:"suppressionTTL,omitempty"`
+	Idempotent       duit_utils.TBool    `json:"idempotent,omitempty"`
+}
+
+// SetCacheTTL sets the cache TTL for the remote action.
+//
+// The function takes in the following parameter:
+// - cacheTTL: a uint representing the cache TTL for the remote action.
+//
+// The function returns a pointer to an instance of RemoteAction.
+func (r *RemoteAction) SetSuppressionTTL(suppressionTTL uint) *RemoteAction {
+	r.SuppressionTTL = suppressionTTL
+	return r
+}
+
+// SetIdempotent sets the idempotent for the remote action.
+//
+// The function takes in the following parameter:
+// - idempotent: a bool representing the idempotent for the remote action.
+//
+// The function returns a pointer to an instance of RemoteAction.
+func (r *RemoteAction) SetIdempotent(idempotent bool) *RemoteAction {
+	r.Idempotent = duit_utils.BoolValue(idempotent)
+	return r
 }
 
 // NewWebSocketAction creates a WebSocket action.
