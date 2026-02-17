@@ -25,6 +25,7 @@ const (
 	DecoratedBox                  DuitElementType = "DecoratedBox"
 	CheckBox                      DuitElementType = "CheckBox"
 	Container                     DuitElementType = "Container"
+	Icon                          DuitElementType = "Icon"
 	Image                         DuitElementType = "Image"
 	GestureDetector               DuitElementType = "GestureDetector"
 	Align                         DuitElementType = "Align"

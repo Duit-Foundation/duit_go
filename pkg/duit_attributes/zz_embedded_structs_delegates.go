@@ -5034,3 +5034,129 @@ func (r *TextButtonAttributes) SetRefs(refs []ValueRef) *TextButtonAttributes {
 	r.ValueReferenceHolder.SetRefs(refs)
 	return r
 }
+
+// --- Wrappers for FlexibleAttributes ---
+
+func (r *FlexibleAttributes) SetIgnoreTheme(ignoreTheme bool) *FlexibleAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetIgnoreTheme(ignoreTheme)
+	return r
+}
+
+func (r *FlexibleAttributes) SetOverrideRule(overrideRule ThemeOverrideRule) *FlexibleAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetOverrideRule(overrideRule)
+	return r
+}
+
+func (r *FlexibleAttributes) SetTheme(theme string) *FlexibleAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetTheme(theme)
+	return r
+}
+
+func (r *FlexibleAttributes) AddRef(ref ValueRef) *FlexibleAttributes {
+	if r.ValueReferenceHolder == nil {
+		r.ValueReferenceHolder = &ValueReferenceHolder{}
+	}
+	r.ValueReferenceHolder.AddRef(ref)
+	return r
+}
+
+func (r *FlexibleAttributes) SetRefs(refs []ValueRef) *FlexibleAttributes {
+	if r.ValueReferenceHolder == nil {
+		r.ValueReferenceHolder = &ValueReferenceHolder{}
+	}
+	r.ValueReferenceHolder.SetRefs(refs)
+	return r
+}
+
+// --- Wrappers for IconAttributes ---
+
+func (r *IconAttributes) SetIgnoreTheme(ignoreTheme bool) *IconAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetIgnoreTheme(ignoreTheme)
+	return r
+}
+
+func (r *IconAttributes) SetOverrideRule(overrideRule ThemeOverrideRule) *IconAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetOverrideRule(overrideRule)
+	return r
+}
+
+func (r *IconAttributes) SetTheme(theme string) *IconAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetTheme(theme)
+	return r
+}
+
+func (r *IconAttributes) AddRef(ref ValueRef) *IconAttributes {
+	if r.ValueReferenceHolder == nil {
+		r.ValueReferenceHolder = &ValueReferenceHolder{}
+	}
+	r.ValueReferenceHolder.AddRef(ref)
+	return r
+}
+
+func (r *IconAttributes) SetRefs(refs []ValueRef) *IconAttributes {
+	if r.ValueReferenceHolder == nil {
+		r.ValueReferenceHolder = &ValueReferenceHolder{}
+	}
+	r.ValueReferenceHolder.SetRefs(refs)
+	return r
+}
+
+// --- Wrappers for InteractiveViewerAttributes ---
+
+func (r *InteractiveViewerAttributes) SetIgnoreTheme(ignoreTheme bool) *InteractiveViewerAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetIgnoreTheme(ignoreTheme)
+	return r
+}
+
+func (r *InteractiveViewerAttributes) SetOverrideRule(overrideRule ThemeOverrideRule) *InteractiveViewerAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetOverrideRule(overrideRule)
+	return r
+}
+
+func (r *InteractiveViewerAttributes) SetTheme(theme string) *InteractiveViewerAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetTheme(theme)
+	return r
+}
+
+func (r *InteractiveViewerAttributes) AddRef(ref ValueRef) *InteractiveViewerAttributes {
+	if r.ValueReferenceHolder == nil {
+		r.ValueReferenceHolder = &ValueReferenceHolder{}
+	}
+	r.ValueReferenceHolder.AddRef(ref)
+	return r
+}
+
+func (r *InteractiveViewerAttributes) SetRefs(refs []ValueRef) *InteractiveViewerAttributes {
+	if r.ValueReferenceHolder == nil {
+		r.ValueReferenceHolder = &ValueReferenceHolder{}
+	}
+	r.ValueReferenceHolder.SetRefs(refs)
+	return r
+}
