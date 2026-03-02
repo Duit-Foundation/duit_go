@@ -108,4 +108,5 @@ const (
 	ExcludeSemantics              DuitElementType = "ExcludeSemantics"
 	MergeSemantics                DuitElementType = "MergeSemantics"
 	InteractiveViewer             DuitElementType = "InteractiveViewer"
+	SkeletonBox                  DuitElementType = "SkeletonBox"
 )
