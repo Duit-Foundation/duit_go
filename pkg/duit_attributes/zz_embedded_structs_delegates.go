@@ -5202,3 +5202,45 @@ func (r *SkeletonBoxAttributes) SetRefs(refs []ValueRef) *SkeletonBoxAttributes 
 	r.ValueReferenceHolder.SetRefs(refs)
 	return r
 }
+
+// --- Wrappers for TooltipAttributes ---
+
+func (r *TooltipAttributes) SetIgnoreTheme(ignoreTheme bool) *TooltipAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetIgnoreTheme(ignoreTheme)
+	return r
+}
+
+func (r *TooltipAttributes) SetOverrideRule(overrideRule ThemeOverrideRule) *TooltipAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetOverrideRule(overrideRule)
+	return r
+}
+
+func (r *TooltipAttributes) SetTheme(theme string) *TooltipAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetTheme(theme)
+	return r
+}
+
+func (r *TooltipAttributes) AddRef(ref ValueRef) *TooltipAttributes {
+	if r.ValueReferenceHolder == nil {
+		r.ValueReferenceHolder = &ValueReferenceHolder{}
+	}
+	r.ValueReferenceHolder.AddRef(ref)
+	return r
+}
+
+func (r *TooltipAttributes) SetRefs(refs []ValueRef) *TooltipAttributes {
+	if r.ValueReferenceHolder == nil {
+		r.ValueReferenceHolder = &ValueReferenceHolder{}
+	}
+	r.ValueReferenceHolder.SetRefs(refs)
+	return r
+}
