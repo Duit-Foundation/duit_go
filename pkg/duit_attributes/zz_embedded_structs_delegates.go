@@ -5244,3 +5244,45 @@ func (r *TooltipAttributes) SetRefs(refs []ValueRef) *TooltipAttributes {
 	r.ValueReferenceHolder.SetRefs(refs)
 	return r
 }
+
+// --- Wrappers for DismissibleAttributes ---
+
+func (r *DismissibleAttributes) SetIgnoreTheme(ignoreTheme bool) *DismissibleAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetIgnoreTheme(ignoreTheme)
+	return r
+}
+
+func (r *DismissibleAttributes) SetOverrideRule(overrideRule ThemeOverrideRule) *DismissibleAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetOverrideRule(overrideRule)
+	return r
+}
+
+func (r *DismissibleAttributes) SetTheme(theme string) *DismissibleAttributes {
+	if r.ThemeConsumer == nil {
+		r.ThemeConsumer = &ThemeConsumer{}
+	}
+	r.ThemeConsumer.SetTheme(theme)
+	return r
+}
+
+func (r *DismissibleAttributes) AddRef(ref ValueRef) *DismissibleAttributes {
+	if r.ValueReferenceHolder == nil {
+		r.ValueReferenceHolder = &ValueReferenceHolder{}
+	}
+	r.ValueReferenceHolder.AddRef(ref)
+	return r
+}
+
+func (r *DismissibleAttributes) SetRefs(refs []ValueRef) *DismissibleAttributes {
+	if r.ValueReferenceHolder == nil {
+		r.ValueReferenceHolder = &ValueReferenceHolder{}
+	}
+	r.ValueReferenceHolder.SetRefs(refs)
+	return r
+}
